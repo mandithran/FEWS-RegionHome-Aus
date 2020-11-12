@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>P_E2O_Snow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<qualifierId>snowonly</qualifierId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="day"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"></relativeViewPeriod>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_E2O_Rain</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<qualifierId>rainonly</qualifierId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="day"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"></relativeViewPeriod>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_E2O_Out</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="day"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"></relativeViewPeriod>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="P_E2O_combine">
+		<user>
+			<simple>
+			<expression>P_E2O_Snow + P_E2O_Rain</expression>
+			<outputVariable>
+				<variableId>P_E2O_Out</variableId>
+			</outputVariable>
+		</simple>
+	</user>
+	</transformation>
+</transformationModule> 

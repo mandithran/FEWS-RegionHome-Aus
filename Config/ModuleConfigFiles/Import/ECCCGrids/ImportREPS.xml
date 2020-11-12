@@ -1,0 +1,51 @@
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>CanadaMeteoWCS</importType>
+			<serverUrl>https://geo.weather.gc.ca/geomet?SERVICE=WCS&amp;VERSION=2.0.1&amp;REQUEST=GetCoverage</serverUrl>
+			<relativeViewPeriod unit="hour" start="3" end="60" startOverrulable="true" endOverrulable="true"/>
+			<idMapId>IdImportCanadaWCS</idMapId>
+		</general>
+		<!--startTimeShift and above start of 3 needs as precipitation is an accumulative variable not available at the first forecast time-->
+		<startTimeShift>
+			<parameterId>PC.nwp</parameterId>
+			<relativePeriod start="-3" end="0" unit="hour"/>
+		</startTimeShift>
+		<properties>
+			<string key="subsettingCrs" value="EPSG:4326"/>
+		</properties>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportREPS</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.nwp</parameterId>
+			<locationId>REPS</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>REPS</ensembleId>
+		</timeSeriesSet>
+		<externUnit parameterId="PC.nwp" unit="kg m-2" cumulativeSum="true"/>
+	</import>
+	<import>
+		<general>
+			<importType>CanadaMeteoWCS</importType>
+			<serverUrl>https://geo.weather.gc.ca/geomet?SERVICE=WCS&amp;VERSION=2.0.1&amp;REQUEST=GetCoverage</serverUrl>
+			<relativeViewPeriod unit="hour" start="0" end="60" startOverrulable="true" endOverrulable="true"/>
+			<idMapId>IdImportCanadaWCS</idMapId>
+		</general>
+		<properties>
+			<string key="subsettingCrs" value="EPSG:4326"/>
+		</properties>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportREPS</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>TA.nwp</parameterId>
+			<locationId>REPS</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>REPS</ensembleId>
+		</timeSeriesSet>
+		<externUnit parameterId="TA.nwp" unit="K"/>
+	</import>
+</timeSeriesImportRun>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>NetcdfGridDataset</importType>
+			<folder>ftp://delftfews.courses%40gmail.com:delftfews.courses%40gmail.com@jsimpson.pps.eosdis.nasa.gov/data/imerg/early/</folder>
+			<fileNameDateTimeFilter subFolderLevel="1">
+				<!--201412-->
+				<timeStep unit="month"/>
+				<dateTimePattern>yyyyMM</dateTimePattern>
+				<preFixLength>0</preFixLength>
+				<postFixLength>0</postFixLength>
+			</fileNameDateTimeFilter>
+			<fileNameDateTimeFilter subFolderLevel="2">
+				<!--3B-HHR-E.MS.MRG.3IMERG.20141231-S173000-E175959.1050.V04A.RT-H5-->
+				<timeStep unit="minute" multiplier="30"/>
+				<dateTimePattern>yyyyMMdd'-S'HHmmss</dateTimePattern>
+				<preFixLength>23</preFixLength>
+				<postFixLength>24</postFixLength>
+			</fileNameDateTimeFilter>
+			<fileNameObservationDateTimePattern>'3B-HHR-E.MS.MRG.3IMERG.'yyyyMMdd'-S'HHmmss'-E?'</fileNameObservationDateTimePattern>
+			<failedFolder>$IMPORT_FAILED_FOLDER$/GPM</failedFolder>
+			<backupFolder>$IMPORT_BACKUP_FOLDER$/GPM</backupFolder>
+			<relativeViewPeriod unit="hour" start="-12" end="0" startOverrulable="true" endOverrulable="false"/>
+			<idMapId>IdImportGPM</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>GPMIMERG.Server.Precipitation</dataFeedId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportGPM</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<locationId>IMERG_world</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="minute" multiplier="30"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit parameterId="PC.obs" unit="mm/hr"/>
+	</import>
+</timeSeriesImportRun>

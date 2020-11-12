@@ -1,0 +1,461 @@
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<displayGroups xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd" version="1.0">
+	<!--Plot Templates Section-->
+	<!--Plot Template - WSC Data Data-->
+	<plot id="WSCHourlyTemplate">
+		<visibilityGroup>Discharge</visibilityGroup>
+		<visibilityGroup>WaterLevel</visibilityGroup>
+		<subplot>
+			<line>
+				<visibilityGroup>Discharge</visibilityGroup>
+				<color>blue</color>
+				<lineStyle>constant</lineStyle>
+				<axis>left</axis>
+				<visibleInLegend>true</visibleInLegend>
+				<visibleInTable>true</visibleInTable>
+				<visibleInPlot>true</visibleInPlot>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportWSC</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>QR.obs</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="minute" multiplier="5"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<visibilityGroup>WaterLevel</visibilityGroup>
+				<color>red</color>
+				<lineStyle>dashdot</lineStyle>
+				<axis>right</axis>
+				<visibleInLegend>true</visibleInLegend>
+				<visibleInTable>false</visibleInTable>
+				<visibleInPlot>true</visibleInPlot>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportWSC</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>HG.obs</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="minute" multiplier="5"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<!--Plot Template - RDPA Data-->
+	<plot id="RDPATemplate">
+		<subplot>
+			<line>
+				<color>red</color>
+				<lineStyle>bar</lineStyle>
+				<axis>left</axis>
+				<label>RDPA Basin Precip -  hourly [mm]</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessRDPA</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.sim</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour" multiplier="6"/>
+					<relativeViewPeriod unit="day" start="-14" end="0"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<!--Plot Templates - NWP Data -->
+	<plot id="RDPSTemplate">
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessRDPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessRDPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="HRDPSTemplate">
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessHRDPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="1"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessHRDPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="1"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="GDPSTemplate">
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessGDPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessGDPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="REPSPCTemplate">
+		<subplot>
+			<line>
+				<color>blue</color>
+				<lineStyle>solid</lineStyle>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp.acc</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read only</readWriteMode>
+					<ensembleId>REPS</ensembleId>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<line>
+				<color>blue</color>
+				<lineStyle>solid;thick</lineStyle>
+				<axis>left</axis>
+				<label>mean</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp.acc</parameterId>
+					<qualifierId>mean</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<area>
+				<color>blue</color>
+				<opaquenessPercentage>50</opaquenessPercentage>
+				<label>25%-75%</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp.acc</parameterId>
+					<qualifierId>25%</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp.acc</parameterId>
+					<qualifierId>75%</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>light blue</color>
+				<opaquenessPercentage>50</opaquenessPercentage>
+				<label>Min-Max</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp.acc</parameterId>
+					<qualifierId>min</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>PC.nwp.acc</parameterId>
+					<qualifierId>max</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+		</subplot>
+	</plot>
+	<plot id="REPSTATemplate">
+		<subplot>
+			<line>
+				<color>green</color>
+				<lineStyle>solid</lineStyle>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read only</readWriteMode>
+					<ensembleId>REPS</ensembleId>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<line>
+				<color>green</color>
+				<lineStyle>solid;thick</lineStyle>
+				<axis>left</axis>
+				<label>mean</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<qualifierId>mean</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<area>
+				<color>green</color>
+				<opaquenessPercentage>50</opaquenessPercentage>
+				<label>25%-75%</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<qualifierId>25%</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<qualifierId>75%</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>green1</color>
+				<opaquenessPercentage>50</opaquenessPercentage>
+				<label>Min-Max</label>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<qualifierId>min</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>PreprocessREPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>TA.nwp</parameterId>
+					<qualifierId>max</qualifierId>
+					<locationSetId>$MODELNAME1$Basins</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour" multiplier="3"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+		</subplot>
+	</plot>
+	<!--Plot Templates - Model Results-->
+	<plot id="$MODELNAME1$HistoricTemplate">
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>$MODELNAME1$Historic</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>QR.sim</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>simulated historical</timeSeriesType>
+					<timeStep id="$MODEL1_TIMESTEP$"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportWSC</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>QR.obs</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="minute" multiplier="5"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<synchLevel>5</synchLevel>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportWSC</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>QR.obs</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="$MODEL1_TIMESTEP$"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<synchLevel>5</synchLevel>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="$MODELNAME1$RDPSForecastTemplate">
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>$MODELNAME1$RDPSForecast</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>QR.sim</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep id="$MODEL1_TIMESTEP$"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportWSC</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>QR.obs</parameterId>
+					<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="minute" multiplier="5"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<synchLevel>5</synchLevel>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<!--Display Groups -->
+	<displayGroup id="ImportWSCHourly" name="WSC Stations Hourly">
+		<nodeId>ImportWSCHourly</nodeId>
+		<singleLocationDisplays>
+			<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+			<plotId>WSCHourlyTemplate</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup name="RDPA">
+		<nodeId>RDPA</nodeId>
+		<displayGroup id="RDPA" name="RDPA">
+			<nodeId>ImportRDPA</nodeId>
+			<singleLocationDisplays>
+				<locationSetId>$MODELNAME1$Basins</locationSetId>
+				<plotId>RDPATemplate</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<displayGroup name="RDPS">
+		<nodeId>RDPS</nodeId>
+		<displayGroup id="RDPS" name="RDPS">
+			<nodeId>ImportRDPS</nodeId>
+			<singleLocationDisplays>
+				<locationSetId>$MODELNAME1$Basins</locationSetId>
+				<plotId>RDPSTemplate</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<displayGroup name="GDPS">
+		<nodeId>GDPS</nodeId>
+		<displayGroup id="GDPS" name="GDPS">
+			<nodeId>ImportGDPS</nodeId>
+			<singleLocationDisplays>
+				<locationSetId>$MODELNAME1$Basins</locationSetId>
+				<plotId>GDPSTemplate</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<displayGroup name="REPSEnsemble">
+		<nodeId>REPSEnsemble</nodeId>
+		<displayGroup id="REPSEnsemble" name="REPSEnsemble">
+			<nodeId>ImportREPS</nodeId>
+			<singleLocationDisplays>
+				<locationSetId>$MODELNAME1$Basins</locationSetId>
+				<plotId>REPSPCTemplate</plotId>
+			</singleLocationDisplays>
+			<singleLocationDisplays>
+				<locationSetId>$MODELNAME1$Basins</locationSetId>
+				<plotId>REPSTATemplate</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<!-- Model Result Displays-->
+	<displayGroup id="ModelHistoric" name="ModelHistoric">
+		<nodeId>$MODELNAME1$Historic</nodeId>
+		<singleLocationDisplays>
+			<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+			<plotId>$MODELNAME1$HistoricTemplate</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="ModelForecastRDPS" name="ModelForecastRDPS">
+		<nodeId>$MODELNAME1$RDPSForecast</nodeId>
+		<singleLocationDisplays>
+			<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+			<plotId>$MODELNAME1$RDPSForecastTemplate</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+</displayGroups>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
+
+	<map internalParameter="QR.sim" internalLocation="$MODELNAME1$Grid" externalParameter="run" externalLocation="run"/>
+	<map internalParameter="SWE.sim" internalLocation="$MODELNAME1$Grid" externalParameter="ds" externalLocation="ds"/>
+	<map internalParameter="PC.sim" internalLocation="$MODELNAME1$Grid" externalParameter="pre" externalLocation="pre"/>
+	<map internalParameter="TA.sim" internalLocation="$MODELNAME1$Grid" externalParameter="temp" externalLocation="temp"/>
+	<map internalParameter="PET.sim" internalLocation="$MODELNAME1$Grid" externalParameter="PET" externalLocation="PET"/>
+	
+</idMap>
+

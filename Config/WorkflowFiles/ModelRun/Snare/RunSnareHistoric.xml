@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<!-- Run MESH Model Historic -->
+	<properties>
+		<string key="STARTTIME" value="-365"/>
+		<string key="ENDTIME" value="0"/>
+		<string key="INPUTTIMESERIES" value="ImportE2O"/>
+		<string key="PARAMETER1" value="TA.obs"/>
+		<string key="PARAMETER2" value="PET.obs"/>
+		<string key="PARAMETER3" value="PC.obs"/>
+		<string key="OUTPUTTIMESERIES" value="$MODELNAME1$Historic"/>
+		<string key="PARAMETER4" value="QR.sim"/>
+		<string key="PARAMETER5" value="SWE.sim"/>
+		<string key="PARAMETER6" value="PC.sim"/>
+		<string key="PARAMETER7" value="TA.sim"/>
+		<string key="PARAMETER8" value="PET.sim"/>
+		<string key="LOCATION" value="$MODELNAME1$Grid"/>
+		<string key="TIMESTEP" value="$MODEL1_TIMESTEP$"/>
+		<string key="TYPE1" value="external historical"/>
+		<string key="TYPE2" value="simulated historical"/>
+	</properties>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME1$Historic</moduleInstanceId>
+		<moduleConfigFileName>$MODELNAME1$HistoricTemplate</moduleConfigFileName>
+	</activity>
+	<!-- Postprocess Model Results-->
+	<activity>
+		<properties>
+			<string key="TIMESERIESTYPE" value="simulated historical"/>
+			<string key="PARAMETER" value="QR.sim"/>
+			<string key="ENSEMBLE" value="main"/>
+			<string key="STATIONLOCATIONS" value="$MODELNAME1$HydroStations"/>
+			<string key="TIMESTEP" value="$MODEL1_TIMESTEP$"/>
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME1$Historic</moduleInstanceId>
+		<moduleConfigFileName>PostprocessModelOutputToStationTemplate</moduleConfigFileName>
+	</activity>
+</workflow>

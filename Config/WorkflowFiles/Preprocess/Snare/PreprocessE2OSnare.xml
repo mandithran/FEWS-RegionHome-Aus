@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<!-- Retrieve NWP grids from Environment Canada -->
+	<properties>
+		<!-- Input Grid-->
+		<string key="INPUTGRID" value="E2O_25"/>
+		<!-- Input Module Instance ID-->
+		<string key="INPUTMODULEINSTANCE" value="ImportE2O"/>
+		<!-- Output Grid-->
+		<string key="OUTPUTGRID" value="$MODELNAME1$Grid"/>
+		<!--Basin Location-->
+		<string key="BASINLOCATIONS" value="$MODELNAME1$Basins"/>
+		<!--Station Locations-->
+		<string key="STATIONLOCATIONS" value="ECCCStations$REGION$"/>
+		<!--Starttime-->
+		<string key="STARTTIME" value="-365"/>
+		<!--Endtime-->
+		<string key="ENDTIME" value="0"/>
+		<!--Timeseries Type-->
+		<string key="TIMESERIESTYPE" value="external historical"/>
+		<!--Timeseries Type-->
+		<string key="TIMESTEP" value="24"/>
+		<!--Ensemble ID-->
+		<string key="ENSEMBLE" value="main"/>
+	</properties>		
+	<!-- Post-process Precipitation -->
+	<activity>
+	<properties>
+			<string key="PARAMETER" value="PC.obs"/>
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>PreprocessE2O</moduleInstanceId>
+		<moduleConfigFileName>PreprocessAccumulatedParametersNWPTemplate</moduleConfigFileName>
+	</activity>
+		<activity>
+		<properties>
+	<string key="PARAMETER" value="PET.obs"/>
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>PreprocessE2O</moduleInstanceId>
+		<moduleConfigFileName>PreprocessAccumulatedParametersNWPTemplate</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAMETER" value="TA.obs"/>
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>PreprocessE2O</moduleInstanceId>
+		<moduleConfigFileName>PreprocessInstantaneousParametersNWPTemplate</moduleConfigFileName>
+	</activity>
+	
+</workflow>

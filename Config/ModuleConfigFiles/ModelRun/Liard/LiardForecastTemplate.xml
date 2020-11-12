@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 (x64) (http://www.altova.com) by Deltares USA (Deltares USA) -->
+<generalAdapterRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd" xmlns="http://www.wldelft.nl/fews">
+	<general>
+		<description>Raven Model Forecast Template</description>
+		<piVersion>1.5</piVersion>
+		<rootDir>%REGION_HOME%/Modules/Raven</rootDir>
+		<workDir>%ROOT_DIR%</workDir>
+		<exportDir>%ROOT_DIR%/input</exportDir>
+		<exportDataSetDir>%ROOT_DIR%/</exportDataSetDir>
+		<exportIdMap>IdExportRaven</exportIdMap>
+		<exportUnitConversionsId>ExportRaven</exportUnitConversionsId>
+		<importDir>%ROOT_DIR%/output</importDir>
+		<importIdMap>IdImportRaven</importIdMap>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/output/diag.xml</diagnosticFile>
+		<missVal>NaN</missVal>
+		<timeZone>
+			<timeZoneName>$TIMEZONE$</timeZoneName>
+		</timeZone>
+		<startDateTimeFormat>yyyy-MM-dd hh:mm:ss</startDateTimeFormat>
+		<modelTimeStep id="$DAY_TIMESTEP$"/>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/input/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/output/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.rvc</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.rvh</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.rvi</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.rvp</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.rvt</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.txt</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/work/*.xml</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportStateActivity>
+				<moduleInstanceId>$MODELNAME2$Historic</moduleInstanceId>
+				<stateExportDir>%ROOT_DIR%/work</stateExportDir>
+				<stateConfigFile>%ROOT_DIR%/work/stateInfo.xml</stateConfigFile>
+				<stateLocations type="file">
+					<stateLocation>
+						<readLocation>$MODELNAME2$.rvc</readLocation>
+						<writeLocation>../output/$MODELNAME2$.rvc</writeLocation>
+					</stateLocation>
+				</stateLocations>
+				<stateSelection>
+					<coldState>
+						<startDate unit="day" multiplier="0"/>
+					</coldState>
+				</stateSelection>
+			</exportStateActivity>
+			<exportDataSetActivity>
+				<moduleInstanceId>$MODULEDATASET$</moduleInstanceId>
+			</exportDataSetActivity>
+			<exportParameterActivity>
+				<fileName>params_ubc.xml</fileName>
+				<templateLocationLooping>
+					<locationModelLoop>
+						<locationSetId>$MODELNAME1$Basins</locationSetId>
+						<model>$MODELNAME1$</model>
+					</locationModelLoop>
+				</templateLocationLooping>
+				<moduleInstanceId>RavenParameters</moduleInstanceId>
+			</exportParameterActivity>
+			<exportNetcdfActivity>
+				<exportFile>inputs.nc</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>$INPUTMODULEINSTANCEMETEO$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>PC.nwp</parameterId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$INPUTMODULEINSTANCEMETEO$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>TA.nwp</parameterId>
+						<qualifierId>min</qualifierId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$INPUTMODULEINSTANCEMETEO$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>TA.nwp</parameterId>
+						<qualifierId>max</qualifierId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+				<omitMissingValues>true</omitMissingValues>
+			</exportNetcdfActivity>
+			<exportRunFileActivity>
+				<exportFile>%ROOT_DIR%/run_info.xml</exportFile>
+				<properties>
+					<string key="ModelLocation" value="%ROOT_DIR%/work/Raven.exe"/>
+					<string key="RunName" value="$MODELNAME2$"/>
+					<int key="DebugMode" value="3"/>
+				</properties>
+			</exportRunFileActivity>
+		</exportActivities>
+		<executeActivities>
+			<!-- First Python Code below is used to remove additional lines from the run_info file -->
+			<executeActivity>
+				<command>
+					<executable>%ROOT_DIR%/work/bin/Adapter/string_remove.exe</executable>
+				</command>
+				<arguments>
+					<argument>%ROOT_DIR%</argument>
+				</arguments>
+				<timeOut>10000</timeOut>
+				<ignoreDiagnostics>true</ignoreDiagnostics>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>%ROOT_DIR%\work\bin\Adapter\RavenFEWSAdapter.exe</executable>
+				</command>
+				<arguments>
+					<argument>--FEWS_Run_Info_file</argument>
+					<argument>%ROOT_DIR%\run_info.xml</argument>
+				</arguments>
+				<timeOut>3000000</timeOut>
+			</executeActivity>
+		</executeActivities>
+		<importActivities>
+			<importNetcdfActivity>
+				<importFile>Hydrographs.nc</importFile>
+				<timeSeriesSets>
+					<!--hydrographs-->
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QR.sim</parameterId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importNetcdfActivity>
+			<importNetcdfActivity>
+				<importFile>SNOW_Continuous_Average_BySubbasin.nc</importFile>
+				<timeSeriesSets>
+					<!--Custom Output in .rvi-->
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>SWE.sim</parameterId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importNetcdfActivity>
+			<importNetcdfActivity>
+				<importFile>SNOW_LIQ_Continuous_Average_BySubbasin.nc</importFile>
+				<timeSeriesSets>
+					<!--Custom Output in .rvi-->
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>SWE.mlt</parameterId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importNetcdfActivity>
+			<importNetcdfActivity>
+				<importFile>SOIL[0]_Continuous_Average_BySubbasin.nc</importFile>
+				<timeSeriesSets>
+					<!--Custom Output in .rvi-->
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>SMI.sim</parameterId>
+						<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="$MODEL2_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importNetcdfActivity>
+		</importActivities>
+	</activities>
+</generalAdapterRun>
