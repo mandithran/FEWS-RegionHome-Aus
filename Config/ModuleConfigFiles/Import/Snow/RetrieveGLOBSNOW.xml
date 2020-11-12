@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules</rootDir>
+		<workDir>%ROOT_DIR%/SnowDownload</workDir>
+		<exportDir>%ROOT_DIR%/SnowDownload</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/SnowDownload</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%/SnowDownload</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/SnowDownload/diag.xml</diagnosticFile>
+		<time0Format>yyyyMMdd</time0Format>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/SnowDownload/*.*</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportDataSetActivity>
+				<moduleInstanceId>SnowDownload</moduleInstanceId>
+			</exportDataSetActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run wget64.exe to download GlobSnow SWE analysis</description>
+				<command>
+					<executable>SnowDownload/DownloadGlobSnow.bat</executable>
+				</command>
+				<arguments>
+					<argument>https://www.globsnow.info/swe/nrt</argument>
+					<argument>$IMPORT_FOLDER$/GlobSnow/</argument>
+					<argument>%TIME0%</argument>
+					<argument>GlobSnow</argument>
+				</arguments>
+				<timeOut>7200000</timeOut>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>

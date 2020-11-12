@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<rootDir>$REGION_HOME$/Modules</rootDir>
+		<workDir>%ROOT_DIR%\wflow</workDir>
+		<exportDir>%ROOT_DIR%\wflow</exportDir>
+		<exportDataSetDir>%ROOT_DIR%/wflow</exportDataSetDir>
+		<exportIdMap>IdExportwflow</exportIdMap>
+		<importDir>%ROOT_DIR%</importDir>
+		<importIdMap>IdImportwflow</importIdMap>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%\wflow\wflow_snare</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/diagnostics.xml</diagnosticFile>
+		<missVal>-999</missVal>
+		<!-- Take care this should be the timezone to computer is running in -->
+		<convertDatum>true</convertDatum>
+		<timeZone>
+			<timeZoneName>$TIMEZONE$</timeZoneName>
+		</timeZone>
+	</general>
+	<activities>
+	<startUpActivities>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/inmaps/*.nc</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/diagnostics.xml</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/run_info.xml</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/run_wflow.bat</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/instate/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/intbl/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/outstate/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/run_default/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/run_default/outmaps/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/run_default/outsum/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%WORK_DIR%/wflow_snare/run_default/intbl/*.*</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportStateActivity>
+				<moduleInstanceId>SnareHistoric</moduleInstanceId>
+				<stateExportDir>%WORK_DIR%/wflow_snare/instate</stateExportDir>
+				<stateConfigFile>%WORK_DIR%/wflow_snare/instate/states_in.xml</stateConfigFile>
+				<stateLocations type="file">
+					<stateLocation>
+						<readLocation>DrySnow.map</readLocation>
+						<writeLocation>DrySnow.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>FreeWater.map</readLocation>
+						<writeLocation>FreeWater.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>InterceptionStorage.map</readLocation>
+						<writeLocation>InterceptionStorage.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>LowerZoneStorage.map</readLocation>
+						<writeLocation>LowerZoneStorage.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>SoilMoisture.map</readLocation>
+						<writeLocation>SoilMoisture.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>SurfaceRunoff.map</readLocation>
+						<writeLocation>SurfaceRunoff.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>UpperZoneStorage.map</readLocation>
+						<writeLocation>UpperZoneStorage.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>WaterLevel.map</readLocation>
+						<writeLocation>WaterLevel.map</writeLocation>
+					</stateLocation>
+					<stateLocation>
+						<readLocation>ReservoirWaterLevel.map</readLocation>
+						<writeLocation>ReservoirWaterLevel.map</writeLocation>
+					</stateLocation>
+				</stateLocations>
+				<stateSelection>
+					<warmState>
+						<stateSearchPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$"/>
+					</warmState>
+				</stateSelection>
+			</exportStateActivity>
+		<exportDataSetActivity>
+			<description>Model Template Export</description>
+			<moduleInstanceId>$MODELNAME1$</moduleInstanceId>
+		</exportDataSetActivity>
+			<exportNetcdfActivity>
+				<exportFile>%WORK_DIR%/wflow_snare/forcing.nc</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>$INPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER1$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE1$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$INPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER2$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE1$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+						<multiplier>1</multiplier>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$INPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER3$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE1$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+						<readWriteMode>add originals</readWriteMode>
+						<multiplier>1</multiplier>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportNetcdfActivity>
+			<exportRunFileActivity>
+				<exportFile>%WORK_DIR%/run_info.xml</exportFile>
+			</exportRunFileActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run wflow for $MODELNAME1$</description>
+				<command>
+					<executable>$WFLOW_EXE$</executable>
+				</command>
+				<arguments>
+					<argument>-C</argument>
+					<argument>wflow_snare</argument>
+					<argument>-s</argument>
+					<argument>86400</argument>
+					<argument>-R</argument>
+					<argument>run_default</argument>
+					<argument>-f</argument>
+					<argument>run_info.xml</argument>
+					<argument>-c</argument>
+					<argument>wflow_hbv.ini</argument>
+				</arguments>
+				<timeOut>3600000</timeOut>
+				<ignoreDiagnostics>true</ignoreDiagnostics>
+			</executeActivity>
+			<executeActivity>
+				<description>Run wflow post</description>
+				<command>
+					<executable>$WFLOW_ADAPT_EXE$</executable>
+				</command>
+				<arguments>
+					<argument>-M</argument>
+					<argument>Post</argument>
+					<argument>-s</argument>
+					<argument>wflow_snare\instate\states_in.xml</argument>
+					<argument>-o</argument>
+					<argument>wflow_snare\outstate\states_out.xml</argument>
+					<argument>-r</argument>
+					<argument>run_info.xml</argument>
+					<argument>-w</argument>
+					<argument>%WORK_DIR%</argument>
+					<argument>-C</argument>
+					<argument>wflow_snare</argument>
+					<argument>-I</argument>
+					<argument>wflow_hbv.ini</argument>
+				</arguments>
+				<timeOut>3600000</timeOut>
+				<ignoreDiagnostics>true</ignoreDiagnostics>
+				<!--<overrulingDiagnosticFile>wflow_diag.xml</overrulingDiagnosticFile>-->
+			</executeActivity>
+		</executeActivities>
+		<importActivities>
+			<importStateActivity>
+				<stateConfigFile>%ROOT_DIR%\wflow\wflow_snare\outstate\states_out.xml</stateConfigFile>
+			</importStateActivity>
+			<importNetcdfActivity>
+				<importFile>%ROOT_DIR%/wflow/wflow_snare/run_default/outmaps.nc</importFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>$OUTPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER4$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE2$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$OUTPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER5$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE2$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$OUTPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER6$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE2$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+						<timeSeriesSet>
+						<moduleInstanceId>$OUTPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER7$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE2$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$OUTPUTTIMESERIES$</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>$PARAMETER8$</parameterId>
+						<locationId>$LOCATION$</locationId>
+						<timeSeriesType>$TYPE2$</timeSeriesType>
+						<timeStep id="$MODEL1_TIMESTEP$"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importNetcdfActivity>
+		</importActivities>
+	</activities>
+</generalAdapterRun>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<moduleInstanceDescriptors xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/moduleInstanceDescriptors.xsd" version="1.0">
+	<!--Import Scalar Data-->
+	<moduleInstanceDescriptor id="ImportWSCHistoric">
+		<description>Import Station data from Local Directory</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportWSCHourly">
+		<description>Import Station data from http://dd.weather.gc.ca server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportWSCDaily">
+		<description>Import Station data from http://dd.weather.gc.ca server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportWSC">
+		<description>ID assigned  to WSC imports</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportECCCScalar">
+		<description>Import Station data from dd.meteo.gc.ca server</description>
+	</moduleInstanceDescriptor>
+	<!--Preprocess Scalar Data-->
+	<moduleInstanceDescriptor id="PreprocessECCCScalar">
+		<description>Preprocess Station data from dd.meteo.gc.ca server</description>
+	</moduleInstanceDescriptor>
+	<!--ModuleDataSets-->
+	<moduleInstanceDescriptor id="SnowDownload">
+		<description>Snow Download module - for purpose of maintaining single moduleDataSet file</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="RavenParameters">
+		<description>Module Instance for Transfer of Raven Boolean Parameters from FEWS</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="RavenBinaries">
+		<description>Module Instance for Raven Binaries Export</description>
+	</moduleInstanceDescriptor>
+	<!--Download Snow Products-->
+	<moduleInstanceDescriptor id="RetrieveSNODAS">
+		<description>Download SNODAS grib2 files</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="RetrieveGLOBSNOW">
+		<description>Download GlobSnow netcdf files</description>
+	</moduleInstanceDescriptor>
+	<!--Imports Gridded Data - GeoMet-->
+	<moduleInstanceDescriptor id="ImportRDPA">
+		<description>Import for ECCC Precipitation Re-Analysis</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHRDPA">
+		<description>Import for ECCC Precipitation Re-Analysis</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportRDPS">
+		<description>Import for Regional Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHRDPS">
+		<description>Import for High Resolution Regional Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportGDPS">
+		<description>Import for Global Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportREPS">
+		<description>Import for Regional Ensemble Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportECCC">
+		<description>Import for All ECCC (GeoMet)</description>
+	</moduleInstanceDescriptor>
+	<!--Post-process Model Results -->
+	<moduleInstanceDescriptor id="PostprocessREPS">
+		<description>Calculate Ensemble Statistics for REPS</description>
+	</moduleInstanceDescriptor>
+	<!-- Import NOAA NWP forecast grids-->
+	<moduleInstanceDescriptor id="ImportGFS">
+		<description>Import Global Forecast System from NOAA</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportNAM">
+		<description>Import North American Meso-scale Data from NOAA</description>
+	</moduleInstanceDescriptor>
+<!-- Import Preprocess  NWP Inputs-->
+	<moduleInstanceDescriptor id="PreprocessRDPA">
+		<description>Preprocess for ECCC Precipitation Re-Analysis</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreprocessRDPS">
+		<description>Preprocess for Regional Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreprocessGDPS">
+		<description>Preprocess for Global Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreprocessREPS">
+		<description>Preprocess for Global Ensemble Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreprocessE2O">
+		<description>Preprocess for earth2observe</description>
+	</moduleInstanceDescriptor>
+	<!--Set Forecast Length for Forecasts -->
+	<moduleInstanceDescriptor id="SetForecastLengthRDPS">
+		<description>Set Forecast Length based on available RDPS data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="SetForecastLengthGDPS">
+		<description>Set Forecast Length based on available GDPS data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="SetForecastLengthREPS">
+		<description>Set Forecast Length based on available REPS data</description>
+	</moduleInstanceDescriptor>
+	<!--Merge Historic and Forecast Gridded Data -->
+	<moduleInstanceDescriptor id="MergeE2OPrecip">
+		<description>Merge Snowfall and Rainfall from the Earth2Observe Import</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="MergeRDPS">
+		<description>Merge for Regional Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="MergeGDPS">
+		<description>Merge for Global Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="MergeREPS">
+		<description>Merge for Global Ensemble Prediction System</description>
+	</moduleInstanceDescriptor>
+	<!--Modify Historic and Forecast Gridded Data -->
+	<moduleInstanceDescriptor id="ModifyRDPS">
+		<description>Modify for Regional Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ModifyGDPS">
+		<description>Modify for Global Deterministic Prediction System</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ModifyREPS">
+		<description>Modify for Regional Ensemble Prediction System</description>
+	</moduleInstanceDescriptor>
+	<!-- Preprocess NOAA NWP forecast grids-->
+	<moduleInstanceDescriptor id="PreprocessGFS">
+		<description>Preprocess Global Forecast System from NOAA</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreprocessNAM">
+		<description>Preprocess North American Meso-scale Data from NOAA</description>
+	</moduleInstanceDescriptor>
+	<!-- Import Snow grids-->
+	<moduleInstanceDescriptor id="ImportSNODAS">
+		<description>Import for SNODAS grids from NOHRSC</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportGLOBSNOW">
+		<description>Import for GlobSnow grids from Finnish Meteorological Institute</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportGPM">
+		<description>Import GPM from server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportGSMAP">
+		<description>Import GSMAP from server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportE2O">
+		<description>Import Earth2Observe Data from server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportEO">
+		<description>Import Earth Observation Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportNETCDF">
+		<description>Import NETCDF (generic)</description>
+	</moduleInstanceDescriptor>
+	<!--Merging of Gridded Data-->
+	<moduleInstanceDescriptor id="MergeHistoricGrids">
+		<description>Merge Grids for Historic Model Run</description>
+	</moduleInstanceDescriptor>
+	<!--Modify of Gridded Data-->
+	<moduleInstanceDescriptor id="ModifyHistoricGrids">
+		<description>Modify Grids for Historic Model Run</description>
+	</moduleInstanceDescriptor>
+	<!-- Model Binaries-->
+	<moduleInstanceDescriptor id="$MODELNAME1$">
+		<description>ModuleDataSet for $MODELNAME1$</description>
+	</moduleInstanceDescriptor>
+	<!-- Model Run Module Instances-->
+	 <moduleInstanceDescriptor id="$MODELNAME1$HistoricUpdate">
+		<description>ModuleInstanceId holder for Model</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME1$Historic">
+		<description>Run the $MODELNAME1$ model with Historic Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME1$Forecast">
+		<description>Run the $MODELNAME1$ model with Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME1$RDPSForecast">
+		<description>Run the $MODELNAME1$ model with RDPS Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME1$GDPSForecast">
+		<description>Run the $MODELNAME1$ model with GDPS Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME1$REPSForecast">
+		<description>Run the $MODELNAME1$ model with REPS Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<!-- Model Run Module Instances-->
+	<moduleInstanceDescriptor id="$MODELNAME2$">
+		<description>ModuleDataSet for $MODELNAME2$</description>
+	</moduleInstanceDescriptor>
+		<moduleInstanceDescriptor id="$MODELNAME2$Historic">
+		<description>Run the $MODELNAME2$ model with Historic Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME2$Forecast">
+		<description>Run the $MODELNAME2$ model with Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME2$ForecastEns">
+		<description>Run the $MODELNAME2$ model with Ensemble Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME2$RDPSForecast">
+		<description>Run the $MODELNAME2$ model with RDPS Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME2$GDPSForecast">
+		<description>Run the $MODELNAME2$ model with GDPS Forecast Data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="$MODELNAME2$REPSForecast">
+		<description>Run the $MODELNAME2$ model with REPS Forecast Data</description>
+	</moduleInstanceDescriptor>
+</moduleInstanceDescriptors>

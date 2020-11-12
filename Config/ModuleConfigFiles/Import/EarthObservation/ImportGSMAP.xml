@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>GSMAP</importType>
+			<folder>$IMPORT_FOLDER$/GSMAP</folder>
+			<fileNameObservationDateTimePattern>'gsmap_nrt.'yyyyMMdd'.'HHmm'.dat'</fileNameObservationDateTimePattern>
+			<failedFolder>$IMPORT_FAILED_FOLDER$/GSMAP</failedFolder>
+			<backupFolder>$IMPORT_BACKUP_FOLDER$/GSMAP</backupFolder>
+			<idMapId>IdImportGSMAP</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>GSMAP.Precipitation</dataFeedId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportGSMAP</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<locationId>GSMAP_world</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit parameterId="PC.obs" unit="mm"/>
+	</import>
+	<import>
+		<general>
+			<importType>GSMAP</importType>
+			<folder>ftp://rainmap:Niskur+1404@hokusai.eorc.jaxa.jp/realtime/archive/</folder>
+			<fileNameDateTimeFilter subFolderLevel="1">
+				<!--2017-->
+				<timeStep unit="year"/>
+				<dateTimePattern>yyyy</dateTimePattern>
+				<preFixLength>0</preFixLength>
+				<postFixLength>0</postFixLength>
+			</fileNameDateTimeFilter>
+			<fileNameDateTimeFilter subFolderLevel="2">
+				<!--09-->
+				<timeStep unit="month"/>
+				<dateTimePattern>MM</dateTimePattern>
+				<preFixLength>0</preFixLength>
+				<postFixLength>0</postFixLength>
+			</fileNameDateTimeFilter>
+			<fileNameDateTimeFilter subFolderLevel="3">
+				<!--27-->
+				<timeStep unit="day"/>
+				<dateTimePattern>dd</dateTimePattern>
+				<preFixLength>0</preFixLength>
+				<postFixLength>0</postFixLength>
+			</fileNameDateTimeFilter>
+			<fileNameObservationDateTimePattern>'gsmap_nrt.'yyyyMMdd'.'HHmm'.dat.gz'</fileNameObservationDateTimePattern>
+			<failedFolder>$IMPORT_FAILED_FOLDER$</failedFolder>
+			<backupFolder>$IMPORT_BACKUP_FOLDER$</backupFolder>
+			<relativeViewPeriod unit="hour" start="-12" end="0" startOverrulable="true" endOverrulable="false"/>
+			<idMapId>IdImportGSMAP</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>GSMAP.Server.Precipitation</dataFeedId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportGSMAP</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<locationId>GSMAP_world</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit parameterId="PC.obs" unit="mm"/>
+	</import>
+</timeSeriesImportRun>

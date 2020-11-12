@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- All Location Sets Built from csv and shp files. See MapLayerFiles for source-->
+	<!--- Water Survey of Canada Hydrometric Stations - Available at https://dd.weather.gc.ca/hydrometric/doc/ -->
+	<locationSet id="WSCStations">
+		<sortingLocationAttributeId>ID</sortingLocationAttributeId>
+		<csvFile>
+			<file>hydrometric_StationList.csv</file>
+			<geoDatum>WGS 1984</geoDatum>
+			<id>%ID%</id>
+			<name>%Name / Nom%</name>
+			<x>%Longitude%</x>
+			<y>%Latitude%</y>
+			<attribute id="ID" name="Station Code">
+				<text>%ID%</text>
+			</attribute>
+			<attribute id="Region" name="Region">
+				<text>%Prov/Terr%</text>
+			</attribute>
+			<!-- Add attribute files for each model-->
+			<attributeFile>
+				<csvFile>hydrometric_$MODELNAME1$.csv</csvFile>
+				<id>%ID%</id>
+				<attribute id="$MODELNAME1$">
+					<text>%$MODELNAME1$%</text>
+				</attribute>
+				<attribute id="LatCorrection">
+				<number>%LatCorrection%</number>
+				</attribute>
+					<attribute id="LonCorrection">
+					<number>%LonCorrection%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>hydrometric_$MODELNAME2$.csv</csvFile>
+				<id>%ID%</id>
+				<attribute id="$MODELNAME2$">
+					<text>%$MODELNAME2$%</text>
+				</attribute>
+			</attributeFile>
+		</csvFile>
+	</locationSet>
+	<!--- ECCC Meteo Stations - Available at https://dd.weather.gc.ca/hydrometric/doc/ -->
+	<locationSet id="ECCCStations">
+		<csvFile>
+			<file>swob-xml_station_list.csv</file>
+			<geoDatum>WGS 1984</geoDatum>
+			<id>%MSC_ID%</id>
+			<name>%Name%</name>
+			<x>%Longitude%</x>
+			<y>%Latitude%</y>
+			<z>%Elevation(m)%</z>
+			<attribute id="ID" name="Station Code">
+				<text>%MSC_ID%</text>
+			</attribute>
+			<attribute id="Region" name="Region">
+				<text>%Province/Territory%</text>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<!--- ECCC Meteo Stations from Partners - Available at https://dd.weather.gc.ca/hydrometric/doc/ -->
+	<locationSet id="ECCCPartnerStations">
+		<csvFile>
+			<file>swob-xml_partner_station_list.csv</file>
+			<geoDatum>WGS 1984</geoDatum>
+			<id>%MSC%</id>
+			<name>%EN name%</name>
+			<x>%Longitude%</x>
+			<y>%Latitude%</y>
+			<z>%Elevation%</z>
+			<attribute id="ID" name="Station Code">
+				<text>%MSC%</text>
+			</attribute>
+			<attribute id="Region" name="Region">
+				<text>%Province%</text>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<!--Additional csv files-->
+	<locationSet id="$MODELNAME2$MeteoStations">
+		<csvFile>
+			<file>meterological_$MODELNAME2$.csv</file>
+			<geoDatum>WGS 1984</geoDatum>
+			<id>%Name%</id>
+			<name>%Name%</name>
+			<x>%Longitude%</x>
+			<y>%Latitude%</y>
+			<z>%Elevation(m)%</z>
+			<!--This attribute added for IdMapping-->
+			<attribute id="StationIdx">
+				<text>%StationIdx%</text>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<!--LocationSets built from ShapeFiles-->
+	<!--ShapeFiles for $MODELNAME1$-->
+	<locationSet id="$MODELNAME1$SubBasins">
+		<esriShapeFile>
+			<file>$MODELNAME1$Watersheds.shp</file>
+			<id>%BasinName%</id>
+			<name>%BasinName%</name>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="$MODELNAME1$Extent">
+		<esriShapeFile>
+			<file>$MODELNAME1$Extent.shp</file>
+			<id>$MODELNAME1$Extent</id>
+			<name>$MODELNAME1$Extent</name>
+		</esriShapeFile>
+	</locationSet>
+	<!--ShapeFiles for $MODELNAME2$-->
+	<locationSet id="$MODELNAME2$SubBasins">
+		<esriShapeFile>
+			<file>$MODELNAME2$Watersheds.shp</file>
+			<id>%B%</id>
+			<name>%B%</name>
+			<attribute id="RavenBasin">
+				<text>%B%</text>
+			</attribute>
+			<attribute id="SubBasin">
+				<text>%Sub_B%</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="$MODELNAME2$Extent">
+		<esriShapeFile>
+			<file>$MODELNAME2$Extent.shp</file>
+			<id>$MODELNAME2$Extent</id>
+			<name>$MODELNAME2$Extent</name>
+			<attribute id="RavenBasin">
+				<text>$MODELNAME2$Extent</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<!-- Create LocationSets based on Attributes-->
+	<locationSet id="WSCStationsByRegion">
+		<subLocationSetIdFunction>WSCStations@Region@</subLocationSetIdFunction>
+		<locationSetId>WSCStations</locationSetId>
+	</locationSet>
+	<!-- Build LocationSets for MODELNAME1-->
+	<locationSet id="$MODELNAME1$HydroStations">
+		<locationSetId>WSCStations</locationSetId>
+		<constraints>
+			<attributeTextEquals id="$MODELNAME1$" equals="Y"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="$MODELNAME1$Basins">
+		<locationSetId>$MODELNAME1$SubBasins</locationSetId>
+		<locationSetId>$MODELNAME1$Extent</locationSetId>
+	</locationSet>
+
+	<!-- Build LocationSets for MODELNAME2-->
+	<locationSet id="$MODELNAME2$HydroStations">
+		<locationSetId>WSCStations</locationSetId>
+		<constraints>
+			<attributeTextEquals id="$MODELNAME2$" equals="Y"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="$MODELNAME2$Basins">
+		<locationSetId>$MODELNAME2$SubBasins</locationSetId>
+		<locationSetId>$MODELNAME2$Extent</locationSetId>
+	</locationSet>
+	<!--Build LocationSets for Display-->
+		<locationSet id="ModelBasins">
+		<locationSetId>$MODELNAME1$Basins</locationSetId>
+		<locationSetId>$MODELNAME2$Basins</locationSetId>
+	</locationSet>
+	<locationSet id="ModelMeteoStations">
+		<locationSetId>ECCCStationsNT</locationSetId>
+		<locationSetId>$MODELNAME2$MeteoStations</locationSetId>
+	</locationSet>
+	<locationSet id="ModelHydroStations">
+		<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+		<locationSetId>$MODELNAME2$HydroStations</locationSetId>
+	</locationSet>	
+		<locationSet id="DisplayMeteoStations">
+		<locationSetId>ECCCStationsNT</locationSetId>
+		<locationSetId>$MODELNAME2$MeteoStations</locationSetId>
+	</locationSet>
+	<locationSet id="DisplayHydroStations">
+		<!--<locationSetId>WSCStationsNT</locationSetId>-->
+		<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+		<locationSetId>$MODELNAME2$HydroStations</locationSetId>
+	</locationSet>	
+	<locationSet id="DischargeDisplayLocations$MODELNAME1$">
+		<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+	</locationSet>
+	<locationSet id="DischargeDisplayLocations$MODELNAME2$">
+		<locationSetId>$MODELNAME2$HydroStations</locationSetId>
+	</locationSet>
+	<!--Build additional LocationSets-->
+	<locationSet id="ECCCAllStations">
+		<locationSetId>ECCCPartnerStations</locationSetId>
+		<locationSetId>ECCCStations</locationSetId>
+	</locationSet>
+	<!--Comment-->
+	<locationSet id="ECCCStationsON">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Ontario"/>
+				<attributeTextEquals id="Region" equals="ON"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsQC">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Quebec"/>
+				<attributeTextEquals id="Region" equals="QC"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsNS">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Nova Scotia"/>
+				<attributeTextEquals id="Region" equals="NS"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsNB">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="New Brunswick"/>
+				<attributeTextEquals id="Region" equals="NB"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsMB">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Manitoba"/>
+				<attributeTextEquals id="Region" equals="MB"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsBC">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="British Columbia"/>
+				<attributeTextEquals id="Region" equals="BC"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsSK">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Saskatoon"/>
+				<attributeTextEquals id="Region" equals="SK"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsAB">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Alberta"/>
+				<attributeTextEquals id="Region" equals="AB"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsNL">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Newfoundland and Labrador"/>
+				<attributeTextEquals id="Region" equals="NL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsNT">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Northwest Territories"/>
+				<attributeTextEquals id="Region" equals="NT"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsYT">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Yukon"/>
+				<attributeTextEquals id="Region" equals="YT"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="ECCCStationsNU">
+		<locationSetId>ECCCAllStations</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextEquals id="Region" equals="Nunavut"/>
+				<attributeTextEquals id="Region" equals="NU"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+</locationSets>

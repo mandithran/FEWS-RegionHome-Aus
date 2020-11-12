@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<!-- Run Model Forecast -->
+	<properties>
+		<string key="FORECAST" value="GDPS"/>
+		<string key="STARTTIME" value="-1"/>
+		<string key="ENDTIME" value="7"/>
+		<string key="INPUTTIMESERIES" value="ImportGDPS"/>
+		<string key="PARAMETER1" value="TA.nwp"/>
+		<string key="PARAMETER2" value="PC.nwp"/>
+		<string key="OUTPUTTIMESERIES" value="$MODELNAME1$GDPSForecast"/>
+		<string key="PARAMETER4" value="QR.sim"/>
+		<string key="PARAMETER5" value="SWE.sim"/>
+		<string key="PARAMETER6" value="PC.sim"/>
+		<string key="PARAMETER7" value="TA.sim"/>
+		<string key="PARAMETER8" value="PET.sim"/>
+		<string key="LOCATION" value="$MODELNAME1$Grid"/>
+		<string key="TIMESTEP" value="$MODEL1_TIMESTEP$"/>
+		<string key="TYPE1" value="external forecasting"/>
+		<string key="TYPE2" value="simulated forecasting"/>
+		<string key="OUTPUTGRID" value="$MODELNAME1$Grid"/>
+		<string key="HISTORICMODULEINSTANCE" value="MergeHistoricGrids"/>
+		<string key="FORECASTMODULEINSTANCE" value="ImportGDPS"/>
+		<string key="ENSEMBLE" value="main"/>
+	</properties>
+	<!--Set Forecast Length-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>SetForecastLengthGDPS</moduleInstanceId>
+		<moduleConfigFileName>SetForecastLengthTemplate</moduleConfigFileName>
+	</activity>
+	<!-- Apply Modifiers to Gridded Input Data-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ModifyGDPS</moduleInstanceId>
+		<moduleConfigFileName>ModifyForecastGridsTemplate</moduleConfigFileName>
+	</activity>
+	<!-- Merge Historic and Forecast Data-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>MergeGDPS</moduleInstanceId>
+		<moduleConfigFileName>MergeForecastGridsDetTemplate</moduleConfigFileName>
+	</activity>
+	<!--Run model in for GDPS Forecast -->
+	<activity>
+		<properties>
+			<string key="MODELINPUTMODULEINSTANCE" value="MergeGDPS"/>
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME1$GDPSForecast</moduleInstanceId>
+		<moduleConfigFileName>$MODELNAME1$ForecastTemplate</moduleConfigFileName>
+	</activity>
+	<!-- Postprocess Model Results-->
+	<activity>
+		<properties>
+			<string key="TIMESERIESTYPE" value="simulated forecasting"/>
+			<string key="PARAMETER" value="QR.sim"/>
+			<string key="ENSEMBLE" value="main"/>
+			<string key="STATIONLOCATIONS" value="$MODELNAME2$HydroStations"/>
+			<string key="TIMESTEP" value="$MODEL1_TIMESTEP$"/>
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME1$GDPSForecast</moduleInstanceId>
+		<moduleConfigFileName>PostprocessModelOutputToStationTemplate</moduleConfigFileName>
+	</activity>
+</workflow>

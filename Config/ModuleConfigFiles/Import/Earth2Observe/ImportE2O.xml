@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<serverUrl>https://wci.earth2observe.eu/thredds/dodsC/ecmwf/met_forcing_v1/tair_daily.nc</serverUrl>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+			<idMapId>IdImportE2O</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<dataFeedId>E2O.Server.Temperature</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>TA.obs</parameterId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="$DAY_TIMESTEP$"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit parameterId="TA.obs" unit="K"/>
+	</import>
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<serverUrl>https://wci.earth2observe.eu/thredds/dodsC/deltares/PET/wrr2/0.25degree/penmanmonteith-agg.nc</serverUrl>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+			<idMapId>IdImportE2O</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<dataFeedId>E2O.Server.Evaporation</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PET.obs</parameterId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="$DAY_TIMESTEP$"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<serverUrl>https://wci.earth2observe.eu/thredds/dodsC/jrc/mswep-rainf-daily-agg.nc</serverUrl>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+			<idMapId>IdImportE2O</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<dataFeedId>E2O.Server.Rainfall</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<qualifierId>rainonly</qualifierId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="$DAY_TIMESTEP$"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit parameterId="PC.obs" unit="kg_m2s"/>
+	</import>
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<serverUrl>https://wci.earth2observe.eu/thredds/dodsC/jrc/mswep-snowf-daily-agg.nc</serverUrl>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true"/>
+			<idMapId>IdImportE2O</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<dataFeedId>E2O.Server.Snowfall</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportE2O</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.obs</parameterId>
+			<qualifierId>snowonly</qualifierId>
+			<locationId>E2O_25</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="$DAY_TIMESTEP$"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit parameterId="PC.obs" unit="kg_m2s"/>
+	</import>
+</timeSeriesImportRun>

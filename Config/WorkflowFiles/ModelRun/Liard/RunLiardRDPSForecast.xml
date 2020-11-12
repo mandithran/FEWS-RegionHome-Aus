@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<!-- Run Model Forecast -->
+	<properties>
+		<string key="FORECAST" value="RDPS"/>
+		<string key="STARTTIME" value="-1"/>
+		<string key="ENDTIME" value="7"/>
+		<string key="PARAMETER1" value="TA.nwp"/>
+		<string key="PARAMETER2" value="PC.nwp"/>
+		<string key="OUTPUTTIMESERIES" value="$MODELNAME1$RDPSForecast"/>
+		<string key="PARAMETER4" value="QR.sim"/>
+		<string key="TYPE1" value="external forecasting"/>
+		<string key="TYPE2" value="simulated forecasting"/>
+		<string key="FORECASTMODULEINSTANCE" value="ImportRDPS"/>
+		<string key="ENSEMBLE" value="main"/>
+	</properties>
+	
+<!--Set Forecast Length-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>SetForecastLengthRDPS</moduleInstanceId>
+		<moduleConfigFileName>SetForecastLengthTemplate</moduleConfigFileName>
+	</activity>
+<!--Run model in for RDPS Forecast --> 
+	<activity>
+	<properties>
+		<string key="INPUTMODULEINSTANCEMETEO" value="PreprocessRDPS"/>
+		<string key="MODULEDATASET" value="$MODELNAME2$Forecast"/>
+	</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME2$RDPSForecast</moduleInstanceId>
+		<moduleConfigFileName>$MODELNAME2$ForecastTemplate</moduleConfigFileName>
+	</activity>
+	<!-- Postprocess Model Results-->
+	<activity>
+	<properties>
+		<string key="TIMESERIESTYPE" value="simulated forecasting"/>
+		<string key="PARAMETER" value="QR.sim"/>
+		<string key="ENSEMBLE" value="main"/>
+		<string key="STATIONLOCATIONS" value="$MODELNAME2$HydroStations"/>
+		<string key="TIMESTEP" value="$MODEL2_TIMESTEP$"/>
+	</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME2$RDPSForecast</moduleInstanceId>
+		<moduleConfigFileName>PostprocessModelOutputToStationTemplate</moduleConfigFileName>
+	</activity>
+</workflow>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<transformationModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" version="1.0">
+	<!--This module merges the historic data with recent RDPS forecasts and RDPA precipitation to create Model Input Data-->
+	<!--Input-->
+	<variable>
+		<variableId>Historic_PC</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$HISTORICMODULEINSTANCE$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.nwp</parameterId>
+			<locationId>$OUTPUTGRID$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="$TIMESTEP$"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Historic_TA</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$HISTORICMODULEINSTANCE$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>TA.nwp</parameterId>
+			<locationId>$OUTPUTGRID$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="$TIMESTEP$"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<!--Forecast Timeseries-->
+	<variable>
+		<variableId>Forecast_PC</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$FORECASTMODULEINSTANCE$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.nwp</parameterId>
+			<locationId>$OUTPUTGRID$</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="$TIMESTEP$"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>$ENSEMBLE$</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Forecast_TA</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$FORECASTMODULEINSTANCE$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>TA.nwp</parameterId>
+			<locationId>$OUTPUTGRID$</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>$ENSEMBLE$</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<!--Timeseries for Model-->
+	<variable>
+		<variableId>Model_PC</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>PC.nwp</parameterId>
+			<locationId>$OUTPUTGRID$</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="$TIMESTEP$"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>$ENSEMBLE$</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Model_TA</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>TA.nwp</parameterId>
+			<locationId>$OUTPUTGRID$</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="$TIMESTEP$"/>
+			<relativeViewPeriod unit="day" start="$STARTTIME$" end="$ENDTIME$" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>$ENSEMBLE$</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<!--Transformations-->
+	<!-- PC Merge -->
+	<transformation id="merge_PC">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Forecast_PC</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Historic_PC</variableId>
+				</inputVariable>
+				<!-- Additional Gap Fill of Zero-->
+				<!--<fillGapConstant>0</fillGapConstant>-->
+				<outputVariable>
+					<variableId>Model_PC</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!--TA Merge -->
+	<transformation id="merge_TA">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Forecast_TA</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Historic_TA</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Model_TA</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

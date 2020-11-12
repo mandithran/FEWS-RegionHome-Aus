@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<!-- Run MESH Model Forecast -->
+	<properties>
+		<string key="FORECAST" value="REPS"/>
+		<string key="STARTTIME" value="-1"/>
+		<string key="ENDTIME" value="3"/>
+		<string key="INPUTTIMESERIES" value="ImportREPS"/>
+		<string key="PARAMETER1" value="TA.nwp"/>
+		<string key="PARAMETER2" value="PC.nwp"/>
+		<string key="OUTPUTTIMESERIES" value="$MODELNAME1$REPSForecast"/>
+		<string key="PARAMETER4" value="QR.sim"/>
+		<string key="PARAMETER5" value="SWE.sim"/>
+		<string key="PARAMETER6" value="PC.sim"/>
+		<string key="PARAMETER7" value="TA.sim"/>
+		<string key="PARAMETER8" value="PET.sim"/>
+		<string key="LOCATION" value="$MODELNAME1$Grid"/>
+		<string key="TIMESTEP" value="$MODEL1_TIMESTEP$"/>
+		<string key="TYPE1" value="external forecasting"/>
+		<string key="TYPE2" value="simulated forecasting"/>
+		<string key="OUTPUTGRID" value="$MODELNAME1$Grid"/>
+		<string key="HISTORICMODULEINSTANCE" value="MergeHistoricGrids"/>
+		<string key="FORECASTMODULEINSTANCE" value="ImportREPS"/>
+		<string key="ENSEMBLE" value="REPS"/>
+	</properties>
+	
+<!--Set Forecast Length-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>SetForecastLengthREPS</moduleInstanceId>
+		<moduleConfigFileName>SetForecastLengthTemplate</moduleConfigFileName>
+	</activity>
+	
+<!-- Apply Modifiers to Gridded Input Data-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ModifyREPS</moduleInstanceId>
+		<moduleConfigFileName>ModifyForecastGridsTemplate</moduleConfigFileName>
+		<ensemble>
+			<ensembleId>REPS</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
+	</activity>
+	
+<!-- Merge Historic and Forecast Data-->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>MergeREPS</moduleInstanceId>
+		<moduleConfigFileName>MergeForecastGridsEnsTemplate</moduleConfigFileName>
+	</activity>
+
+<!--Run model in for REPS Forecast --> 
+	<activity>
+	<properties>
+		<string key="MODELINPUTMODULEINSTANCE" value="MergeREPS"></string>
+	</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME1$REPSForecast</moduleInstanceId>
+		<moduleConfigFileName>$MODELNAME1$ForecastTemplate</moduleConfigFileName>
+		<ensemble>
+			<ensembleId>REPS</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
+	</activity>
+
+	<!-- Postprocess Model Results-->
+	<activity>
+	<properties>
+		<string key="TIMESERIESTYPE" value="simulated forecasting"/>
+		<string key="PARAMETER" value="QR.sim"/>
+		<string key="ENSEMBLE" value="main"/>
+		<string key="STATIONLOCATIONS" value="$MODELNAME2$HydroStations"/>
+		<string key="TIMESTEP" value="$MODEL1_TIMESTEP$"/>
+	</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>$MODELNAME1$REPSForecast</moduleInstanceId>
+		<moduleConfigFileName>PostprocessModelOutputToStationTemplate</moduleConfigFileName>
+	</activity>
+</workflow>
