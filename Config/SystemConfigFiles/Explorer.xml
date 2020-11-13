@@ -9,12 +9,18 @@
 	<map>
 		<geoDatum>WGS 1984</geoDatum>
 		<projection>mercator</projection>
-		<defaultExtent id="$REGION$">
+		<defaultExtent id="$REGION1$">
+			<left>150</left>
+			<right>153</right>
+			<top>-32</top>
+			<bottom>-35</bottom>
+		</defaultExtent>
+		<extraExtent id="$REGION$">
 			<left>-149</left>
 			<right>-82</right>
 			<top>71</top>
 			<bottom>57</bottom>
-		</defaultExtent>
+		</extraExtent>
 		<extraExtent id="$MODELNAME1$">
 			<left>-121</left>
 			<right>-105</right>
