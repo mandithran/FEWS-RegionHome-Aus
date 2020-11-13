@@ -1,8 +1,1 @@
-./temp/*
-./MapsCache/*
-./localDataStore/*
-./bin/*
-./ImportBackup/*
-./ImportFailed/*
-./localDataStore_07_07_2020/*
-./ExtraSoftware/*
+bin/
