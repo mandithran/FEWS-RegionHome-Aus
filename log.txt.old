@@ -1,13 +1,11 @@
-2020-11-13 11:23:50.101 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2020-11-13 11:23:50.546 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2020-11-13 11:23:51.678 INFO - main.ObjectArrayUtils.forEach - Patch loaded
-2020-11-13 11:23:54.943 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
-2020-11-13 11:23:54.994 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
-2020-11-13 11:23:55.055 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
-2020-11-13 11:23:55.221 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
-2020-11-13 11:23:55.282 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-2020-11-13 11:23:56.075 ERROR - Load Fews.ConfigFileCache.unmarshalFastInfosetStream - Config.Error: Unresolved property key(s) : REGION1
-	SystemConfigFiles/Explorer.xml
-2020-11-13 11:23:56.114 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
-2020-11-13 11:23:57.449 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (8.3s;Unmarshall region config 1s;cpu 35%)
-2020-11-13 11:42:15.179 INFO - AWT-EventQueue-0.FewsExplorerEnvironment.exit - FewsExplorer: exiting ... 
+2020-11-16 12:13:04.283 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-16 12:13:04.716 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-16 12:13:05.964 INFO - main.ObjectArrayUtils.forEach - Patch loaded
+2020-11-16 12:13:10.388 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
+2020-11-16 12:13:10.435 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
+2020-11-16 12:13:10.489 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
+2020-11-16 12:13:10.639 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
+2020-11-16 12:13:10.709 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+2020-11-16 12:13:11.404 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
+2020-11-16 12:13:12.705 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (9.3s;Unmarshall region config 1s;cpu 28%)
+2020-11-16 12:18:14.989 INFO - AWT-EventQueue-0.FewsExplorerEnvironment.exit - FewsExplorer: exiting ... 

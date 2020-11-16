@@ -1,2 +1,10 @@
-2020-11-13 11:42:21.846 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2020-11-13 11:42:22.265 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-16 12:18:37.001 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-16 12:18:37.480 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-16 12:18:38.709 INFO - main.ObjectArrayUtils.forEach - Patch loaded
+2020-11-16 12:18:41.842 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
+2020-11-16 12:18:41.894 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
+2020-11-16 12:18:41.951 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
+2020-11-16 12:18:42.098 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
+2020-11-16 12:18:42.156 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+2020-11-16 12:18:42.889 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
+2020-11-16 12:18:44.199 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (8.1s;Unmarshall region config 1s;cpu 33%)
