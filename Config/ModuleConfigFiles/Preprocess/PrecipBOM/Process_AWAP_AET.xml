@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<variable>
+		<variableId>AWAP_AET_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportAWAP_AET</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P.obs</parameterId>
+			<qualifierId>9am</qualifierId>
+			<qualifierId>AWAP</qualifierId>
+			<locationId>AWAP_AET</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWAP_day_subarea_polygon</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs</parameterId>
+			<qualifierId>9am</qualifierId>
+			<qualifierId>AWAP</qualifierId>
+			<locationSetId>AET_STATE_subareas_polygons</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<aggregationPeriod start="-1" end="0" unit="day"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWAP_day_subarea_polygon_AET</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs.proc</parameterId>
+			<qualifierId>AWAP</qualifierId>
+			<locationSetId>AET_STATE_subareas_polygons</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="9am_NSW"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gauges_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Rainfall</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs.proc</parameterId>
+			<qualifierId>1h</qualifierId>
+			<locationSetId>AET_Stations_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gauges_1h_subarea</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs.proc</parameterId>
+			<qualifierId>1h</qualifierId>
+			<locationSetId>AET_STATE_subareas_polygons</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWAP_1h_subarea_polygon_AET_pattern</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs.proc</parameterId>
+			<qualifierId>AWAP</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>AET_STATE_subareas_polygons</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWAP_1h_subarea_polygon_AET_constant</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs.proc</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>Accum</qualifierId>
+			<qualifierId>AWAP</qualifierId>
+			<locationSetId>AET_STATE_subareas_polygons</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWAP_1h_subarea_polygon_AET_merged</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P.obs.proc</parameterId>
+			<qualifierId>AWAP</qualifierId>
+			<locationSetId>AET_STATE_subareas_polygons</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--********************************************************-->
+	<!--************ Start of Transformations *************-->
+	<!--********************************************************-->
+	<!--**-->
+	<transformation id="Interpolate_AWAP_AET_to_subarea_polygon">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>AWAP_AET_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>AWAP_day_subarea_polygon</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Convert_subarea_24hr_to_AET">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>AWAP_day_subarea_polygon</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>previousTimeStep</interpolationType>
+				<searchPeriod unit="day" start="-5" end="0" startOverrulable="true"/>
+				<outputVariable>
+					<variableId>AWAP_day_subarea_polygon_AET</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Spatial_Interpolation_P1h_to_subarea">
+		<interpolationSpatial>
+			<inverseDistance>
+				<inputVariable>
+					<variableId>Gauges_1h</variableId>
+				</inputVariable>
+				<minimumValue>0</minimumValue>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM53S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>4</numberOfPoints>
+				<numberOfBackupPoints>30</numberOfBackupPoints>
+				<outputVariable>
+					<variableId>Gauges_1h_subarea</variableId>
+				</outputVariable>
+			</inverseDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="AWAP_day_to_1h_pattern">
+		<disaggregation>
+			<accumulativeReferencePattern>
+				<inputVariable>
+					<variableId>AWAP_day_subarea_polygon_AET</variableId>
+				</inputVariable>
+				<referencePatternVariable>
+					<variableId>Gauges_1h_subarea</variableId>
+				</referencePatternVariable>
+				<outputVariable>
+					<variableId>AWAP_1h_subarea_polygon_AET_pattern</variableId>
+				</outputVariable>
+			</accumulativeReferencePattern>
+		</disaggregation>
+	</transformation>
+	<transformation id="AWAP_day_to_1h_constant">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>AWAP_day_subarea_polygon_AET</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>AWAP_1h_subarea_polygon_AET_constant</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Merge_AWAP_1h_pattern_constant">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>AWAP_1h_subarea_polygon_AET_pattern</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>AWAP_1h_subarea_polygon_AET_constant</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>AWAP_1h_subarea_polygon_AET_merged</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>
