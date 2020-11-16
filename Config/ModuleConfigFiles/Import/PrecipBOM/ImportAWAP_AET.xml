@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<!--<serverUrl>http://opendap.bom.gov.au:8080/thredds/dodsC/agcd/precip/total/r005/01day/2019/precip_total_r005_20190118_20190118.nc</serverUrl>-->
+			<serverUrl>http://opendap.bom.gov.au:8080/thredds/catalog/agcd/precip/total/r005/01day/$AWAP_YEAR$/catalog.xml</serverUrl>
+			<relativeViewPeriod unit="day" start="-5" startOverrulable="true" end="0" endOverrulable="true"/>
+			<!--<startDateTime date="2019-01-10" time="09:00:00"/>
+			<endDateTime date="2019-01-21" time="09:00:00"/>-->
+			<idMapId>IdImportAWAP_AET</idMapId>
+			<missingValue>9.96921E36</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>AWAP</dataFeedId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportAWAP_AET</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P.obs</parameterId>
+			<qualifierId>9am</qualifierId>
+			<qualifierId>AWAP</qualifierId>
+			<locationId>AWAP_AET</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>
