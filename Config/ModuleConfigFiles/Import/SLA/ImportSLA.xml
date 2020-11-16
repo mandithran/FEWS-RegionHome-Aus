@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<folder>$IMPORT_FOLDER$/grids/sla</folder>
+			<backupFolder>$BACKUP_FOLDER$/grids/sla</backupFolder>
+			<idMapId>IdImportSLA</idMapId>
+			<missingValue>-9999.0</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<geoDatum>WGS 1984</geoDatum>
+			<dataFeedId>SLA</dataFeedId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportSLA</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>H.sla</parameterId>
+			<locationId>SLA_grid</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="surge_grid"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>6</synchLevel>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

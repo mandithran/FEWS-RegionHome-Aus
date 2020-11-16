@@ -8,3 +8,5 @@
 2020-11-16 12:24:35.660 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
 2020-11-16 12:24:36.365 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
 2020-11-16 12:24:37.737 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (8.0s;Unmarshall region config 1s;cpu 34%)
+2020-11-16 12:44:28.215 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/Import\WaterLevels/ImportExternal_Grids.xml
+2020-11-16 12:44:28.275 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\SLA/ImportSLA.xml
