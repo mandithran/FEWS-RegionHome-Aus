@@ -2,6 +2,9 @@
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
 <moduleInstanceDescriptors xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/moduleInstanceDescriptors.xsd" version="1.0">
 	<!--Import Scalar Data-->
+	<moduleInstanceDescriptor id="ImportAWAP_AET">
+		<description>Import BOM Precipitation from Opendap server</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportWSCHistoric">
 		<description>Import Station data from Local Directory</description>
 	</moduleInstanceDescriptor>
@@ -20,6 +23,9 @@
 	<!--Preprocess Scalar Data-->
 	<moduleInstanceDescriptor id="PreprocessECCCScalar">
 		<description>Preprocess Station data from dd.meteo.gc.ca server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Process_AWAP_AET_modified">
+		<description>Preprocess BOM precipitation data</description>
 	</moduleInstanceDescriptor>
 	<!--ModuleDataSets-->
 	<moduleInstanceDescriptor id="SnowDownload">

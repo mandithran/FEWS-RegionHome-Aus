@@ -1,11 +1,302 @@
-2020-11-16 12:18:37.001 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2020-11-16 12:18:37.480 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2020-11-16 12:18:38.709 INFO - main.ObjectArrayUtils.forEach - Patch loaded
-2020-11-16 12:18:41.842 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
-2020-11-16 12:18:41.894 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
-2020-11-16 12:18:41.951 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
-2020-11-16 12:18:42.098 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
-2020-11-16 12:18:42.156 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-2020-11-16 12:18:42.889 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
-2020-11-16 12:18:44.199 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (8.1s;Unmarshall region config 1s;cpu 33%)
-2020-11-16 12:24:22.390 INFO - AWT-EventQueue-0.FewsExplorerEnvironment.exit - FewsExplorer: exiting ... 
+2020-11-20 11:56:19.861 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-20 11:56:20.372 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2020-11-20 11:56:21.895 INFO - main.ObjectArrayUtils.forEach - Patch loaded
+2020-11-20 11:56:26.465 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
+2020-11-20 11:56:26.517 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
+2020-11-20 11:56:26.573 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
+2020-11-20 11:56:26.765 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
+2020-11-20 11:56:26.831 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+2020-11-20 11:56:28.199 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
+2020-11-20 11:56:29.469 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (10s;Unmarshall region config 1s;cpu 32%)
+2020-11-20 11:56:48.330 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 ImportGLOBSNOWGrids> has been sent to the task scheduler
+2020-11-20 11:56:48.374 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.ImportGLOBSNOWGrids:z3531278 - Added Scheduled Task with task id: 'SA19_00000000'
+2020-11-20 11:56:48.421 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task ImportGLOBSNOWGrids with ID SA19_0, T0 2020-04-01 22:00:00, default forecast length, available memory 876 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2020-11-20 11:56:48.422 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\Snow/ImportGLOBSNOWGrids.xml
+2020-11-20 11:56:48.424 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveGLOBSNOW
+2020-11-20 11:56:48.483 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - ImportGLOBSNOWGrids T0=Wed Apr 01 22:00:00 GMT 2020
+2020-11-20 11:56:48.601 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SnowDownload
+2020-11-20 11:56:48.606 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SnowDownload\DownloadGlobSnow.bat
+2020-11-20 11:56:55.474 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Running DownloadGlobSnow.bat
+2020-11-20 11:56:55.475 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading GlobSnow
+2020-11-20 11:56:55.475 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading from https://www.globsnow.info/swe/nrt
+2020-11-20 11:56:55.475 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading to C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/GlobSnow/
+2020-11-20 11:56:55.475 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 01
+2020-11-20 11:56:55.476 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - For meaning of exit codes, see https://www.gnu.org/software/wget/manual/html_node/Exit-Status.html
+2020-11-20 11:56:55.476 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading https://www.globsnow.info/swe/nrt/2020/data/GlobSnow_SWE_L3A_20200401_v.1.0.nc.gz; wget exit code: 0
+2020-11-20 11:56:55.476 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - 
+2020-11-20 11:56:55.477 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveGLOBSNOW' completed in 7s
+2020-11-20 11:56:55.477 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportGLOBSNOW
+2020-11-20 11:56:56.494 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportGLOBSNOW' completed in 1s
+2020-11-20 11:56:56.494 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\Snow/ImportGLOBSNOWGrids.xml completed in 8s
+2020-11-20 11:56:56.547 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  ImportGLOBSNOWGrids with ID SA19_0 completed in 8s Forecast: False Approved: False Start time: 2020-11-20 00:56:48 End time: 2020-11-20 00:56:56 User Id: Mandi Thran
+	TimeSeriesImport 1s 12%  GeneralAdapter (without executables) 0s 2%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SnowDownload\DownloadGlobSnow.bat 7s 84%  datastore 0s 2%  reading grid data 0s 0%  cache files 0 B   database 0s 0% (2 ms/query, 125 kB,  12 MB/s, 4 queries, 3 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 2 (modified=0, write period=0s, modified period=0s)  files 0s 4%  29 MB 89 MB/s logging 0s 1%  gc 0s 0%  cpu 98%  max mem. 151 MB  index mem. 7.3 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2020-11-20 11:56:56.547 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.ImportGLOBSNOWGrids: Task run SA19_0 (WorkflowId 'ImportGLOBSNOWGrids') completed
+2020-11-20 11:56:56.557 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow ImportGLOBSNOWGrids Completed   ******************
+2020-11-20 11:58:21.094 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 ImportGLOBSNOWGrids> has been sent to the task scheduler
+2020-11-20 11:58:21.103 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.ImportGLOBSNOWGrids:z3531278 - Added Scheduled Task with task id: 'SA19_00000001'
+2020-11-20 11:58:21.111 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task ImportGLOBSNOWGrids with ID SA19_1, T0 2020-04-01 22:00:00, default forecast length, available memory 885 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2020-11-20 11:58:21.111 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\Snow/ImportGLOBSNOWGrids.xml
+2020-11-20 11:58:21.112 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveGLOBSNOW
+2020-11-20 11:58:21.112 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - ImportGLOBSNOWGrids T0=Wed Apr 01 22:00:00 GMT 2020
+2020-11-20 11:58:21.185 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SnowDownload
+2020-11-20 11:58:21.189 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SnowDownload\DownloadGlobSnow.bat
+2020-11-20 11:58:26.765 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Running DownloadGlobSnow.bat
+2020-11-20 11:58:26.766 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading GlobSnow
+2020-11-20 11:58:26.767 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading from https://www.globsnow.info/swe/nrt
+2020-11-20 11:58:26.768 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading to C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/GlobSnow/
+2020-11-20 11:58:26.768 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 01
+2020-11-20 11:58:26.769 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - For meaning of exit codes, see https://www.gnu.org/software/wget/manual/html_node/Exit-Status.html
+2020-11-20 11:58:26.770 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading https://www.globsnow.info/swe/nrt/2020/data/GlobSnow_SWE_L3A_20200401_v.1.0.nc.gz; wget exit code: 0
+2020-11-20 11:58:26.770 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - 
+2020-11-20 11:58:26.772 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveGLOBSNOW' completed in 6s
+2020-11-20 11:58:26.774 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportGLOBSNOW
+2020-11-20 11:58:26.993 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportGLOBSNOW' completed in 0s
+2020-11-20 11:58:26.994 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\Snow/ImportGLOBSNOWGrids.xml completed in 6s
+2020-11-20 11:58:27.000 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  ImportGLOBSNOWGrids with ID SA19_1 completed in 6s Forecast: False Approved: False Start time: 2020-11-20 00:58:21 End time: 2020-11-20 00:58:27 User Id: Mandi Thran
+	TimeSeriesImport 0s 4%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SnowDownload\DownloadGlobSnow.bat 6s 94%  datastore 0s 0%  reading grid data 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 2 (modified=0, write period=0s, modified period=0s)  files 0s 5%  29 MB 104 MB/s logging 0s 0%  gc 0s 0%  cpu 23%  max mem. 139 MB  index mem. 7.3 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2020-11-20 11:58:27.001 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.ImportGLOBSNOWGrids: Task run SA19_1 (WorkflowId 'ImportGLOBSNOWGrids') completed
+2020-11-20 11:58:27.001 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow ImportGLOBSNOWGrids Completed   ******************
+2020-11-20 11:58:48.490 WARN - map tile download queue-2.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/12/1024/513 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.502 WARN - map tile download queue-3.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/11/512/256 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.504 WARN - map tile download queue-3.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/11/512/256 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.505 WARN - map tile download queue-2.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/12/1024/513 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.505 WARN - map tile download queue-3.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/11/512/256 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.505 WARN - map tile download queue-2.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/12/1024/513 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.736 WARN - map tile download queue-4.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/15/8195/4107 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.737 WARN - map tile download queue-4.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/15/8195/4107 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.737 WARN - map tile download queue-4.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/15/8195/4107 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.750 WARN - map tile download queue-5.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/14/4097/2054 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.750 WARN - map tile download queue-5.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/14/4097/2054 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.751 WARN - map tile download queue-5.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/14/4097/2054 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.764 WARN - map tile download queue-6.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/13/2048/1026 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.765 WARN - map tile download queue-2.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/13/2048/1027 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.765 WARN - map tile download queue-6.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/13/2048/1026 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.765 WARN - map tile download queue-2.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/13/2048/1027 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.765 WARN - map tile download queue-6.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/13/2048/1026 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.765 WARN - map tile download queue-2.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/13/2048/1027 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.793 WARN - map tile download queue-3.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/14/4097/2053 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.793 WARN - map tile download queue-3.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/14/4097/2053 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.793 WARN - map tile download queue-3.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/14/4097/2053 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.938 WARN - map tile download queue-4.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/15/8195/4108 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.938 WARN - map tile download queue-4.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/15/8195/4108 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.939 WARN - map tile download queue-4.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/15/8195/4108 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.952 WARN - map tile download queue-5.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/16/16390/8215 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.952 WARN - map tile download queue-5.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/16/16390/8215 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-20 11:58:48.952 WARN - map tile download queue-5.TileServerLayer.afterDownloadTile - Server error: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+	<html><head>
+	<title>404 Not Found</title>
+	</head><body>
+	<h1>Not Found</h1>
+	<p>The requested URL /mising/rest/services/World_Shaded_Relief/MapServer/tile/16/16390/8215 was not found on this server.</p>
+	<hr>
+	<address>Apache Server at server.arcgisonline.com Port 80</address>
+	</body></html>
+2020-11-23 17:47:03.699 INFO - Shutdown Hook.FewsExplorerEnvironment.shutdownListener - FewsExplorer: exiting ... 

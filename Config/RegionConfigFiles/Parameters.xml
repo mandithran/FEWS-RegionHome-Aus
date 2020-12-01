@@ -97,6 +97,15 @@ http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 		<parameterType>accumulative</parameterType>
 		<unit>mm</unit>
 		<valueResolution>0.0001</valueResolution>
+		<!-- Not sure if this is accumulative, not sure of units for BOM Opendap data-->
+		<parameter id="P.obs" name="P.obs">
+			<shortName>P.obs</shortName>
+			<description>Precipitation from BOM Opendap server</description>
+		</parameter>
+		<parameter id="P.obs.proc" name="P.obs.proc">
+			<shortName>P.obs.proc</shortName>
+			<description>Processed precipitation from BOM Opendap server</description>
+		</parameter>
 		<parameter id="PC.obs" name="PC.obs">
 			<shortName>PC.obs</shortName>
 			<description>Precipitation, accumulator - summation of precipitation collected beginning at a specified date</description>
