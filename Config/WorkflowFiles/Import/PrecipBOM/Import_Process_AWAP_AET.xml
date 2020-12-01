@@ -9,6 +9,6 @@
 	</activity>
 	<activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>Process_AWAP_AET</moduleInstanceId>
+		<moduleInstanceId>Process_AWAP_AET_modified</moduleInstanceId>
 	</activity>
 </workflow>

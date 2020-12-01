@@ -1,0 +1,47 @@
+LOCID,FULL_NAME,DESCRIPTION,LONG,LAT,Z,REGION,STATE
+Radar,Radar,Radar,32.14437,29.45468,0,AUS,
+NWP,NWP,NWP,32.14437,29.45468,0,AUS,
+SLA_grid,SLA grid,SLA grid,110.05,-5.05,0,AUS,
+SDI_grid,Soil Dryness Index,Soil Dryness Index,111.984665,-9.95,0,AUS,
+AWRA_SM,AWRA Soil Moisture,"AWRA Soil Moisture Percentage, Depth and deficit",112,-10,0,AUS,
+NextGenFWS_AUS,NexGenFWS Australia National grid,NexGenFWS (GFE) Australia National grid,111.985,-8.32,0,AUS,
+NextGenFWS_WA,NexGenFWS Western Australia grid,NexGenFWS (GFE) Western Australia grid,112.1039,-12.63,0,WA,
+NextGenFWS_VIC,NexGenFWS Victoria grid,NexGenFWS (GFE) Victoria grid,140.9029,-33.94,0,VIC,
+NextGenFWS_TAS,NexGenFWS Tasmania grid,NexGenFWS (GFE) Tasmania grid,142.7513,-39.12,0,TAS,
+NextGenFWS_SA,NexGenFWS Southern Australia grid,NexGenFWS (GFE) Southern Australia grid,128.8586,-25.88,0,SA,
+NextGenFWS_NSW,NexGenFWS New South Wales grid,NexGenFWS (GFE) New South Wales grid,140.9029,-28.01,0,NSW,
+ECMWF_grid,ECMWF grid,Ecmwf,110,0,0,AUS,
+ACCESS-C_AD,ACCESS-C Adelaide,ACCESS-C AD (Adelaide) NWP grid,131,-29.528,0,SA,
+ACCESS-C_BN,ACCESS-C Brisbane,ACCESS-C BN (Brisbane) NWP grid,148,-22.037001,0,QLD,
+ACCESS-C_PH,ACCESS-C Perth,ACCESS-C PH (Perth)NWP grid,112,-28.037001,0,WA,
+ACCESS-C_SY,ACCESS-C Sydney,ACCESS-C SY (Sydney) NWP grid,147,-29.973,0,NSW,
+ACCESS-C_VT,ACCESS-C Vic-Tas,ACCESS-C VT (Victoria-Tasmania) NWP grid,139,-33.005001,0,VIC,
+ACCESS-C_NT,ACCESS-C NT,ACCESS-C NT (Northern T) NWP grid,139,-33.005001,0,NT,
+ACCESS-G_grid,ACCESS-G grid,ACCESS-G 10 Days NWP grid,110,-5,0,AUS,
+ACCESS-G-short_grid,ACCESS-G short grid,ACCESS-G 3.5 Days NWP grid,110,-5,0,AUS,
+ACCESS-R_grid,ACCESS-R grid,ACCESS-R NWP grid,110,-5,0,AUS,
+ACCESS-TC_01,ACCESS-TC 01,ACCESS-TC Domain 1,110,-5,0,AUS,
+ACCESS-TC_02,ACCESS-TC 02,ACCESS-TC Domain 2,110,-5,0,AUS,
+ACCESS-TC_grid,ACCESS-TC gird,ACCESS-TC NWP grid (combined),110,-5,0,AUS,
+OCF_grid,OCF/PME grid,OCF grid (mean of Poor Men's Ensemble),110,-5,0,AUS,
+STEPS_Berrima,Darwin (Berrimah),STEPS Radar grid Berrimah (NT),153.24,-27.7178,0,NT,NT
+STEPS_BriM, Brisbane Mosaic,"STEPS Radar grid BriM (Brisbane, QLD)",153.24,-27.7178,0,QLD,QLD
+STEPS_BuckPk,Adelaide (Buckland Park),STEPS Radar grid Buckland Park (SA),153.24,-27.7178,0,SA,SA
+STEPS_Vic,East Victoria Mosaic,STEPS Radar grid E-Victoria,153.24,-27.7178,0,VIC,VIC
+STEPS_Serptin,Perth (Serpentine),STEPS Radar grid Serptin (WA),153.24,-27.7178,0,WA,WA
+STEPS_SydM,Sydney Mosaic,STEPS Radar grid Sydney (NSW),153.24,-27.7178,0,NSW,NSW
+Port_Kembla,Port Kembla,Port Kembla tide station,153.24,-27.7178,0,QLD,QLD
+STEPS_Koonya,Hobart (Mt Koonya),"STEPS Radar grid Koonya (Hobart, TAS)",147.806,-43.1122,0,TAS,TAS
+STEPS_noradar,No radar available,No radar available,0,0,0,AUS,
+QPE_Aus,QPE Australia Mosaic,QPE Radar Australia Mosaic,32.14437,29.45468,0,AUS,
+QPF_ENS_NSW,QPF Ensemble NSW mosaic,STEPS QPF Ensemble NSW mosaic 1h,153.24,-27.7178,0,NSW,NSW
+QPF_ENS_Sydney,QPF Ensemble Sydney mosaic,STEPS QPF Ensemble Sydeny mosaic 15min,153.24,-27.7178,0,NSW,NSW
+QPF_ENS_Grafton,QPF Ensemble Grafton,STEPS QPF Ensemble Grafton 15min,153.24,-27.7178,0,NSW,NSW
+QPF_ENS_Brisbane,QPF Ensemble Brisbane mosaic,STEPS QPF Ensemble Brisbane mosaic 15min,153.24,-27.7178,0,QLD,QLD
+QPF_ENS_Marburg,QPF Ensemble Marburg,STEPS QPF Ensemble Marburg 15min,153.24,-27.7178,0,QLD,QLD
+QPF_ENS_Stapylton,QPF Ensemble Stapylton,STEPS QPF Ensemble Stapylton 15min,153.24,-27.7178,0,QLD,QLD
+QPF_ENS_Melbourne,QPF Ensemble Melbourne mosaic,STEPS QPF Ensemble Melbourne mosaic 15min,153.24,-27.7178,0,VIC,VIC
+QPF_ENS_Captains,QPF Ensemble Captains,STEPS QPF Ensemble Captains 15min,153.24,-27.7178,0,NSW,NSW
+ACCESS-GE_grid,ACCESS-GE grid,ACCESS-G NWP grid,110,-5,0,AUS,
+ECMWF-EPS_grid,ECMWF-EPS grid,ECMWF-EPS NWP grid,110,-5,0,AUS,
+AWAP_AET,AWAP Rainfall,AWAP Rainfall,111.975,-44.525,0,AUS,
