@@ -45,6 +45,14 @@
 			</node>
 		</nodes>
 	</nodes>
+	<nodes id="ImportPrecipBOM" name="Import BOM Precipitation Data">
+		<node id="ImportPrecipBOM3Day" name="Import 3-Day BOM Precipitation">
+			<workflowId>Import_Process_AWAP_AET</workflowId>
+			<graceTime unit="hour" multiplier="24"/>
+			<localRun>true</localRun>
+			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+		</node>
+	</nodes>
 	<nodes id="ImportHistoricGrid" name="Import Historic Gridded Data (Pre-2015)">
 		<node id="ImportE2O" name="Import Earth2Observe (Server)">
 			<workflowId>ImportE2OGrids</workflowId>

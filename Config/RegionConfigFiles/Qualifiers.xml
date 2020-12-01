@@ -8,6 +8,12 @@
 	<qualifier id="25%" name="25%"/>
 	<qualifier id="75%" name="75%"/>
 	<!-- Additional Qualifiers-->
+	<!-- Qualifiers added for Bureau precipitation import-->
+	<qualifier id="9am" name="9am"/>
+	<qualifier id="AWAP" name="AWAP"/>
+	<qualifier id="1h" name="1h"/>
+	<qualifier id="24h" name="24h"/>
+	<qualifier id="Accum" name="Accum"/>
 	<qualifier id="Observed" name="Observed"/>
 	<qualifier id="GFS" name="GFS"/>
 	<qualifier id="E2O" name="E2O"/>

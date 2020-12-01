@@ -29,6 +29,7 @@
 		<cardinalTimeStep timeZone="GMT" unit="hour" multiplier="12"/>
 	</workflowDescriptor>
 	<!--Additional Gridded Data Imports -->
+	<workflowDescriptor id="Import_Process_AWAP_AET" name="Import BOM Precipitation data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
 	<workflowDescriptor id="ImportSNODASGrids" name="Import SNODAS" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
 	<workflowDescriptor id="ImportGLOBSNOWGrids" name="Import GlobSnow" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
 	<workflowDescriptor id="ImportEOGrids" name="Import Recent Satellite (GPM / GSMAP) Precipitation" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>

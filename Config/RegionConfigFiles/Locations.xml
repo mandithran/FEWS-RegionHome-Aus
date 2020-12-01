@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locations version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locations.xsd">
 	<geoDatum>WGS 1984</geoDatum>
+	<location id="NSW" name="New South Wales">
+		<shortName>NSW</shortName>
+		<x>111.975</x>
+		<y>-44.525</y>
+	</location>
+	<location id="QLD;NSW" name="New South Wales">
+		<shortName>QLD-NSW</shortName>
+		<x>111.975</x>
+		<y>-44.525</y>
+	</location>
 	<!--Grid definitions - Complete Grid -->
 	<location id="RDPS" name="Regional Deterministic Prediction System (10 km)">
 		<shortName>RDPS</shortName>
