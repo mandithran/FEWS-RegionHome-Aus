@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locations version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locations.xsd">
 	<geoDatum>WGS 1984</geoDatum>
+	<!-- Dummy location assigned for XBeach since locations and locations sets aren't being used for now.-->
+	<location id="Dummy" name="Dummy">
+        <x>-75.75</x>
+        <y>36.16</y>
+        <z>0</z>
+    </location>
 	<location id="NSW" name="New South Wales">
 		<shortName>NSW</shortName>
 		<x>111.975</x>
@@ -10,6 +16,11 @@
 		<shortName>QLD-NSW</shortName>
 		<x>111.975</x>
 		<y>-44.525</y>
+	</location>
+	<location id="delilahLoc" name="Delilah Test Case">
+		<shortName>delilahLoc</shortName>
+		<x>-75.75</x>
+		<y>36.16</y>
 	</location>
 	<!--Grid definitions - Complete Grid -->
 	<location id="RDPS" name="Regional Deterministic Prediction System (10 km)">
@@ -59,7 +70,6 @@
 		<x>0</x>
 		<y>0</y>
 	</location>
-
 	<location id="GSMAP_world" name="GSMAP Rainfall">
 		<x>0</x>
 		<y>0</y>
@@ -68,7 +78,6 @@
 		<x>0</x>
 		<y>0</y>
 	</location>
-
 	<location id="E2O_25" name="E2O_25 0.25 degree grid">
 		<x>0</x>
 		<y>0</y>
