@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by ICT (Stichting Deltares) -->
+<!-- Any parameter that is mapped to an external module using an xml file in IdMapFiles 
+has to be defined here. -->
 <parameterGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews
 http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 	<parameterGroup id="Height">
@@ -491,4 +493,43 @@ http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 			<shortName>dummy</shortName>
 		</parameter>
 	</parameterGroup>
+	<parameterGroup id="Frequency">
+    <parameterType>instantaneous</parameterType>
+    <unit>1/s</unit>
+    <parameter id="f">
+        <shortName>f</shortName>
+    </parameter>
+	</parameterGroup>
+	<parameterGroup id="Direction">
+		<parameterType>instantaneous</parameterType>
+		<unit>degrees</unit>
+		<parameter id="dir">
+			<shortName>dir</shortName>
+		</parameter>
+	</parameterGroup>
+	<parameterGroup id="XBeach">
+		<parameterType>instantaneous</parameterType>
+		<unit>m</unit>
+		<valueResolution>0.001</valueResolution>
+		<usesDatum>true</usesDatum>
+		<parameter id="EnDens" name="energy densities in J/m2/Hz/degr">
+			<shortName>EnDens</shortName>
+		</parameter>
+		<parameter id="H_mean" name="Mean Water Level">
+			<shortName>H_mean</shortName>
+		</parameter>
+		<parameter id="H_max" name="Max Water Level">
+			<shortName>H_max</shortName>
+		</parameter>
+		<parameter id="H_min" name="Min Water Level">
+			<shortName>H_min</shortName>
+		</parameter>
+		<parameter id="H.simulated" name="H Simulated">
+			<shortName>H.simulated</shortName>
+		</parameter>
+		<!-- TODO: Is this actually instantaneous? -->
+		<parameter id="H.mean.simulated" name="H Mean Simulated">
+			<shortName>H.mean.simulated</shortName>
+		</parameter>
+	</parameterGroup>  
 </parameterGroups>
