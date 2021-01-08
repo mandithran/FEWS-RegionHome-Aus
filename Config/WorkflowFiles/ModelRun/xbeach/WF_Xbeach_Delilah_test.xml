@@ -6,10 +6,13 @@ the workflow in WorkflowDescriptors.xml-->
 	<activity>
 		<properties>
 		<string key="MODEL" value="delilah"/>
+		<string key="SITE" value="Delilah"/>
+		<string key="DATADIR" value="DelilahData"/>
 		</properties>
 	<!-- Set this to "false" when you have pre-processing activites-->
 	<runIndependent>true</runIndependent>
-	<moduleInstanceId>DelilahData</moduleInstanceId>
-	<moduleConfigFileName>XBeachAdapterRun</moduleConfigFileName>
+	<!-- This name should match the ID given for the module run in ModuleInstanceDescriptors-->
+	<moduleInstanceId>XBeach_hc</moduleInstanceId>
+	<moduleConfigFileName>XBeachAdapter_hc</moduleConfigFileName>
 	</activity>
 </workflow>

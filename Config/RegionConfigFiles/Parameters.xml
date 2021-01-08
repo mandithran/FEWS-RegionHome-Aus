@@ -507,7 +507,7 @@ http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 			<shortName>dir</shortName>
 		</parameter>
 	</parameterGroup>
-	<parameterGroup id="XBeach">
+	<parameterGroup id="$MODELNAME3$">
 		<parameterType>instantaneous</parameterType>
 		<unit>m</unit>
 		<valueResolution>0.001</valueResolution>
