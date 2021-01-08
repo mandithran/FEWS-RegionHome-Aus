@@ -69,7 +69,9 @@ individual workflow, which is stored in WorkflowFiles.-->
 	<workflowDescriptor id="Run$MODELNAME2$REPSForecast" name="Run $MODELNAME2$ (REPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
 		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
 	</workflowDescriptor>
-	<workflowDescriptor id="WF_Xbeach_Delilah_test" name="Run XBeach Delilah Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	<workflowDescriptor id="WF_XBeach_Delilah_test" name="Run XBeach Delilah Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
+	<workflowDescriptor id="WF_XBeach_Narra_test" name="Run XBeach Narrabeen Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
 	<rootNode>
 		<node name="Import Historic Data">
@@ -108,8 +110,9 @@ individual workflow, which is stored in WorkflowFiles.-->
 			<workflowId>Run$MODELNAME2$GDPSForecast</workflowId>
 			<workflowId>Run$MODELNAME2$REPSForecast</workflowId>
 		</node>
-		<node name="Run Model - XBeach">
-			<workflowId>WF_Xbeach_Delilah_test</workflowId>
+		<node name="Run Model - $MODELNAME3$">
+			<workflowId>WF_XBeach_Delilah_test</workflowId>
+			<workflowId>WF_XBeach_Narra_test</workflowId>
 		</node>
 	</rootNode>
 </workflowDescriptors>
