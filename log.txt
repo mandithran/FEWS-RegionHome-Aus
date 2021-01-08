@@ -870,3 +870,227 @@
 2021-01-06 13:07:59.782 WARN - LocalTaskDispatcher.CanadaWaterMlServerParser.parse - Error importing timeseries from CanadaWaterMl :https://dd.meteo.gc.ca/observations/xml/NT/yesterday/yesterday_nt_20200327_e.xml: https://dd.meteo.gc.ca/observations/xml/NT/yesterday/yesterday_nt_20200327_e.xml
 2021-01-06 13:08:00.651 WARN - LocalTaskDispatcher.CanadaWaterMlServerParser.parse - Error importing timeseries from CanadaWaterMl :https://dd.meteo.gc.ca/observations/xml/NT/yesterday/yesterday_nt_20200309_e.xml: https://dd.meteo.gc.ca/observations/xml/NT/yesterday/yesterday_nt_20200309_e.xml
 2021-01-06 13:08:00.653 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow ImportECCCScalar TERMINATED    ******************
+2021-01-08 10:54:46.249 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 10:54:46.267 ERROR - AWT-EventQueue-0.ConfigFiles.refreshDefaults - DataStore.Error: java.lang.Exception: Xml file WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml is not valid
+	Saxparse Element type "string" must be followed by either attribute specifications, ">" or "/>".
+	line number = 10
+	column number = 3 Exception Xml file WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml is not valid
+	Saxparse Element type "string" must be followed by either attribute specifications, ">" or "/>".
+	line number = 10
+	column number = 3
+2021-01-08 10:54:46.269 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/ModelRun\xbeach/XBeachAdapterRun-NarraTest.xml
+2021-01-08 10:55:34.710 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 10:55:34.721 ERROR - AWT-EventQueue-0.ConfigFiles.refreshDefaults - DataStore.Error: java.lang.Exception: Xml file WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml is not valid
+	Saxparse cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://www.wldelft.nl/fews":string}'. One of '{"http://www.wldelft.nl/fews":description}' is expected.
+	line number = 9
+	column number = 52 Exception Xml file WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml is not valid
+	Saxparse cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://www.wldelft.nl/fews":string}'. One of '{"http://www.wldelft.nl/fews":description}' is expected.
+	line number = 9
+	column number = 52
+2021-01-08 10:56:38.979 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 10:56:52.118 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 00:00:00 WF_XBeach_Narra_test> has been sent to the task scheduler
+2021-01-08 10:56:52.131 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Narra_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000002'
+2021-01-08 10:56:52.156 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Narra_test with ID SA222_2, T0 2020-04-01 00:00:00, default forecast length, available memory 708 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 10:56:52.156 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 10:56:52.157 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_narra_hc XBeachAdapterRun-NarraTest
+2021-01-08 10:56:52.161 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Narra_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
+	RegionConfigFiles/WorkflowDescriptors.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapterRun-NarraTest.xml
+2021-01-08 10:56:52.162 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_XBeach_Narra_test T0=Wed Apr 01 00:00:00 GMT 2020
+2021-01-08 10:57:23.741 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet Narrabeen_testData
+2021-01-08 10:57:23.751 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\narrabeen\Narrabeen_testData\workDir\xbeach.exe
+2021-01-08 10:57:37.472 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 24752=conhost.exe
+2021-01-08 10:57:37.473 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Narra_test TERMINATED    ******************
+2021-01-08 11:10:05.822 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: RegionConfigFiles/Locations.xml
+2021-01-08 11:10:05.875 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml
+2021-01-08 11:10:05.878 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 11:10:05.886 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+2021-01-08 11:10:05.899 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleDataSetFiles/DelilahData.zip
+2021-01-08 11:10:06.077 ERROR - AWT-EventQueue-0.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
+	RegionConfigFiles/Grids.xml
+	MapLayerFiles/xbeach_test/xy.csv version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.validateCoordinate(GridGeometryParser.java:332)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readRow(GridGeometryParser.java:316)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readDBaseRows(GridGeometryParser.java:279)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parseFromDBaseFile(GridGeometryParser.java:240)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parse(GridGeometryParser.java:190)
+	at nl.wldelft.fews.system.data.config.region.Grids.createFromCaster(Grids.java:550)
+	at nl.wldelft.fews.system.data.config.region.Grids.loadGridGeometry(Grids.java:216)
+	at nl.wldelft.fews.system.data.config.region.Grids.lambda$load$0(Grids.java:198)
+	at nl.wldelft.util.CloseableCompletionService.lambda$submit$0(CloseableCompletionService.java:78)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-01-08 11:11:17.902 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: RegionConfigFiles/ModuleInstanceDescriptors.xml
+2021-01-08 11:11:17.908 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml
+2021-01-08 11:11:17.911 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 11:11:18.065 ERROR - AWT-EventQueue-0.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
+	RegionConfigFiles/Grids.xml
+	MapLayerFiles/xbeach_test/xy.csv version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.validateCoordinate(GridGeometryParser.java:332)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readRow(GridGeometryParser.java:316)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readDBaseRows(GridGeometryParser.java:279)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parseFromDBaseFile(GridGeometryParser.java:240)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parse(GridGeometryParser.java:190)
+	at nl.wldelft.fews.system.data.config.region.Grids.createFromCaster(Grids.java:550)
+	at nl.wldelft.fews.system.data.config.region.Grids.loadGridGeometry(Grids.java:216)
+	at nl.wldelft.fews.system.data.config.region.Grids.lambda$load$0(Grids.java:198)
+	at nl.wldelft.util.CloseableCompletionService.lambda$submit$0(CloseableCompletionService.java:78)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-01-08 11:11:28.115 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Delilah_test> has been sent to the task scheduler
+2021-01-08 11:11:28.124 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Delilah_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000003'
+2021-01-08 11:11:28.134 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Delilah_test with ID SA222_3, T0 2020-04-01 22:00:00, default forecast length, available memory 707 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:11:28.135 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml
+2021-01-08 11:11:28.135 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:11:28.150 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml with task run id SA222_3 partly failed because activity XBeach_hc XBeachAdapter_hc failed, Plugin 'XBeach_hc XBeachAdapter_hc' failed, message was: 'Validation None existing internal location id delilahLoc specified in IdMapFiles/Model/IdExportxbeach.xml
+	IdMapFiles/Model/IdExportxbeach.xml
+	IdMapFiles/Model/IdExportxbeach.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+	WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.config.idmap.CompactIdMap.createFromCastor(CompactIdMap.java:177)
+	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:78)
+	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:64)
+	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:55)
+	at nl.wldelft.fews.system.data.runs.TaskRunTime.getIdMap(TaskRunTime.java:406)
+	at nl.wldelft.fews.system.data.runs.TaskRunTime.getIdMap(TaskRunTime.java:391)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.readGeneralSettings(GeneralAdapter.java:406)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.init(GeneralAdapter.java:356)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:286)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-01-08 11:11:28.151 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml completed in 0s
+2021-01-08 11:11:28.198 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_Xbeach_Delilah_test with ID SA222_3 completed in 0s Forecast: False Approved: False Start time: 2021-01-08 00:11:28 End time: 2021-01-08 00:11:28 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 13%  datastore 0s 4%  cache files 0 B   database 0s 1% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 0%  0 B 0 B/s logging 0s 6%  gc 0s 0%  cpu 480%  max mem. 322 MB  index mem. 7.8 kB  db con. acquire time 0s 2%  lock. acquire time 0s 0%  
+2021-01-08 11:11:28.199 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_Xbeach_Delilah_test: Task run SA222_3 (WorkflowId 'WF_Xbeach_Delilah_test') completed
+2021-01-08 11:11:28.201 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_Xbeach_Delilah_test Completed with ERRORS   ******************
+2021-01-08 11:11:35.382 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Narra_test> has been sent to the task scheduler
+2021-01-08 11:11:35.390 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Narra_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000004'
+2021-01-08 11:11:35.398 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Narra_test with ID SA222_4, T0 2020-04-01 22:00:00, default forecast length, available memory 702 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:11:35.398 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 11:11:35.398 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:11:35.400 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml with task run id SA222_4 partly failed because activity XBeach_hc XBeachAdapter_hc failed, Plugin 'XBeach_hc XBeachAdapter_hc' failed, message was: 'Validation None existing internal location id delilahLoc specified in IdMapFiles/Model/IdExportxbeach.xml
+	IdMapFiles/Model/IdExportxbeach.xml
+	IdMapFiles/Model/IdExportxbeach.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+	WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.config.idmap.CompactIdMap.createFromCastor(CompactIdMap.java:177)
+	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:78)
+	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:64)
+	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:55)
+	at nl.wldelft.fews.system.data.runs.TaskRunTime.getIdMap(TaskRunTime.java:406)
+	at nl.wldelft.fews.system.data.runs.TaskRunTime.getIdMap(TaskRunTime.java:391)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.readGeneralSettings(GeneralAdapter.java:406)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.init(GeneralAdapter.java:356)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:286)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-01-08 11:11:35.401 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml completed in 0s
+2021-01-08 11:11:35.409 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_XBeach_Narra_test with ID SA222_4 completed in 0s Forecast: False Approved: False Start time: 2021-01-08 00:11:35 End time: 2021-01-08 00:11:35 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 11%  datastore 0s 10%  cache files 0 B   database 0s 2% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 0%  0 B 0 B/s logging 0s 7%  gc 0s 0%  cpu 268%  max mem. 322 MB  index mem. 7.8 kB  db con. acquire time 0s 3%  lock. acquire time 0s 0%  
+2021-01-08 11:11:35.410 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_XBeach_Narra_test: Task run SA222_4 (WorkflowId 'WF_XBeach_Narra_test') completed
+2021-01-08 11:11:35.410 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Narra_test Completed with ERRORS   ******************
+2021-01-08 11:13:36.765 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: IdMapFiles/Model/IdExportxbeach.xml
+2021-01-08 11:13:40.340 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Narra_test> has been sent to the task scheduler
+2021-01-08 11:13:40.348 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Narra_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000005'
+2021-01-08 11:13:40.356 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Narra_test with ID SA222_5, T0 2020-04-01 22:00:00, default forecast length, available memory 702 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:13:40.356 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 11:13:40.356 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:13:40.358 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Narra_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
+	RegionConfigFiles/WorkflowDescriptors.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+2021-01-08 11:13:40.360 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_XBeach_Narra_test T0=Wed Apr 01 22:00:00 GMT 2020
+2021-01-08 11:14:06.094 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet Narrabeen_testData
+2021-01-08 11:14:06.102 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Narrabeen\Narrabeen_testData\workDir\xbeach.exe
+2021-01-08 11:14:44.869 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 30052=conhost.exe
+2021-01-08 11:14:44.870 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Narra_test TERMINATED    ******************
+2021-01-08 11:14:53.203 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Delilah_test> has been sent to the task scheduler
+2021-01-08 11:14:53.214 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Delilah_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000006'
+2021-01-08 11:14:53.224 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Delilah_test with ID SA222_6, T0 2020-04-01 22:00:00, default forecast length, available memory 702 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:14:53.225 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml
+2021-01-08 11:14:53.225 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:14:53.226 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Delilah_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
+	RegionConfigFiles/WorkflowDescriptors.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+2021-01-08 11:14:53.226 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_XBeach_Delilah_test T0=Wed Apr 01 22:00:00 GMT 2020
+2021-01-08 11:14:53.763 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet DelilahData
+2021-01-08 11:14:53.771 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Delilah\DelilahData\workDir\xbeach.exe
+2021-01-08 11:14:53.782 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml with task run id SA222_6 partly failed because activity XBeach_hc XBeachAdapter_hc failed, Plugin 'XBeach_hc XBeachAdapter_hc' failed, message was: 'File not found C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Delilah\DelilahData\workDir\xbeach.exe does not exist while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Delilah\DelilahData\workDir\xbeach.exe 
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+	WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:68)
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:35)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:516)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:511)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.createProcess(ExecuteExecutableActivity.java:249)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.execAndWait(ExecuteExecutableActivity.java:218)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:141)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-01-08 11:14:53.783 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml completed in 1s
+2021-01-08 11:14:53.789 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_Xbeach_Delilah_test with ID SA222_6 completed in 1s Forecast: False Approved: False Start time: 2021-01-08 00:14:53 End time: 2021-01-08 00:14:53 User Id: Mandi Thran
+	GeneralAdapter (without executables) 1s 97%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 73%  46 MB 110 MB/s logging 0s 0%  gc 0s 0%  cpu 115%  max mem. 322 MB  index mem. 7.8 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-01-08 11:14:53.789 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_Xbeach_Delilah_test: Task run SA222_6 (WorkflowId 'WF_Xbeach_Delilah_test') completed
+2021-01-08 11:14:53.789 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_Xbeach_Delilah_test Completed with ERRORS   ******************
+2021-01-08 11:17:13.981 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Delilah_test> has been sent to the task scheduler
+2021-01-08 11:17:13.991 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Delilah_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000007'
+2021-01-08 11:17:13.999 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Delilah_test with ID SA222_7, T0 2020-04-01 22:00:00, default forecast length, available memory 702 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:17:13.999 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml
+2021-01-08 11:17:13.999 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:17:14.000 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Delilah_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
+	RegionConfigFiles/WorkflowDescriptors.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+2021-01-08 11:17:14.000 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_XBeach_Delilah_test T0=Wed Apr 01 22:00:00 GMT 2020
+2021-01-08 11:17:14.526 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet DelilahData
+2021-01-08 11:17:14.532 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Delilah\DelilahData\workDir\xbeach.exe
+2021-01-08 11:17:37.144 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 30704=conhost.exe
+2021-01-08 11:17:37.145 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Delilah_test TERMINATED    ******************
+2021-01-08 11:19:03.201 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleDataSetFiles/DelilahData.zip
+2021-01-08 11:19:03.204 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: IdMapFiles/Model/IdExportxbeach.xml
+2021-01-08 11:19:06.574 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Delilah_test> has been sent to the task scheduler
+2021-01-08 11:19:06.582 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Delilah_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000008'
+2021-01-08 11:19:06.591 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Delilah_test with ID SA222_8, T0 2020-04-01 22:00:00, default forecast length, available memory 702 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:19:06.591 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_Xbeach_Delilah_test.xml
+2021-01-08 11:19:06.592 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:19:06.594 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Delilah_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
+	RegionConfigFiles/WorkflowDescriptors.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+2021-01-08 11:19:06.595 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_XBeach_Delilah_test T0=Wed Apr 01 22:00:00 GMT 2020
+2021-01-08 11:19:07.120 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet DelilahData
+2021-01-08 11:19:07.126 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Delilah\DelilahData\workDir\xbeach.exe
+2021-01-08 11:19:11.059 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 23356=conhost.exe
+2021-01-08 11:19:11.060 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Delilah_test TERMINATED    ******************
+2021-01-08 11:19:14.538 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Narra_test> has been sent to the task scheduler
+2021-01-08 11:19:14.550 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Narra_test:z3531278 - Added Scheduled Task with task id: 'SA222_00000009'
+2021-01-08 11:19:14.557 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Narra_test with ID SA222_9, T0 2020-04-01 22:00:00, default forecast length, available memory 702 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-08 11:19:14.557 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
+2021-01-08 11:19:14.557 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
+2021-01-08 11:19:14.558 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Narra_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
+	RegionConfigFiles/WorkflowDescriptors.xml
+	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
+2021-01-08 11:19:14.558 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_XBeach_Narra_test T0=Wed Apr 01 22:00:00 GMT 2020
+2021-01-08 11:19:39.192 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet Narrabeen_testData
+2021-01-08 11:19:39.200 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Narrabeen\Narrabeen_testData\workDir\xbeach.exe
+2021-01-08 11:19:47.487 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 29844=conhost.exe
+2021-01-08 11:19:47.488 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Narra_test TERMINATED    ******************
