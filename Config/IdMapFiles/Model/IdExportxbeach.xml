@@ -11,5 +11,5 @@ called in module config files -->
     <parameter internal="H.simulated" external="zs0"/>
     <parameter internal="H.mean.simulated" external="zs0"/>
     <!--For now, we are not using location definitions in XBeach, so assigned "Dummy"-->
-    <location internal="delilahLoc" external="Dummy"/>
+    <location internal="Dummy" external="Dummy"/>
 </idMap>
