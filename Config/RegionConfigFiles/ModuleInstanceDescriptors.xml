@@ -2,6 +2,9 @@
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
 <moduleInstanceDescriptors xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/moduleInstanceDescriptors.xsd" version="1.0">
 	<!--Import Scalar Data-->
+	<moduleInstanceDescriptor id="ImportAWAP_AET">
+		<description>Import BOM Precipitation from Opendap server</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportWSCHistoric">
 		<description>Import Station data from Local Directory</description>
 	</moduleInstanceDescriptor>
@@ -20,6 +23,9 @@
 	<!--Preprocess Scalar Data-->
 	<moduleInstanceDescriptor id="PreprocessECCCScalar">
 		<description>Preprocess Station data from dd.meteo.gc.ca server</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Process_AWAP_AET_modified">
+		<description>Preprocess BOM precipitation data</description>
 	</moduleInstanceDescriptor>
 	<!--ModuleDataSets-->
 	<moduleInstanceDescriptor id="SnowDownload">
@@ -184,7 +190,7 @@
 	<moduleInstanceDescriptor id="$MODELNAME2$">
 		<description>ModuleDataSet for $MODELNAME2$</description>
 	</moduleInstanceDescriptor>
-		<moduleInstanceDescriptor id="$MODELNAME2$Historic">
+	<moduleInstanceDescriptor id="$MODELNAME2$Historic">
 		<description>Run the $MODELNAME2$ model with Historic Data</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="$MODELNAME2$Forecast">
@@ -202,4 +208,18 @@
 	<moduleInstanceDescriptor id="$MODELNAME2$REPSForecast">
 		<description>Run the $MODELNAME2$ model with REPS Forecast Data</description>
 	</moduleInstanceDescriptor>
+	<!-- XBeach -->
+	<!-- Dataset. Name of this descriptor must match .zip file name stored in
+	the directory ModuleDataSetFiles -->
+	<moduleInstanceDescriptor id="DelilahData">
+		<description>Module Dataset for Delilah example</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Narrabeen_testData">
+		<description>Module dataset for the Narrabeen 2DH test case</description>
+	</moduleInstanceDescriptor>
+	<!-- XBeach Model Run -->
+	<moduleInstanceDescriptor id="$MODELNAME3$_hc">
+		<description>XBeach General Adapter</description>
+	</moduleInstanceDescriptor>
+	<!-- TODO: Replace instances of "XBEACH" with Variable-->
 </moduleInstanceDescriptors>

@@ -3,6 +3,130 @@
 <locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
 	<!-- All Location Sets Built from csv and shp files. See MapLayerFiles for source-->
 	<!--- Water Survey of Canada Hydrometric Stations - Available at https://dd.weather.gc.ca/hydrometric/doc/ -->
+	<!--Gridded products and Australia CSV file for tidal locationsets-->
+	<locationSet id="Gridded_Products">
+		<csvFile>
+			<file>Gridded_Products</file>
+			<geoDatum>WGS 1984</geoDatum>
+			<id>%LOCID%</id>
+			<name>%FULL_NAME%</name>
+			<description>%DESCRIPTION%</description>
+			<shortName>%LOCID%</shortName>
+			<x>%LONG%</x>
+			<y>%LAT%</y>
+			<z>%Z%</z>
+			<attribute id="STATE">
+				<text>%STATE%</text>
+			</attribute>
+			<attribute id="REGION">
+				<text>%REGION%</text>
+			</attribute>
+			<attribute id="Model">
+				<text>%FULL_NAME%</text>
+			</attribute>
+			<attribute id="Radar">
+				<text>%FULL_NAME%</text>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	       <locationSet id="AET_STATE_subareas_polygons">
+              <locationSetId>NSW_URBS_subareas_polygons</locationSetId>
+              <!--locationSetId>VIC_URBS_subareas_polygons</locationSetId-->
+    </locationSet>
+	<locationSet id="NSW_URBS_subareas_polygons">
+        <esriShapeFile>
+            <file>NSW_URBS_Subarea</file>
+            <geoDatum>GDA94</geoDatum>
+            <id>%SUBCATCHID%_%SUBAREAID%</id>
+            <name>%SUBCATCHID%_%SUBAREAID%</name>
+            <description>%SUBCATCHM% (%CATCHMENT%, %REGION%)</description>
+            <x>%X_CENTROID%</x>
+            <y>%Y_CENTROID%</y>
+            <!--relation id="subcatchment">
+                  <relatedLocationId>%SUBCATCHID%</relatedLocationId>
+            </relation>
+            <relation id="catchment">
+                  <relatedLocationId>%CATCHMENT%</relatedLocationId>
+            </relation-->
+            <relation id="region">
+                  <relatedLocationId>%REGION%</relatedLocationId>
+            </relation>
+            <!--relation id="scen">
+                  <relatedLocationId>%REGION%</relatedLocationId>
+            </relation>
+            <attribute id="URBS_SUBAREAID" name="SUBAREAID">
+                  <description>Numeric identifier of sub area within sub catchment</description>
+                  <text>%SUBAREAID%</text>
+            </attribute>
+            <attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+                  <description>URBS catchment id</description>
+                  <text>%SUBCATCHID%</text>
+            </attribute>
+            <attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+                  <description>URBS catchment</description>
+                  <text>%SUBCATCHM%</text>
+            </attribute>
+            <attribute id="URBS_CATCHMENT" name="URBS catchment">
+                  <description>URBS catchment</description>
+                  <text>%CATCHMENT%</text>
+            </attribute>
+            <attribute id="REGION" name="Region">
+                  <description>Associated region</description>
+                  <text>%REGION%</text>
+            </attribute>
+            <attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+                  <description>Fixed urbs parameter name</description>
+                  <text>P.obs</text>
+            </attribute-->
+        </esriShapeFile>
+    </locationSet>
+	<!--locationSet id="VIC_URBS_subareas_polygons">
+        <esriShapeFile>
+            <file>VIC_URBS_Subarea</file>
+            <geoDatum>GDA94</geoDatum>
+            <id>%SUBCATCHID%_%SUBAREAID%</id>
+            <name>%SUBCATCHID%_%SUBAREAID%</name>
+            <description>%SUBCATCHM% (%CATCHMENT%, %REGION%)</description>
+            <x>%X_CENTROID%</x>
+            <y>%Y_CENTROID%</y>
+            <relation id="subcatchment">
+                  <relatedLocationId>%SUBCATCHID%</relatedLocationId>
+            </relation>
+            <relation id="catchment">
+                  <relatedLocationId>%CATCHMENT%</relatedLocationId>
+            </relation>
+            <relation id="region">
+                  <relatedLocationId>%REGION%</relatedLocationId>
+            </relation>
+            <relation id="scen">
+                  <relatedLocationId>%REGION%</relatedLocationId>
+            </relation>
+            <attribute id="URBS_SUBAREAID" name="SUBAREAID">
+                  <description>Numeric identifier of sub area within sub catchment</description>
+                  <text>%SUBAREAID%</text>
+            </attribute>
+            <attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+                  <description>URBS catchment id</description>
+                  <text>%SUBCATCHID%</text>
+            </attribute>
+            <attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+                  <description>URBS catchment</description>
+                  <text>%SUBCATCHM%</text>
+            </attribute>
+            <attribute id="URBS_CATCHMENT" name="URBS catchment">
+                  <description>URBS catchment</description>
+                  <text>%CATCHMENT%</text>
+            </attribute>
+            <attribute id="REGION" name="Region">
+                  <description>Associated region</description>
+                  <text>%REGION%</text>
+            </attribute>
+            <attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+                  <description>Fixed urbs parameter name</description>
+                  <text>P.obs</text>
+            </attribute>
+        </esriShapeFile>
+    </locationSet-->
 	<locationSet id="WSCStations">
 		<sortingLocationAttributeId>ID</sortingLocationAttributeId>
 		<csvFile>
