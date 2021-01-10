@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<!-- All workflows have to be registered here. id has to match the xml file name that configures the
+individual workflow, which is stored in WorkflowFiles.-->
 <workflowDescriptors xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflowDescriptors.xsd" version="1.0">
 	<!--Import Scalar Data Workflows-->
 	<workflowDescriptor id="ImportWSCHistoric" name="Import WSC Historic Data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
@@ -29,6 +31,7 @@
 		<cardinalTimeStep timeZone="GMT" unit="hour" multiplier="12"/>
 	</workflowDescriptor>
 	<!--Additional Gridded Data Imports -->
+	<workflowDescriptor id="Import_Process_AWAP_AET" name="Import BOM Precipitation data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
 	<workflowDescriptor id="ImportSNODASGrids" name="Import SNODAS" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
 	<workflowDescriptor id="ImportGLOBSNOWGrids" name="Import GlobSnow" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
 	<workflowDescriptor id="ImportEOGrids" name="Import Recent Satellite (GPM / GSMAP) Precipitation" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
@@ -66,6 +69,10 @@
 	<workflowDescriptor id="Run$MODELNAME2$REPSForecast" name="Run $MODELNAME2$ (REPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
 		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
 	</workflowDescriptor>
+	<workflowDescriptor id="WF_XBeach_Delilah_test" name="Run XBeach Delilah Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
+	<workflowDescriptor id="WF_XBeach_Narra_test" name="Run XBeach Narrabeen Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
 	<rootNode>
 		<node name="Import Historic Data">
 			<workflowId>ImportWSCHistoric</workflowId>
@@ -102,6 +109,10 @@
 			<workflowId>Run$MODELNAME2$RDPSForecast</workflowId>
 			<workflowId>Run$MODELNAME2$GDPSForecast</workflowId>
 			<workflowId>Run$MODELNAME2$REPSForecast</workflowId>
+		</node>
+		<node name="Run Model - $MODELNAME3$">
+			<workflowId>WF_XBeach_Delilah_test</workflowId>
+			<workflowId>WF_XBeach_Narra_test</workflowId>
 		</node>
 	</rootNode>
 </workflowDescriptors>
