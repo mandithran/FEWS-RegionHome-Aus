@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Outlines the workflow for running XBeach in hindcast. 
+The name of this workflow has to exactly match the id specified for
+the workflow in WorkflowDescriptors.xml-->
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<activity>
+		<properties>
+		<string key="MODEL" value="delilah"/>
+		<string key="SITE" value="Delilah"/>
+		<string key="DATADIR" value="DelilahData"/>
+		</properties>
+	<!-- Set this to "false" when you have pre-processing activites-->
+	<runIndependent>true</runIndependent>
+	<!-- This name should match the ID given for the module run in ModuleInstanceDescriptors-->
+	<moduleInstanceId>XBeach_hc</moduleInstanceId>
+	<moduleConfigFileName>XBeachAdapter_hc</moduleConfigFileName>
+	</activity>
+</workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This xml file specifies the parameters to be imported 
+from XBeach to FEWS after the model run. These parameters must
+be defined in RegionConfigFiles/Parameters.xml The name of this
+file must match with <idMapId> parameters, which are usually
+called in module config files -->
+<idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
+    <parameter internal="H.simulated" external="zs0"/>
+</idMap>

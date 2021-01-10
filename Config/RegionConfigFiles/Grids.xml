@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
+<!-- This file contains specifications for the grids to be displayed in FEWS. Grids are stored
+in the directory /MapLayerFiles/-->
 <grids xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/grids.xsd">
 	<regular locationId="$MODELNAME1$Grid">
 		<rows>223</rows>
@@ -101,6 +103,18 @@
 		<columns>721</columns>
 		<csvFile>
 			<file>GlobSnow_SWE_L3A_v.1.0.csv</file>
+			<geoDatum>WGS 1984</geoDatum>
+			<x>%X%</x>
+			<y>%Y%</y>
+		</csvFile>
+	</irregular>
+	<!--XBeach-->
+	<irregular locationId="delilah">
+		<description>Delilah Test Case</description>
+		<rows>71</rows>
+		<columns>178</columns>
+		<csvFile>
+			<file>xy.csv</file>
 			<geoDatum>WGS 1984</geoDatum>
 			<x>%X%</x>
 			<y>%Y%</y>
