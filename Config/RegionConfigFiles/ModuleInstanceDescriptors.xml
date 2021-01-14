@@ -209,6 +209,9 @@
 		<description>Run the $MODELNAME2$ model with REPS Forecast Data</description>
 	</moduleInstanceDescriptor>
 	<!-- XBeach -->
+	<moduleInstanceDescriptor id="ImportAstroTide_hc">
+		<description>Import tidal data from local folder</description>
+	</moduleInstanceDescriptor>
 	<!-- Dataset. Name of this descriptor must match .zip file name stored in
 	the directory ModuleDataSetFiles -->
 	<moduleInstanceDescriptor id="DelilahData">
