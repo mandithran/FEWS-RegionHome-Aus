@@ -1,22 +1,63 @@
-2021-01-06 12:32:05.473 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-01-06 12:32:06.019 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-01-06 12:32:07.926 INFO - main.ObjectArrayUtils.forEach - Patch loaded
-2021-01-06 12:32:13.272 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
-2021-01-06 12:32:13.329 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
-2021-01-06 12:32:13.395 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
-2021-01-06 12:32:13.582 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
-2021-01-06 12:32:13.686 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-2021-01-06 12:32:14.272 ERROR - unmarshall-config-ahead1.ConfigFileCache.unmarshalFastInfosetStream - Config.Error: Unresolved property key(s) : MODENAME3
-	RegionConfigFiles/ModuleInstanceDescriptors.xml
-2021-01-06 12:32:16.518 ERROR - Load Fews.ThreadGroup.uncaughtException - Illegal argument not $MODENAME3$_narra_hc for 3rd check passed at nl.wldelft.fews.system.data.config.region.ModuleInstanceDescriptor.createModuleInstanceDescriptor:108 version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-	at nl.wldelft.fews.system.data.config.region.ModuleInstanceDescriptor.<init>(ModuleInstanceDescriptor.java:137)
-	at nl.wldelft.fews.system.data.config.region.ModuleInstanceDescriptor.createModuleInstanceDescriptor(ModuleInstanceDescriptor.java:108)
-	at nl.wldelft.fews.system.data.config.region.ModuleInstanceUtils.addDescriptor(ModuleInstanceUtils.java:238)
-	at nl.wldelft.fews.system.data.config.region.ModuleInstanceUtils.create(ModuleInstanceUtils.java:150)
-	at nl.wldelft.fews.system.data.config.region.RegionConfig.unmarshal(RegionConfig.java:219)
-	at nl.wldelft.fews.system.data.config.Config.unmarshalRegionConfig(Config.java:343)
-	at nl.wldelft.fews.gui.explorer.DisplayConfigChangeDetector.<init>(DisplayConfigChangeDetector.java:81)
-	at nl.wldelft.fews.gui.explorer.FewsExplorerEnvironment.<init>(FewsExplorerEnvironment.java:890)
-	at nl.wldelft.fews.gui.explorer.Application.run(Application.java:621)
-	at nl.wldelft.fews.gui.explorer.Application.loadFewsRunnable(Application.java:593)
+2021-01-11 10:07:55.548 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2021-01-11 10:08:13.357 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2021-01-11 10:08:15.043 INFO - main.ObjectArrayUtils.forEach - Patch loaded
+2021-01-11 10:08:22.647 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
+2021-01-11 10:08:22.725 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
+2021-01-11 10:08:22.826 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
+2021-01-11 10:08:23.251 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
+2021-01-11 10:08:23.388 WARN - main.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-01-11 10:08:23.604 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+2021-01-11 10:08:29.241 ERROR - Load Fews.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
+	RegionConfigFiles/Grids.xml
+	MapLayerFiles/xbeach_test/xy.csv version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.validateCoordinate(GridGeometryParser.java:332)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readRow(GridGeometryParser.java:316)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readDBaseRows(GridGeometryParser.java:279)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parseFromDBaseFile(GridGeometryParser.java:240)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parse(GridGeometryParser.java:190)
+	at nl.wldelft.fews.system.data.config.region.Grids.createFromCaster(Grids.java:550)
+	at nl.wldelft.fews.system.data.config.region.Grids.loadGridGeometry(Grids.java:216)
+	at nl.wldelft.fews.system.data.config.region.Grids.lambda$load$0(Grids.java:198)
+	at nl.wldelft.util.CloseableCompletionService.lambda$submit$0(CloseableCompletionService.java:78)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
+2021-01-11 10:08:29.350 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
+2021-01-11 10:08:31.278 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (37s;Unmarshall region config 5s;cpu 15%)
+2021-01-11 10:09:48.848 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 ImportWSCHistoric> has been sent to the task scheduler
+2021-01-11 10:09:48.903 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.ImportWSCHistoric:z3531278 - Added Scheduled Task with task id: 'SA223_00000000'
+2021-01-11 10:09:49.018 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task ImportWSCHistoric with ID SA223_0, T0 2020-04-01 22:00:00, default forecast length, available memory 841 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-11 10:09:49.020 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\ECCCScalar/ImportWSCHistoric.xml
+2021-01-11 10:09:49.021 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportWSCHistoric
+2021-01-11 10:09:49.737 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportWSCHistoric' completed in 1s
+2021-01-11 10:09:49.737 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\ECCCScalar/ImportWSCHistoric.xml completed in 1s
+2021-01-11 10:09:49.860 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  ImportWSCHistoric with ID SA223_0 completed in 1s Forecast: False Approved: False Start time: 2021-01-10 23:09:48 End time: 2021-01-10 23:09:49 User Id: Mandi Thran
+	TimeSeriesImport 1s 78%  datastore 0s 19%  primary validation 0s 0%  cache files 0 B   database 0s 0% (1 ms/query, 20 B,  5.2 kB/s, 3 queries, 2 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 18 (modified=3, write period=37y 8d, modified period=37y 8d)  files 0s 6%  985 kB 18 MB/s logging 0s 0%  gc 0s 3%  cpu 405%  max mem. 183 MB  index mem. 8.4 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-01-11 10:09:49.860 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.ImportWSCHistoric: Task run SA223_0 (WorkflowId 'ImportWSCHistoric') completed
+2021-01-11 10:09:49.871 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow ImportWSCHistoric Completed   ******************
+2021-01-11 10:14:50.598 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 ImportWSCHistoric> has been sent to the task scheduler
+2021-01-11 10:14:50.611 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.ImportWSCHistoric:z3531278 - Added Scheduled Task with task id: 'SA223_00000001'
+2021-01-11 10:14:50.623 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task ImportWSCHistoric with ID SA223_1, T0 2020-04-01 22:00:00, default forecast length, available memory 848 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-11 10:14:50.624 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\ECCCScalar/ImportWSCHistoric.xml
+2021-01-11 10:14:50.624 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportWSCHistoric
+2021-01-11 10:14:50.636 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportWSCHistoric' completed in 0s
+2021-01-11 10:14:50.636 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\ECCCScalar/ImportWSCHistoric.xml completed in 0s
+2021-01-11 10:14:50.646 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  ImportWSCHistoric with ID SA223_1 completed in 0s Forecast: False Approved: False Start time: 2021-01-10 23:14:50 End time: 2021-01-10 23:14:50 User Id: Mandi Thran
+	TimeSeriesImport 0s 37%  datastore 0s 0%  cache files 0 B   database 0s 2% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 0%  0 B 0 B/s logging 0s 6%  gc 0s 0%  cpu 261%  max mem. 176 MB  index mem. 8.4 kB  db con. acquire time 0s 4%  lock. acquire time 0s 0%  
+2021-01-11 10:14:50.646 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.ImportWSCHistoric: Task run SA223_1 (WorkflowId 'ImportWSCHistoric') completed
+2021-01-11 10:14:50.647 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow ImportWSCHistoric Completed   ******************
+2021-01-11 10:18:30.218 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 ImportWSCHistoric> has been sent to the task scheduler
+2021-01-11 10:18:30.229 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.ImportWSCHistoric:z3531278 - Added Scheduled Task with task id: 'SA223_00000002'
+2021-01-11 10:18:30.239 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task ImportWSCHistoric with ID SA223_2, T0 2020-04-01 22:00:00, default forecast length, available memory 851 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-01-11 10:18:30.240 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\ECCCScalar/ImportWSCHistoric.xml
+2021-01-11 10:18:30.241 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportWSCHistoric
+2021-01-11 10:18:30.440 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportWSCHistoric' completed in 0s
+2021-01-11 10:18:30.441 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\ECCCScalar/ImportWSCHistoric.xml completed in 0s
+2021-01-11 10:18:30.452 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  ImportWSCHistoric with ID SA223_2 completed in 0s Forecast: False Approved: False Start time: 2021-01-10 23:18:30 End time: 2021-01-10 23:18:30 User Id: Mandi Thran
+	TimeSeriesImport 0s 91%  datastore 0s 2%  primary validation 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 18 (modified=0, write period=37y 8d, modified period=0s)  files 0s 11%  982 kB 41 MB/s logging 0s 1%  gc 0s 3%  cpu 384%  max mem. 174 MB  index mem. 8.4 kB  db con. acquire time 0s 1%  lock. acquire time 0s 0%  
+2021-01-11 10:18:30.453 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.ImportWSCHistoric: Task run SA223_2 (WorkflowId 'ImportWSCHistoric') completed
+2021-01-11 10:18:30.453 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow ImportWSCHistoric Completed   ******************
+2021-01-11 17:36:02.806 INFO - Shutdown Hook.FewsExplorerEnvironment.shutdownListener - FewsExplorer: exiting ... 

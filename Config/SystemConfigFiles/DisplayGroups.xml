@@ -44,6 +44,29 @@
 			</line>
 		</subplot>
 	</plot>
+		<plot id="AusAstroTideTemplate">
+		<visibilityGroup>WaterLevel</visibilityGroup>
+		<subplot>
+			<line>
+				<visibilityGroup>WaterLevel</visibilityGroup>
+				<color>blue</color>
+				<lineStyle>constant</lineStyle>
+				<axis>left</axis>
+				<visibleInLegend>true</visibleInLegend>
+				<visibleInTable>true</visibleInTable>
+				<visibleInPlot>true</visibleInPlot>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportAstroTide_hc</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>ATid.pred</parameterId>
+					<locationSetId>AstroTideLocSet</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="minute" multiplier="15"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
 	<!--Plot Template - RDPA Data-->
 	<plot id="RDPATemplate">
 		<subplot>

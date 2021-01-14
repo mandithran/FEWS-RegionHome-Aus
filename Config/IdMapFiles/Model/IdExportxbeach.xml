@@ -8,8 +8,7 @@ called in module config files -->
     <parameter internal="EnDens" external="EnDens"/>
     <parameter internal="f" external="AFREQ"/>
     <parameter internal="dir" external="NDIR"/>
-    <parameter internal="H.simulated" external="zs0"/>
-    <parameter internal="H.mean.simulated" external="zs0"/>
+    <parameter internal="zs0_mean" external="zs0_mean"/>
     <!--For now, we are not using location definitions in XBeach, so assigned "Dummy"-->
     <location internal="Dummy" external="Dummy"/>
 </idMap>
