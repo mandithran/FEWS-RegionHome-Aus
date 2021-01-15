@@ -123,7 +123,7 @@ ModuleInstanceDescriptors.xml -->
                         <!--This might not be correct. Check if model or dataset instance needed.-->
                         <moduleInstanceId>$DATADIR$</moduleInstanceId>
                         <valueType>grid</valueType>
-                        <parameterId>H_max</parameterId>
+                        <parameterId>H_max.simulated</parameterId>
                         <locationId>Dummy</locationId>
                         <timeSeriesType>external historical</timeSeriesType>
                         <timeStep unit="hour"/>
