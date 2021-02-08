@@ -1,13 +1,18 @@
-2021-01-14 18:42:27.522 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-01-14 18:42:45.208 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-01-14 18:42:46.483 INFO - main.ObjectArrayUtils.forEach - Patch loaded
-2021-01-14 18:42:51.123 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
-2021-01-14 18:42:51.176 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
-2021-01-14 18:42:51.232 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
-2021-01-14 18:42:51.448 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
-2021-01-14 18:42:51.483 WARN - main.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
-2021-01-14 18:42:51.521 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-2021-01-14 18:42:52.561 ERROR - Load Fews.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
+2021-02-02 13:01:11.355 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2021-02-02 13:01:11.839 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2021-02-02 13:01:13.344 INFO - main.ObjectArrayUtils.forEach - Patch loaded
+2021-02-02 13:01:17.934 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
+2021-02-02 13:01:17.987 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
+2021-02-02 13:01:18.032 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
+2021-02-02 13:01:18.171 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
+2021-02-02 13:01:18.199 WARN - main.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-02-02 13:01:19.911 INFO - main.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SnowDownload
+2021-02-02 13:01:19.985 INFO - main.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-02 13:01:22.364 INFO - main.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet jcef
+2021-02-02 13:01:48.579 INFO - main.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet wflowBinaries
+2021-02-02 13:01:49.509 INFO - main.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet RavenBinaries
+2021-02-02 13:01:49.544 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+2021-02-02 13:01:49.970 ERROR - Load Fews.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
 	RegionConfigFiles/Grids.xml
 	MapLayerFiles/xbeach_test/xy.csv version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
 	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.validateCoordinate(GridGeometryParser.java:332)
@@ -25,78 +30,73 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
-2021-01-14 18:42:52.721 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
-2021-01-14 18:42:54.340 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (27s;Unmarshall region config 1s;cpu 12%)
-2021-01-14 18:43:23.033 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_ImportAstroTideHc> has been sent to the task scheduler
-2021-01-14 18:43:23.085 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAstroTideHc:z3531278 - Added Scheduled Task with task id: 'SA324_00000000'
-2021-01-14 18:43:23.264 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAstroTideHc with ID SA324_0, T0 2020-04-01 22:00:00, default forecast length, available memory 864 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
-2021-01-14 18:43:23.266 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\AstroTide/WF_ImportAstroTideHc.xml
-2021-01-14 18:43:23.268 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportAstroTide_hc ImportAstroTideAdapterHc
-2021-01-14 18:43:23.742 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportAstroTide_hc ImportAstroTideAdapterHc' completed in 0s
-2021-01-14 18:43:23.743 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\AstroTide/WF_ImportAstroTideHc.xml completed in 0s
-2021-01-14 18:43:23.799 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAstroTideHc with ID SA324_0 completed in 1s Forecast: False Approved: False Start time: 2021-01-14 07:43:23 End time: 2021-01-14 07:43:23 User Id: Mandi Thran
-	TimeSeriesImport 0s 70%  datastore 0s 25%  primary validation 0s 0%  cache files 0 B   database 0s 1% (1 ms/query, 3.5 kB,  953 kB/s, 3 queries, 2 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 2 (modified=0, write period=37d 5h 45m, modified period=0s)  files 0s 1%  82 kB 12 MB/s logging 0s 1%  gc 0s 1%  cpu 407%  max mem. 165 MB  index mem. 9.5 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
-2021-01-14 18:43:23.799 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAstroTideHc: Task run SA324_0 (WorkflowId 'WF_ImportAstroTideHc') completed
-2021-01-14 18:43:23.801 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAstroTideHc Completed   ******************
-2021-01-14 18:43:31.146 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Narra_test> has been sent to the task scheduler
-2021-01-14 18:43:31.155 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Narra_test:z3531278 - Added Scheduled Task with task id: 'SA324_00000001'
-2021-01-14 18:43:31.206 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Narra_test with ID SA324_1, T0 2020-04-01 22:00:00, default forecast length, available memory 859 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
-2021-01-14 18:43:31.207 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
-2021-01-14 18:43:31.207 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
-2021-01-14 18:43:31.303 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml with task run id SA324_1 partly failed because activity XBeach_hc XBeachAdapter_hc failed, Plugin 'XBeach_hc XBeachAdapter_hc' failed, message was: 'Validation Parameter not exist;zs0_mean
-	IdMapFiles/Model/IdExportxbeach.xml
-	IdMapFiles/Model/IdExportxbeach.xml
-	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
-	WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-	at nl.wldelft.fews.system.data.config.idmap.CompactIdMap.createFromCastor(CompactIdMap.java:177)
-	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:78)
-	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:64)
-	at nl.wldelft.fews.system.data.config.idmap.IdMapFactory.createFromConfigFile(IdMapFactory.java:55)
-	at nl.wldelft.fews.system.data.runs.TaskRunTime.getIdMap(TaskRunTime.java:406)
-	at nl.wldelft.fews.system.data.runs.TaskRunTime.getIdMap(TaskRunTime.java:391)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.readGeneralSettings(GeneralAdapter.java:406)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.init(GeneralAdapter.java:356)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:286)
+2021-02-02 13:01:50.029 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
+2021-02-02 13:01:51.528 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (41s;;cpu 14%)
+2021-02-02 13:02:06.598 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-02 13:02:06.645 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000000'
+2021-02-02 13:02:06.758 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_0, T0 2020-04-01 01:00:00, default forecast length, available memory 874 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-02 13:02:06.759 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-02 13:02:06.761 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-02 13:02:06.811 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-02 13:02:06.876 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-02 13:02:06.880 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat
+2021-02-02 13:03:02.444 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-02 13:03:02.455 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000001'
+2021-02-02 13:03:20.747 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-02-02 13:03:27.695 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 42256=conhost.exe
+2021-02-02 13:03:27.697 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge TERMINATED    ******************
+2021-02-02 13:03:34.019 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-02 13:03:34.030 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000002'
+2021-02-02 13:03:34.039 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_2, T0 2020-04-01 01:00:00, default forecast length, available memory 874 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-02 13:03:34.040 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-02 13:03:34.040 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-02 13:03:34.040 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-02 13:03:34.105 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-02 13:03:34.108 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat
+2021-02-02 13:04:19.368 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 116856=conhost.exe
+2021-02-02 13:04:19.368 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge TERMINATED    ******************
+2021-02-02 13:04:27.154 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-02 13:04:27.165 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000003'
+2021-02-02 13:04:27.173 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_3, T0 2020-04-01 01:00:00, default forecast length, available memory 873 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-02 13:04:27.173 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-02 13:04:27.174 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-02 13:04:27.174 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-02 13:04:27.231 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-02 13:04:27.235 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat
+2021-02-02 13:04:37.342 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 58128=conhost.exe
+2021-02-02 13:04:37.343 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 34052=wget64.exe
+2021-02-02 13:04:37.343 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge TERMINATED    ******************
+2021-02-02 13:04:46.162 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-02 13:04:46.173 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000004'
+2021-02-02 13:04:46.182 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_4, T0 2020-04-01 01:00:00, default forecast length, available memory 873 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-02 13:04:46.183 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-02 13:04:46.183 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-02 13:04:46.183 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-02 13:04:46.246 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-02 13:04:46.249 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat
+2021-02-02 15:04:48.253 INFO - LocalTaskDispatcher.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 85064=conhost.exe
+2021-02-02 15:04:48.285 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Running DownloadGlobSnow.bat
+2021-02-02 15:04:48.286 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading AusSurge
+2021-02-02 15:04:48.286 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 00
+2021-02-02 15:04:48.286 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 20200401_0100
+2021-02-02 15:04:48.286 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 0
+2021-02-02 15:04:48.286 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - 
+2021-02-02 15:04:48.506 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_4 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Timeout of 7200 seconds for executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat reached. while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat "arguments: https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/ C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ 20200401_0100 AusSurge ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:149)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
 	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
 	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
 	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
 	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
 	at java.base/java.lang.Thread.run(Unknown Source)
-2021-01-14 18:43:31.304 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml completed in 0s
-2021-01-14 18:43:31.312 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_XBeach_Narra_test with ID SA324_1 completed in 0s Forecast: False Approved: False Start time: 2021-01-14 07:43:31 End time: 2021-01-14 07:43:31 User Id: Mandi Thran
-	GeneralAdapter (without executables) 0s 60%  datastore 0s 56%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 5%  8.5 kB 1.1 MB/s logging 0s 2%  gc 0s 0%  cpu 325%  max mem. 165 MB  index mem. 9.5 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
-2021-01-14 18:43:31.313 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_XBeach_Narra_test: Task run SA324_1 (WorkflowId 'WF_XBeach_Narra_test') completed
-2021-01-14 18:43:31.313 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Narra_test Completed with ERRORS   ******************
-2021-01-15 11:49:46.920 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
-2021-01-15 11:49:46.927 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: IdMapFiles/Model/IdExportxbeach.xml
-2021-01-15 11:49:46.930 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: IdMapFiles/Model/IdImportxbeach.xml
-2021-01-15 11:49:53.008 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 22:00:00 WF_XBeach_Narra_test> has been sent to the task scheduler
-2021-01-15 11:49:53.016 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_XBeach_Narra_test:z3531278 - Added Scheduled Task with task id: 'SA324_00000002'
-2021-01-15 11:49:53.022 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_XBeach_Narra_test with ID SA324_2, T0 2020-04-01 22:00:00, default forecast length, available memory 852 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
-2021-01-15 11:49:53.023 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml
-2021-01-15 11:49:53.023 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity XBeach_hc XBeachAdapter_hc
-2021-01-15 11:49:53.033 WARN - LocalTaskDispatcher.ExecuteActivity.logConfigWarningForIncorrectTimeout - Config warning. No time out configured in workflow descriptor 'WF_XBeach_Narra_test'. Configure a time out to allow a workflow to run longer than 4 hours. time out 1d 3h 46m 40s configured in execute activity of general adapter
-	RegionConfigFiles/WorkflowDescriptors.xml
-	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
-2021-01-15 11:49:53.037 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml with task run id SA324_2 partly failed because activity XBeach_hc XBeachAdapter_hc failed, Plugin 'XBeach_hc XBeachAdapter_hc' failed, message was: 'Validation Parameter with id H_max does not exist; in 1:import pi netcdf activity
-	ModuleConfigFiles/ModelRun\xbeach/XBeachAdapter_hc.xml
-	WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-	at nl.wldelft.util.ExceptionUtils.onNullThrow(ExceptionUtils.java:330)
-	at nl.wldelft.fews.system.data.config.region.TimeSeriesSet.createFromCastor(TimeSeriesSet.java:1212)
-	at nl.wldelft.fews.system.data.config.region.TimeSeriesSet.createFromCastor(TimeSeriesSet.java:1101)
-	at nl.wldelft.fews.system.data.config.region.TimeSeriesSets.createForImportFromCastor(TimeSeriesSets.java:562)
-	at nl.wldelft.fews.system.plugin.generaladapter.ImportNetcdfActivity.<init>(ImportNetcdfActivity.java:125)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.readImportActivities(GeneralAdapter.java:1029)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.readActivities(GeneralAdapter.java:369)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.init(GeneralAdapter.java:358)
-	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:286)
-	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
-	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
-	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
-	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
-	at java.base/java.lang.Thread.run(Unknown Source)
-2021-01-15 11:49:53.038 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/ModelRun\xbeach/WF_XBeach_Narra_test.xml completed in 0s
-2021-01-15 11:49:53.044 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_XBeach_Narra_test with ID SA324_2 completed in 0s Forecast: False Approved: False Start time: 2021-01-15 00:49:53 End time: 2021-01-15 00:49:53 User Id: Mandi Thran
-	GeneralAdapter (without executables) 0s 49%  datastore 0s 6%  cache files 0 B   database 0s 1% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 0%  0 B 0 B/s logging 0s 10%  gc 0s 0%  cpu 300%  max mem. 172 MB  index mem. 9.5 kB  db con. acquire time 0s 2%  lock. acquire time 0s 0%  
-2021-01-15 11:49:53.044 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_XBeach_Narra_test: Task run SA324_2 (WorkflowId 'WF_XBeach_Narra_test') completed
-2021-01-15 11:49:53.045 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_XBeach_Narra_test Completed with ERRORS   ******************
+2021-02-02 15:04:48.510 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 2h 2s
+2021-02-02 15:04:48.627 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_4 completed in 2h 2s Forecast: False Approved: False Start time: 2021-02-02 02:04:46 End time: 2021-02-02 04:04:48 User Id: Mandi Thran
+	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat 120m 2s 100%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 1s 0%  10 MB 8.3 MB/s logging 0s 0%  gc 0s 0%  cpu 2%  max mem. 159 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-02 15:04:48.628 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_4 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-02 15:04:48.629 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
