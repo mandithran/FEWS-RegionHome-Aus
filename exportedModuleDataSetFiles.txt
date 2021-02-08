@@ -1,8 +1,10 @@
-Modules\SnowDownload
 Modules\SnowDownload\diagOpen.txt
 Modules\SnowDownload\DownloadGlobSnow.bat
 Modules\SnowDownload\DownloadSNODAS.bat
 Modules\SnowDownload\wget64.exe
+Modules\SurgeDownload\diagOpen.txt
+Modules\SurgeDownload\DownloadAusSurge.bat
+Modules\SurgeDownload\wget64.exe
 Modules\jcef
 Modules\jcef\cef.pak
 Modules\jcef\cef_100_percent.pak
