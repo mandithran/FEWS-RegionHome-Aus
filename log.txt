@@ -100,3 +100,537 @@
 	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\DownloadAusSurge.bat 120m 2s 100%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 1s 0%  10 MB 8.3 MB/s logging 0s 0%  gc 0s 0%  cpu 2%  max mem. 159 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
 2021-02-02 15:04:48.628 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_4 (WorkflowId 'WF_ImportAusSurge') completed
 2021-02-02 15:04:48.629 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 11:21:58.428 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 11:21:58.657 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-02-08 11:22:05.018 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 11:22:05.059 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000005'
+2021-02-08 11:22:05.103 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_5, T0 2020-04-01 01:00:00, default forecast length, available memory 872 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 11:22:05.107 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 11:22:05.107 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 11:22:05.122 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 11:22:05.124 INFO - LocalTaskDispatcher.PurgeActivity.run - Parent directory C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload for purge activity does not exist.
+2021-02-08 11:22:05.125 ERROR - LocalTaskDispatcher.ExportDataSetActivity.getActiveModuleDataSet - Config.Error: module data set SurgeDownload does not exist
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 11:22:05.125 ERROR - LocalTaskDispatcher.ExportDataSetActivity.getActiveModuleDataSet - Config.Error: module data set SurgeDownload does not exist
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 11:22:05.137 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_5 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'Null pointer program error at nl.wldelft.fews.system.data.ModuleDataSetUpdater.updateModuleDataSet:119at nl.wldelft.fews.system.data.ModuleDataSetUpdater.updateModuleDataSet:119 while running ExportDataSetActivity: SurgeDownload C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.ModuleDataSetUpdater.updateModuleDataSet(ModuleDataSetUpdater.java:119)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExportDataSetActivity.run(ExportDataSetActivity.java:148)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runExportActivities(GeneralAdapter.java:1107)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:525)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 11:22:05.139 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 11:22:05.167 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_5 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 00:22:05 End time: 2021-02-08 00:22:05 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 29%  datastore 0s 11%  cache files 0 B   database 0s 6% (6 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 2%  0 B 0 B/s logging 0s 7%  gc 0s 0%  cpu 158%  max mem. 152 MB  index mem. 8.9 kB  db con. acquire time 0s 1%  lock. acquire time 0s 0%  
+2021-02-08 11:22:05.168 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_5 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 11:22:05.168 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 12:04:33.856 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 12:05:06.144 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-02-08 12:05:06.147 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleDataSetFiles/SurgeDownload.zip
+2021-02-08 12:05:11.420 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 12:05:11.428 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000006'
+2021-02-08 12:05:11.440 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_6, T0 2020-04-01 01:00:00, default forecast length, available memory 870 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 12:05:11.441 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 12:05:11.441 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 12:05:11.442 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 12:05:11.445 INFO - LocalTaskDispatcher.PurgeActivity.run - Parent directory C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload for purge activity does not exist.
+2021-02-08 12:05:11.466 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 12:05:11.471 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:05:11.561 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_6 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe failed with error exit code -1073741515 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe "arguments: helloWorld.py https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/ ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 12:05:11.562 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 12:05:11.570 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_6 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 01:05:11 End time: 2021-02-08 01:05:11 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 31%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe 0s 55%  datastore 0s 1%  cache files 0 B   database 0s 1% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 22%  281 kB 8.7 MB/s logging 0s 3%  gc 0s 0%  cpu 133%  max mem. 154 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 12:05:11.570 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_6 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 12:05:11.571 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 12:11:38.529 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 12:11:38.532 DEBUG - AWT-EventQueue-0.FileUtils.newOutputStreamForAppend - Start appending C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_16779024597023061653.tmp
+2021-02-08 12:11:38.551 DEBUG - AWT-EventQueue-0.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[3989]
+2021-02-08 12:11:38.553 DEBUG - AWT-EventQueue-0.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql INSERT INTO Tasks (creationTaskRunId, whatIfId, workflowId, description, ownerMcId, canRunOnFailover, taskPriority, taskFirstDueTime, taskRepeatTime, taskRepeatUntilTime, taskStatus, taskPendingSinceTime, taskProperties, expiryTime, taskId, cancelPendingOnDispatch, waitWhenAlreadyRunning, creationTime, modificationTime, localModificationTime) VALUES ([SA326],[NULL],[WF_ImportAusSurge],[-],[none],[0],[0],[Mon Feb 08 01:11:38 GMT 2021],[NULL],[NULL],[P],[NULL],[<?xml version="1.0" encoding="UTF-8"?>
+	<taskProper...],[Tue Feb 23 01:11:38 GMT 2021],[SA326_00000007],[0],[0],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021])
+2021-02-08 12:11:38.554 DEBUG - AWT-EventQueue-0.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[5989]
+2021-02-08 12:11:38.556 DEBUG - AWT-EventQueue-0.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql INSERT INTO SystemActivities (taskRunType, taskRunId,expiryTime, creationTime, modificationTime, localModificationTime) VALUES ([SO],[SA326_7],[Thu Feb 18 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021])
+2021-02-08 12:11:38.557 DEBUG - AWT-EventQueue-0.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[2789]
+2021-02-08 12:11:38.557 DEBUG - AWT-EventQueue-0.DefaultExtendedStatement.close - Executed 2 statements affected 1 rows in 0 ms for sql INSERT INTO TaskRuns (taskId, taskDispatchMcId, taskDispatchFssId, taskDispatchTime, taskRunStatus, scheduledDispatchTime, expiryTime, taskRunId, terminateRequested, creationTime, modificationTime, localModificationTime) VALUES ([SA326_00000007],[none],[NULL],[Thu Jan 01 00:00:00 GMT 1970],[I],[Mon Feb 08 01:11:38 GMT 2021],[Tue Feb 23 01:11:38 GMT 2021],[SA326_7],[0],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021])
+2021-02-08 12:11:38.558 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000007'
+2021-02-08 12:11:38.559 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[2789]
+2021-02-08 12:11:38.560 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql UPDATE TaskRuns SET taskDispatchTime = [Mon Feb 08 01:11:38 GMT 2021] , modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime), localModificationTime=[Mon Feb 08 01:11:38 GMT 2021] WHERE taskRunId = [SA326_7]
+2021-02-08 12:11:38.562 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[2789]
+2021-02-08 12:11:38.563 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql UPDATE TaskRuns SET taskRunStatus = [R] , modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime), localModificationTime=[Mon Feb 08 01:11:38 GMT 2021] WHERE taskRunId = [SA326_7]
+2021-02-08 12:11:38.568 DEBUG - LocalTaskDispatcher.DefaultExtendedResultSet.close - no rows found in 0 ms for sql SELECT revisionId, creationTime, creationUserId, commentText, numberOfChanges FROM ConfigRevisionSets WHERE creationTime = (SELECT MAX(creationTime) FROM ConfigRevisionSets)
+2021-02-08 12:11:38.571 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_7, T0 2020-04-01 01:00:00, default forecast length, available memory 870 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 12:11:38.571 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 12:11:38.571 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 12:11:38.572 DEBUG - LocalTaskDispatcher.WorkflowPluginActivity.run - Memory usage 154 MB
+2021-02-08 12:11:38.571 DEBUG - loadIconsThread.IfdIconLoader.run - load icons thread interrupted
+2021-02-08 12:11:38.574 DEBUG - LocalTaskDispatcher.GeneralAdapter.startReadActivity - Start reading config for 1:purge
+2021-02-08 12:11:38.574 DEBUG - LocalTaskDispatcher.GeneralAdapter.startReadActivity - Start reading config for 1:export data set
+2021-02-08 12:11:38.574 DEBUG - LocalTaskDispatcher.GeneralAdapter.startReadActivity - Start reading config for 1:execute executable
+2021-02-08 12:11:38.574 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 12:11:38.577 DEBUG - LocalTaskDispatcher.GeneralAdapter.runActivities - Performing startup activities.
+2021-02-08 12:11:38.578 DEBUG - LocalTaskDispatcher.GeneralAdapter.runActivity - * Start 1:PurgeActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\*.*
+2021-02-08 12:11:38.580 DEBUG - LocalTaskDispatcher.GeneralAdapter.runExportActivities - Performing export activities.
+2021-02-08 12:11:38.580 DEBUG - LocalTaskDispatcher.GeneralAdapter.runActivity - * Start 1:ExportDataSetActivity: SurgeDownload C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules
+2021-02-08 12:11:38.581 DEBUG - LocalTaskDispatcher.FileUtils.createInputStreamMonitor - Open file for read C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config\ModuleDataSetFiles\SurgeDownload.zip
+2021-02-08 12:11:38.582 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Open file for write C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\helloWorld.py
+2021-02-08 12:11:38.583 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Start writing C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\helloWorld.py
+2021-02-08 12:11:38.589 DEBUG - LocalTaskDispatcher.FileUtils.close - File written in 0.0s IO 0.0s 683 B  386 kB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\helloWorld.py
+2021-02-08 12:11:38.590 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Open file for write C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.591 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Start writing C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.595 DEBUG - LocalTaskDispatcher.FileUtils.close - File written in 0.0s IO 0.0s 93 kB  27 MB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.596 DEBUG - LocalTaskDispatcher.FileUtils.close - File read in 0.0s IO 0s 47 kB 272 MB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config\ModuleDataSetFiles\SurgeDownload.zip
+2021-02-08 12:11:38.597 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 12:11:38.597 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Open file for write C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\moduleDataSetsCheckSums\4689db639d6b99e1284dc48cbf226f34c5a58212142aab064bffbfaebcbc522f.info
+2021-02-08 12:11:38.598 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Start writing C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\moduleDataSetsCheckSums\4689db639d6b99e1284dc48cbf226f34c5a58212142aab064bffbfaebcbc522f.info
+2021-02-08 12:11:38.600 DEBUG - LocalTaskDispatcher.FileUtils.close - File written in 0.0s IO 0.0s 89 B  41 kB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\moduleDataSetsCheckSums\4689db639d6b99e1284dc48cbf226f34c5a58212142aab064bffbfaebcbc522f.info
+2021-02-08 12:11:38.601 DEBUG - LocalTaskDispatcher.ExportDataSetActivity.run - Running export dataset activity for  SurgeDownload to directory C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules
+2021-02-08 12:11:38.601 DEBUG - LocalTaskDispatcher.GeneralAdapter.ensureDirsExistsImportActivities - Ensure dirs for import activities
+2021-02-08 12:11:38.602 DEBUG - LocalTaskDispatcher.GeneralAdapter.exportPlaceholderFileImportActivities - Export placeholder file for import activities
+2021-02-08 12:11:38.602 DEBUG - LocalTaskDispatcher.GeneralAdapter.runActivities - Performing execute activities.
+2021-02-08 12:11:38.603 DEBUG - LocalTaskDispatcher.GeneralAdapter.runActivity - * Start 1:ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe "arguments: helloWorld.py https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/ ""Run wget64.exe to download GlobSnow SWE analysis"""
+2021-02-08 12:11:38.603 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.604 DEBUG - LocalTaskDispatcher.ExecuteExecutableActivity.logDebugMessage - Arguments used are:
+	helloWorld.py
+	https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/
+	Work directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-02-08 12:11:38.605 DEBUG - LocalTaskDispatcher.SystemUtils.exec - exec C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.681 DEBUG - LocalTaskDispatcher.GeneralAdapter.zipDumpDirectory - Start zipping directory C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload to file C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\DumpFiles\RetrieveAusSurge_SurgeDownload_2021.02.08.01.11.38.zip.
+2021-02-08 12:11:38.681 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Open file for write C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\DumpFiles\RetrieveAusSurge_SurgeDownload_2021.02.08.01.11.38.zip
+2021-02-08 12:11:38.682 DEBUG - LocalTaskDispatcher.FileUtils.newOutputStream - Start writing C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\DumpFiles\RetrieveAusSurge_SurgeDownload_2021.02.08.01.11.38.zip
+2021-02-08 12:11:38.683 DEBUG - LocalTaskDispatcher.FileUtils.createInputStreamMonitor - Open file for read C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\helloWorld.py
+2021-02-08 12:11:38.683 DEBUG - LocalTaskDispatcher.FileUtils.close - File read in 0s IO 0s 683 B 13 MB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\helloWorld.py
+2021-02-08 12:11:38.684 DEBUG - LocalTaskDispatcher.FileUtils.createInputStreamMonitor - Open file for read C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.687 DEBUG - LocalTaskDispatcher.FileUtils.close - File read in 0.0s IO 0s 93 kB 459 MB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:11:38.689 DEBUG - LocalTaskDispatcher.FileUtils.close - File written in 0.0s IO 0.0s 46 kB  19 MB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\DumpFiles\RetrieveAusSurge_SurgeDownload_2021.02.08.01.11.38.zip
+2021-02-08 12:11:38.690 DEBUG - LocalTaskDispatcher.GeneralAdapter.zipDumpDirectory - Finished zipping directory C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload to file C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\DumpFiles\RetrieveAusSurge_SurgeDownload_2021.02.08.01.11.38.zip.
+2021-02-08 12:11:38.690 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_7 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe failed with error exit code -1073741515 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe "arguments: helloWorld.py https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/ ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 12:11:38.692 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 12:11:38.694 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[2789]
+2021-02-08 12:11:38.695 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql UPDATE TaskRuns SET taskRunStatus = [D], expiryTime = [Tue Feb 23 01:11:38 GMT 2021], taskRunCompletionTime=[Mon Feb 08 01:11:38 GMT 2021] , modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime), localModificationTime=[Mon Feb 08 01:11:38 GMT 2021] WHERE taskRunId = [SA326_7]
+2021-02-08 12:11:38.696 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[5989]
+2021-02-08 12:11:38.697 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE SystemActivities SET expiryTime = [Tue Feb 23 01:11:38 GMT 2021] , modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime), localModificationTime=[Mon Feb 08 01:11:38 GMT 2021] WHERE taskRunId = [SA326_7]
+2021-02-08 12:11:38.698 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 0 rows in 1 ms for sql UPDATE ModuleInstanceRuns SET expiryTime = [Tue Feb 23 01:11:38 GMT 2021] , modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime), localModificationTime=[Mon Feb 08 01:11:38 GMT 2021] WHERE taskRunId = [SA326_7]
+2021-02-08 12:11:38.700 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[3989]
+2021-02-08 12:11:38.700 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE Tasks SET expiryTime = [Tue Feb 23 01:11:38 GMT 2021] , modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime), localModificationTime=[Mon Feb 08 01:11:38 GMT 2021] WHERE taskId = [SA326_00000007] AND expiryTime < [Tue Feb 23 01:11:38 GMT 2021]
+2021-02-08 12:11:38.701 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_7 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 01:11:38 End time: 2021-02-08 01:11:38 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 30%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe 0s 55%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 17%  281 kB 11 MB/s logging 0s 21%  gc 0s 0%  cpu 234%  max mem. 154 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 12:11:38.701 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_7 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 12:11:38.701 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 12:11:38.705 DEBUG - LocalTaskDispatcher.TaskRun.run - TaskRun.Debug: Task WF_ImportAusSurge with ID SA326_7 : Data base size increased with 0.00 MB to 95 MB
+2021-02-08 12:11:38.714 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:38 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:38 GMT 2021]  WHERE globalRowId=[2089]
+2021-02-08 12:11:38.715 DEBUG - LocalTaskDispatcher.DefaultExtendedStatement.close - Executed 8 statements affected 7 rows in 8 ms for sql INSERT INTO LogEntries (logEntryId, taskRunId, moduleInstanceId, synchLevel, logLevel, eventCode,  eventAcknowledged, eventProcessed, buildNumber, logMessage, expiryTime , creationTime, modificationTime, localModificationTime) VALUES ([6],[SA326_7],[none],[1],[20000],[TASKRUN.Complete.WF_ImportAusSurge],[0],[0],[93845],[Task run SA326_7 (WorkflowId 'WF_ImportAusSurge') ...],[Sat Feb 13 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021])
+2021-02-08 12:11:42.595 DEBUG - log entries table flush.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:42 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:42 GMT 2021]  WHERE globalRowId=[2089]
+2021-02-08 12:11:42.596 DEBUG - log entries table flush.DefaultExtendedStatement.close - Executed 2 statements affected 1 rows in 2 ms for sql INSERT INTO LogEntries (logEntryId, taskRunId, moduleInstanceId, synchLevel, logLevel, eventCode,  eventAcknowledged, eventProcessed, buildNumber, logMessage, expiryTime , creationTime, modificationTime, localModificationTime) VALUES ([30],[SA326],[none],[0],[20000],[SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge],[0],[0],[93845],[z3531278 - Added Scheduled Task with task id: 'SA3...],[Wed Sep 27 01:11:38 GMT 2023],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:42 GMT 2021],[Mon Feb 08 01:11:42 GMT 2021])
+2021-02-08 12:11:42.597 DEBUG - log entries table flush.FileUtils.close - File was open for append during 4.0s IO 0.0s 151 B  155 kB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_16779024597023061653.tmp
+2021-02-08 12:11:42.598 DEBUG - log entries table flush.FileUtils.createInputStreamMonitor - Open file for read C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_16779024597023061653.tmp
+2021-02-08 12:11:42.600 DEBUG - log entries table flush.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 0 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:11:42 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:11:42 GMT 2021]  WHERE globalRowId=[2089]
+2021-02-08 12:11:42.601 DEBUG - log entries table flush.DefaultExtendedStatement.close - Executed 2 statements affected 1 rows in 1 ms for sql INSERT INTO LogEntries (logEntryId, taskRunId, moduleInstanceId, synchLevel, logLevel, eventCode,  eventAcknowledged, eventProcessed, buildNumber, logMessage, expiryTime , creationTime, modificationTime, localModificationTime) VALUES ([31],[SA326],[none],[1],[20000],[ManualForecast.Started],[0],[0],[93845],[Manual forecast <Wed 01-04-2020 01:00:00 WF_Import...],[Sat Feb 13 01:11:38 GMT 2021],[Mon Feb 08 01:11:38 GMT 2021],[Mon Feb 08 01:11:42 GMT 2021],[Mon Feb 08 01:11:42 GMT 2021])
+2021-02-08 12:11:42.602 DEBUG - log entries table flush.FileUtils.close - File read in 0.0s IO 0s 143 B 816 kB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_16779024597023061653.tmp
+2021-02-08 12:14:38.560 DEBUG - AWT-EventQueue-0.Config.refresh - Start refreshing global properties
+2021-02-08 12:14:38.561 DEBUG - AWT-EventQueue-0.Config.refresh - Finished refreshing global properties
+2021-02-08 12:14:38.561 DEBUG - AWT-EventQueue-0.Config.refresh - Start refreshing tables
+2021-02-08 12:14:38.562 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 12:14:38.563 DEBUG - AWT-EventQueue-0.FileUtils.newOutputStreamForAppend - Start appending C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_3893332720598021106.tmp
+2021-02-08 12:14:38.564 DEBUG - AWT-EventQueue-0.FileUtils.createInputStreamMonitor - Open file for read C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config\ModuleConfigFiles\Import\BOM\RetrieveAusSurgeAdapter.xml
+2021-02-08 12:14:38.565 DEBUG - AWT-EventQueue-0.FileUtils.close - File read in 0s IO 0s 1.8 kB 30 MB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config\ModuleConfigFiles\Import\BOM\RetrieveAusSurgeAdapter.xml
+2021-02-08 12:14:38.567 DEBUG - AWT-EventQueue-0.ConfigFileCache.close - Caching config file ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml finished
+2021-02-08 12:14:38.569 DEBUG - AWT-EventQueue-0.Config.refresh - Finished refreshing tables
+2021-02-08 12:14:38.569 DEBUG - AWT-EventQueue-0.Config.refresh - Start refreshing map layer files
+2021-02-08 12:14:38.570 DEBUG - AWT-EventQueue-0.Config.refresh - Finished refreshing map layer files
+2021-02-08 12:14:42.568 DEBUG - log entries table flush.FileUtils.close - File was open for append during 4.0s IO 0.0s 125 B  78 kB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_3893332720598021106.tmp
+2021-02-08 12:14:42.569 DEBUG - log entries table flush.FileUtils.createInputStreamMonitor - Open file for read C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_3893332720598021106.tmp
+2021-02-08 12:14:42.574 DEBUG - log entries table flush.DefaultExtendedStatement.close - Executed 1 statements affected 1 rows in 1 ms for sql UPDATE TableLocalModificationTimes SET modificationTime = ENSURE_LATER([Mon Feb 08 01:14:42 GMT 2021], modificationTime) ,localModificationTime=[Mon Feb 08 01:14:42 GMT 2021]  WHERE globalRowId=[2089]
+2021-02-08 12:14:42.575 DEBUG - log entries table flush.DefaultExtendedStatement.close - Executed 2 statements affected 1 rows in 1 ms for sql INSERT INTO LogEntries (logEntryId, taskRunId, moduleInstanceId, synchLevel, logLevel, eventCode,  eventAcknowledged, eventProcessed, buildNumber, logMessage, expiryTime , creationTime, modificationTime, localModificationTime) VALUES ([32],[SA326],[none],[1],[20000],[Config.Info],[0],[0],[93845],[New default file found: ModuleConfigFiles/Import\B...],[Sat Feb 13 01:14:38 GMT 2021],[Mon Feb 08 01:14:38 GMT 2021],[Mon Feb 08 01:14:42 GMT 2021],[Mon Feb 08 01:14:42 GMT 2021])
+2021-02-08 12:14:42.576 DEBUG - log entries table flush.FileUtils.close - File read in 0.0s IO 0s 117 B 379 kB/s C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\session\log_3893332720598021106.tmp
+2021-02-08 12:15:05.128 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 12:15:05.134 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000008'
+2021-02-08 12:15:05.144 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_8, T0 2020-04-01 01:00:00, default forecast length, available memory 870 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 12:15:05.144 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 12:15:05.144 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 12:15:05.146 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 12:15:05.159 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 12:15:05.163 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:15:05.244 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_8 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe failed with error exit code -1073741515 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py testFEWS ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 12:15:05.246 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 12:15:05.252 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_8 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 01:15:05 End time: 2021-02-08 01:15:05 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 23%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe 0s 64%  datastore 0s 1%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 20%  281 kB 12 MB/s logging 0s 3%  gc 0s 0%  cpu 136%  max mem. 154 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 12:15:05.253 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_8 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 12:15:05.253 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 12:16:35.704 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 12:16:37.389 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 12:16:37.395 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_00000009'
+2021-02-08 12:16:37.402 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_9, T0 2020-04-01 01:00:00, default forecast length, available memory 870 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 12:16:37.402 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 12:16:37.402 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 12:16:37.403 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 12:16:37.415 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 12:16:37.420 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe
+2021-02-08 12:16:37.502 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_9 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe failed with error exit code -1073741515 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe """Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 12:16:37.502 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 12:16:37.508 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_9 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 01:16:37 End time: 2021-02-08 01:16:37 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 26%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python.exe 0s 64%  datastore 0s 1%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 22%  281 kB 11 MB/s logging 0s 2%  gc 0s 0%  cpu 85%  max mem. 154 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 12:16:37.508 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_9 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 12:16:37.508 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 12:22:17.748 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 12:22:19.594 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 12:22:19.600 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000010'
+2021-02-08 12:22:19.607 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_10, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 12:22:19.608 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 12:22:19.608 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 12:22:19.610 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 12:22:19.623 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 12:22:19.628 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venvpython.exe
+2021-02-08 12:22:19.637 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_10 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'File not found C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venvpython.exe does not exist while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venvpython.exe """Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:68)
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:35)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:516)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:511)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.createProcess(ExecuteExecutableActivity.java:249)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.execAndWait(ExecuteExecutableActivity.java:218)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:141)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 12:22:19.639 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 12:22:19.643 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_10 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 01:22:19 End time: 2021-02-08 01:22:19 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 68%  datastore 0s 3%  cache files 0 B   database 0s 1% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 63%  281 kB 11 MB/s logging 0s 7%  gc 0s 0%  cpu 378%  max mem. 163 MB  index mem. 8.9 kB  db con. acquire time 0s 1%  lock. acquire time 0s 0%  
+2021-02-08 12:22:19.643 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_10 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 12:22:19.643 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 12:23:08.024 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 12:23:08.032 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000011'
+2021-02-08 12:23:08.040 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_11, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 12:23:08.040 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 12:23:08.040 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 12:23:08.041 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 12:23:08.053 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 12:23:08.058 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venvpython.exe
+2021-02-08 12:23:08.068 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_11 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'File not found C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venvpython.exe does not exist while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venvpython.exe """Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:68)
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:35)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:516)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:511)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.createProcess(ExecuteExecutableActivity.java:249)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.execAndWait(ExecuteExecutableActivity.java:218)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:141)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 12:23:08.068 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 12:23:08.073 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_11 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 01:23:08 End time: 2021-02-08 01:23:08 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 69%  datastore 0s 0%  cache files 0 B   database 0s 1% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 68%  281 kB 10 MB/s logging 0s 6%  gc 0s 0%  cpu 285%  max mem. 163 MB  index mem. 8.9 kB  db con. acquire time 0s 1%  lock. acquire time 0s 0%  
+2021-02-08 12:23:08.074 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_11 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 12:23:08.074 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 13:08:32.409 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 13:08:34.963 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 13:08:34.969 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000012'
+2021-02-08 13:08:34.978 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_12, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 13:08:34.979 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 13:08:34.979 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 13:08:34.983 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 13:08:34.995 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 13:08:34.998 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe
+2021-02-08 13:08:35.145 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_12 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe failed with error exit code 1 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 13:08:35.146 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 13:08:35.155 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_12 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 02:08:34 End time: 2021-02-08 02:08:35 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 15%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe 0s 74%  datastore 0s 1%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 13%  281 kB 12 MB/s logging 0s 2%  gc 0s 0%  cpu 110%  max mem. 163 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 13:08:35.155 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_12 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 13:08:35.156 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 13:09:28.154 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 13:09:28.161 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000013'
+2021-02-08 13:09:28.167 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_13, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 13:09:28.168 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 13:09:28.168 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 13:09:28.168 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 13:09:28.180 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 13:09:28.186 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe
+2021-02-08 13:09:28.340 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_13 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe failed with error exit code 1 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 13:09:28.340 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 13:09:28.345 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_13 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 02:09:28 End time: 2021-02-08 02:09:28 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 15%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe 0s 80%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 13%  281 kB 11 MB/s logging 0s 1%  gc 0s 0%  cpu 128%  max mem. 163 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 13:09:28.345 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_13 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 13:09:28.345 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 13:55:07.043 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 13:55:07.053 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000014'
+2021-02-08 13:55:07.062 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_14, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 13:55:07.062 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 13:55:07.062 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 13:55:07.063 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 13:55:07.075 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 13:55:07.080 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe
+2021-02-08 13:55:07.404 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_14 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'Exception Diagnostic file does not exist: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\diag.xml. The run should have created it if the option ignoreDiagnostics is not configured. while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteActivity.processDiagnosticFile(ExecuteActivity.java:225)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:154)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 13:55:07.405 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 13:55:07.410 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_14 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 02:55:07 End time: 2021-02-08 02:55:07 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 8%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe 0s 88%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 8%  281 kB 9.3 MB/s logging 0s 1%  gc 0s 0%  cpu 79%  max mem. 163 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 13:55:07.410 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_14 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 13:55:07.410 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 13:57:07.175 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 13:57:07.197 ERROR - AWT-EventQueue-0.ConfigFiles.refreshDefaults - DataStore.Error: java.lang.Exception: Xml file ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml is not valid
+	Saxparse cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://www.wldelft.nl/fews":time0Format}'. One of '{"http://www.wldelft.nl/fews":dumpDir, "http://www.wldelft.nl/fews":diagnosticFile}' is expected.
+	line number = 12
+	column number = 16 Exception Xml file ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml is not valid
+	Saxparse cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://www.wldelft.nl/fews":time0Format}'. One of '{"http://www.wldelft.nl/fews":dumpDir, "http://www.wldelft.nl/fews":diagnosticFile}' is expected.
+	line number = 12
+	column number = 16
+2021-02-08 14:08:47.417 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 14:08:47.423 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-02-08 14:08:47.424 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleDataSetFiles/SurgeDownload.zip
+2021-02-08 14:08:51.276 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 14:08:51.286 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000015'
+2021-02-08 14:08:51.292 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_15, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 14:08:51.293 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 14:08:51.293 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 14:08:51.295 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 14:08:51.309 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 14:08:51.315 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe
+2021-02-08 14:08:51.688 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveAusSurge RetrieveAusSurgeAdapter' completed in 0s
+2021-02-08 14:08:51.688 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 0s
+2021-02-08 14:08:51.698 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_15 completed in 0s Forecast: False Approved: False Start time: 2021-02-08 03:08:51 End time: 2021-02-08 03:08:51 User Id: Mandi Thran
+	GeneralAdapter (without executables) 0s 6%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe 0s 90%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 6%  142 kB 5.6 MB/s logging 0s 1%  gc 0s 0%  cpu 80%  max mem. 163 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 14:08:51.699 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_15 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 14:08:51.699 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed   ******************
+2021-02-08 14:13:27.440 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-02-08 14:13:27.442 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleDataSetFiles/SurgeDownload.zip
+2021-02-08 14:13:28.907 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 14:13:28.912 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000016'
+2021-02-08 14:13:28.922 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_16, T0 2020-04-01 01:00:00, default forecast length, available memory 861 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 14:13:28.922 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 14:13:28.923 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 14:13:28.924 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 14:13:56.310 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 14:13:56.314 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe
+2021-02-08 14:13:56.622 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Running DownloadGlobSnow.bat
+2021-02-08 14:13:56.623 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading 
+2021-02-08 14:13:56.623 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 00
+2021-02-08 14:13:56.623 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 20200401_2300
+2021-02-08 14:13:56.625 ERROR - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - GA.Execution.Model.Error: In adapter model: Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 8
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 14:14:37.921 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_16 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe failed with error Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 8 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\bin\venv\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py ""Run wget64.exe to download GlobSnow SWE analysis"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 14:14:37.923 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 1m 9s
+2021-02-08 14:14:37.928 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_16 completed in 1m 9s Forecast: False Approved: False Start time: 2021-02-08 03:13:28 End time: 2021-02-08 03:14:37 User Id: Mandi Thran
+	GeneralAdapter (without executables) 1m 9s 100%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 34s 50%  2.1 GB 63 MB/s logging 0s 0%  gc 0s 0%  cpu 113%  max mem. 167 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 14:14:37.929 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_16 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 14:14:37.929 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 14:20:53.660 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 14:20:58.477 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 14:20:58.485 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000017'
+2021-02-08 14:20:58.495 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_17, T0 2020-04-01 01:00:00, default forecast length, available memory 857 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 14:20:58.495 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 14:20:58.495 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 14:20:58.497 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 14:21:24.785 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 14:21:24.788 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe
+2021-02-08 14:21:27.218 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Running DownloadGlobSnow.bat
+2021-02-08 14:21:27.218 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading 
+2021-02-08 14:21:27.219 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 00
+2021-02-08 14:21:27.219 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 20200401_2300
+2021-02-08 14:21:27.219 ERROR - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - GA.Execution.Model.Error: In adapter model: Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 8
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 14:22:07.875 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_17 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe failed with error Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 8 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py ""Run python script to download storm surge"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 14:22:07.876 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 1m 9s
+2021-02-08 14:22:07.882 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_17 completed in 1m 9s Forecast: False Approved: False Start time: 2021-02-08 03:20:58 End time: 2021-02-08 03:22:07 User Id: Mandi Thran
+	GeneralAdapter (without executables) 1m 7s 96%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe 2s 4%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 33s 48%  2.1 GB 65 MB/s logging 0s 0%  gc 0s 0%  cpu 108%  max mem. 167 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 14:22:07.883 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_17 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 14:22:07.883 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-02-08 14:25:42.331 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 14:25:42.338 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000018'
+2021-02-08 14:25:42.345 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_18, T0 2020-04-01 01:00:00, default forecast length, available memory 860 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 14:25:42.345 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 14:25:42.345 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 14:25:42.346 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 14:25:52.808 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge TERMINATED    ******************
+2021-02-08 14:25:57.402 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: RegionConfigFiles/ModuleInstanceDescriptors.xml
+2021-02-08 14:25:57.832 ERROR - AWT-EventQueue-0.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
+	RegionConfigFiles/Grids.xml
+	MapLayerFiles/xbeach_test/xy.csv version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.validateCoordinate(GridGeometryParser.java:332)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readRow(GridGeometryParser.java:316)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.readDBaseRows(GridGeometryParser.java:279)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parseFromDBaseFile(GridGeometryParser.java:240)
+	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.parse(GridGeometryParser.java:190)
+	at nl.wldelft.fews.system.data.config.region.Grids.createFromCaster(Grids.java:550)
+	at nl.wldelft.fews.system.data.config.region.Grids.loadGridGeometry(Grids.java:216)
+	at nl.wldelft.fews.system.data.config.region.Grids.lambda$load$0(Grids.java:198)
+	at nl.wldelft.util.CloseableCompletionService.lambda$submit$0(CloseableCompletionService.java:78)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 14:26:09.477 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Wed 01-04-2020 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-02-08 14:26:09.483 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA326_0000019'
+2021-02-08 14:26:09.489 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA326_19, T0 2020-04-01 01:00:00, default forecast length, available memory 799 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-02-08 14:26:09.489 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-02-08 14:26:09.489 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-02-08 14:26:09.490 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Wed Apr 01 01:00:00 GMT 2020
+2021-02-08 14:26:39.228 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-02-08 14:26:39.232 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe
+2021-02-08 14:26:41.564 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Running DownloadGlobSnow.bat
+2021-02-08 14:26:41.565 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Downloading 
+2021-02-08 14:26:41.565 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 00
+2021-02-08 14:26:41.565 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - Reference time (cycle) 20200401_2300
+2021-02-08 14:26:41.565 ERROR - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - GA.Execution.Model.Error: In adapter model: Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 8
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-02-08 14:27:22.697 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA326_19 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'General adapter Execution of executable C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe failed with error Downloading http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/IDZ00154_StormSurge_national_2020120218.nc; wget exit code: 8 while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/helloWorld.py ""Run python script to download storm surge"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:164)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-02-08 14:27:22.698 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 1m 13s
+2021-02-08 14:27:22.707 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA326_19 completed in 1m 13s Forecast: False Approved: False Start time: 2021-02-08 03:26:09 End time: 2021-02-08 03:27:22 User Id: Mandi Thran
+	GeneralAdapter (without executables) 1m 11s 97%  C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\venv\python.exe 2s 3%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 40s 55%  2.1 GB 54 MB/s logging 0s 0%  gc 0s 0%  cpu 109%  max mem. 228 MB  index mem. 8.9 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-02-08 14:27:22.708 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA326_19 (WorkflowId 'WF_ImportAusSurge') completed
+2021-02-08 14:27:22.708 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************

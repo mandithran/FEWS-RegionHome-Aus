@@ -25,15 +25,17 @@
 		</exportActivities>
 		<executeActivities>
 			<executeActivity>
-				<description>Run wget64.exe to download GlobSnow SWE analysis</description>
+				<description>Run python script to download storm surge</description>
 				<command>
-					<executable>SurgeDownload/DownloadAusSurge.bat</executable>
+					<executable>%ROOT_DIR%/SurgeDownload/python/bin/venv/python.exe</executable>
 				</command>
 				<arguments>
-					<argument>https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/</argument>
+					<argument>%WORK_DIR%/helloWorld.py</argument>
+					<argument>testFEWS</argument>
+					<!--argument>https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/</argument>
 					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
 					<argument>%TIME0%</argument>
-					<argument>AusSurge</argument>
+					<argument>AusSurge</argument-->
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>
