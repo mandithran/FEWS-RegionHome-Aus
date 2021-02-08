@@ -31,6 +31,9 @@
 	<moduleInstanceDescriptor id="SnowDownload">
 		<description>Snow Download module - for purpose of maintaining single moduleDataSet file</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="SurgeDownload">
+		<description>Storm surge Download module</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RavenParameters">
 		<description>Module Instance for Transfer of Raven Boolean Parameters from FEWS</description>
 	</moduleInstanceDescriptor>
@@ -42,6 +45,9 @@
 		<description>Download SNODAS grib2 files</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveGLOBSNOW">
+		<description>Download GlobSnow netcdf files</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="RetrieveAusSurge">
 		<description>Download GlobSnow netcdf files</description>
 	</moduleInstanceDescriptor>
 	<!--Imports Gridded Data - GeoMet-->
