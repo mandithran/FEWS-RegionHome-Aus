@@ -48,7 +48,7 @@
 		<description>Download GlobSnow netcdf files</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveAusSurge">
-		<description>Download GlobSnow netcdf files</description>
+		<description>Download Australia storm surge forecast output</description>
 	</moduleInstanceDescriptor>
 	<!--Imports Gridded Data - GeoMet-->
 	<moduleInstanceDescriptor id="ImportRDPA">

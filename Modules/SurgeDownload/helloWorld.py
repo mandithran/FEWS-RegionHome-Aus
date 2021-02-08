@@ -1,10 +1,10 @@
-"""The main routine of importSurge package."""
-# http://go.chriswarrick.com/entry_points
-
+import numpy as np
 import sys
-import importSurge
-from importSurge import retrieveSurge
 
+file = open("test.txt","w")
+file.write("Hello World")
+file.write(str(np.arange(6)))
+file.close()
 
 def main(args=None):
     """The main routine."""
@@ -16,7 +16,7 @@ def main(args=None):
     # Generate diagnostic file
     print("writing file...")
     file = open("diagnostics.txt","w")
-    file.write(retrieveSurge.retrieveSurgeFile())
+    # file.write(retrieveSurge.retrieveSurgeFile())
     # Print arguments from FEWS to diagnostics file
     if args:
         for a in args:
