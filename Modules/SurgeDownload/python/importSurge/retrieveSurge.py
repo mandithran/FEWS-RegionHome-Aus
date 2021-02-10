@@ -1,5 +1,3 @@
-import numpy as np
-
 def round_hours(dt, resolutionInHours):
     """round_hours(datetime, resolutionInHours) => datetime rounded to lower interval
     Works for hour resolution up to a day (e.g. cannot round to nearest week).
