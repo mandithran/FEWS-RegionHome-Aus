@@ -30,12 +30,10 @@
 					<executable>%ROOT_DIR%/SurgeDownload/python/bin/venv/python.exe</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/helloWorld.py</argument>
-					<argument>testFEWS</argument>
-					<!--argument>https://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/</argument>
+					<argument>%WORK_DIR%/python/retrieve-surge.py</argument>
+					<argument>http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/</argument>
 					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
 					<argument>%TIME0%</argument>
-					<argument>AusSurge</argument-->
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

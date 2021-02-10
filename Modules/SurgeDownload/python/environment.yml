@@ -6,6 +6,6 @@ channels:
 dependencies:
   - python
   - numpy=1.17.4
-  - beautifulsoup4
-#  - pip:
-#      - pytest-mpl==0.10.*
+  - pip
+  - pip:
+      - wget
