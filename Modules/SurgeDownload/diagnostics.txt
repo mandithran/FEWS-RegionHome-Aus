@@ -1,1 +1,4 @@
-testFEWS
+Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload 
+Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/ 
+Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ 
+Datetime string: 20201224_0100 
