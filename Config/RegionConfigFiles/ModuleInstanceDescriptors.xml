@@ -146,6 +146,9 @@
 	<moduleInstanceDescriptor id="ImportGLOBSNOW">
 		<description>Import for GlobSnow grids from Finnish Meteorological Institute</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportAusSurge">
+		<description>Import for storm surge grids from Australian Bureau of Meteorology (BOM)</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportGPM">
 		<description>Import GPM from server</description>
 	</moduleInstanceDescriptor>
