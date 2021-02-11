@@ -5,6 +5,8 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": "C:\\Users\\z3531278\\Anaconda3\\envs\\sci\\python.exe"
+		"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+		"terminal.integrated.shellArgs.windows":["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat C:\\Users\\z3531278\\Anaconda3 & conda activate C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload_dev\\python\\bin\\venv"],
+		"python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload_dev\\python\\bin\\venv\\python.exe",
 	}
 }
