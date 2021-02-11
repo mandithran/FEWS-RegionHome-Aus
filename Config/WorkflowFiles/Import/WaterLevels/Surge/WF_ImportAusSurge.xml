@@ -9,7 +9,7 @@
 	<!--activity>
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>ImportAusSurge</moduleInstanceId>
-        <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName>
-		<loopLocationSetId>AstroTideLocSet</loopLocationSetId>
-	</activity-->
+        <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName-->
+		<!--loopLocationSetId>AstroTideLocSet</loopLocationSetId-->
+	<!--/activity-->
 </workflow>

@@ -26,9 +26,7 @@ def main(args=None):
                                    int(sysTime[6:8]),
                                    hour=int(sysTime[9:11]))
 
-    print("Current system time: %s " % systemTime)
     roundedTime = retrieveSurge.round_hours(systemTime, 6)
-    print("Rounding system time down to: % s" % roundedTime)
 
     #============== Parse BOM file name  ==============#
     bomDT = str(str(roundedTime.year)+
@@ -37,10 +35,6 @@ def main(args=None):
             str(roundedTime.hour).zfill(2))
     fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
 
-    #============== Fetch BOM file from server  ==============#
-    url = serverLoc + fname
-    print("url % s" % url)
-    bomFile = wget.download(url, out=destDir)
 
     #============== Generate diagnostics file ==============#
     diagFile = "diagnostics.txt"
@@ -49,15 +43,22 @@ def main(args=None):
     f.write("Current directory: % s \n" % currDir)
     # Print arguments from FEWS to diagnostics file
     f.write("Server location: % s \n" % serverLoc)
+    f.write("Current system time: %s \n" % systemTime)
+    f.write("Rounding system time down to: % s \n" % roundedTime)
     f.write("Destination directory: % s \n" % destDir)
-    f.write("Datetime string: % s \n" %sysTime)
+    f.write("Downloading file: % s \n" %fname)
     f.close()
+
+    #============== Fetch BOM file from server  ==============#
+    url = serverLoc + fname
+    print("url % s" % url)
+    bomFile = wget.download(url, out=destDir)
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":
     try:
         main()
     except:
-        with open("exceptions.log", "a") as logfile:
+        with open("diagnostics.txt", "a") as logfile:
             traceback.print_exc(file=logfile)
         raise
