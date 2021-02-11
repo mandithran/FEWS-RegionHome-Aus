@@ -1,4 +1,6 @@
 Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python 
 Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/ 
-Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ 
-Datetime string: 20201224_0100 
+Current system time: 2020-12-24 05:00:00 
+Rounding system time down to: 2020-12-24 00:00:00 
+Destination directory: . 
+Downloading file: IDZ00154_StormSurge_national_2020122400.nc 
