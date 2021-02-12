@@ -71,6 +71,8 @@ individual workflow, which is stored in WorkflowFiles.-->
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_ImportAstroTideHc" name="Import Hindcast Astronomical Tide Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
+	<workflowDescriptor id="WF_ImportAusSurge" name="Import Forecast Storm Surge Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
 	<workflowDescriptor id="WF_XBeach_Delilah_test" name="Run XBeach Delilah Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_XBeach_Narra_test" name="Run XBeach Narrabeen Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
@@ -114,6 +116,9 @@ individual workflow, which is stored in WorkflowFiles.-->
 		</node>
 		<node name="Import Astronomical Tide Predictions">
 			<workflowId>WF_ImportAstroTideHc</workflowId>
+		</node>
+		<node name="Import Storm Surge Predictions">
+			<workflowId>WF_ImportAusSurge</workflowId>
 		</node>
 		<node name="Run Model - $MODELNAME3$">
 			<workflowId>WF_XBeach_Delilah_test</workflowId>

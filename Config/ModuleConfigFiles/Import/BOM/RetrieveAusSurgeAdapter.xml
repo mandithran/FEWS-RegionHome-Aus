@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules</rootDir>
+		<workDir>%ROOT_DIR%/SurgeDownload</workDir>
+		<exportDir>%ROOT_DIR%/SurgeDownload</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/SurgeDownload</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%/SurgeDownload</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/SurgeDownload/diag.xml</diagnosticFile>
+		<time0Format>yyyyMMdd_HHmm</time0Format>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/SurgeDownload/*.*</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportDataSetActivity>
+				<moduleInstanceId>SurgeDownload</moduleInstanceId>
+			</exportDataSetActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run python script to download storm surge</description>
+				<command>
+					<executable>%ROOT_DIR%/SurgeDownload/python/bin/venv/python.exe</executable>
+				</command>
+				<arguments>
+					<argument>%WORK_DIR%/python/retrieve-surge.py</argument>
+					<argument>http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/</argument>
+					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
+					<argument>%TIME0%</argument>
+				</arguments>
+				<timeOut>7200000</timeOut>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>
