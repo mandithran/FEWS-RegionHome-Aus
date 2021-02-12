@@ -3,6 +3,7 @@
 	<clientType>Stand alone</clientType>
 	<jvmOption>-DautoRollingBarrel=false</jvmOption>
 	<autoExportModuleDataSet name="SnowDownload" exportDir="Modules"/>
+	<autoExportModuleDataSet name="SurgeDownload" exportDir="Modules"/>
 	<autoExportModuleDataSet name="jcef" exportDir="Modules"/>
 	<autoExportModuleDataSet name="wflowBinaries" exportDir="Modules"/>
 	<autoExportModuleDataSet name="RavenBinaries" exportDir="Modules"/>

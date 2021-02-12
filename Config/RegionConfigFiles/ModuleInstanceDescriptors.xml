@@ -31,6 +31,9 @@
 	<moduleInstanceDescriptor id="SnowDownload">
 		<description>Snow Download module - for purpose of maintaining single moduleDataSet file</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="SurgeDownload">
+		<description>Storm surge Download module</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RavenParameters">
 		<description>Module Instance for Transfer of Raven Boolean Parameters from FEWS</description>
 	</moduleInstanceDescriptor>
@@ -43,6 +46,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveGLOBSNOW">
 		<description>Download GlobSnow netcdf files</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="RetrieveAusSurge">
+		<description>Download Australia storm surge forecast output</description>
 	</moduleInstanceDescriptor>
 	<!--Imports Gridded Data - GeoMet-->
 	<moduleInstanceDescriptor id="ImportRDPA">
@@ -139,6 +145,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportGLOBSNOW">
 		<description>Import for GlobSnow grids from Finnish Meteorological Institute</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportAusSurge">
+		<description>Import for storm surge grids from Australian Bureau of Meteorology (BOM)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportGPM">
 		<description>Import GPM from server</description>
