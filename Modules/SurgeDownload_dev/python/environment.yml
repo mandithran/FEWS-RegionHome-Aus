@@ -1,0 +1,11 @@
+  
+name: fews
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pip
+  - netcdf4
+  - pip:
+      - wget
