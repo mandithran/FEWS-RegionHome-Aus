@@ -221,6 +221,9 @@
 	<moduleInstanceDescriptor id="ImportAstroTide_hc">
 		<description>Import tidal data from local folder</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportAusSurgeInst">
+		<description>Import storm surge data from local folder</description>
+	</moduleInstanceDescriptor>
 	<!-- Dataset. Name of this descriptor must match .zip file name stored in
 	the directory ModuleDataSetFiles -->
 	<moduleInstanceDescriptor id="DelilahData">

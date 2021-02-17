@@ -540,5 +540,14 @@ http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 		<parameter id="zs0_mean.simulated" name="Water level due to tide alone, above sea level">
 			<shortName>zs0_mean.simulated</shortName>
 		</parameter>
+	</parameterGroup>
+	<parameterGroup id="Water Levels">
+		<parameterType>instantaneous</parameterType>
+		<unit>m</unit>
+		<valueResolution>0.001</valueResolution>
+		<usesDatum>true</usesDatum>
+		<parameter id="Asurg.pred" name="Predicted surge above sea level">
+			<shortName>Asurg.pred</shortName>
+		</parameter>
 	</parameterGroup>  
 </parameterGroups>
