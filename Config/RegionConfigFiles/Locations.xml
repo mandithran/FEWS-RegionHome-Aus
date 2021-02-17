@@ -12,6 +12,11 @@
 		<x>111.975</x>
 		<y>-44.525</y>
 	</location>
+	<location id="WA" name="Western Australia">
+		<shortName>NSW</shortName>
+		<x>115.72912</x>
+		<y>-32.508728</y>
+	</location>
 	<location id="QLD;NSW" name="New South Wales">
 		<shortName>QLD-NSW</shortName>
 		<x>111.975</x>
