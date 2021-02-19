@@ -23,6 +23,7 @@
 					<argument>%WORK_DIR%/python/process-surge.py</argument>
 					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
 					<argument>$LOOP_LOCATION_ID$</argument>
+					<argument>%WORK_DIR%</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

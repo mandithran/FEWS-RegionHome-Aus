@@ -1,0 +1,6 @@
+name 'shutil' is not definedTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\process-surge.py", line 56, in <module>
+    main()
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\process-surge.py", line 38, in main
+    shutil.copy(diagBlankFile,diagFile)
+NameError: name 'shutil' is not defined
