@@ -5,13 +5,13 @@
     <general>
       <importType>generalCSV</importType>
       <folder>$IMPORT_FOLDER$/AusSurge</folder>
-      <fileNamePatternFilter>*.csv</fileNamePatternFilter>
+      <fileNamePatternFilter>nss_$LOOP_LOCATION_ID$_*.csv</fileNamePatternFilter>
       <failedFolder>$IMPORT_FAILED_FOLDER$/AusSurge</failedFolder>
       <!--File to be imported can't be open in another application. -->
 	  <!--It won't be moved to back-up folder or you will recieve a permissions error.-->
       <backupFolder>$IMPORT_BACKUP_FOLDER$/AusSurge</backupFolder>
       <table>
-			<dateTimeColumn name="time" pattern="yyyy-MM-dd HH:mm:ss"/>
+			<dateTimeColumn name="Datetime" pattern="yyyy-MM-dd HH:mm:ss"/>
 			<valueColumn name="surge (m)" unit="m" parameterId="Asurg.pred"/>
 	  </table>
       <idMapId>IdImportAstroTides</idMapId>

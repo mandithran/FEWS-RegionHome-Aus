@@ -50,6 +50,9 @@
 	<moduleInstanceDescriptor id="RetrieveAusSurge">
 		<description>Download Australia storm surge forecast output</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessAusSurge">
+		<description>Process Australia storm surge forecast output</description>
+	</moduleInstanceDescriptor>
 	<!--Imports Gridded Data - GeoMet-->
 	<moduleInstanceDescriptor id="ImportRDPA">
 		<description>Import for ECCC Precipitation Re-Analysis</description>

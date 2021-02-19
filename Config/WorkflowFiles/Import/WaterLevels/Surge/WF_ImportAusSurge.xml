@@ -7,6 +7,12 @@
 	</activity>
 	<activity>
 		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ProcessAusSurge</moduleInstanceId>
+        <moduleConfigFileName>ProcessAusSurgeAdapter</moduleConfigFileName>
+		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
 		<moduleInstanceId>ImportAusSurgeInst</moduleInstanceId>
         <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName>
 		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
