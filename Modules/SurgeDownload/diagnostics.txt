@@ -1,4 +1,0 @@
-Current Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload 
-Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ 
-Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021021800.nc 
-Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021021800.csv 
