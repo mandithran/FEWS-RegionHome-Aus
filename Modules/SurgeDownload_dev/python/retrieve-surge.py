@@ -21,12 +21,10 @@ def main(args=None):
     # First argument read by this python script is the second argument in the config file
     # First argument: server location
     serverLoc = str(args[0])
-    # Second argument is the import destination directory (the import folder specified in the config file)
-    destDir = str(args[1])
-    # Third argument is the datetime
-    sysTime = str(args[2])
-    # Fourth argument is the current working directory
-    workDir = str(args[3])
+    # Second argument is the datetime
+    sysTime = str(args[1])
+    # Third argument is the current working directory
+    workDir = str(args[2])
 
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
@@ -60,7 +58,7 @@ def main(args=None):
         fileObj.write(fewsUtils.write2DiagFile(3,"Server location: % s \n" % serverLoc))
         fileObj.write(fewsUtils.write2DiagFile(3, "Current system time: %s \n" % systemTime))
         fileObj.write(fewsUtils.write2DiagFile(3, "Rounding system time down to: % s \n" % roundedTime))
-        fileObj.write(fewsUtils.write2DiagFile(3, "Destination directory: % s \n" % destDir))
+        fileObj.write(fewsUtils.write2DiagFile(3, "Destination directory: % s \n" % workDir))
         fileObj.write(fewsUtils.write2DiagFile(3, "Downloading file: % s \n" %fname))
         fileObj.write(fewsUtils.write2DiagFile(3,"If Python error exit code 1 is triggered, see exceptions.log file in Module directory."))
         fileObj.write("</Diag>")
@@ -68,7 +66,7 @@ def main(args=None):
     #============== Fetch BOM file from server  ==============#
     url = serverLoc + fname
     print("url % s" % url)
-    bomFile = wget.download(url, out=destDir)
+    bomFile = wget.download(url, out=os.path.join(workDir,'ncFiles'))
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":
