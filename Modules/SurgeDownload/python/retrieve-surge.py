@@ -1,10 +1,14 @@
 # Main script for retrieving and importing storm surge
+# ============= System Packages ============= #
 import sys
 import os
-import wget
 from importSurge import retrieveSurge
+from importSurge import processSurge
 from datetime import datetime
 import traceback
+
+# ============ Modules ============== #
+import wget
 
 def main(args=None):
     """The main routine."""
@@ -35,6 +39,10 @@ def main(args=None):
             str(roundedTime.hour).zfill(2))
     fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
 
+    #============== Fetch BOM file from server  ==============#
+    url = serverLoc + fname
+    print("url % s" % url)
+    bomFile = wget.download(url, out=destDir)
 
     #============== Generate diagnostics file ==============#
     diagFile = "diagnostics.txt"
@@ -48,11 +56,6 @@ def main(args=None):
     f.write("Destination directory: % s \n" % destDir)
     f.write("Downloading file: % s \n" %fname)
     f.close()
-
-    #============== Fetch BOM file from server  ==============#
-    url = serverLoc + fname
-    print("url % s" % url)
-    bomFile = wget.download(url, out=destDir)
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":

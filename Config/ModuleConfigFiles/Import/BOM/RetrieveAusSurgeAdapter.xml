@@ -27,13 +27,14 @@
 			<executeActivity>
 				<description>Run python script to download storm surge</description>
 				<command>
-					<executable>%ROOT_DIR%/SurgeDownload/python/bin/venv/python.exe</executable>
+					<executable>%ROOT_DIR%/SurgeDownload/python/bin/fews-venv/Scripts/python.exe</executable>
 				</command>
 				<arguments>
 					<argument>%WORK_DIR%/python/retrieve-surge.py</argument>
 					<argument>http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/</argument>
 					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
 					<argument>%TIME0%</argument>
+					<!--argument>$LOOP_LOCATION_ID$</argument-->
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>
