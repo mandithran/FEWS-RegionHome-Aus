@@ -2,7 +2,6 @@
 import sys
 import os
 import glob
-import wget
 from importSurge import processSurge
 from importSurge import fewsUtils
 from datetime import datetime
@@ -44,10 +43,11 @@ def main(args=None):
 
     #============== Grab most recently downloaded nc file ==============#
     # Uses a function from processSurge.py
-    newestNC = processSurge.getMostRecentFile(importDir=importDir)
+    downloadDir = os.path.join(workDir,"ncFiles")
+    newestNC = processSurge.getMostRecentFile(downloadDir=downloadDir)
 
     #============== Process nc file as time series .csv for site ==============#
-    csvFile = processSurge.processSurge_nc(importDir=importDir, fname=newestNC, site=siteName)
+    csvFile = processSurge.processSurge_nc(importDir=importDir, downloadDir=downloadDir, fname=newestNC, site=siteName)
 
     #============== Write more info to diagnostics file ==============#
     # Remove </Diag> line since you are appending more lines
@@ -56,7 +56,6 @@ def main(args=None):
         fileObj.write(fewsUtils.write2DiagFile(3, "Target nc file: % s" % os.path.join(importDir,newestNC)))
         fileObj.write(fewsUtils.write2DiagFile(3, "Processed timeseries csv file: %s" % csvFile))
         fileObj.write("</Diag>")
-        
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":
