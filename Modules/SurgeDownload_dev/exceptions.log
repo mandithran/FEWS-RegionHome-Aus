@@ -1,6 +1,6 @@
-name 'shutil' is not definedTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\process-surge.py", line 56, in <module>
+name 'worDir' is not definedTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\retrieve-surge.py", line 74, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\process-surge.py", line 38, in main
-    shutil.copy(diagBlankFile,diagFile)
-NameError: name 'shutil' is not defined
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\retrieve-surge.py", line 61, in main
+    fileObj.write(fewsUtils.write2DiagFile(3, "Destination directory: % s \n" % worDir))
+NameError: name 'worDir' is not defined

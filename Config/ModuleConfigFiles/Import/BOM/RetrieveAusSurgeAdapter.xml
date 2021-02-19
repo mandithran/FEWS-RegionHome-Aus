@@ -32,7 +32,6 @@
 				<arguments>
 					<argument>%WORK_DIR%/python/retrieve-surge.py</argument>
 					<argument>http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/</argument>
-					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
 					<argument>%TIME0%</argument>
 					<argument>%WORK_DIR%</argument>
 				</arguments>

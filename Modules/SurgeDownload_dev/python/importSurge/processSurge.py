@@ -19,9 +19,9 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
-def getMostRecentFile(importDir=None):
+def getMostRecentFile(downloadDir=None):
         # glob.glob returns all paths matching the pattern.
-        nc_files = list(glob.glob(os.path.join(importDir, '*.nc*')))
+        nc_files = list(glob.glob(os.path.join(downloadDir, '*.nc*')))
         mod_dates = [os.path.getmtime(f) for f in nc_files]
         # sort by mod_dates.
         file_date = zip(nc_files, mod_dates)
@@ -30,11 +30,11 @@ def getMostRecentFile(importDir=None):
         newest_file_name = ntpath.basename(newest_file_path)
         return newest_file_name
 
-def processSurge_nc(importDir=None, fname=None, 
+def processSurge_nc(importDir=None, downloadDir=None, fname=None, 
                     site=None):
                     
         # =================== Paths =================== #
-        ifile = os.path.join(importDir,fname)
+        ifile = os.path.join(downloadDir,fname)
 
         # Lat/lon - for selecting the best point for the timeseries
         # These points need to be determined ahead of time by looking at nc file
