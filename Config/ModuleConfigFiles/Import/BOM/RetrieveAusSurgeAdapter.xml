@@ -34,7 +34,7 @@
 					<argument>http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/</argument>
 					<argument>$IMPORT_FOLDER$/AusSurge/</argument>
 					<argument>%TIME0%</argument>
-					<!--argument>$LOOP_LOCATION_ID$</argument-->
+					<argument>%WORK_DIR%</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>
