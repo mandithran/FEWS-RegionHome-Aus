@@ -31,7 +31,7 @@ def getMostRecentFile(downloadDir=None):
         return newest_file_name
 
 def processSurge_nc(importDir=None, downloadDir=None, fname=None, 
-                    site=None):
+                    site=None, siteLat=None, siteLon=None):
                     
         # =================== Paths =================== #
         ifile = os.path.join(downloadDir,fname)
@@ -56,8 +56,8 @@ def processSurge_nc(importDir=None, downloadDir=None, fname=None,
         # The following will return the index that matches the lat/lon point of interest
         # This index allows for selection of subsets of the xarray
         df = pd.DataFrame({"lon":ds.coords['lon'].values,"lat":ds.coords['lat'].values})
-        ind = df[(df['lon']==d[site]["lon"]) & 
-                (df['lat']==d[site]["lat"])].index
+        ind = df[(df['lon']==siteLon) & 
+                (df['lat']==siteLat)].index
 
         # Select surge timeseries for the point of interest
         surge = ds.surge[ind].values

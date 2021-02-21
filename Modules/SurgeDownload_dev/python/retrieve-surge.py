@@ -65,7 +65,9 @@ def main(args=None):
 
     #============== Fetch BOM file from server  ==============#
     url = serverLoc + fname
-    print("url % s" % url)
+    downloadDir = os.path.join(workDir,"ncFiles")
+    if not os.path.exists(downloadDir):
+        os.makedirs(downloadDir)
     bomFile = wget.download(url, out=os.path.join(workDir,'ncFiles'))
 
 ## If Python throws an error, send to exceptions.log file

@@ -2,6 +2,7 @@
 import sys
 import os
 import glob
+import pandas as pd
 from importSurge import processSurge
 from importSurge import fewsUtils
 from datetime import datetime
@@ -21,11 +22,14 @@ def main(args=None):
     siteName = str(args[1])
     # Third argument is working directory
     workDir = str(args[2])
+    # Fourth argument is Location Set file name
+    locSetFilename = str(args[3])
+    # Fith argument is Region Home Path
+    regionHomeDir = str(args[4])
 
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
-
 
     #============== Write out initial commands to diag file ==============#
     # Copy and rename diagOpen.txt
@@ -41,13 +45,25 @@ def main(args=None):
         fileObj.write(fewsUtils.write2DiagFile(3,"If Python error exit code 1 is triggered, see exceptions.log file in Module directory."))
         fileObj.write("</Diag>")
 
+    #============== Load Location Set ==============#
+    locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
+    df = pd.read_csv(locSetPath)
+
     #============== Grab most recently downloaded nc file ==============#
     # Uses a function from processSurge.py
     downloadDir = os.path.join(workDir,"ncFiles")
     newestNC = processSurge.getMostRecentFile(downloadDir=downloadDir)
 
+    #============== Grab Site Lat/Lon ==============#
+    siteLat = df.loc[df['Name']==siteName,"Lat_NSS"].iloc[0]
+    siteLon = df.loc[df['Name']==siteName,"Lon_NSS"].iloc[0]
+    
     #============== Process nc file as time series .csv for site ==============#
-    csvFile = processSurge.processSurge_nc(importDir=importDir, downloadDir=downloadDir, fname=newestNC, site=siteName)
+    csvFile = processSurge.processSurge_nc(importDir=importDir, 
+                                          downloadDir=downloadDir, 
+                                          fname=newestNC, site=siteName,
+                                          siteLat=siteLat,
+                                          siteLon=siteLon)
 
     #============== Write more info to diagnostics file ==============#
     # Remove </Diag> line since you are appending more lines
