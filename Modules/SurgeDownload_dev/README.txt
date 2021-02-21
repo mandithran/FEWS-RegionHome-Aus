@@ -1,0 +1,32 @@
+#================ RUNNING THE MODULE ================#
+
+This is an external FEWS module that fetches storm surge grids from the BOM server. It can be run directly from FEWS in manual forecast mode.
+
+If you try to run the module and it throws an error about the file not being found, your system time in FEWS is probably too recent. There is a lag between the time indicated for the forecasts and the time the file is uploaded to the server.
+
+To fix this, set back the sytem time to 6 hours earlier from "Now" in FEWS.
+
+All python errors from this module will be sent to .\SurgeDownload\diagnostics.txt
+
+
+#================ DEBUGGING AND EDITING THE MODULE ================#
+
+Debugging and editing this module requires setting up virtualenv.
+
+Once virtualenv is installed:
+
+1. Open terminal or command line and navigate to the following directory within your "Region Home" (where the FEWS program is located): $REGION_HOME$/Modules/SurgeDownload/python
+
+2. Re-activate the existing virtual environment by entering the following line into a terminal or command prompt: 
+
+.\bin\fews-venv\Scripts\Activate
+
+This will create a virtual environment in the bin/fews-venv directory.
+
+3. Debug, set-up and install any packages as needed.
+
+4. Once done, save the dependencies into a requirements.txt file:
+
+pip freeze > requirements.txt
+
+5. When you've made the necessary modifications, zip up the Module directory and place it in the ModuleDataSetFiles directory. 

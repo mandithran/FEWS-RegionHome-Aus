@@ -183,6 +183,23 @@
 			</attribute>
 		</csvFile>
 	</locationSet>
+	<!-- These surge locations are based on the BOM NSS output.
+	The Lat_NSS and Lon_NSS fields in the .csv file must
+	be pre-determined by examining this output. -->
+	<locationSet id="Aus_Surge_Locations">
+		<sortingLocationAttributeId>ID</sortingLocationAttributeId>
+        <csvFile>
+            <file>surgeLocations.csv</file>
+            <geoDatum>GDA94</geoDatum>
+            <id>%ID%</id>
+			<name>%Name%</name>
+			<x>%Lon_NSS%</x>
+			<y>%Lat_NSS%</y>
+            <relation id="region">
+                  <relatedLocationId>%REGION%</relatedLocationId>
+            </relation>
+        </csvFile>
+    </locationSet>
 	<!--- ECCC Meteo Stations - Available at https://dd.weather.gc.ca/hydrometric/doc/ -->
 	<locationSet id="ECCCStations">
 		<csvFile>

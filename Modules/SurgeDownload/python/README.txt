@@ -1,9 +1,13 @@
-To create virtual environment:
+To re-activate virtual environment for debugging purposes:
 
-Go to python directory, and enter:
+Navigate to python directory:
 
-conda env create -f environment.yml --prefix .\bin\venv
+$RegionHome$\Modules\SurgeDownload\python
 
 To activate:
 
-conda activate .\bin\venv
+.bin\fews-venv\Scripts\activate.bat
+
+To setup and install packages:
+
+pip install -r requirements.txt
