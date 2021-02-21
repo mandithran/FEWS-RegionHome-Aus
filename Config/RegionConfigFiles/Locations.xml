@@ -12,6 +12,11 @@
 		<x>111.975</x>
 		<y>-44.525</y>
 	</location>
+	<location id="WA" name="Western Australia">
+		<shortName>NSW</shortName>
+		<x>115.72912</x>
+		<y>-32.508728</y>
+	</location>
 	<location id="QLD;NSW" name="New South Wales">
 		<shortName>QLD-NSW</shortName>
 		<x>111.975</x>
@@ -21,11 +26,6 @@
 		<shortName>delilah</shortName>
 		<x>-75.75</x>
 		<y>36.16</y>
-	</location>
-	<location id="Narrabeen" name="Narrabeen">
-		<shortName>narrabeen</shortName>
-		<x>151.301322</x>
-		<y>-33.715201</y>
 	</location>
 	<!--Grid definitions - Complete Grid -->
 	<location id="RDPS" name="Regional Deterministic Prediction System (10 km)">

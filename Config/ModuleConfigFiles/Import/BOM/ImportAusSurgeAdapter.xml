@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Computer Services (WL | Delft Hydraulics) -->
 <timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
-	<import>
-		<general>
-			<importType>NETCDF-CF_GRID</importType>
-			<folder>$IMPORT_FOLDER$/AusSurge</folder>
-			<fileNameDateTimeFilter subFolderLevel="0">
-				<timeStep unit="day" multiplier="1"/>
-				<dateTimePattern>yyyyMMddHH</dateTimePattern>
-				<preFixLength>29</preFixLength>
-				<postFixLength>3</postFixLength>
-			</fileNameDateTimeFilter>
-			<fileNamePatternFilter>IDZ00154_StormSurge_national_*.nc</fileNamePatternFilter>
-			<fileNameObservationDateTimePattern>'IDZ00154_StormSurge_national_'yyyyMMddHH'.nc'</fileNameObservationDateTimePattern>
-			<failedFolder>$IMPORT_FAILED_FOLDER$/AusSurge</failedFolder>
-			<backupFolder>$IMPORT_BACKUP_FOLDER$/AusSurge</backupFolder>
-			<relativeViewPeriod unit="day" start="-3" end="0" startOverrulable="false" endOverrulable="false"/>
-			<idMapId>IdImportGlobSnow</idMapId>
-			<!--unitConversionsId>ImportUnitConversions</unitConversionsId>
-			<missingValue>-1.0</missingValue>
-			<importTimeZone>
-				<timeZoneName>GMT+0</timeZoneName>
-			</importTimeZone-->
-			<!--<gridStartPoint>SW</gridStartPoint>-->
-			<!--dataFeedId>GlobSnow</dataFeedId>
-		</general>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportGLOBSNOW</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>SWE.sim</parameterId>
-			<locationId>GLOBSNOW</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour" multiplier="6"/>
-			<readWriteMode>add originals</readWriteMode>
-			<synchLevel>6</synchLevel>
-			<expiryTime unit="day" multiplier="15"/>
-		</timeSeriesSet>
-		<externUnit parameterId="SWE.sim" unit="mm"/>
-	</import-->
+  <import>
+    <general>
+      <importType>generalCSV</importType>
+      <folder>$IMPORT_FOLDER$/AusSurge</folder>
+      <fileNamePatternFilter>nss_$LOOP_LOCATION_ID$_*.csv</fileNamePatternFilter>
+      <failedFolder>$IMPORT_FAILED_FOLDER$/AusSurge</failedFolder>
+      <!--File to be imported can't be open in another application. -->
+	  <!--It won't be moved to back-up folder or you will recieve a permissions error.-->
+      <backupFolder>$IMPORT_BACKUP_FOLDER$/AusSurge</backupFolder>
+      <table>
+			<dateTimeColumn name="Datetime" pattern="yyyy-MM-dd HH:mm:ss"/>
+			<valueColumn name="surge (m)" unit="m" parameterId="Asurg.pred"/>
+	  </table>
+      <idMapId>IdImportAstroTides</idMapId>
+      <unitConversionsId>ImportUnitConversions</unitConversionsId>
+      <importTimeZone>
+				<timeZoneName>GMT</timeZoneName>
+	  </importTimeZone>
+      <skipFirstLinesCount>0</skipFirstLinesCount>
+    </general>
+    <tolerance timeUnit="minute" unitCount="1" parameterId="ATid.pred"/>
+    <timeSeriesSet>
+		  <moduleInstanceId>ImportAusSurgeInst</moduleInstanceId>
+		  <valueType>scalar</valueType>
+		  <parameterId>Asurg.pred</parameterId>
+		  <locationId>$LOOP_LOCATION_ID$</locationId>
+		  <timeSeriesType>external forecasting</timeSeriesType>
+		  <timeStep unit="minute" multiplier="10"/>
+		  <readWriteMode>add originals</readWriteMode>
+    </timeSeriesSet>
+  </import>
 </timeSeriesImportRun>

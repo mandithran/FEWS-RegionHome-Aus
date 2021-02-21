@@ -4,12 +4,17 @@
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>RetrieveAusSurge</moduleInstanceId>
         <moduleConfigFileName>RetrieveAusSurgeAdapter</moduleConfigFileName>
-		<!--loopLocationSetId>AstroTideLocSet</loopLocationSetId-->
 	</activity>
-	<!--activity>
+	<activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>ImportAusSurge</moduleInstanceId>
-        <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName-->
-		<!--loopLocationSetId>AstroTideLocSet</loopLocationSetId-->
-	<!--/activity-->
+		<moduleInstanceId>ProcessAusSurge</moduleInstanceId>
+        <moduleConfigFileName>ProcessAusSurgeAdapter</moduleConfigFileName>
+		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ImportAusSurgeInst</moduleInstanceId>
+        <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName>
+		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
+	</activity>
 </workflow>

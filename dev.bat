@@ -19,6 +19,10 @@ rem #============ Copy and rename dev directory ============#
 xcopy /s /i %DEV_PATH% %TAR_PATH%
 
 rem #============ Remove any unwanted files ============#
+set "DIAG_FILE=%TAR_PATH%\diag.xml"
+IF EXIST %DIAG_FILE% DEL /F %DIAG_FILE%
+set "LOG_FILE=%TAR_PATH%\exceptions.log"
+IF EXIST %LOG_FILE% DEL /F %LOG_FILE%
 
 rem #============ Zip File ============#
 7z a %ZIP_PATH% %TAR_PATH%
