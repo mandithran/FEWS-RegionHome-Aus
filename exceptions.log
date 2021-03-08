@@ -1,6 +1,6 @@
-No active exception to reraiseTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\process-surge.py", line 79, in <module>
+name 'gpd' is not definedTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload/python/process-waves.py", line 224, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\process-surge.py", line 59, in main
-    raise
-RuntimeError: No active exception to reraise
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload/python/process-waves.py", line 58, in main
+    gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.lon, df.lat))
+NameError: name 'gpd' is not defined
