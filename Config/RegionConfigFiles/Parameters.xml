@@ -507,6 +507,22 @@ http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 			<shortName>dir</shortName>
 		</parameter>
 	</parameterGroup>
+		<parameterGroup id="Wave Period">
+		<parameterType>instantaneous</parameterType>
+		<unit>s</unit>
+		<valueResolution>0.001</valueResolution>
+		<parameter id="Tp.pred" name="Wave period predicted by Auswave forcing">
+			<shortName>Tp.pred</shortName>
+		</parameter>
+	</parameterGroup>
+	<parameterGroup id="Wave Direction">
+		<parameterType>instantaneous</parameterType>
+		<unit>degrees</unit>
+		<valueResolution>0.001</valueResolution>
+		<parameter id="dir.pred" name="Wave direction predicted by Auswave forcing">
+			<shortName>dir.pred</shortName>
+		</parameter>
+	</parameterGroup>
 	<parameterGroup id="Wave Energy Density">
 		<parameterType>instantaneous</parameterType>
 		<unit>m</unit>
@@ -519,6 +535,9 @@ http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 		<parameterType>instantaneous</parameterType>
 		<unit>m</unit>
 		<valueResolution>0.001</valueResolution>
+		<parameter id="Hsig.pred" name="Significant wave height predicted by Auswave forcing">
+			<shortName>Hsig.pred</shortName>
+		</parameter>
 		<parameter id="H_mean.simulated" name="Mean wave height based on instantaneous wave energy">
 			<shortName>H_mean.simulated</shortName>
 		</parameter>
