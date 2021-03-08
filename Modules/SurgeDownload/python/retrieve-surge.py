@@ -27,6 +27,7 @@ def main(args=None):
     workDir = str(args[2])
 
     #============== Paths ==============#
+    # Might be worthwhile doing an "initialize diagnostics file" and "continue diagnostic file" function
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
 

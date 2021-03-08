@@ -27,7 +27,7 @@
 			<executeActivity>
 				<description>Run python script to download storm surge</description>
 				<command>
-					<executable>%ROOT_DIR%/SurgeDownload/python/bin/fews-venv/Scripts/python.exe</executable>
+					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
 					<argument>%WORK_DIR%/python/retrieve-surge.py</argument>
