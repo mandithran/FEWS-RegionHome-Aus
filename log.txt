@@ -1,106 +1,13 @@
-2021-03-08 12:21:11.066 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-03-08 12:21:28.613 INFO - main.Application.launchNewInstance - Reboot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-03-08 12:21:30.016 INFO - main.ObjectArrayUtils.forEach - Restarted
-2021-03-08 12:21:30.556 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
-2021-03-08 12:21:31.981 INFO - main.ObjectArrayUtils.forEach - Patch loaded
-2021-03-08 12:21:39.199 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Users
-2021-03-08 12:21:39.268 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created AccessKeyHashes
-2021-03-08 12:21:39.328 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created UserToGroupsMappings
-2021-03-08 12:21:39.384 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created UserSettings
-2021-03-08 12:21:39.443 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created IndexFilesSnapshots
-2021-03-08 12:21:39.512 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created BaseBuildFiles
-2021-03-08 12:21:39.583 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created BaseBuildFileSets
-2021-03-08 12:21:39.647 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TableLocalModificationTimes
-2021-03-08 12:21:39.688 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LastIssuedTimestamp
-2021-03-08 12:21:39.725 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created DatabaseSchemaInfo
-2021-03-08 12:21:39.762 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LocalMcId
-2021-03-08 12:21:39.802 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created McFailoverPriorities
-2021-03-08 12:21:39.859 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LocalSynchTimes
-2021-03-08 12:21:39.906 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created MCConfigFiles
-2021-03-08 12:21:39.945 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created CMConfigFiles
-2021-03-08 12:21:39.994 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created SystemActivities
-2021-03-08 12:21:40.041 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ComponentLogFileSnapshots
-2021-03-08 12:21:40.096 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created MasterControllers
-2021-03-08 12:21:40.136 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FSSGroups
-2021-03-08 12:21:40.210 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ForecastingShells
-2021-03-08 12:21:40.265 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FewsWebServices
-2021-03-08 12:21:40.313 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FssStatus
-2021-03-08 12:21:40.351 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LiveMcAvailabilities
-2021-03-08 12:21:40.415 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FssResources
-2021-03-08 12:21:40.455 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created RollingBarrelTimes
-2021-03-08 12:21:40.504 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created DeletedRows
-2021-03-08 12:21:40.555 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ProcessedDeletedRows
-2021-03-08 12:21:40.594 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created WorkflowTargetFsss
-2021-03-08 12:21:40.685 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created HistoricalEvents
-2021-03-08 12:21:40.743 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FloodPeriods
-2021-03-08 12:21:40.799 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Samples
-2021-03-08 12:21:40.847 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ProductInfo
-2021-03-08 12:21:40.903 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created WhatIfScenarios
-2021-03-08 12:21:40.959 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Tasks
-2021-03-08 12:21:41.003 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FewsSessions
-2021-03-08 12:21:41.069 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TaskRuns
-2021-03-08 12:21:41.141 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ModuleInstanceRuns
-2021-03-08 12:21:41.197 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Modifiers
-2021-03-08 12:21:41.253 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ModuleParameterModifiers
-2021-03-08 12:21:41.305 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created AttributeModifiers
-2021-03-08 12:21:41.389 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TimeSeries
-2021-03-08 12:21:41.447 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created WarmStates
-2021-03-08 12:21:41.514 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ModuleRunTables
-2021-03-08 12:21:41.573 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Reports
-2021-03-08 12:21:41.644 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Archives
-2021-03-08 12:21:41.754 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created AiServletUsers
-2021-03-08 12:21:41.884 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
-2021-03-08 12:21:41.992 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
-2021-03-08 12:21:42.059 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ThresholdEvents
-2021-03-08 12:21:42.127 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ImportStatus
-2021-03-08 12:21:42.176 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LastDatabaseConnection
-2021-03-08 12:21:42.229 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TimeSeriesStatusSnapshots
-2021-03-08 12:21:42.273 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created WaterCoach
-2021-03-08 12:21:42.309 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created VersionManagement
-2021-03-08 12:21:42.354 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created VersionRunning
-2021-03-08 12:21:42.391 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LogEventProcessorTimes
-2021-03-08 12:21:42.427 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TaskRunDispatcherTimes
-2021-03-08 12:21:42.472 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TaskRunLogFiles
-2021-03-08 12:21:42.509 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created McSynchStatus
-2021-03-08 12:21:42.559 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ArchiveMetaData
-2021-03-08 12:21:42.608 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created TaskRunCompletions
-2021-03-08 12:21:42.667 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created LogEntries
-2021-03-08 12:21:42.733 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
-2021-03-08 12:21:42.792 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created MapLayers
-2021-03-08 12:21:42.843 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created Icons
-2021-03-08 12:21:42.888 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created RootConfigFiles
-2021-03-08 12:21:42.936 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiServiceConfigurations
-2021-03-08 12:21:42.981 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientConfigurations
-2021-03-08 12:21:43.032 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ModuleInstanceConfigs
-2021-03-08 12:21:43.082 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created SystemConfigurations
-2021-03-08 12:21:43.134 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created RegionConfigurations
-2021-03-08 12:21:43.185 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ModuleParameters
-2021-03-08 12:21:43.237 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created DisplayConfigurations
-2021-03-08 12:21:43.297 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created IdMaps
-2021-03-08 12:21:43.346 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created UnitConversions
-2021-03-08 12:21:43.394 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created FlagConversions
-2021-03-08 12:21:43.433 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created CorrelationTravelTimes
-2021-03-08 12:21:43.476 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created CorrelationEventSets
-2021-03-08 12:21:43.525 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created CoefficientSets
-2021-03-08 12:21:43.571 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created WorkflowFiles
-2021-03-08 12:21:43.737 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ModuleInstanceDatasets
-2021-03-08 12:21:43.868 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ColdStates
-2021-03-08 12:21:43.982 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ReportTemplates
-2021-03-08 12:21:44.123 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ReportImages
-2021-03-08 12:21:44.178 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ConfigRevisionSets
-2021-03-08 12:21:44.603 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
-2021-03-08 12:21:44.663 WARN - main.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
-2021-03-08 12:21:44.684 ERROR - main.FewsInstance.autoExportModuleDataSets - Exception Module dataset SnowDownload not found version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-	at nl.wldelft.fews.system.data.AutoExportedModuleDataSets.lambda$areModuleDataSetsUpToDate$3(AutoExportedModuleDataSets.java:97)
-	at nl.wldelft.util.ObjectArrayUtils.isTrueForAll(ObjectArrayUtils.java:639)
-	at nl.wldelft.fews.system.data.AutoExportedModuleDataSets.areModuleDataSetsUpToDate(AutoExportedModuleDataSets.java:94)
-	at nl.wldelft.fews.system.data.AutoExportedModuleDataSets.updateModuleDataSets(AutoExportedModuleDataSets.java:62)
-	at nl.wldelft.fews.system.FewsInstance.autoExportModuleDataSets(FewsInstance.java:630)
-	at nl.wldelft.fews.system.FewsInstance.init(FewsInstance.java:552)
-	at nl.wldelft.fews.gui.explorer.Application.main2(Application.java:254)
-	at nl.wldelft.fews.gui.explorer.Application.main(Application.java:163)
-2021-03-08 12:21:44.714 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
-2021-03-08 12:21:47.833 ERROR - Load Fews.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
+2021-03-08 12:40:49.390 INFO - main.ObjectArrayUtils.forEach - Boot from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2021-03-08 12:40:49.882 INFO - main.Application.launchNewInstance - Restart with patch version: 2019.02, build: 93845 May20, type: stable and base build C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin version: 2019.02, build: 92680 Mar25, type: stable
+2021-03-08 12:40:51.857 INFO - main.ObjectArrayUtils.forEach - Patch loaded
+2021-03-08 12:41:00.799 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created ActionConfigurations
+2021-03-08 12:41:00.849 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created EventActionMappings
+2021-03-08 12:41:00.905 INFO - main.DefaultColumnsCreationUtil.afterTableCreated - Table created PiClientDataSets
+2021-03-08 12:41:01.063 INFO - main.DataStore.getConfigDirStorage - Use configuration from C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Config
+2021-03-08 12:41:01.097 WARN - main.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-03-08 12:41:01.142 INFO - Load Fews.Application.init - Application.Info: version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+2021-03-08 12:41:04.365 ERROR - Load Fews.Grids.initGridGeometries - Config.Error: Read/Write error Invalid coordinate for wgs 1984 365.0 at row 74 in  MapLayerFiles/xbeach_test/xy.csv  for location delilah
 	RegionConfigFiles/Grids.xml
 	MapLayerFiles/xbeach_test/xy.csv version: 2019.02, build: 93845 (patched from 92680) , May 20, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
 	at nl.wldelft.fews.system.data.config.region.GridGeometryParser.validateCoordinate(GridGeometryParser.java:332)
@@ -118,23 +25,256 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
-2021-03-08 12:21:48.323 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
-2021-03-08 12:21:48.348 INFO - JavaClassArchiveBuilder.JavaClassArchiveDumper.createClassArchiveFileIfNeededAndPossible - Create new java class archive C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\temp\cache\launcher.jsa
-2021-03-08 12:21:48.360 INFO - JavaClassArchiveBuilder.JavaClassArchiveDumper.createClassArchiveFileIfNeededAndPossible - Start create java class archive file launcher
-2021-03-08 12:21:48.451 INFO - InitialRefreshDataStore.SystemActivitiesTable.continueScan - Building new system activity index files
-2021-03-08 12:21:48.468 INFO - InitialRefreshDataStore.SystemActivitiesTable.continueScan - Build new system activities index files finished
-2021-03-08 12:21:48.547 INFO - InitialRefreshDataStore.TaskRunsTable.continueScan - Building new task run index files
-2021-03-08 12:21:48.594 INFO - InitialRefreshDataStore.TaskRunsTable.continueScan - Build new task run index files finished
-2021-03-08 12:21:48.599 INFO - InitialRefreshDataStore.ModuleRunsTable.continueScan - Building new module run index files
-2021-03-08 12:21:48.616 INFO - InitialRefreshDataStore.ModuleRunsTable.continueScan - Build new module run index files finished
-2021-03-08 12:21:48.711 INFO - InitialRefreshDataStore.SamplesTable.continueScan - Building new sample index files
-2021-03-08 12:21:48.751 INFO - InitialRefreshDataStore.SamplesTable.continueScan - Build new samples index files finished
-2021-03-08 12:21:48.781 INFO - InitialRefreshDataStore.TimeSeriesTable.continueScan - Building new time series index files
-2021-03-08 12:21:48.803 INFO - InitialRefreshDataStore.TimeSeriesTable.continueScan - Build new time series index files  for 0 rows finished in 0s
-2021-03-08 12:21:48.806 INFO - InitialRefreshDataStore.WarmStatesTable.continueScan - Building new warm state index files
-2021-03-08 12:21:48.827 INFO - InitialRefreshDataStore.WarmStatesTable.continueScan - Build new warm state index files finished
-2021-03-08 12:21:48.933 INFO - zip index files.IndexFilesSnapshots.createSnapshot - Time Series Index Snapshot updated
-2021-03-08 12:21:51.244 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (41s;Unmarshall region config 3s;Unmarshall display groups 1s;Data Display 1s;cpu 14%)
-2021-03-08 12:22:11.155 INFO - AWT-EventQueue-0.FewsExplorerEnvironment.exit - FewsExplorer: exiting ... 
-2021-03-08 12:22:11.185 INFO - JavaClassArchiveBuilder.JavaClassArchiveDumper.createClassArchiveFileIfNeededAndPossible - Interrupt creating Java class archive file launcher
-2021-03-08 12:22:11.226 INFO - JavaClassArchiveBuilder.WindowsProcessUtils.terminateChildProcessTreePid - Destroy process 3312=conhost.exe
+2021-03-08 12:41:04.464 WARN - Load Fews.ExplorerRollingBarrel.<init> - ROLLING BARREL IS DISABLED WITH -DautoRollingBarrel=false VM parameter debug option
+2021-03-08 12:41:05.996 INFO - AWT-EventQueue-0.Application.run - Application.Startup.Finished: The application finished starting up. (17s;Unmarshall region config 3s;cpu 29%)
+2021-03-08 12:41:30.935 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Thu 11-02-2021 18:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-03-08 12:41:30.982 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA635_00000000'
+2021-03-08 12:41:31.024 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA635_0, T0 2021-02-11 18:00:00, default forecast length, available memory 798 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-03-08 12:41:31.025 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-03-08 12:41:31.026 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-03-08 12:41:31.101 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:41:31.170 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-03-08 12:41:31.175 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe
+2021-03-08 12:41:38.358 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA635_0 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'File not found C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe does not exist while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/python/retrieve-surge.py http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/ 20210211_1800 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload ""Run python script to download storm surge"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:68)
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:35)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:516)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:511)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.createProcess(ExecuteExecutableActivity.java:249)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.execAndWait(ExecuteExecutableActivity.java:218)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:141)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-03-08 12:41:38.359 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ProcessAusSurge ProcessAusSurgeAdapter
+2021-03-08 12:41:38.361 INFO Mandurah - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:41:38.362 INFO Mandurah - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe
+2021-03-08 12:41:45.175 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA635_0 partly failed because activity ProcessAusSurge ProcessAusSurgeAdapter failed, Plugin 'ProcessAusSurge ProcessAusSurgeAdapter' failed, message was: 'File not found C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe does not exist while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/python/process-surge.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Mandurah C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload surgeLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus ""Run python script to process storm surge"""
+	ModuleConfigFiles/Import\BOM/ProcessAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:68)
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:35)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:516)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:511)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.createProcess(ExecuteExecutableActivity.java:249)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.execAndWait(ExecuteExecutableActivity.java:218)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:141)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.lambda$createCallable$0(WorkflowPluginActivity.java:363)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.invokeAll(TaskRun.java:675)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.invokeAll(WorkflowPluginActivity.java:290)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:244)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-03-08 12:41:45.176 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportAusSurgeInst ImportAusSurgeAdapter
+2021-03-08 12:41:45.508 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportAusSurgeInst ImportAusSurgeAdapter' completed in 0s
+2021-03-08 12:41:45.508 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 14s
+2021-03-08 12:41:45.567 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA635_0 completed in 15s Forecast: False Approved: False Start time: 2021-03-08 01:41:31 End time: 2021-03-08 01:41:45 User Id: Mandi Thran
+	GeneralAdapter (without executables) 14s 97%  TimeSeriesImport 0s 2%  datastore 0s 1%  cache files 0 B   database 0s 0% (1 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 2s 14%  844 MB 409 MB/s logging 0s 0%  gc 0s 0%  cpu 139%  max mem. 229 MB  index mem. 11 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-03-08 12:41:45.567 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA635_0 (WorkflowId 'WF_ImportAusSurge') completed
+2021-03-08 12:41:45.569 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-03-08 12:44:19.934 INFO - AWT-EventQueue-0.GlobalProperties.refresh - New global properties loaded
+	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\sa_global.Properties
+2021-03-08 12:44:19.959 WARN - AWT-EventQueue-0.ConfigFileDir.putFile - Config.Warn: File extension should be zip: ModuleDataSetFiles/.gitignore
+2021-03-08 12:44:23.253 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Thu 11-02-2021 18:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-03-08 12:44:23.267 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA635_00000001'
+2021-03-08 12:44:23.279 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA635_1, T0 2021-02-11 18:00:00, default forecast length, available memory 794 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-03-08 12:44:23.279 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-03-08 12:44:23.280 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-03-08 12:44:23.280 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:44:23.336 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-03-08 12:44:23.340 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe
+2021-03-08 12:44:30.034 ERROR - LocalTaskDispatcher.Workflow.run - TaskRun.PartlyFailed: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml with task run id SA635_1 partly failed because activity RetrieveAusSurge RetrieveAusSurgeAdapter failed, Plugin 'RetrieveAusSurge RetrieveAusSurgeAdapter' failed, message was: 'File not found C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe does not exist while running ExecuteExecutableActivity: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload\python\bin\fews-venv\Scripts\python.exe "arguments: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload/python/retrieve-surge.py http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/ 20210211_1800 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload ""Run python script to download storm surge"""
+	ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+	WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable, jre: 11.0.6, os:Windows 10, user:Mandi Thran, mx: 1073m, db: Derby, region: 01_FEWS-RegionHome-Aus
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:68)
+	at nl.wldelft.util.process.NativeProcess.<init>(NativeProcess.java:35)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:516)
+	at nl.wldelft.util.SystemUtils.exec(SystemUtils.java:511)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.createProcess(ExecuteExecutableActivity.java:249)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.execAndWait(ExecuteExecutableActivity.java:218)
+	at nl.wldelft.fews.system.plugin.generaladapter.ExecuteExecutableActivity.run(ExecuteExecutableActivity.java:141)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivity(GeneralAdapter.java:1197)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:1118)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivities(GeneralAdapter.java:533)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.runActivitiesSynchronized(GeneralAdapter.java:481)
+	at nl.wldelft.fews.system.plugin.generaladapter.GeneralAdapter.run(GeneralAdapter.java:300)
+	at nl.wldelft.fews.system.workflow.WorkflowPluginActivity.run(WorkflowPluginActivity.java:249)
+	at nl.wldelft.fews.system.workflow.Workflow.run(Workflow.java:158)
+	at nl.wldelft.fews.system.dispatcher.local.TaskRun.run(TaskRun.java:309)
+	at nl.wldelft.fews.system.dispatcher.local.LocalTaskDispatcher.runnable(LocalTaskDispatcher.java:94)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2021-03-08 12:44:30.035 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 7s
+2021-03-08 12:44:30.041 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA635_1 completed in 7s Forecast: False Approved: False Start time: 2021-03-08 01:44:23 End time: 2021-03-08 01:44:30 User Id: Mandi Thran
+	GeneralAdapter (without executables) 7s 100%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 1s 14%  422 MB 448 MB/s logging 0s 0%  gc 0s 0%  cpu 123%  max mem. 230 MB  index mem. 11 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-03-08 12:44:30.042 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA635_1 (WorkflowId 'WF_ImportAusSurge') completed
+2021-03-08 12:44:30.042 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed with ERRORS   ******************
+2021-03-08 12:45:23.655 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/RetrieveAusSurgeAdapter.xml
+2021-03-08 12:45:25.451 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Thu 11-02-2021 18:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-03-08 12:45:25.458 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA635_00000002'
+2021-03-08 12:45:25.466 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA635_2, T0 2021-02-11 18:00:00, default forecast length, available memory 827 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-03-08 12:45:25.466 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-03-08 12:45:25.467 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-03-08 12:45:25.468 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:45:25.517 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-03-08 12:45:25.521 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:45:52.361 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/', '20210211_1800', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload']
+2021-03-08 12:45:52.361 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:45:52.361 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/  
+2021-03-08 12:45:52.361 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current system time: 2021-02-11 18:00:00  
+2021-03-08 12:45:52.362 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Rounding system time down to: 2021-02-11 18:00:00  
+2021-03-08 12:45:52.362 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload  
+2021-03-08 12:45:52.362 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Downloading file: IDZ00154_StormSurge_national_2021021118.nc  
+2021-03-08 12:45:52.362 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:45:52.363 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveAusSurge RetrieveAusSurgeAdapter' completed in 27s
+2021-03-08 12:45:52.363 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 27s
+2021-03-08 12:45:52.370 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA635_2 completed in 27s Forecast: False Approved: False Start time: 2021-03-08 01:45:25 End time: 2021-03-08 01:45:52 User Id: Mandi Thran
+	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe 27s 100%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 0%  35 kB 421 kB/s logging 0s 0%  gc 0s 0%  cpu 4%  max mem. 197 MB  index mem. 11 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-03-08 12:45:52.371 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA635_2 (WorkflowId 'WF_ImportAusSurge') completed
+2021-03-08 12:45:52.371 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed   ******************
+2021-03-08 12:46:41.711 INFO - AWT-EventQueue-0.ConfigFiles.refreshDefaults - Config.Info: New default file found: ModuleConfigFiles/Import\BOM/ProcessAusSurgeAdapter.xml
+2021-03-08 12:46:47.506 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Thu 11-02-2021 18:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-03-08 12:46:47.515 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA635_00000003'
+2021-03-08 12:46:47.532 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA635_3, T0 2021-02-11 18:00:00, default forecast length, available memory 862 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-03-08 12:46:47.533 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-03-08 12:46:47.533 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-03-08 12:46:47.534 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:46:47.590 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-03-08 12:46:47.594 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:47:01.785 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/', '20210211_1800', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload']
+2021-03-08 12:47:01.785 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:47:01.786 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/  
+2021-03-08 12:47:01.786 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current system time: 2021-02-11 18:00:00  
+2021-03-08 12:47:01.786 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Rounding system time down to: 2021-02-11 18:00:00  
+2021-03-08 12:47:01.786 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload  
+2021-03-08 12:47:01.786 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Downloading file: IDZ00154_StormSurge_national_2021021118.nc  
+2021-03-08 12:47:01.786 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:47:01.787 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveAusSurge RetrieveAusSurgeAdapter' completed in 14s
+2021-03-08 12:47:01.787 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ProcessAusSurge ProcessAusSurgeAdapter
+2021-03-08 12:47:01.788 INFO Mandurah - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:47:01.788 INFO Mandurah - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:47:02.835 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Mandurah', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus']
+2021-03-08 12:47:02.835 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:47:02.835 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/
+2021-03-08 12:47:02.835 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Site: Mandurah
+2021-03-08 12:47:02.836 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:47:02.836 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021021118 (1).nc
+2021-03-08 12:47:02.836 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Mandurah_2021021118 (1).csv
+2021-03-08 12:47:02.837 INFO Narrabeen - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:47:02.837 INFO Narrabeen - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Narrabeen', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus']
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Site: Narrabeen
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021021118 (1).nc
+2021-03-08 12:47:03.886 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021021118 (1).csv
+2021-03-08 12:47:03.887 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ProcessAusSurge ProcessAusSurgeAdapter' completed in 2s
+2021-03-08 12:47:03.887 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 16s
+2021-03-08 12:47:03.893 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA635_3 completed in 16s Forecast: False Approved: False Start time: 2021-03-08 01:46:47 End time: 2021-03-08 01:47:03 User Id: Mandi Thran
+	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe 16s 99%  datastore 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 0 B,  0 B/s, 1 queries, 0 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 0 (modified=0, write period=0s, modified period=0s)  files 0s 1%  38 kB 397 kB/s logging 0s 0%  gc 0s 0%  cpu 10%  max mem. 162 MB  index mem. 11 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-03-08 12:47:03.893 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA635_3 (WorkflowId 'WF_ImportAusSurge') completed
+2021-03-08 12:47:03.893 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed   ******************
+2021-03-08 12:47:28.370 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Thu 11-02-2021 18:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-03-08 12:47:28.377 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA635_00000004'
+2021-03-08 12:47:28.384 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA635_4, T0 2021-02-11 18:00:00, default forecast length, available memory 877 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-03-08 12:47:28.384 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-03-08 12:47:28.384 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-03-08 12:47:28.385 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:47:28.438 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-03-08 12:47:28.442 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:48:05.971 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/', '20210211_1800', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload']
+2021-03-08 12:48:05.972 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:48:05.972 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/  
+2021-03-08 12:48:05.972 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current system time: 2021-02-11 18:00:00  
+2021-03-08 12:48:05.973 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Rounding system time down to: 2021-02-11 18:00:00  
+2021-03-08 12:48:05.973 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload  
+2021-03-08 12:48:05.973 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Downloading file: IDZ00154_StormSurge_national_2021021118.nc  
+2021-03-08 12:48:05.973 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:48:05.974 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveAusSurge RetrieveAusSurgeAdapter' completed in 38s
+2021-03-08 12:48:05.974 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ProcessAusSurge ProcessAusSurgeAdapter
+2021-03-08 12:48:05.974 INFO Mandurah - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:48:05.977 INFO Mandurah - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Mandurah', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus']
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Site: Mandurah
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021021118 (1).nc
+2021-03-08 12:48:07.025 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Mandurah_2021021118 (1).csv
+2021-03-08 12:48:07.026 INFO Narrabeen - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Thu Feb 11 18:00:00 GMT 2021
+2021-03-08 12:48:07.026 INFO Narrabeen - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:48:08.047 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Narrabeen', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus']
+2021-03-08 12:48:08.047 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:48:08.047 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/
+2021-03-08 12:48:08.048 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Site: Narrabeen
+2021-03-08 12:48:08.048 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:48:08.048 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021021118 (1).nc
+2021-03-08 12:48:08.048 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021021118 (1).csv
+2021-03-08 12:48:08.048 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ProcessAusSurge ProcessAusSurgeAdapter' completed in 2s
+2021-03-08 12:48:08.049 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportAusSurgeInst ImportAusSurgeAdapter
+2021-03-08 12:48:08.151 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportAusSurgeInst ImportAusSurgeAdapter' completed in 0s
+2021-03-08 12:48:08.151 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 40s
+2021-03-08 12:48:08.157 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA635_4 completed in 40s Forecast: False Approved: False Start time: 2021-03-08 01:47:28 End time: 2021-03-08 01:48:08 User Id: Mandi Thran
+	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe 40s 100%  datastore 0s 0%  primary validation 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 1.1 kB,  382 kB/s, 5 queries, 4 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 4 (modified=0, write period=3d 12h, modified period=0s)  files 0s 0%  71 kB 566 kB/s logging 0s 0%  gc 0s 0%  cpu 5%  max mem. 147 MB  index mem. 11 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-03-08 12:48:08.157 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA635_4 (WorkflowId 'WF_ImportAusSurge') completed
+2021-03-08 12:48:08.157 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed   ******************
+2021-03-08 12:49:02.321 INFO - AWT-EventQueue-0.ManualForecastDialog.dispatchTasks - ManualForecast.Started: Manual forecast <Sun 07-03-2021 01:00:00 WF_ImportAusSurge> has been sent to the task scheduler
+2021-03-08 12:49:02.328 INFO - AWT-EventQueue-0.AuditLoggingUtils.logAuditMessage - SYSLOG.OC.AddScheduledTask.WF_ImportAusSurge:z3531278 - Added Scheduled Task with task id: 'SA635_00000005'
+2021-03-08 12:49:02.334 INFO - LocalTaskDispatcher.TaskRun.logTaskStartedMessage - TaskRun.Started: Starting Task WF_ImportAusSurge with ID SA635_5, T0 2021-03-07 01:00:00, default forecast length, available memory 880 MB, config revision unknown, Delft-FEWS version: 2019.02, build: 93845 (patched from 92680) , May 19, 2020, type: stable
+2021-03-08 12:49:02.334 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityStarted: WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml
+2021-03-08 12:49:02.334 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity RetrieveAusSurge RetrieveAusSurgeAdapter
+2021-03-08 12:49:02.335 INFO - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Sun Mar 07 01:00:00 GMT 2021
+2021-03-08 12:49:02.386 INFO - LocalTaskDispatcher.ModuleDataSetUpdater.updateModuleDataSet - ModuleDataSetUpdater.Info: Updating ModuleDataSet SurgeDownload
+2021-03-08 12:49:02.390 INFO - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:49:18.377 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/', '20210307_0100', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload']
+2021-03-08 12:49:18.377 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:49:18.378 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/  
+2021-03-08 12:49:18.378 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current system time: 2021-03-07 01:00:00  
+2021-03-08 12:49:18.378 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Rounding system time down to: 2021-03-07 00:00:00  
+2021-03-08 12:49:18.378 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload  
+2021-03-08 12:49:18.379 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Downloading file: IDZ00154_StormSurge_national_2021030700.nc  
+2021-03-08 12:49:18.379 INFO - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:49:18.380 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'RetrieveAusSurge RetrieveAusSurgeAdapter' completed in 16s
+2021-03-08 12:49:18.380 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ProcessAusSurge ProcessAusSurgeAdapter
+2021-03-08 12:49:18.381 INFO Mandurah - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Sun Mar 07 01:00:00 GMT 2021
+2021-03-08 12:49:18.381 INFO Mandurah - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:49:19.416 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Mandurah', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus']
+2021-03-08 12:49:19.416 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:49:19.416 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/
+2021-03-08 12:49:19.417 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Site: Mandurah
+2021-03-08 12:49:19.417 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:49:19.417 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021030700.nc
+2021-03-08 12:49:19.417 INFO Mandurah - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Mandurah_2021030700.csv
+2021-03-08 12:49:19.418 INFO Narrabeen - LocalTaskDispatcher.GeneralAdapter.init - General Adapter initialized for task - WF_ImportAusSurge T0=Sun Mar 07 01:00:00 GMT 2021
+2021-03-08 12:49:19.418 INFO Narrabeen - LocalTaskDispatcher.ExecuteExecutableActivity.run - GA Execution Started C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe
+2021-03-08 12:49:20.452 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Narrabeen', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus']
+2021-03-08 12:49:20.452 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload
+2021-03-08 12:49:20.453 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/
+2021-03-08 12:49:20.453 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Site: Narrabeen
+2021-03-08 12:49:20.453 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory.
+2021-03-08 12:49:20.453 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021030700.nc
+2021-03-08 12:49:20.453 INFO Narrabeen - LocalTaskDispatcher.ExecuteActivity.processDiagnosticFile - FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021030700.csv
+2021-03-08 12:49:20.454 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ProcessAusSurge ProcessAusSurgeAdapter' completed in 2s
+2021-03-08 12:49:20.454 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Started Activity ImportAusSurgeInst ImportAusSurgeAdapter
+2021-03-08 12:49:20.503 INFO - LocalTaskDispatcher.WorkflowPluginActivity.run - Completed Activity 'ImportAusSurgeInst ImportAusSurgeAdapter' completed in 0s
+2021-03-08 12:49:20.503 INFO - LocalTaskDispatcher.Workflow.run - Workflow.ActivityCompleted:  WorkflowFiles/Import\WaterLevels\Surge/WF_ImportAusSurge.xml completed in 18s
+2021-03-08 12:49:20.528 INFO - LocalTaskDispatcher.TaskRun.logTaskFinishedMessage - TaskRun.Completed: Task  WF_ImportAusSurge with ID SA635_5 completed in 18s Forecast: False Approved: False Start time: 2021-03-08 01:49:02 End time: 2021-03-08 01:49:20 User Id: Mandi Thran
+	C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe 18s 99%  datastore 0s 0%  primary validation 0s 0%  cache files 0 B   database 0s 0% (0 ms/query, 12 B,  11 kB/s, 3 queries, 1 rows)  reloaded 0 B  time series read 0 (unique=0, view period=0s)  time series written 4 (modified=2, write period=3d 12h, modified period=3d 12h)  files 0s 1%  71 kB 621 kB/s logging 0s 0%  gc 0s 0%  cpu 7%  max mem. 144 MB  index mem. 12 kB  db con. acquire time 0s 0%  lock. acquire time 0s 0%  
+2021-03-08 12:49:20.528 INFO - LocalTaskDispatcher.TaskRun.run - TASKRUN.Complete.WF_ImportAusSurge: Task run SA635_5 (WorkflowId 'WF_ImportAusSurge') completed
+2021-03-08 12:49:20.528 INFO - LocalTaskDispatcher.TaskRun.run -                 ******************      Workflow WF_ImportAusSurge Completed   ******************
