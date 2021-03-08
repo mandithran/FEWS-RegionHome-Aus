@@ -19,7 +19,7 @@ def main(args=None):
 
     #============== Parse arguments from FEWS ==============#
     regionHomeDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
-    workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload_dev"
+    workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload"
     siteName = "Narrabeen"
     sysTime = "20210228_0000"
     locSetFilename = "surgeLocations.csv"
