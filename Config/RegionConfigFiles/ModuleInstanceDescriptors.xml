@@ -47,8 +47,14 @@
 	<moduleInstanceDescriptor id="RetrieveGLOBSNOW">
 		<description>Download GlobSnow netcdf files</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="WaveDownload">
+		<description>Waves download - moduleDataSet file</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveAusSurge">
 		<description>Download Australia storm surge forecast output</description>
+	</moduleInstanceDescriptor>
+		<moduleInstanceDescriptor id="RetrieveAusWaves">
+		<description>Download Australia Auswave forecast output</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessAusSurge">
 		<description>Process Australia storm surge forecast output</description>
