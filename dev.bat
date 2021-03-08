@@ -2,8 +2,8 @@ echo off
 echo The current directory is %CD%
 
 rem #============ Variables ============#
-set "DEV_NAME=SurgeDownload_dev"
-set "TAR_NAME=SurgeDownload"
+set "DEV_NAME=WaveDownload_dev"
+set "TAR_NAME=WaveDownload"
 
 rem #============ Paths ============#
 set "DEV_PATH=.\Modules\%DEV_NAME%"

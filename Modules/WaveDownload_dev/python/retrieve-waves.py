@@ -16,7 +16,7 @@ def main(args=None):
     # Second argument is the datetime
     sysTime = "20210228_0000"
     # Third argument is the current working directory
-    workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload_dev"
+    workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload"
 
     locSetFilename = "surgeLocations.csv"
     regionHomeDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
@@ -39,8 +39,6 @@ def main(args=None):
     locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
     df = pd.read_csv(locSetPath)
 
-
-    # TODO: Import location set and use it to parse filename
     #============== Parse BOM file name  ==============#
     bomDate = str(str(roundedTime.year)+
             str(roundedTime.month).zfill(2)+

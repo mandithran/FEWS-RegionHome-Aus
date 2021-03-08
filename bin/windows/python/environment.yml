@@ -1,0 +1,23 @@
+name: conda-venv
+channels:
+#  - defaults: this created issues with finding dynamic libraries
+  - conda-forge
+dependencies:
+  - python=3.6
+  - setuptools
+  - xarray
+  - geopandas
+  - netcdf4
+  - pip
+  - numpy
+  - pip:
+    - wget
+prefix: .\bin\conda-venv
+
+# If numpy gives you errors, activate the environment 
+# and type the following into the terminal window:
+
+# pip uninstall -y numpy
+# pip uninstall -y setuptools
+# pip install setuptools
+# pip install numpy
