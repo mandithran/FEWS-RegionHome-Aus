@@ -6,21 +6,19 @@ import pandas as pd
 import shutil
 from importWaves import fewsUtils
 import wget
+import sys
 
 def main(args=None):
     """The main routine."""
 
     #============== Parse arguments from FEWS ==============#
-    # First argument: server location
-    serverLoc = "http://dapds00.nci.org.au/thredds/fileServer/rr6/waves/"
-    # Second argument is the datetime
-    sysTime = "20210228_0000"
-    # Third argument is the current working directory
-    workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload"
-
-    locSetFilename = "surgeLocations.csv"
-    regionHomeDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
-    siteName = "Narrabeen"
+    args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    workDir = str(args[0])
+    serverLoc = str(args[1])
+    sysTime = str(args[2])
+    locSetFilename = str(args[3])
+    regionHomeDir = str(args[4])
+    siteName = str(args[5])
     
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
@@ -33,7 +31,7 @@ def main(args=None):
                                    int(sysTime[6:8]),
                                    hour=int(sysTime[9:11]))
 
-    roundedTime = retrieveWaves.round_hours(systemTime, 6)
+    roundedTime = retrieveWaves.round_hours(systemTime, 12)
 
     #============== Load Location Set ==============#
     locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
