@@ -37,7 +37,7 @@ def main(args=None):
                                    int(sysTime[6:8]),
                                    hour=int(sysTime[9:11]))
 
-    roundedTime = retrieveSurge.round_hours(systemTime, 6)
+    roundedTime = retrieveSurge.round_hours(systemTime, 12)
 
     #============== Parse BOM file name  ==============#
     bomDT = str(str(roundedTime.year)+

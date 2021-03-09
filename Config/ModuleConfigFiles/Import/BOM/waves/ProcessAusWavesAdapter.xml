@@ -13,16 +13,6 @@
 		<time0Format>yyyyMMdd_HHmm</time0Format>
 	</general>
 	<activities>
-			<startUpActivities>
-			<purgeActivity>
-				<filter>%ROOT_DIR%/WaveDownload/*.*</filter>
-			</purgeActivity>
-		</startUpActivities>
-		<exportActivities>
-			<exportDataSetActivity>
-				<moduleInstanceId>WaveDownload</moduleInstanceId>
-			</exportDataSetActivity>
-		</exportActivities>
 		<executeActivities>
 			<executeActivity>
 				<description>Run python script to process storm surge</description>
@@ -30,7 +20,26 @@
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
+					<!-- Python script that processes waves -->
 					<argument>%WORK_DIR%/python/process-waves.py</argument>
+					<!-- Region home directory-->
+					<argument>%REGION_HOME%</argument>
+					<!-- Working directory -->
+					<argument>%WORK_DIR%</argument>
+					<!-- Site name in Location Set -->
+					<!--argument>$LOOP_LOCATION_ID$</argument-->
+					<!-- Change back to the above when you have the Mandurah bathy/topo -->
+					<argument>Narrabeen</argument>
+					<!-- System time in FEWS -->
+					<argument>%TIME0%</argument>
+					<!-- Filename that holds location set to iterate through -->
+					<argument>surgeLocations.csv</argument>
+					<!-- Jon Swap parameter -->
+					<argument>3.3</argument>
+					<!-- Jon Swap parameter - directional spreading-->
+					<argument>10.</argument>
+					<!-- XBeach parameter - dtbc -->
+					<argument>1.</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

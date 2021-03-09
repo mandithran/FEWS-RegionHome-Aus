@@ -18,14 +18,14 @@ def main(args=None):
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
-    regionHomeDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
-    workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload"
-    siteName = "Narrabeen"
-    sysTime = "20210228_0000"
-    locSetFilename = "surgeLocations.csv"
-    jonSwapParam = 3.3
-    dirSpread = 10.
-    dtbc = 1.
+    regionHomeDir = str(args[0])
+    workDir = str(args[1])
+    siteName = str(args[2])
+    sysTime = str(args[3])
+    locSetFilename = str(args[4])
+    jonSwapParam = str(args[5])
+    dirSpread = str(args[6])
+    dtbc = str(args[7])
 
     #============== Paths ==============#
     modulePath = os.path.join(regionHomeDir,"Modules")
@@ -70,7 +70,7 @@ def main(args=None):
                           int(sysTime[6:8]),
                           hour=int(sysTime[9:11]))
 
-    roundedTime = retrieveWaves.round_hours(systemTime, 6)
+    roundedTime = retrieveWaves.round_hours(systemTime, 12)
 
     #============== Load Location Set ==============#
     locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
@@ -78,6 +78,7 @@ def main(args=None):
 
 
     # TODO: Import location set and use it to parse filename
+    # TODO: Configure Input grid for Mandurah
     #============== Parse BOM file name  ==============#
     bomDate = str(str(roundedTime.year)+
             str(roundedTime.month).zfill(2)+
