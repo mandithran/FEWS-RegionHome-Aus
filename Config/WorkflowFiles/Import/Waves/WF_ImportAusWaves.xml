@@ -10,7 +10,7 @@
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>ProcessAusWaves</moduleInstanceId>
         <moduleConfigFileName>ProcessAusWavesAdapter</moduleConfigFileName>
-		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
+		<!--loopLocationSetId>Aus_Surge_Locations</loopLocationSetId-->
 	</activity>
 	<!--activity>
 		<runIndependent>true</runIndependent>
