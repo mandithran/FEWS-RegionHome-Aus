@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Computer Services (WL | Delft Hydraulics) -->
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+  <import>
+    <general>
+        <importType>generalCSV</importType>
+        <!--Assign when importing from server-->
+        <!--serverUrl></serverUrl-->
+        <folder>%REGION_HOME%/Modules/AstroTides</folder>
+        <fileNamePatternFilter>*.csv</fileNamePatternFilter>
+        <failedFolder>$IMPORT_FAILED_FOLDER$/AusAstroTides/NSW</failedFolder>
+        <!-- File can't be open or else it won't be moved to back-up folder -->
+        <backupFolder>$IMPORT_BACKUP_FOLDER$/AusAstroTides/NSW</backupFolder>
+        <!-- relativeViewPeriod doesn't appear to be working-->
+        <relativeViewPeriod unit="day" start="-7" end="0" startOverrulable="false" endOverrulable="false"/>
+        <table>
+          <dateTimeColumn name="Time (dd/mm/yyyy HH:MM AEST)" pattern="dd-MM-yyyy HH:mm"/>
+          <valueColumn name="Elevation (m AHD)" unit="m" parameterId="ATid.pred"/>
+        </table>
+        <idMapId>IdImportAstroTides</idMapId>
+        <unitConversionsId>ImportUnitConversions</unitConversionsId>
+        <importTimeZone>
+          <timeZoneName>AEST</timeZoneName>
+        </importTimeZone>
+        <!--Assign when importing from server-->
+        <!--dataFeedId>WSC_daily_server</dataFeedId-->
+        <skipFirstLinesCount>0</skipFirstLinesCount>
+    </general>
+    <tolerance timeUnit="minute" unitCount="1" parameterId="ATid.pred"/>
+    <timeSeriesSet>
+        <moduleInstanceId>ImportAstroTide</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>ATid.pred</parameterId>
+        <locationSetId>AstroTideLocSet</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep unit="minute" multiplier="15"/>
+        <readWriteMode>add originals</readWriteMode>
+    </timeSeriesSet>
+  </import>
+</timeSeriesImportRun>

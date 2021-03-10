@@ -50,6 +50,12 @@
 	<moduleInstanceDescriptor id="WaveDownload">
 		<description>Waves download - moduleDataSet file</description>
 	</moduleInstanceDescriptor>
+		<moduleInstanceDescriptor id="AstroTides">
+		<description>Astronomical tides - moduleDataSet file containing main file</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="RetrieveAstroTide">
+		<description>Download Australia storm surge forecast output</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveAusSurge">
 		<description>Download Australia storm surge forecast output</description>
 	</moduleInstanceDescriptor>
@@ -161,6 +167,9 @@
 	<moduleInstanceDescriptor id="ImportAusSurge">
 		<description>Import for storm surge grids from Australian Bureau of Meteorology (BOM)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportAstroTide">
+		<description>Import tides (only NSW at the moment)</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportGPM">
 		<description>Import GPM from server</description>
 	</moduleInstanceDescriptor>
@@ -230,9 +239,6 @@
 		<description>Run the $MODELNAME2$ model with REPS Forecast Data</description>
 	</moduleInstanceDescriptor>
 	<!-- XBeach -->
-	<moduleInstanceDescriptor id="ImportAstroTide_hc">
-		<description>Import tidal data from local folder</description>
-	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportAusSurgeInst">
 		<description>Import storm surge data from local folder</description>
 	</moduleInstanceDescriptor>

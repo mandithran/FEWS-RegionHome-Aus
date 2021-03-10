@@ -69,7 +69,7 @@ individual workflow, which is stored in WorkflowFiles.-->
 	<workflowDescriptor id="Run$MODELNAME2$REPSForecast" name="Run $MODELNAME2$ (REPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
 		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
 	</workflowDescriptor>
-	<workflowDescriptor id="WF_ImportAstroTideHc" name="Import Hindcast Astronomical Tide Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	<workflowDescriptor id="WF_ImportAstroTide" name="Import Hindcast Astronomical Tide Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_ImportAusSurge" name="Import Forecast Storm Surge Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
@@ -117,7 +117,7 @@ individual workflow, which is stored in WorkflowFiles.-->
 			<workflowId>Run$MODELNAME2$REPSForecast</workflowId>
 		</node>
 		<node name="Import Astronomical Tide Predictions">
-			<workflowId>WF_ImportAstroTideHc</workflowId>
+			<workflowId>WF_ImportAstroTide</workflowId>
 		</node>
 		<node name="Import Storm Surge Predictions">
 			<workflowId>WF_ImportAusSurge</workflowId>

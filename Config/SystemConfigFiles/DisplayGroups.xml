@@ -56,7 +56,7 @@
 				<visibleInTable>true</visibleInTable>
 				<visibleInPlot>true</visibleInPlot>
 				<timeSeriesSet>
-					<moduleInstanceId>ImportAstroTide_hc</moduleInstanceId>
+					<moduleInstanceId>ImportAstroTide</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>ATid.pred</parameterId>
 					<locationSetId>AstroTideLocSet</locationSetId>
