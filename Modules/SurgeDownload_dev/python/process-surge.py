@@ -61,6 +61,7 @@ def main(args=None):
     #============== Process nc file as time series .csv for site ==============#
     csvFile = processSurge.processSurge_nc(importDir=importDir, 
                                           downloadDir=downloadDir, 
+                                          workDir=workDir,
                                           fname=newestNC, site=siteName,
                                           siteLat=siteLat,
                                           siteLon=siteLon)

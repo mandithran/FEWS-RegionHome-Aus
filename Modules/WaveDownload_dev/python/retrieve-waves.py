@@ -7,6 +7,7 @@ import shutil
 from importWaves import fewsUtils
 import wget
 import sys
+import numpy as np
 
 def main(args=None):
     """The main routine."""
@@ -32,17 +33,20 @@ def main(args=None):
                                    hour=int(sysTime[9:11]))
 
     roundedTime = retrieveWaves.round_hours(systemTime, 12)
+    # Subtract twelve hours from this rounded time to give a proper spin-up period
+    rt = pd.to_datetime(str(roundedTime))
+    roundedTimeSpin = rt - np.timedelta64(12, "h")
 
     #============== Load Location Set ==============#
     locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
     df = pd.read_csv(locSetPath)
 
     #============== Parse BOM file name  ==============#
-    bomDate = str(str(roundedTime.year)+
-            str(roundedTime.month).zfill(2)+
-            str(roundedTime.day).zfill(2))
-    bomTime = str(str(roundedTime.hour).zfill(2)+
-            str(roundedTime.minute).zfill(2))
+    bomDate = str(str(roundedTimeSpin.year)+
+            str(roundedTimeSpin.month).zfill(2)+
+            str(roundedTimeSpin.day).zfill(2))
+    bomTime = str(str(roundedTimeSpin.hour).zfill(2)+
+            str(roundedTimeSpin.minute).zfill(2))
     bomDT = str(bomDate+"T"+bomTime+"Z")
     cityCode = df.loc[df["Name"]==siteName, "City_code"].iloc[0]
     fname = "%s.msh.%s.nc" % (cityCode,bomDT)

@@ -31,11 +31,6 @@ def main(args=None):
     modulePath = os.path.join(regionHomeDir,"Modules")
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
-    xbWorkDir = os.path.join(modulePath,".\XBeach",siteName,"runs",siteName,"workDir")
-
-    #============== Create directories if they don't exist ==============#
-    if not os.path.exists(xbWorkDir):
-        os.makedirs(xbWorkDir)
 
     #============== Write out initial commands to diag file ==============#
     # Copy and rename diagOpen.txt
@@ -71,6 +66,12 @@ def main(args=None):
                           hour=int(sysTime[9:11]))
 
     roundedTime = retrieveWaves.round_hours(systemTime, 12)
+    rt = pd.to_datetime(str(roundedTime))
+    rt_str = rt.strftime('%Y%m%d%H')
+    xbWorkDir = os.path.join(modulePath,".\XBeach",siteName,"runs",rt_str,"workDir")
+    # Subtract twelve hours from this rounded time to give a proper spin-up period
+    print(type(roundedTime))
+    roundedTimeSpin = rt - np.timedelta64(12, "h")
 
     #============== Load Location Set ==============#
     locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
@@ -80,11 +81,11 @@ def main(args=None):
     # TODO: Import location set and use it to parse filename
     # TODO: Configure Input grid for Mandurah
     #============== Parse BOM file name  ==============#
-    bomDate = str(str(roundedTime.year)+
-            str(roundedTime.month).zfill(2)+
-            str(roundedTime.day).zfill(2))
-    bomTime = str(str(roundedTime.hour).zfill(2)+
-            str(roundedTime.minute).zfill(2))
+    bomDate = str(str(roundedTimeSpin.year)+
+            str(roundedTimeSpin.month).zfill(2)+
+            str(roundedTimeSpin.day).zfill(2))
+    bomTime = str(str(roundedTimeSpin.hour).zfill(2)+
+            str(roundedTimeSpin.minute).zfill(2))
     bomDT = str(bomDate+"T"+bomTime+"Z")
     cityCode = df.loc[df["Name"]==siteName, "City_code"].iloc[0]
     fname = "%s.msh.%s.nc" % (cityCode,bomDT)
@@ -96,7 +97,7 @@ def main(args=None):
 
     #============== Slice it to a 3-day forecast for now ==============#
     startTime = min(ds.time[:].values)
-    endTime = startTime + np.timedelta64(3,"D")
+    endTime = startTime + np.timedelta64(84,"h")
     ds =ds.sel(time=slice(startTime,endTime))
 
     #============== Keep only the mesh points of interest ==============#
@@ -131,6 +132,11 @@ def main(args=None):
     dt = t2-t1
     dt = dt.astype('timedelta64[s]').astype(int).astype(float)
 
+    #============== Create XBeach working directories if they don't exist ==============#
+    if not os.path.exists(xbWorkDir):
+        os.makedirs(xbWorkDir)
+
+
     #============== Loop through and generate wavefiles ==============#
     roundDec = 3
     for index in np.arange(0,ds.sizes['node']):
@@ -147,7 +153,7 @@ def main(args=None):
 
     #============== Add wavefile name as gdf entry ==============#
     gdf["ind"] = gdf.index.astype(int)
-    gdf["wavefile"] = [f"wavefile{i}.txt" for i in gdf.index]
+    gdf["wavefile"] = [f"wavefile{i+1}.txt" for i in gdf.index]
 
     
     #============== Generate input file that directs XBeach to wavefiles ==============#
@@ -202,10 +208,18 @@ def main(args=None):
     df = pd.merge(gdf_proj,xbgdf_subset,on="ind")
     print(df)
 
+    # Round and convert coordinates to ints
+    df['xtarget'] = df['xtarget'].round(decimals=0).astype(int)
+    df['ytarget'] = df['ytarget'].round(decimals=0).astype(int)
+
+    # Template
+    template = """LOCLIST
+{}"""
+
     # Send to txt file
-    df.to_csv(os.path.join(xbWorkDir, "loclist.txt"), 
-              columns=["xtarget","ytarget","wavefile"],
-              header=False,sep=' ', index=False)
+    with open(os.path.join(xbWorkDir, "loclist.txt"), 'w') as fp:
+        fp.write(template.format(df.to_csv(index=False, columns=["xtarget","ytarget","wavefile"],
+              header=False,sep=' ',line_terminator='\n')))
 
     
     #============== Load Location Set ==============#

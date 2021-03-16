@@ -12,5 +12,5 @@ time_GMT = string(time_GMT);
 astro_tide2 = transpose(double(astro_tide2));
 arr = [time_GMT, astro_tide2];
 header = {"Time (dd/mm/yyyy HH:MM GMT)","Elevation (m AHD)"};
-output = [header; num2cell(arr)];
-writecell(output,'..\processed\SydneyTidesGMT.csv');
+%output = [header; num2cell(arr)];
+%writecell(output,'..\processed\SydneyTidesAEST.csv');

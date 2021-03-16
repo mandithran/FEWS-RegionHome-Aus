@@ -4,7 +4,7 @@ import sys
 import os
 from importSurge import retrieveSurge
 from importSurge import processSurge
-from importSurge import fewsUtils
+from xbfewsTools import fewsUtils
 from datetime import datetime
 import traceback
 import shutil
@@ -32,6 +32,7 @@ def main(args=None):
     diagFile = os.path.join(workDir,"diag.xml")
 
     #============== Parse system time ==============#
+    #TODO: FEWS Utils, have an option for parsing system time - that's first thing to call in new module
     systemTime = datetime(int(sysTime[:4]),
                                    int(sysTime[4:6]),
                                    int(sysTime[6:8]),
@@ -71,7 +72,7 @@ def main(args=None):
         os.makedirs(downloadDir)
     bomFile = wget.download(url, out=os.path.join(workDir,'ncFiles'))
 
-## If Python throws an error, send to exceptions.log file
+## If Python throws an error, send to exceptions.log file that appears in module dataset file
 if __name__ == "__main__":
     try:
         main()

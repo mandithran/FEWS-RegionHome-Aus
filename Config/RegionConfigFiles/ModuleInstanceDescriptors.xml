@@ -189,6 +189,9 @@
 	<moduleInstanceDescriptor id="MergeHistoricGrids">
 		<description>Merge Grids for Historic Model Run</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreProcessWatLev">
+		<description>General adapter for pre-processing water levels for XBeach</description>
+	</moduleInstanceDescriptor>
 	<!--Modify of Gridded Data-->
 	<moduleInstanceDescriptor id="ModifyHistoricGrids">
 		<description>Modify Grids for Historic Model Run</description>
@@ -249,6 +252,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="Narrabeen_testData">
 		<description>Module dataset for the Narrabeen 2DH test case</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessWaterLevs">
+		<description>Module dataset for pre-processing water levels for XBeach</description>
 	</moduleInstanceDescriptor>
 	<!-- XBeach Model Run -->
 	<moduleInstanceDescriptor id="$MODELNAME3$_hc">

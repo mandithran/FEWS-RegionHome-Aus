@@ -30,8 +30,8 @@ def getMostRecentFile(downloadDir=None):
         newest_file_name = ntpath.basename(newest_file_path)
         return newest_file_name
 
-def processSurge_nc(importDir=None, downloadDir=None, fname=None, 
-                    site=None, siteLat=None, siteLon=None):
+def processSurge_nc(importDir=None, downloadDir=None, workDir=None, 
+                   fname=None,site=None, siteLat=None, siteLon=None):
                     
         # =================== Paths =================== #
         ifile = os.path.join(downloadDir,fname)
@@ -89,5 +89,11 @@ def processSurge_nc(importDir=None, downloadDir=None, fname=None,
         ofname = "nss_%s_%s.csv" % (site, dateTime)
         ofPath = os.path.join(importDir,ofname)
         dfOut.to_csv(ofPath)
+        # Send another copy to working directory
+        dir2 = os.path.join(workDir,"processedSurge")
+        if not os.path.exists(dir2):
+                os.makedirs(dir2)
+        ofPath2 = os.path.join(dir2,ofname)
+        dfOut.to_csv(ofPath2)
 
         return ofPath 
