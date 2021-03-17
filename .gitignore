@@ -1,3 +1,5 @@
+log.txt
+log.txt.old
 /bin/*
 !/bin/windows
 /bin/windows/*
