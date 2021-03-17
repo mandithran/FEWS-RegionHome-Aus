@@ -2,8 +2,6 @@
 # ============= System Packages ============= #
 import sys
 import os
-from importSurge import retrieveSurge
-from importSurge import processSurge
 from xbfewsTools import fewsUtils
 from datetime import datetime
 import traceback
@@ -33,12 +31,8 @@ def main(args=None):
 
     #============== Parse system time ==============#
     #TODO: FEWS Utils, have an option for parsing system time - that's first thing to call in new module
-    systemTime = datetime(int(sysTime[:4]),
-                                   int(sysTime[4:6]),
-                                   int(sysTime[6:8]),
-                                   hour=int(sysTime[9:11]))
-
-    roundedTime = retrieveSurge.round_hours(systemTime, 12)
+    systemTime = fewsUtils.parseFEWSTime(sysTime)
+    roundedTime = fewsUtils.round_hours(systemTime, 12)
 
     #============== Parse BOM file name  ==============#
     bomDT = str(str(roundedTime.year)+

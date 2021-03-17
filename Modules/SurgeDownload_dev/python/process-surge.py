@@ -3,8 +3,8 @@ import sys
 import os
 import glob
 import pandas as pd
-from importSurge import processSurge
-from importSurge import fewsUtils
+from xbfewsTools import fewsUtils
+from xbfewsTools import fewspreproc
 from datetime import datetime
 import traceback
 import shutil
@@ -24,8 +24,10 @@ def main(args=None):
     workDir = str(args[2])
     # Fourth argument is Location Set file name
     locSetFilename = str(args[3])
-    # Fith argument is Region Home Path
+    # Fifth argument is Region Home Path
     regionHomeDir = str(args[4])
+    # Sixth is system time
+    sysTime = str(args[5])
 
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
@@ -49,20 +51,29 @@ def main(args=None):
     locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
     df = pd.read_csv(locSetPath)
 
-    #============== Grab most recently downloaded nc file ==============#
+    #============== Parse downloaded surge nc file ==============#
     # Uses a function from processSurge.py
     downloadDir = os.path.join(workDir,"ncFiles")
-    newestNC = processSurge.getMostRecentFile(downloadDir=downloadDir)
+    # Parse system time
+    systemTime = fewsUtils.parseFEWSTime(sysTime)
+    roundedTime = fewsUtils.round_hours(systemTime, 12)
+    # Parse BOM file name
+    bomDT = str(str(roundedTime.year)+
+            str(roundedTime.month).zfill(2)+
+            str(roundedTime.day).zfill(2)+
+            str(roundedTime.hour).zfill(2))
+    fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
+
 
     #============== Grab Site Lat/Lon ==============#
     siteLat = df.loc[df['Name']==siteName,"Lat_NSS"].iloc[0]
     siteLon = df.loc[df['Name']==siteName,"Lon_NSS"].iloc[0]
     
     #============== Process nc file as time series .csv for site ==============#
-    csvFile = processSurge.processSurge_nc(importDir=importDir, 
+    csvFile = fewspreproc.processSurge_nc(importDir=importDir, 
                                           downloadDir=downloadDir, 
                                           workDir=workDir,
-                                          fname=newestNC, site=siteName,
+                                          fname=fname, site=siteName,
                                           siteLat=siteLat,
                                           siteLon=siteLon)
 
@@ -70,7 +81,7 @@ def main(args=None):
     # Remove </Diag> line since you are appending more lines
     fewsUtils.clearDiagLastLine(diagFile)
     with open(diagFile, "a") as fileObj:
-        fileObj.write(fewsUtils.write2DiagFile(3, "Target nc file: % s" % os.path.join(importDir,newestNC)))
+        fileObj.write(fewsUtils.write2DiagFile(3, "Target nc file: % s" % os.path.join(importDir,fname)))
         fileObj.write(fewsUtils.write2DiagFile(3, "Processed timeseries csv file: %s" % csvFile))
         fileObj.write("</Diag>")
 

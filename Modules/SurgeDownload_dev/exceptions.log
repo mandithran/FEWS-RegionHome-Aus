@@ -1,6 +1,0 @@
-name 'worDir' is not definedTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\retrieve-surge.py", line 74, in <module>
-    main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev\python\retrieve-surge.py", line 61, in main
-    fileObj.write(fewsUtils.write2DiagFile(3, "Destination directory: % s \n" % worDir))
-NameError: name 'worDir' is not defined

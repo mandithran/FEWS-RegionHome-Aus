@@ -27,6 +27,7 @@
 					<!-- Location set file name-->
 					<argument>surgeLocations.csv</argument>
 					<argument>%REGION_HOME%</argument>
+					<argument>%TIME0%</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

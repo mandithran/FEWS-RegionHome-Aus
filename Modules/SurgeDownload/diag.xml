@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diag xmlns="http://www.wldelft.nl/fews/PI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_diag.xsd" version="1.2">
 
-<line level="3" description="FROM PYTHON: Command-line arguments sent to python script from FEWS: ['http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/', '20210315_0300', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload']"/>
+<line level="3" description="FROM PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Narrabeen', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus', '20210316_0200']"/>
 
 <line level="3" description="FROM PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload"/>
 
-<line level="3" description="FROM PYTHON: Server location: http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/ 
-"/>
+<line level="3" description="FROM PYTHON: Import Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/"/>
 
-<line level="3" description="FROM PYTHON: Current system time: 2021-03-15 03:00:00 
-"/>
-
-<line level="3" description="FROM PYTHON: Rounding system time down to: 2021-03-15 00:00:00 
-"/>
-
-<line level="3" description="FROM PYTHON: Destination directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload 
-"/>
-
-<line level="3" description="FROM PYTHON: Downloading file: IDZ00154_StormSurge_national_2021031500.nc 
-"/>
+<line level="3" description="FROM PYTHON: Site: Narrabeen"/>
 
 <line level="3" description="FROM PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory."/>
+<line level="3" description="FROM PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021031600.nc"/>
+
+<line level="3" description="FROM PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021031600.csv"/>
 </Diag>

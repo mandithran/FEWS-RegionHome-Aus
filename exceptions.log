@@ -1,6 +1,6 @@
-'Float64Index' object has no attribute 'round'Traceback (most recent call last):
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/ProcessWaterLevs_dev/process-waterlevs.py", line 169, in <module>
+name 'sysTime' is not definedTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev/python/process-surge.py", line 89, in <module>
     main()
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/ProcessWaterLevs_dev/process-waterlevs.py", line 131, in main
-    dfts.index = (dfts.index-dfts.index[0]).total_seconds().round(0)
-AttributeError: 'Float64Index' object has no attribute 'round'
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev/python/process-surge.py", line 56, in main
+    systemTime = fewsUtils.parseFEWSTime(sysTime)
+NameError: name 'sysTime' is not defined
