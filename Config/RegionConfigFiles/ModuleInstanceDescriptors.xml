@@ -189,8 +189,8 @@
 	<moduleInstanceDescriptor id="MergeHistoricGrids">
 		<description>Merge Grids for Historic Model Run</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PreProcessWatLev">
-		<description>General adapter for pre-processing water levels for XBeach</description>
+	<moduleInstanceDescriptor id="PreProcessXBeach">
+		<description>General adapter for pre-processing XBeach model</description>
 	</moduleInstanceDescriptor>
 	<!--Modify of Gridded Data-->
 	<moduleInstanceDescriptor id="ModifyHistoricGrids">

@@ -221,17 +221,6 @@ def main(args=None):
         fp.write(template.format(df.to_csv(index=False, columns=["xtarget","ytarget","wavefile"],
               header=False,sep=' ',line_terminator='\n')))
 
-    
-    #============== Load Location Set ==============#
-    #locSetPath = os.path.join(regionHomeDir, "./Config/MapLayerFiles", locSetFilename)
-    #df = pd.read_csv(locSetPath)
-
-    #============== Grab most recently downloaded nc file ==============#
-    # Uses a function from processSurge.py
-    #downloadDir = os.path.join(workDir,"ncFiles")
-    #newestNC = processSurge.getMostRecentFile(downloadDir=downloadDir)
-
-
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":

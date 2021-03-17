@@ -1,6 +1,6 @@
-name 'sysTime' is not definedTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev/python/process-surge.py", line 89, in <module>
+'xBeachModel' object has no attribute 'modelWorkDir'Traceback (most recent call last):
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 78, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload_dev/python/process-surge.py", line 56, in main
-    systemTime = fewsUtils.parseFEWSTime(sysTime)
-NameError: name 'sysTime' is not defined
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 59, in main
+    fileObj.write(fewsUtils.write2DiagFile(3, "XBeach Working Directory: % s" % xbModel.modelWorkDir))
+AttributeError: 'xBeachModel' object has no attribute 'modelWorkDir'

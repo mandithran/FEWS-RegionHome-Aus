@@ -127,7 +127,7 @@ individual workflow, which is stored in WorkflowFiles.-->
 		<node name="Import Auswave Predictions">
 			<workflowId>WF_ImportAusWaves</workflowId>
 		</node>
-		<node name="Pre-process XBeach">
+		<node name="XBeach: Pre-process">
 			<workflowId>WF_PreProcessXBeach</workflowId>
 		</node>
 		<node name="Run Model - $MODELNAME3$">
