@@ -4,18 +4,6 @@
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>RetrieveAusWaves</moduleInstanceId>
         <moduleConfigFileName>RetrieveAusWavesAdapter</moduleConfigFileName>
-		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
+		<loopLocationSetId>ausLocations</loopLocationSetId>
 	</activity>
-	<activity>
-		<runIndependent>true</runIndependent>
-		<moduleInstanceId>ProcessAusWaves</moduleInstanceId>
-        <moduleConfigFileName>ProcessAusWavesAdapter</moduleConfigFileName>
-		<!--loopLocationSetId>Aus_Surge_Locations</loopLocationSetId-->
-	</activity>
-	<!--activity>
-		<runIndependent>true</runIndependent>
-		<moduleInstanceId>ImportAusSurgeInst</moduleInstanceId>
-        <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName>
-		<loopLocationSetId>Aus_Surge_Locations</loopLocationSetId>
-	</activity-->
 </workflow>

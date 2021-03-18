@@ -4,6 +4,6 @@
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>PreProcessXBeach</moduleInstanceId>
         <moduleConfigFileName>PreProcessXBeachAdapter</moduleConfigFileName>
-		<!--loopLocationSetId>AstroTideLocSet</loopLocationSetId-->
+		<loopLocationSetId>ausLocations</loopLocationSetId>
 	</activity>
 </workflow>

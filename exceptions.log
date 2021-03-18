@@ -1,6 +1,10 @@
-'xBeachModel' object has no attribute 'modelWorkDir'Traceback (most recent call last):
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 78, in <module>
+[Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Grids\\NSW001\\x.grd'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach/preprocess-main.py", line 242, in <module>
     main()
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 59, in main
-    fileObj.write(fewsUtils.write2DiagFile(3, "XBeach Working Directory: % s" % xbModel.modelWorkDir))
-AttributeError: 'xBeachModel' object has no attribute 'modelWorkDir'
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach/preprocess-main.py", line 95, in main
+    shutil.copy(os.path.join(gridsPath,"x.grd"), xbModel.modelWorkDir)
+  File "c:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\shutil.py", line 245, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "c:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\shutil.py", line 120, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Grids\\NSW001\\x.grd'

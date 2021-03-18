@@ -253,9 +253,6 @@
 	<moduleInstanceDescriptor id="Narrabeen_testData">
 		<description>Module dataset for the Narrabeen 2DH test case</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessWaterLevs">
-		<description>Module dataset for pre-processing water levels for XBeach</description>
-	</moduleInstanceDescriptor>
 	<!-- XBeach Model Run -->
 	<moduleInstanceDescriptor id="$MODELNAME3$_hc">
 		<description>XBeach General Adapter</description>
