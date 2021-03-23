@@ -1,3 +1,7 @@
 {
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe"
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "python.terminal.activateEnvironment": false,
+    "python.terminal.launchArgs": [
+    
+    ]
 }

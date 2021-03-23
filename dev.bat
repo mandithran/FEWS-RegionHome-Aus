@@ -2,8 +2,8 @@ echo off
 echo The current directory is %CD%
 
 rem #============ Variables ============#
-set "DEV_NAME=WaveDownload_dev"
-set "TAR_NAME=WaveDownload"
+set "DEV_NAME=PreProcessXBeach_dev"
+set "TAR_NAME=PreProcessXBeach"
 
 rem #============ Paths ============#
 set "DEV_PATH=.\Modules\%DEV_NAME%"

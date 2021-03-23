@@ -1,10 +1,6 @@
-[Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Grids\\NSW001\\x.grd'Traceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach/preprocess-main.py", line 242, in <module>
+list index out of rangeTraceback (most recent call last):
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 247, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach/preprocess-main.py", line 95, in main
-    shutil.copy(os.path.join(gridsPath,"x.grd"), xbModel.modelWorkDir)
-  File "c:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\shutil.py", line 245, in copy
-    copyfile(src, dst, follow_symlinks=follow_symlinks)
-  File "c:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\shutil.py", line 120, in copyfile
-    with open(src, 'rb') as fsrc:
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Grids\\NSW001\\x.grd'
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 19, in main
+    workDir = str(args[0])
+IndexError: list index out of range

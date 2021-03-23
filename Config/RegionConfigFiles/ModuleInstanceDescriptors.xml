@@ -257,5 +257,11 @@
 	<moduleInstanceDescriptor id="$MODELNAME3$_hc">
 		<description>XBeach General Adapter</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="XBeachAdapter">
+		<description>XBeach General Adapter</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="runXBeach">
+		<description>Module dataset for running XBeach - contains python script</description>
+	</moduleInstanceDescriptor>
 	<!-- TODO: Replace instances of "XBEACH" with Variable-->
 </moduleInstanceDescriptors>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the general adapter for the XBeach module. It specifies 
+the overall structure of your activities for the module. The name 
+of this file has to match the "moduleConfigFileName" when you want to 
+use it in a workflow. Advice would be to make separate adapters 
+for hindcast and forecast mode. LocationID specified here has to already 
+be defined/registered in Locations.xml and/or LocationSets.xml.
+Modules specified here as <moduleInstanceID> have to be defined in
+ModuleInstanceDescriptors.xml -->
+<generalAdapterRun xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+    <general>
+        <description>XBeach model run</description>
+        <piVersion>1.8</piVersion>
+        <rootDir>%REGION_HOME%/Modules/$MODELNAME3$</rootDir>
+        <workDir>%ROOT_DIR%/$LOOP_LOCATION_ID$/runs/latest/workDir</workDir>
+        <exportDir>%ROOT_DIR%/$LOOP_LOCATION_ID$</exportDir>
+        <exportDataSetDir>%ROOT_DIR%/$LOOP_LOCATION_ID$</exportDataSetDir>
+        <exportIdMap>IdExport$MODELNAME3$</exportIdMap>
+        <importDir>%ROOT_DIR%</importDir>
+        <importIdMap>IdImport$MODELNAME3$</importIdMap>
+        <dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+        <dumpDir>%ROOT_DIR%/$LOOP_LOCATION_ID$/diagnostics/</dumpDir>
+        <diagnosticFile>%ROOT_DIR%/$LOOP_LOCATION_ID$/diagnostics/diagnostics.xml</diagnosticFile>
+        <!-- Take care this should be the timezone to computer is running in -->
+        <timeZone>
+			<timeZoneName>GMT</timeZoneName>
+		</timeZone>
+    </general>
+    <activities>
+        <executeActivities>
+            <executeActivity>
+                <command>
+                    <executable>%WORK_DIR%/xbeach.exe</executable>
+                </command>
+                <logFile>
+                    <file>%WORK_DIR%/XBerror.txt</file>
+                    <errorLinePattern>*</errorLinePattern>
+                </logFile>
+                <logFile>
+                    <file>%WORK_DIR%/XBwarning.txt</file>
+                    <infoLinePattern>*</infoLinePattern>
+                </logFile>
+                <logFile>
+                    <file>%WORK_DIR%/XBlog.txt</file>
+                    <debugLinePattern>*</debugLinePattern>
+                </logFile>
+                <timeOut>99999999</timeOut>
+                <ignoreDiagnostics>true</ignoreDiagnostics>
+            </executeActivity>
+        </executeActivities>
+        <importActivities>
+            <importPiNetcdfActivity>
+                <importFile>xboutput.nc</importFile>
+                <timeSeriesSets>
+                    <timeSeriesSet>
+                        <!--This might not be correct. Check if model or dataset instance needed.-->
+                        <moduleInstanceId>XBeachAdapter</moduleInstanceId>
+                        <valueType>grid</valueType>
+                        <parameterId>H_max.simulated</parameterId>
+                        <locationId>Dummy</locationId>
+                        <timeSeriesType>external historical</timeSeriesType>
+                        <timeStep unit="hour"/>
+                        <readWriteMode>add originals</readWriteMode>
+                    </timeSeriesSet>
+                </timeSeriesSets>
+            </importPiNetcdfActivity>
+        </importActivities>
+    </activities>
+</generalAdapterRun>

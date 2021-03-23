@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the general adapter for the XBeach module. It specifies 
+the overall structure of your activities for the module. The name 
+of this file has to match the "moduleConfigFileName" when you want to 
+use it in a workflow. LocationID specified here has to already 
+be defined/registered in Locations.xml and/or LocationSets.xml.
+Modules specified here as <moduleInstanceID> have to be defined in
+ModuleInstanceDescriptors.xml -->
+<!-- More options and features for XBeach in other adapter xml files-->
+<generalAdapterRun xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+    <general>
+        <description>XBeach model run</description>
+        <piVersion>1.8</piVersion>
+        <rootDir>%REGION_HOME%/Modules/XBeach</rootDir>
+        <workDir>%ROOT_DIR%/$LOOP_LOCATION_ID$/runs</workDir>
+        <exportDir>%ROOT_DIR%/$LOOP_LOCATION_ID$</exportDir>
+        <exportDataSetDir>%ROOT_DIR%/$LOOP_LOCATION_ID$</exportDataSetDir>
+        <exportIdMap>IdExport$MODELNAME3$</exportIdMap>
+        <importDir>%REGION_HOME%/Import/XBeach</importDir>
+        <importIdMap>IdImport$MODELNAME3$</importIdMap>
+        <dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+        <dumpDir>%WORK_DIR%/diagnostics/</dumpDir>
+        <diagnosticFile>%WORK_DIR%/diagnostics/diagnostics.xml</diagnosticFile>
+        <timeZone>
+			<timeZoneName>GMT</timeZoneName>
+		</timeZone>
+        <time0Format>yyyyMMddHH</time0Format>
+    </general>
+    <activities>
+        <startUpActivities>
+        </startUpActivities>
+        <exportActivities>
+        </exportActivities>
+        <executeActivities>
+            <executeActivity>
+                <command>
+                    <executable>%WORK_DIR%/%TIME0%/workDir/xbeach.exe</executable>
+                </command>
+                <logFile>
+                    <file>%WORK_DIR%/%TIME0%/workDir/XBerror.txt</file>
+                    <errorLinePattern>*</errorLinePattern>
+                </logFile>
+                <logFile>
+                    <file>%WORK_DIR%/%TIME0%/workDir/XBwarning.txt</file>
+                    <infoLinePattern>*</infoLinePattern>
+                </logFile>
+                <logFile>
+                    <file>%WORK_DIR%/%TIME0%/workDir/XBlog.txt</file>
+                    <debugLinePattern>*</debugLinePattern>
+                </logFile>
+                <timeOut>99999999</timeOut>
+            </executeActivity>
+        </executeActivities>
+        <!--importActivities>
+            <importPiNetcdfActivity>
+                <importFile>xboutput.nc</importFile>
+                <timeSeriesSets>
+                    <timeSeriesSet>
+                        <!This might not be correct. Check if model or dataset instance needed.>
+                        <moduleInstanceId>$DATADIR$</moduleInstanceId>
+                        <valueType>grid</valueType>
+                        <parameterId>H_max.simulated</parameterId>
+                        <locationId>Dummy</locationId>
+                        <timeSeriesType>external historical</timeSeriesType>
+                        <timeStep unit="hour"/>
+                        <readWriteMode>add originals</readWriteMode>
+                    </timeSeriesSet>
+                </timeSeriesSets>
+            </importPiNetcdfActivity>
+        </importActivities-->
+    </activities>
+</generalAdapterRun>
