@@ -3,34 +3,42 @@
 	<general>
 		<piVersion>1.10</piVersion>
 		<rootDir>%REGION_HOME%/Modules</rootDir>
-		<workDir>%ROOT_DIR%/ProcessWaterLevs</workDir>
-		<exportDir>%ROOT_DIR%/ProcessWaterLevs</exportDir>
+		<workDir>%ROOT_DIR%/runXBeach</workDir>
+		<exportDir>%ROOT_DIR%/runXBeach</exportDir>
 		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
-		<importDir>%ROOT_DIR%/ProcessWaterLevs</importDir>
+		<importDir>%ROOT_DIR%/runXBeach</importDir>
 		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
-		<dumpDir>%ROOT_DIR%/ProcessWaterLevs</dumpDir>
-		<diagnosticFile>%ROOT_DIR%/ProcessWaterLevs/diag.xml</diagnosticFile>
+		<dumpDir>%ROOT_DIR%/runXBeach</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/runXBeach/diag.xml</diagnosticFile>
 		<time0Format>yyyyMMdd_HHmm</time0Format>
 	</general>
 	<activities>
 		<startUpActivities>
 			<purgeActivity>
-				<filter>%ROOT_DIR%/ProcessWaterLevs/*.*</filter>
+				<filter>%ROOT_DIR%/runXBeach/*.*</filter>
 			</purgeActivity>
 		</startUpActivities>
 		<exportActivities>
 			<exportDataSetActivity>
-				<moduleInstanceId>ProcessWaterLevs</moduleInstanceId>
+				<moduleInstanceId>runXBeach</moduleInstanceId>
 			</exportDataSetActivity>
 		</exportActivities>
 		<executeActivities>
 			<executeActivity>
-				<description>Run python script to process water levels for XBeach</description>
+				<description>Run python script to run XBeach model</description>
 				<command>
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/process-waterlevs.py</argument>
+					<argument>%WORK_DIR%/run-xbeach.py</argument>
+					<!-- Region home dir -->
+					<argument>%REGION_HOME%</argument>
+					<!-- Location ID (looped)-->
+					<argument>$LOOP_LOCATION_ID$</argument>
+                    <!-- System time -->
+					<argument>%TIME0%</argument>
+                    <!-- Work dir-->
+					<argument>%WORK_DIR%</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

@@ -189,8 +189,8 @@
 	<moduleInstanceDescriptor id="MergeHistoricGrids">
 		<description>Merge Grids for Historic Model Run</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PreProcessWatLev">
-		<description>General adapter for pre-processing water levels for XBeach</description>
+	<moduleInstanceDescriptor id="PreProcessXBeach">
+		<description>General adapter for pre-processing XBeach model</description>
 	</moduleInstanceDescriptor>
 	<!--Modify of Gridded Data-->
 	<moduleInstanceDescriptor id="ModifyHistoricGrids">
@@ -253,12 +253,15 @@
 	<moduleInstanceDescriptor id="Narrabeen_testData">
 		<description>Module dataset for the Narrabeen 2DH test case</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessWaterLevs">
-		<description>Module dataset for pre-processing water levels for XBeach</description>
-	</moduleInstanceDescriptor>
 	<!-- XBeach Model Run -->
 	<moduleInstanceDescriptor id="$MODELNAME3$_hc">
 		<description>XBeach General Adapter</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="XBeachAdapter">
+		<description>XBeach General Adapter</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="runXBeach">
+		<description>Module dataset for running XBeach - contains python script</description>
 	</moduleInstanceDescriptor>
 	<!-- TODO: Replace instances of "XBEACH" with Variable-->
 </moduleInstanceDescriptors>

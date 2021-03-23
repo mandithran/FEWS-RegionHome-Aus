@@ -1,10 +1,9 @@
 import os
-from importWaves import retrieveWaves
 import traceback
 from datetime import datetime
 import pandas as pd
 import shutil
-from importWaves import fewsUtils
+from xbfewsTools import fewsUtils
 import wget
 import sys
 import numpy as np
@@ -27,12 +26,8 @@ def main(args=None):
 
     #============== Parse system time ==============#
     # TODO make a full function for parsing system time in fews utils
-    systemTime = datetime(int(sysTime[:4]),
-                                   int(sysTime[4:6]),
-                                   int(sysTime[6:8]),
-                                   hour=int(sysTime[9:11]))
-
-    roundedTime = retrieveWaves.round_hours(systemTime, 12)
+    systemTime = fewsUtils.parseFEWSTime(fewsTime=sysTime)
+    roundedTime = fewsUtils.round_hours(systemTime, 12)
     # Subtract twelve hours from this rounded time to give a proper spin-up period
     rt = pd.to_datetime(str(roundedTime))
     roundedTimeSpin = rt - np.timedelta64(12, "h")

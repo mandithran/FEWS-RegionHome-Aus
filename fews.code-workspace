@@ -7,7 +7,6 @@
 	"settings": {
 		"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
 		"terminal.integrated.shellArgs.windows":["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat .\\bin\\windows\\python\\bin\\conda-venv"],
-		"python.pythonPath": ".\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
-		"terminal.integrated.automationShell.windows": "",
+		"python.pythonPath": ".\\bin\\windows\\python\\bin\\conda-venv\\python.exe"
 	}
 }

@@ -25,12 +25,10 @@ def main(args=None):
     workDir = str(args[2])
 
     #============== Paths ==============#
-    # Might be worthwhile doing an "initialize diagnostics file" and "continue diagnostic file" function
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
 
     #============== Parse system time ==============#
-    #TODO: FEWS Utils, have an option for parsing system time - that's first thing to call in new module
     systemTime = fewsUtils.parseFEWSTime(sysTime)
     roundedTime = fewsUtils.round_hours(systemTime, 12)
 

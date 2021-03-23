@@ -1,7 +1,6 @@
 Agenda:
 - FEWS
-  - Output
-  - Lower resolution alongshore?
+- AusYCSEC
 
 To-do:
 - Apply for long-term storage
