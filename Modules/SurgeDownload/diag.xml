@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diag xmlns="http://www.wldelft.nl/fews/PI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_diag.xsd" version="1.2">
 
-<line level="3" description="From PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Narrabeen', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus', '20210321_0300']"/>
+<line level="3" description="From PYTHON: Command-line arguments sent to python script from FEWS: ['C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus/Import/AusSurge/', 'Narrabeen', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\SurgeDownload', 'surgeLocations.csv', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus', '20210318_0300']"/>
 
 <line level="3" description="From PYTHON: Current directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\SurgeDownload"/>
 
@@ -10,7 +10,7 @@
 <line level="3" description="From PYTHON: Site: Narrabeen"/>
 
 <line level="3" description="From PYTHON: If Python error exit code 1 is triggered, see exceptions.log file in Module directory."/>
-<line level="3" description="From PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021032100.nc"/>
+<line level="3" description="From PYTHON: Target nc file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/IDZ00154_StormSurge_national_2021031800.nc"/>
 
-<line level="3" description="From PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021032100.csv"/>
+<line level="3" description="From PYTHON: Processed timeseries csv file: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/nss_Narrabeen_2021031800.csv"/>
 </Diag>

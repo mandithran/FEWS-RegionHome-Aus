@@ -1,5 +1,5 @@
 list index out of rangeTraceback (most recent call last):
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 247, in <module>
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 281, in <module>
     main()
   File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 19, in main
     workDir = str(args[0])

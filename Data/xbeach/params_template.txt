@@ -15,9 +15,9 @@ alfa     = 0.
 vardx    = 1
 dx       = 0.0
 dy       = 0.0
-xfile    = x.grd
-yfile    = y.grd
-depfile = bed.DEP
+xfile    = x_testing.grd
+yfile    = y_testing.grd
+depfile = bed_testing.DEP
 posdwn  = -1 
 
 ----------------------------------------------------
@@ -99,15 +99,19 @@ zb
 dzbnow
 dzav
 
-nmeanvar = 14
+npoints = 1
+342946 6267894
+
+nrugauge = XX
+npointvar = 4
+H
+zs
+zb
+D
+
+nmeanvar = 8
 D
 breaking
-R
-DR
-ccg
-cctot
-Sutot
-Svtot
 u
 v
 H

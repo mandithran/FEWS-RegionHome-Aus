@@ -18,7 +18,7 @@
 				<filter>%ROOT_DIR%/PreProcessXBeach/*.*</filter>
 			</purgeActivity>
 			<purgeActivity>
-				<filter>%ROOT_DIR%/XBeach/$LOOP_LOCATION_ID$/runs/latest/*.*</filter>
+				<filter>%ROOT_DIR%/XBeach/$LOOP_LOCATION_ID$/runs/latest/workDir/*.*</filter>
 			</purgeActivity>
 		</startUpActivities>
 		<exportActivities>

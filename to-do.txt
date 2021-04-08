@@ -4,16 +4,17 @@ Agenda:
 
 To-do:
 - Apply for long-term storage
+- Double-check that all inputs make sense (param values and input time series, e.g. astronomical tides - MHL website)
+- Double-check that outputs make sense* 
+- Double-check that spin-up times all match up for inputs and time series inputs
+- Turn morphology off for now - look at wave run up via gauges
 - Tidy up pre-processing code and model run code 
 - See if you can get file size reduced by reducing outputs
 - Run entire workflow from a script - begin automation process (make meta-workflow)
 - Long-term storage and automate to dump runs and inputs there (https://www.dataarchive.unsw.edu.au/help/command-line-script-guide)
 - Automate - get runs running for Narrabeen all the time with a script, wipe / purge older files (https://publicwiki.deltares.nl/display/FEWSDOC/03+Setting+Up+Scheduled+Forecasts)
-- Double-check that all inputs make sense (param values and input time series, e.g. astronomical tides - MHL website)
-- Double-check that outputs make sense* 
-- Double-check that spin-up times all match up for inputs and time series inputs
-- Turn morphology off for now - look at wave run up via gauges
-- Narra Grid - extend boundaries and lower resolution? - 7 day forecast window
+- Narra Grid - extend boundaries and lower resolution? - 7 day forecast window - resolution test
+- Run up gauge temporal resolution test - same output for different temporal res?
 - Workflow for post-processing run-up gauges (which turn into TWL lines)
 - Workflow for post-processing erosion scarp
 - Workflow for visualizing outputs in FEWS
@@ -21,3 +22,8 @@ To-do:
 - Mandurah grid and trial runs
 - Visualize inputs properly (get FEWS to only show the next few days for waves/tides/surge)
 - Validation of the prototype EWS
+
+
+- Runup gauges:
+zb the correctoutput variable? Does it include run-up?
+Do short waves need to be turned on?
