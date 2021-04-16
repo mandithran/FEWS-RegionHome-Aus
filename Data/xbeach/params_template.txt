@@ -26,6 +26,7 @@ Time input
 tstart = 0
 tintg = 3600
 tintm = 3600
+tintp = 360
 tstop = XX
 ----------------------------------------------------
 Numerics input
