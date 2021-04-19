@@ -10,6 +10,11 @@ dependencies:
   - netcdf4
   - pip
   - numpy
+  - shapely
+  - seaborn
+  - rasterio
+  - cartopy
+  - matplotlib
   - pip:
     - wget
 prefix: .\bin\conda-venv
