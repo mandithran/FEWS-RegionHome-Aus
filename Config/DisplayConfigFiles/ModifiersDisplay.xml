@@ -5,16 +5,6 @@
 	<showExportButton>false</showExportButton>
 	<showCreateModifierButton>true</showCreateModifierButton>
 	<showApplyToButton>false</showApplyToButton>
-	<createModifierButtons>
-		<modifierId>MultiplyPC_Historic</modifierId>
-		<modifierId>AdjustTA_Historic</modifierId>
-		<modifierId>MultiplyPC_RDPS</modifierId>
-		<modifierId>AdjustTA_RDPS</modifierId>
-		<modifierId>MultiplyPC_GDPS</modifierId>
-		<modifierId>AdjustTA_GDPS</modifierId>
-		<modifierId>MultiplyPC_REPS</modifierId>
-		<modifierId>AdjustTA_REPS</modifierId>
-	</createModifierButtons>
 	<timeSeriesModifiersDisplayConfig>
 		<showTimeShiftModifierButtons>true</showTimeShiftModifierButtons>
 		<showTablePanel>true</showTablePanel>

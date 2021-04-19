@@ -2,10 +2,9 @@
 <locations version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locations.xsd">
 	<geoDatum>WGS 1984</geoDatum>
 	<!-- Dummy location assigned for XBeach since locations and locations sets aren't being used for now.-->
-	<location id="Dummy" name="Dummy">
-        <x>-75.75</x>
-        <y>36.16</y>
-        <z>0</z>
+		<location id="Dummy" name="Dummy">
+        <x>0</x>
+        <y>0</y>
     </location>
 	<location id="NSW" name="New South Wales">
 		<shortName>NSW</shortName>
@@ -22,80 +21,12 @@
 		<x>111.975</x>
 		<y>-44.525</y>
 	</location>
-	<location id="Delilah" name="Delilah Test Case">
-		<shortName>delilah</shortName>
-		<x>-75.75</x>
-		<y>36.16</y>
-	</location>
 	<!--Grid definitions - Complete Grid -->
-	<location id="RDPS" name="Regional Deterministic Prediction System (10 km)">
-		<shortName>RDPS</shortName>
-		<x>-142.8968</x>
-		<y>18.1429</y>
-	</location>
-	<location id="GDPS" name="Global Deterministic Prediction System (25 km)">
-		<shortName>GDPS</shortName>
-		<x>-180</x>
-		<y>-90</y>
-	</location>
-	<location id="RDPA" name="Regional Deterministic Precipitation Analysis (RDPA - CaPA) 10km">
-		<shortName>RDPA</shortName>
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="REPS" name="Regional Ensemble Prediction System">
-		<shortName>REPS</shortName>
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="GEPS" name="Global Ensemble Prediction System">
-		<shortName>GEPS</shortName>
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<!--NOAA Grid Locations-->
-	<location id="GFS" name="GFS Forecast">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="GLOBSNOW" name="Globsnow (ESA)">
-		<shortName>GLOBSNOW</shortName>
-		<x>-180</x>
-		<y>90</y>
-	</location>
-	<location id="IMERG_world" name="IMerge Rainfall">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="IMERG" name="IMerge Rainfall">
+		<location id="GFS" name="GFS Forecast">
 		<x>0</x>
 		<y>0</y>
 	</location>
 	<location id="GFS_world" name="GFS Forecast">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="GSMAP_world" name="GSMAP Rainfall">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="GSMAP" name="GSMAP Rainfall">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="E2O_25" name="E2O_25 0.25 degree grid">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="E2O_5" name="E2O_5 0.5 degree grid">
-		<x>0</x>
-		<y>0</y>
-	</location>
-		<location id="SNODAS" name="SNODAS">
-		<x>0</x>
-		<y>0</y>
-	</location>
-	<location id="$MODELNAME1$Grid" name="$MODELNAME1$Grid">
 		<x>0</x>
 		<y>0</y>
 	</location>

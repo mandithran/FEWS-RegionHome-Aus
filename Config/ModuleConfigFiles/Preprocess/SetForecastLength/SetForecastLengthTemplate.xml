@@ -4,7 +4,7 @@
 	<moduleInstanceId>$FORECASTMODULEINSTANCE$</moduleInstanceId>
 	<valueType>grid</valueType>
 	<parameterId>PC.nwp</parameterId>
-	<locationId>$MODELNAME1$Extent</locationId>
+	<locationId>$MODELNAME3$Extent</locationId>
 	<timeSeriesType>external forecasting</timeSeriesType>
 	<timeStep id="$DAY_TIMESTEP$"/>
 	<readWriteMode>read complete forecast</readWriteMode>
