@@ -3,72 +3,12 @@
 <!-- All workflows have to be registered here. id has to match the xml file name that configures the
 individual workflow, which is stored in WorkflowFiles.-->
 <workflowDescriptors xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflowDescriptors.xsd" version="1.0">
-	<!--Import Scalar Data Workflows-->
-	<workflowDescriptor id="ImportWSCHistoric" name="Import WSC Historic Data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
-	<workflowDescriptor id="ImportWSCDaily" name="Import WSC Daily Hydro Station Data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
-	<workflowDescriptor id="ImportWSCHourly" name="Import WSC Hourly Hydro Station Data " visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
-	<workflowDescriptor id="ImportECCCScalar" name="Import ECCC Meteo Station Data" visible="true" forecast="false" autoApprove="true" allowApprove="true"/>
-	<!-- Retrieve and Import ECCC  from GeoMet WebCoverage Service -->
-	<workflowDescriptor id="ImportRDPAGrids" name="Import RDPA" forecast="false" allowApprove="false" visible="true">
-		<description>Retrieve Forecast Grids from Web Coverage Service (WCS)</description>
-		<cardinalTimeStep id="GMT_6hourly"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="ImportRDPSGrids" name="Import RDPS" forecast="false" allowApprove="false" visible="true">
-		<description>Retrieve Forecast Grids from Web Coverage Service (WCS)</description>
-		<cardinalTimeStep id="GMT_6hourly"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="ImportGDPSGrids" name="Import GDPS" forecast="false" allowApprove="false" visible="true">
-		<description>Retrieve Forecast Grids from Web Coverage Service (WCS)</description>
-		<cardinalTimeStep id="GMT_12hourly"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="ImportREPSGrids" name="Import REPS" forecast="false" allowApprove="false" visible="true">
-		<description>Retrieve Forecast Grids from Web Coverage Service (WCS)</description>
-		<cardinalTimeStep id="GMT_12hourly"/>
-	</workflowDescriptor>
 	<!-- Retrieve and Import NOAA  from Server Workflows -->
 	<workflowDescriptor id="ImportGFSGrids" name="Import GFS" forecast="false" allowApprove="false" visible="true">
 		<description>Retrieve Forecast Grids from FTP and Websites</description>
 		<cardinalTimeStep timeZone="GMT" unit="hour" multiplier="12"/>
 	</workflowDescriptor>
-	<!--Additional Gridded Data Imports -->
-	<workflowDescriptor id="Import_Process_AWAP_AET" name="Import BOM Precipitation data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
-	<workflowDescriptor id="ImportSNODASGrids" name="Import SNODAS" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="ImportGLOBSNOWGrids" name="Import GlobSnow" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="ImportEOGrids" name="Import Recent Satellite (GPM / GSMAP) Precipitation" visible="true" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="ImportE2OGrids" name="Import Earth2Observe data" visible="true" forecast="false" autoApprove="false" allowApprove="false"/>
-	<!--Preprocess Data Workflows -->
-	<workflowDescriptor id="PreprocessRDPS$MODELNAME1$" name="Preprocess RDPS $MODELNAME1$" visible="false" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="PreprocessGDPS$MODELNAME1$" name="Preprocess GDPS $MODELNAME1$" visible="false" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="PreprocessREPS$MODELNAME1$" name="Preprocess REPS $MODELNAME1$" visible="false" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="PreprocessRDPS$MODELNAME2$" name="Preprocess RDPS $MODELNAME2$" visible="false" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="PreprocessGDPS$MODELNAME2$" name="Preprocess GDPS $MODELNAME2$" visible="false" forecast="false" autoApprove="true" allowApprove="false"/>
-	<workflowDescriptor id="PreprocessREPS$MODELNAME2$" name="Preprocess REPS $MODELNAME2$" visible="false" forecast="false" autoApprove="true" allowApprove="false"/>
 	<!--Model Run Workflow Descriptors -->
-	<workflowDescriptor id="Run$MODELNAME1$Historic" name="Run $MODELNAME1$ (Historical)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="Run$MODELNAME1$RDPSForecast" name="Run $MODELNAME1$ (RDPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="Run$MODELNAME1$GDPSForecast" name="Run $MODELNAME1$ (GDPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="Run$MODELNAME1$REPSForecast" name="Run $MODELNAME1$ (REPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<!--Model Run Workflow Descriptors -->
-	<workflowDescriptor id="Run$MODELNAME2$Historic" name="Run $MODELNAME2$ (Historical)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="Run$MODELNAME2$RDPSForecast" name="Run $MODELNAME2$ (RDPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="Run$MODELNAME2$GDPSForecast" name="Run $MODELNAME2$ (GDPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
-	<workflowDescriptor id="Run$MODELNAME2$REPSForecast" name="Run $MODELNAME2$ (REPS)" visible="true" forecast="true" autoApprove="true" allowApprove="true">
-		<cardinalTimeStep id="$DAY_TIMESTEP$"/>
-	</workflowDescriptor>
 	<workflowDescriptor id="WF_ImportAstroTide" name="Import Hindcast Astronomical Tide Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_ImportAusSurge" name="Import Forecast Storm Surge Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
@@ -84,41 +24,8 @@ individual workflow, which is stored in WorkflowFiles.-->
 	<workflowDescriptor id="WF_runXBeach" name="Run XBeach Forecast" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
 	<rootNode>
-		<node name="Import Historic Data">
-			<workflowId>ImportWSCHistoric</workflowId>
-		</node>
-		<node name="Import Re-Analysis Data">
-			<workflowId>ImportE2OGrids</workflowId>
-		</node>
-		<node name="Near Real Time Data Import (MSC Datamart)">
-			<workflowId>ImportWSCDaily</workflowId>
-			<workflowId>ImportWSCHourly</workflowId>
-			<workflowId>ImportECCCScalar</workflowId>
-		</node>
-		<node name="Gridded Data Import (GeoMet WCS)">
-			<workflowId>ImportRDPAGrids</workflowId>
-			<workflowId>ImportRDPSGrids</workflowId>
-			<workflowId>ImportGDPSGrids</workflowId>
-			<workflowId>ImportREPSGrids</workflowId>
-		</node>
 		<node name="Gridded Data Import (NOMADS)">
 			<workflowId>ImportGFSGrids</workflowId>
-		</node>
-		<node name="Import Snow Data">
-			<workflowId>ImportSNODASGrids</workflowId>
-			<workflowId>ImportGLOBSNOWGrids</workflowId>
-		</node>
-		<node name="Run Model - $MODELNAME1$">
-			<workflowId>Run$MODELNAME1$Historic</workflowId>
-			<workflowId>Run$MODELNAME1$RDPSForecast</workflowId>
-			<workflowId>Run$MODELNAME1$GDPSForecast</workflowId>
-			<workflowId>Run$MODELNAME1$REPSForecast</workflowId>
-		</node>
-		<node name="Run Model - $MODELNAME2$">
-			<workflowId>Run$MODELNAME2$Historic</workflowId>
-			<workflowId>Run$MODELNAME2$RDPSForecast</workflowId>
-			<workflowId>Run$MODELNAME2$GDPSForecast</workflowId>
-			<workflowId>Run$MODELNAME2$REPSForecast</workflowId>
 		</node>
 		<node name="Import Astronomical Tide Predictions">
 			<workflowId>WF_ImportAstroTide</workflowId>

@@ -1,48 +1,10 @@
 <products xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/products.xsd">
-	<productCategory id="Meteo">
-		<product id="RDPSForecast">
+	<productCategory id="Tides">
+		<product id="TidePredictions">
 			<expiryTime unit="day" multiplier="7"/>
 			<timeSeriesFilter>
-				<moduleInstanceId>ImportRDPS</moduleInstanceId>
-				<locationId>RDPS</locationId>
-			</timeSeriesFilter>
-			<timeSeriesFilter>
-				<moduleInstanceId>$MODELNAME1$RDPSForecast</moduleInstanceId>
-				<locationId>$MODELNAME1$Grid</locationId>
-			</timeSeriesFilter>
-			<timeSeriesFilter>
-				<moduleInstanceId>$MODELNAME1$RDPSForecast</moduleInstanceId>
-				<locationSetId>$MODELNAME1$HydroStations</locationSetId>
-			</timeSeriesFilter>
-		</product>
-		<product id="GDPSForecast">
-			<expiryTime unit="day" multiplier="7"/>
-			<timeSeriesFilter>
-				<moduleInstanceId>ImportGDPS</moduleInstanceId>
-				<locationId>GDPS</locationId>
-			</timeSeriesFilter>
-			<timeSeriesFilter>
-				<moduleInstanceId>$MODELNAME1$GDPSForecast</moduleInstanceId>
-				<locationId>$MODELNAME1$Grid</locationId>
-			</timeSeriesFilter>
-				<timeSeriesFilter>
-				<moduleInstanceId>$MODELNAME1$GDPSForecast</moduleInstanceId>
-				<locationSetId>$MODELNAME1$HydroStations</locationSetId>
-			</timeSeriesFilter>
-		</product>
-		<product id="REPSForecast">
-			<expiryTime unit="day" multiplier="7"/>
-			<timeSeriesFilter>
-				<moduleInstanceId>ImportREPS</moduleInstanceId>
-				<locationId>REPS</locationId>
-			</timeSeriesFilter>
-			<timeSeriesFilter>
-				<moduleInstanceId>$MODELNAME1$REPSForecast</moduleInstanceId>
-				<locationId>$MODELNAME1$Grid</locationId>
-			</timeSeriesFilter>
-			<timeSeriesFilter>
-				<moduleInstanceId>$MODELNAME1$REPSForecast</moduleInstanceId>
-				<locationSetId>$MODELNAME1$HydroStations</locationSetId>
+				<moduleInstanceId>ImportAstroTide</moduleInstanceId>
+				<locationSetId>AstroTideLocSet</locationSetId>
 			</timeSeriesFilter>
 		</product>
 	</productCategory>

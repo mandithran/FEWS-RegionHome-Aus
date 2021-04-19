@@ -104,6 +104,27 @@
 			<lowerValue>28.5</lowerValue>
 			<lowerValue>32.6</lowerValue>
 		</classBreaks>
+		<classBreaks id="Class.WaterLevel">
+			<lowerColor>green</lowerColor>
+			<upperColor>red</upperColor>
+			<lowerOpaquenessPercentage>20</lowerOpaquenessPercentage>
+			<upperOpaquenessPercentage>50</upperOpaquenessPercentage>
+			<lowerSymbolSize>10</lowerSymbolSize>
+			<upperSymbolSize>30</upperSymbolSize>
+			<lowerValue>0</lowerValue>
+			<lowerValue>0.3</lowerValue>
+			<lowerValue>1.6</lowerValue>
+			<lowerValue>3.4</lowerValue>
+			<lowerValue>5.5</lowerValue>
+			<lowerValue>8.0</lowerValue>
+			<lowerValue>10.8</lowerValue>
+			<lowerValue>13.9</lowerValue>
+			<lowerValue>17.2</lowerValue>
+			<lowerValue>20.8</lowerValue>
+			<lowerValue>24.5</lowerValue>
+			<lowerValue>28.5</lowerValue>
+			<lowerValue>32.6</lowerValue>
+		</classBreaks>
 		<classBreaks id="Class.Pressure">
 			<lowerColor>green</lowerColor>
 			<upperColor>red</upperColor>

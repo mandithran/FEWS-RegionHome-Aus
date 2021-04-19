@@ -23,138 +23,17 @@
 			</node>
 		</nodes>
 		<nodes id="Operational Data">
-			<node id="ECCC" name="Environment and Climate Change Canada">
-				<url>https://weather.gc.ca/</url>
-				<localRun>false</localRun>
-				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
-			</node>
-			<node id="WSC" name="Water Survey of Canada">
-				<url>https://wateroffice.ec.gc.ca/</url>
-				<localRun>false</localRun>
-				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
-			</node>
 			<node id="NOAA" name="NOAA">
 				<url>https://www.ncdc.noaa.gov/data-access/model-data/model-datasets</url>
 				<localRun>false</localRun>
 				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
 			</node>
-			<node id="GlobSnow" name="GlobSnow">
-				<url>http://www.globsnow.info/</url>
-				<localRun>false</localRun>
-				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
-			</node>
 		</nodes>
 	</nodes>
-	<nodes id="ImportPrecipBOM" name="Import BOM Precipitation Data">
-		<node id="ImportPrecipBOM3Day" name="Import 3-Day BOM Precipitation">
-			<workflowId>Import_Process_AWAP_AET</workflowId>
+		<nodes id="ImportAstroTidesNodes" name="Import Astronomical Tide Predictions">
+		<node id="ImportAstroTidesNode" name="Import Astronomical Tide Predictions">
+			<workflowId>WF_ImportAstroTide</workflowId>
 			<graceTime unit="hour" multiplier="24"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-	</nodes>
-	<nodes id="ImportHistoricGrid" name="Import Historic Gridded Data (Pre-2015)">
-		<node id="ImportE2O" name="Import Earth2Observe (Server)">
-			<workflowId>ImportE2OGrids</workflowId>
-			<graceTime unit="hour" multiplier="24"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-	</nodes>
-	<nodes id="ImportWSC" name="Import WSC Hydrological Data">
-		<node id="ImportWSCHourly" name="Import Recent Hydrological Data (Past Day)">
-			<workflowId>ImportWSCHourly</workflowId>
-			<graceTime unit="hour" multiplier="24"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="ImportWSCDaily" name="Import Recent Hydrological Data (Past Month)">
-			<workflowId>ImportWSCDaily</workflowId>
-			<graceTime unit="hour" multiplier="24"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-	</nodes>
-	<nodes id="ImportECCCStationNodes" name="Import ECCC Meteo Data">
-		<node id="ImportECCCStations" name="Import Meteo Station Data">
-			<workflowId>ImportECCCScalar</workflowId>
-			<graceTime unit="hour" multiplier="24"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-	</nodes>
-	<nodes id="ImportECCCGridNodes" name="Import ECCC Forecasts">
-		<node id="ImportRDPA" name="Import RDPA">
-			<workflowId>ImportRDPAGrids</workflowId>
-			<graceTime unit="hour" multiplier="6"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="ImportRDPS" name="Import RDPS">
-			<workflowId>ImportRDPSGrids</workflowId>
-			<graceTime unit="hour" multiplier="6"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="ImportGDPS" name="Import GDPS">
-			<workflowId>ImportGDPSGrids</workflowId>
-			<graceTime unit="hour" multiplier="6"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="ImportREPS" name="Import REPS">
-			<workflowId>ImportREPSGrids</workflowId>
-			<graceTime unit="hour" multiplier="6"/>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-	</nodes>
-	<nodes id="$MODELNAME1$Nodes" name="Run $MODELNAME1$">
-		<node id="$MODELNAME1$Historic" name="Run $MODELNAME1$ Historic">
-			<workflowId>Run$MODELNAME1$Historic</workflowId>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="$MODELNAME1$RDPSForecast" name="Run $MODELNAME1$ RDPS Forecast">
-			<workflowId>Run$MODELNAME1$RDPSForecast</workflowId>
-			<visibleModifierGroup>MultiplyPC_RDPS</visibleModifierGroup>
-			<visibleModifierGroup>AdjustTA_RDPS</visibleModifierGroup>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="$MODELNAME1$GDPSForecast" name="Run $MODELNAME1$ GDPS Forecast">
-			<workflowId>Run$MODELNAME1$GDPSForecast</workflowId>
-			<visibleModifierGroup>MultiplyPC_GDPS</visibleModifierGroup>
-			<visibleModifierGroup>AdjustTA_GDPS</visibleModifierGroup>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="$MODELNAME1$REPSForecast" name="Run $MODELNAME1$ REPS Forecast">
-			<workflowId>Run$MODELNAME1$REPSForecast</workflowId>
-			<visibleModifierGroup>MultiplyPC_REPS</visibleModifierGroup>
-			<visibleModifierGroup>AdjustTA_REPS</visibleModifierGroup>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-	</nodes>
-	<nodes id="$MODELNAME2$Nodes" name="Run $MODELNAME2$">
-		<node id="$MODELNAME2$Historic" name="Run $MODELNAME2$ Historic">
-			<workflowId>Run$MODELNAME2$Historic</workflowId>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="$MODELNAME2$RDPSForecast" name="Run $MODELNAME2$ RDPS Forecast">
-			<workflowId>Run$MODELNAME2$RDPSForecast</workflowId>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="$MODELNAME2$GDPSForecast" name="Run $MODELNAME2$ GDPS Forecast">
-			<workflowId>Run$MODELNAME2$GDPSForecast</workflowId>
-			<localRun>true</localRun>
-			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
-		</node>
-		<node id="$MODELNAME2$REPSForecast" name="Run $MODELNAME2$ REPS Forecast">
-			<workflowId>Run$MODELNAME2$REPSForecast</workflowId>
 			<localRun>true</localRun>
 			<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
 		</node>

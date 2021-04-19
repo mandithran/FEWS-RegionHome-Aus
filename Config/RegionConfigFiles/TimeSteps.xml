@@ -12,6 +12,4 @@
 	<timeStep id="GMT_12hourly" times="00:00 12:00" timeZone="GMT"/>
 	<!--<timeStep id="day_GMT" unit="day" timeZone="GMT"/>-->
 <!-- Model specific timesteps-->
-	<timeStep id="$MODELNAME1$" unit="day" timeZone="$TIMEZONE$"/>
-	<timeStep id="$MODELNAME2$" unit="day" timeZone="$TIMEZONE$"/>
 </timeSteps>
