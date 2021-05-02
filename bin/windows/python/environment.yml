@@ -15,6 +15,7 @@ dependencies:
   - rasterio
   - cartopy
   - matplotlib
+  - rioxarray
   - pip:
     - wget
 prefix: .\bin\conda-venv
