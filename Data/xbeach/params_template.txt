@@ -15,9 +15,9 @@ alfa     = 0.
 vardx    = 1
 dx       = 0.0
 dy       = 0.0
-xfile    = x_testing.grd
-yfile    = y_testing.grd
-depfile = bed_testing.DEP
+xfile    = x.grd
+yfile    = y.grd
+depfile = bed.DEP
 posdwn  = -1 
 
 ----------------------------------------------------
@@ -88,7 +88,7 @@ D90 = 0.000675
 Morphological calculation options
 ----------------------------------------------------
 morfac = 10
-morstart = 0
+morstart = XX
 
 ----------------------------------------------------
 Output options
