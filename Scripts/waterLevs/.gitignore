@@ -1,0 +1,4 @@
+/figs/*
+/ifiles/*
+/ofiles/*
+!.gitignore

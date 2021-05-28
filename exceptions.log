@@ -1,6 +1,6 @@
-not writableTraceback (most recent call last):
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 295, in <module>
+file must have 'read' and 'readline' attributesTraceback (most recent call last):
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PostProcessXBeach_dev/postprocess-main.py", line 49, in <module>
     main()
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PreProcessXBeach_dev/preprocess-main.py", line 271, in main
-    new_data.write(line)
-io.UnsupportedOperation: not writable
+  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PostProcessXBeach_dev/postprocess-main.py", line 43, in main
+    xbmodel = pickle.load(xbpkl)
+TypeError: file must have 'read' and 'readline' attributes

@@ -26,7 +26,7 @@ if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
 #============================================================================#
 #                                   Paths                                    #
 #============================================================================#
-targetDir = "J:\\Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\test"
+targetDir = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM products\AUSWAVE-R\\raw\\test"
 
 #============================================================================#
 # Get today's date, check when the last time that the data was successfully
@@ -56,6 +56,7 @@ def parseTime(timeString=None):
 if os.listdir(rawfilepath) == []:
     files_found = False
     download_start_date = todaysdate - timedelta(days=1.5)
+    print(download_start_date)
 # Case 2 - Files exist with gaps; parse times and set download_start_date to right before earliest gap 
 else:
     files_found = True
@@ -76,7 +77,7 @@ else:
 
     # Check for gaps in times > 6 hrs. Implication is that there was a gap in downloads
     deltas = df['Time'].diff()[1:]
-    gaps = deltas[deltas > timedelta(hours=6)]
+    gaps = deltas[deltas > timedelta(hours=12)]
     if not gaps.empty:
         targetIndex = int(min(gaps.index)-1)
         download_start_date = df["Time"].iloc[targetIndex]
@@ -86,23 +87,25 @@ else:
         download_start_date = df["Time"].iloc[-1]
         print(download_start_date)
     
-print('Starting download of BOM Storm Surge files from ' + str(download_start_date))
+print('Starting download of BOM Storm Wave files from ' + str(download_start_date))
     
     
 #============================================================================#
-# Parse HTML page and download .nc files
+# TODO: build a list of files to download
 #============================================================================#
 
-http = urllib3.PoolManager()
-url = 'http://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/catalog.html'
-response = http.request('GET', url)
-soup = BeautifulSoup(response.data, 'html.parser')
-soup_str = soup.text
-soup_split = soup_str.split('.nc')
-# Only keep the items containing "IDZ" - the netcdf files
-soup_split = [string for string in soup_split if ("IDZ" in string)]
+times = np.arange(download_start_date, todaysdate, timedelta(hours=12))
+for t in times:
+    try:
+        print(t.strftime("%Y%m%d%H"))
+    except:
+        print("Error downloading wave file for time: %s" % t)
 
-main_url = 'http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/'
+
+
+
+
+"""main_url = 'http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/'
 
 for i,text in enumerate(soup_split):
     download_flag=0 #flag to initiate download
@@ -121,5 +124,5 @@ for i,text in enumerate(soup_split):
         attempts=0
         print("Downloading %s" % url)
         # TODO: uncomment this line
-        file = wget.download(url, out=rawfilepath) 
+        file = wget.download(url, out=rawfilepath) """
     

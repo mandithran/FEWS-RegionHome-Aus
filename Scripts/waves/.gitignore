@@ -1,0 +1,3 @@
+/ifiles/*
+/ofiles/*
+!.gitignore
