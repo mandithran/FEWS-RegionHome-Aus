@@ -122,7 +122,5 @@ for key in d:
     counter += 1
 # Save fig
 figName = 'TWLtimeseries_%shrsLeadTime.png' % leadTime
-#fig.autofmt_xdate()
-plt.show()
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 

@@ -26,7 +26,7 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
     # Storm color
     sc = "darkblue"
     # Scatter plot of observed v predicted
-    ax.scatter(obs,pred, c='lightgrey', s=8, alpha=.45)
+    ax.scatter(obs,pred, c='lightgrey', s=8, alpha=.6)
     # Scatter plot of storms observed v predicted
     ax.scatter(stormObs,stormPred, c=sc, s=8, alpha=.3)
     # Legend
@@ -38,8 +38,8 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
     y = [xmin,xmax+(0.2*(xmax-xmin))]
     ax.plot(x,y,c='black',linewidth=.8,alpha=0.6)
     # Axes and plot titles
-    ax.set_xlabel("observed")
-    ax.set_ylabel("predicted")
+    ax.set_xlabel("observed ($m$)")
+    ax.set_ylabel("predicted ($m$)")
     ax.set_title("%s-hr lead time" % (leadTime))
     # Calculate RMSE
     rmse = str(round(mean_squared_error(obs,pred, squared=False),2))
@@ -48,22 +48,23 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
     # Note: don't use r2_score from scikit learn; use scipy.stats.linregress
     # These two functions aren't the same
     # https://stackoverflow.com/questions/36153569/sklearn-r2-score-and-python-stats-lineregress-function-give-very-different-value
-    slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(obs,pred)
-    rsquared = round(r_value**2,2)
-    slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(stormObs,stormPred)
-    rsquared_storms = round(r_value**2,2)
+    r_value, p = scipy.stats.pearsonr(obs,pred)
+    print(r_value)
+    r = round(r_value,2)
+    r_value, p = scipy.stats.pearsonr(stormObs,stormPred)
+    r_storms = round(r_value,2)
     # Plot these values
-    textx, texty = 0.05, 0.92
-    shift = 0.07
+    textx, texty = 0.05, 0.88
+    shift = 0.09
     ax.text(textx, texty, "RMSE (all data) = %s m" % rmse, transform=ax.transAxes,
             alpha=.6)
-    ax.text(textx, texty-shift, "$R^2$ (all data)= %s" % rsquared, transform=ax.transAxes,
+    ax.text(textx, texty-shift, "$r$ (all data)= %s" % r, transform=ax.transAxes,
             alpha=.6)
     ax.text(textx, texty-2*shift, "RMSE (storms) = %s m" % rmse_storms, transform=ax.transAxes,
             c=sc)
-    ax.text(textx, texty-3*shift, "$R^2$ (storms)= %s" % rsquared_storms, transform=ax.transAxes,
+    ax.text(textx, texty-3*shift, "$r$ (storms)= %s" % r_storms, transform=ax.transAxes,
             c=sc)
-    return ax
+    return ax, rmse, rmse_storms, r, r_storms
 
 
 # ================= Load Observed and Predicted Data ================= #
@@ -98,6 +99,10 @@ fig, axes = plt.subplots(nrows,2,figsize=(5.5,7.5))
 #fig.delaxes(axes[-1])
 axs = np.array(axes).reshape(-1)
 counter = 0
+r_list = []
+rstorm_list = []
+rmse_list = []
+rmsestorm_list = []
 for leadTime in leadtimes:
     print("leadtime: %s" % leadTime)
     df_subset = df[df['leadtime_hrs']==leadTime]
@@ -108,10 +113,11 @@ for leadTime in leadtimes:
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
     varString = "non-tidal residuals"
-    ax = generateScatterPlot(fig= fig, ax = axs[counter], obs=df_subset.nts, 
+    ax, rmse, rmsestorm, r, r_storms = generateScatterPlot(fig= fig, ax = axs[counter], obs=df_subset.nts, 
                         pred=df_subset.surge,
                         leadtime=leadTime,siteName=siteName,
                         stormObs = df_storms.nts,stormPred=df_storms.surge)
+
     counter += 1
 fig.tight_layout()
 fig.subplots_adjust(top=0.94,hspace=.38)
@@ -140,10 +146,14 @@ for leadTime in leadtimes:
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
     varString = "TWL"
-    ax = generateScatterPlot(fig= fig, ax = axs[counter], obs=df_subset.wl_obs, 
+    ax, rmse, rmsestorm, r, r_storms = generateScatterPlot(fig= fig, ax = axs[counter], obs=df_subset.wl_obs, 
                         pred=df_subset.twl_for,
                         leadtime=leadTime,siteName=siteName,
                         stormObs = df_storms.wl_obs,stormPred=df_storms.twl_for)
+    r_list.append(r)
+    rstorm_list.append(r_storms)
+    rmse_list.append(rmse)
+    rmsestorm_list.append(rmsestorm)
     counter += 1
 fig.tight_layout()
 fig.subplots_adjust(top=0.94,hspace=.38)
@@ -158,8 +168,8 @@ fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 
 # ================= Plot lead time of 3 days ================= #
 # Plot by lead time
-nrows = 1
-fig, axes = plt.subplots(nrows,2,figsize=(6,2.5))
+nrows = 2
+fig, axes = plt.subplots(nrows,1,figsize=(3,4))
 #fig.delaxes(axes[-1])
 axs = np.array(axes).reshape(-1)
 varlist = [['nts','surge'],['wl_obs','twl_for']]
@@ -183,9 +193,19 @@ for v in varlist:
 axs[0].set_title("Non-tidal residuals (surge)")
 axs[1].set_title("Total water level (tides + surge)")
 fig.tight_layout()
-fig.subplots_adjust(top=0.83)
-fig.suptitle("Observed vs. predicted: 72-hr lead time",
-             fontsize=10,y=1)
+fig.subplots_adjust(top=0.86,hspace=.45)
+fig.suptitle("Observed vs. predicted\n(72-hr lead time)",
+             fontsize=9,y=1)
 figName = 'ObsVPred_%s_%s.png' % (siteName, varString)
-plt.show()
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
+plt.show()
+
+"""# Plot line plot of lead time vs skill
+import seaborn as sns
+fig, axes = plt.subplots(2,1,figsize=(6,6))
+sns.lineplot(x=leadtimes,y=r_list, ax=axes[0])
+sns.lineplot(x=leadtimes,y=rstorm_list, ax=axes[0])
+sns.lineplot(x=leadtimes,y=rmse_list, ax=axes[1])
+sns.lineplot(x=leadtimes,y=rmsestorm_list, ax=axes[1])
+print(r_list,rmse_list)
+plt.show()"""

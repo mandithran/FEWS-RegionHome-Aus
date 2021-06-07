@@ -38,19 +38,30 @@ targetDir = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM products\AUSWAVE-R\\raw\\tes
 # Test Case 3: Files already exist, grab start time from most recent file
 
 todaysdate=datetime.datetime.now()
+print(todaysdate)
 local = pytz.timezone("Australia/Sydney")
 todaysdate=todaysdate.astimezone(pytz.utc)
 rawfilepath=targetDir
 files_found = None
 
 def parseTime(timeString=None):
-    filedate=timeString.split('_')
-    filedate=filedate[-1]
-    filedatetime = datetime.datetime.strptime(filedate, '%Y%m%d%H')
+    timeString = timeString.replace("T","").replace("Z","")
+    filedatetime = datetime.datetime.strptime(timeString, '%Y%m%d%H%M')
     timezone = pytz.timezone("UTC")
     filedatetime = timezone.localize(filedatetime)
     return filedatetime
 
+def round_hours(dt, resolutionInHours):
+    """round_hours(datetime, resolutionInHours) => datetime rounded to lower interval
+    Works for hour resolution up to a day (e.g. cannot round to nearest week).
+    """
+    from datetime import datetime, timedelta
+    # First zero out minutes, seconds and micros
+    dtTrunc = dt.replace(minute=0,second=0, microsecond=0)
+    # Figure out how many minutes we are past the last interval
+    excessHours = (dtTrunc.hour) % resolutionInHours
+    # Subtract off the excess minutes to get the last interval
+    return dtTrunc + timedelta(hours=-excessHours)
 
 # Case 1 - No previous files exist, downloads initiated for previous day's files 
 if os.listdir(rawfilepath) == []:
@@ -66,10 +77,13 @@ else:
     columnNames = ["FileName","Time"]
     df = pd.DataFrame(columns=columnNames)
     for filename in os.listdir(rawfilepath):
-        filestr = filename.split(".nc")[0]
-        ftime = parseTime(filestr)
-        df = df.append({"FileName":filename,
-                    "Time":ftime}, ignore_index=True)
+        try:
+            filestr = filename.split(".nc")[0].split('.')[2]
+            ftime = parseTime(filestr)
+            df = df.append({"FileName":filename,
+                        "Time":ftime}, ignore_index=True)
+        except:
+            pass
     df = df.sort_values(by="Time", ignore_index=True)
 
     # Check for files greater than 4 weeks (### hrs). Removes those from the df. Assumes no gaps around this time.
@@ -86,6 +100,9 @@ else:
     else:
         download_start_date = df["Time"].iloc[-1]
         print(download_start_date)
+
+# Round start time down to nearest 12 hours
+download_start_date = round_hours(download_start_date,12)
     
 print('Starting download of BOM Storm Wave files from ' + str(download_start_date))
     
@@ -95,34 +112,23 @@ print('Starting download of BOM Storm Wave files from ' + str(download_start_dat
 #============================================================================#
 
 times = np.arange(download_start_date, todaysdate, timedelta(hours=12))
-for t in times:
-    try:
-        print(t.strftime("%Y%m%d%H"))
-    except:
-        print("Error downloading wave file for time: %s" % t)
+locations = ['SYD','PER']
 
+for location in locations:
+    for t in times:
+        dtstr = pd.to_datetime(str(t))
+        try:
+            datestr = dtstr.strftime("%Y%m%d")
+            timestr = dtstr.strftime("%H%M")
+            fname = "%s.msh.%sT%sZ.nc" % (location,datestr,timestr)
+            main_url = "http://dapds00.nci.org.au/thredds/fileServer/rr6/waves"
+            fullPath = "%s/%s/%s/%s" % (main_url, datestr, timestr, fname)
+            print("Downloading %s" % fullPath)
+            file = wget.download(fullPath, out=rawfilepath)
+        except:
+            print("Error downloading wave file for time: %s" % t)
 
-
-
-
-"""main_url = 'http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/'
-
-for i,text in enumerate(soup_split):
-    download_flag=0 #flag to initiate download
-    
-    # Parse all the file dates and times 
-    fn = text[text.find('IDZ00154'):]
-    filedatetime = parseTime(timeString=fn)
-    
-    if filedatetime>download_start_date:
-        download_flag=1
-
-    if download_flag:
-        print('Downloading BOM Storm Surge file: ' + fn + '.nc')
-        url = main_url + fn + '.nc'
-        # download file (try until host responds)
-        attempts=0
-        print("Downloading %s" % url)
-        # TODO: uncomment this line
-        file = wget.download(url, out=rawfilepath) """
-    
+# Remove any duplicates
+for fi in os.listdir(targetDir):
+    if "(" in fi:
+        os.remove(os.path.join(targetDir,fi))

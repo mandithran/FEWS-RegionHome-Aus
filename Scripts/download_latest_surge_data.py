@@ -123,3 +123,7 @@ for i,text in enumerate(soup_split):
         # TODO: uncomment this line
         file = wget.download(url, out=rawfilepath) 
     
+# Remove any duplicates
+for fi in os.listdir(targetDir):
+    if "(" in fi:
+        os.remove(os.path.join(targetDir,fi))
