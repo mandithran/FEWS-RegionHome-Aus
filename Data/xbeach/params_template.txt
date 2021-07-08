@@ -82,7 +82,7 @@ Morphology parameters
 morfac = 10
 morstart = XX
 struct =1
-ne_layer =ne_layer.DEP
+ne_layer =ne_layer.grd
 
 
 ----------------------------------------------------

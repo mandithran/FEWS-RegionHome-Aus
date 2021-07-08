@@ -2,19 +2,18 @@
 <workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
 	<activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>RetrieveAusSurge</moduleInstanceId>
-        <moduleConfigFileName>RetrieveAusSurgeAdapter</moduleConfigFileName>
+		<moduleInstanceId>RetrieveNSS</moduleInstanceId>
+        <moduleConfigFileName>RetrieveNSSAdapter</moduleConfigFileName>
 	</activity>
-	<activity>
+	<!--activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>ProcessAusSurge</moduleInstanceId>
-        <moduleConfigFileName>ProcessAusSurgeAdapter</moduleConfigFileName>
-		<loopLocationSetId>ausLocations</loopLocationSetId>
+		<moduleInstanceId>ProcessNSS</moduleInstanceId>
+        <moduleConfigFileName>ProcessNSSAdapter</moduleConfigFileName>
+		<loopLocationSetId>hotspotLocations</loopLocationSetId>
 	</activity>
 	<activity>
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>ImportAusSurgeInst</moduleInstanceId>
         <moduleConfigFileName>ImportAusSurgeAdapter</moduleConfigFileName>
-		<loopLocationSetId>ausLocations</loopLocationSetId>
-	</activity>
+	</activity-->
 </workflow>

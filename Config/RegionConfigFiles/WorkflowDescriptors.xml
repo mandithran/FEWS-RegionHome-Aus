@@ -8,6 +8,11 @@ individual workflow, which is stored in WorkflowFiles.-->
 		<description>Retrieve Forecast Grids from FTP and Websites</description>
 		<cardinalTimeStep timeZone="GMT" unit="hour" multiplier="12"/>
 	</workflowDescriptor>
+	<workflowDescriptor id="WF_RunCoastalForecast" name="Run Coastal FEWS forecast" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
+	<!--Model Run Workflow Descriptors -->
+	<workflowDescriptor id="WF_InitializeForecast" name="Initialize FEWS forecast" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
 	<!--Model Run Workflow Descriptors -->
 	<workflowDescriptor id="WF_ImportAstroTide" name="Import Hindcast Astronomical Tide Predictions" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
@@ -26,6 +31,12 @@ individual workflow, which is stored in WorkflowFiles.-->
 	<rootNode>
 		<node name="Gridded Data Import (NOMADS)">
 			<workflowId>ImportGFSGrids</workflowId>
+		</node>
+		<node name="Run Coastal Forecast">
+			<workflowId>WF_RunCoastalForecast</workflowId>
+		</node>
+		<node name="Initialize FEWS Forecast">
+			<workflowId>WF_InitializeForecast</workflowId>
 		</node>
 		<node name="Import Astronomical Tide Predictions">
 			<workflowId>WF_ImportAstroTide</workflowId>

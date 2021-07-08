@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) by Afdeling ICT (Stichting Deltares) -->
 <moduleInstanceDescriptors xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/moduleInstanceDescriptors.xsd" version="1.0">
+	<!--Initialization-->
+	<moduleInstanceDescriptor id="InitializeForecast">
+		<description>Initialize a FEWS forecast</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="InitializeHotspotForecast">
+		<description>Initialize a hotspot forecast</description>
+	</moduleInstanceDescriptor>
 	<!--Import Scalar Data-->
-	<moduleInstanceDescriptor id="SurgeDownload">
+	<moduleInstanceDescriptor id="NSSDownload">
 		<description>Storm surge Download module</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="WaveDownload">
@@ -14,13 +21,13 @@
 	<moduleInstanceDescriptor id="RetrieveAstroTide">
 		<description>Download Australia storm surge forecast output</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="RetrieveAusSurge">
-		<description>Download Australia storm surge forecast output</description>
+	<moduleInstanceDescriptor id="RetrieveNSS">
+		<description>Download Australia's National Storm Surge System forecast output</description>
 	</moduleInstanceDescriptor>
 		<moduleInstanceDescriptor id="RetrieveAusWaves">
 		<description>Download Australia Auswave forecast output</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessAusSurge">
+	<moduleInstanceDescriptor id="ProcessNSS">
 		<description>Process Australia storm surge forecast output</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessAusWaves">
@@ -51,8 +58,11 @@
 	<moduleInstanceDescriptor id="ImportAusSurgeInst">
 		<description>Import storm surge data from local folder</description>
 	</moduleInstanceDescriptor>
-	<!-- Dataset. Name of this descriptor must match .zip file name stored in
+	<!-- Dataset descriptors. Name of this descriptor must match .zip file name stored in
 	the directory ModuleDataSetFiles -->
+	<moduleInstanceDescriptor id="initFEWSForecast">
+		<description>Module Dataset for initializing a FEWS forecast</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="DelilahData">
 		<description>Module Dataset for Delilah example</description>
 	</moduleInstanceDescriptor>

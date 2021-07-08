@@ -1,5 +1,6 @@
 log.txt
 log.txt.old
+/Forecasts/*
 /bin/*
 !/bin/windows
 /bin/windows/*

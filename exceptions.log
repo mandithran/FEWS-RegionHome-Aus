@@ -1,6 +1,8 @@
-file must have 'read' and 'readline' attributesTraceback (most recent call last):
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PostProcessXBeach_dev/postprocess-main.py", line 49, in <module>
+can't set attributeTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 302, in <module>
     main()
-  File "c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus/Modules/PostProcessXBeach_dev/postprocess-main.py", line 43, in main
-    xbmodel = pickle.load(xbpkl)
-TypeError: file must have 'read' and 'readline' attributes
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 283, in main
+    hotspotFcst.formatSystemTimeStr()
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xbfewsTools\fewsForecast.py", line 155, in formatSystemTimeStr
+    self.systemTimeStr = self.systemTime.strftime("%Y%m%d%H")
+AttributeError: can't set attribute

@@ -1,4 +1,7 @@
 /*
 !.gitignore
-!/SurgeDownload_dev/
+!/NSSDowload_dev/
 !/WaveDownload_dev/
+!/initFEWSForecast_dev/
+!/PostProcessXBeach_dev
+PreProcessXBeach_dev

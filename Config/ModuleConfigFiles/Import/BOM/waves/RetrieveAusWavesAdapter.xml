@@ -34,16 +34,12 @@
 					<argument>%WORK_DIR%/python/retrieve-waves.py</argument>
 					<!-- Work directory -->
 					<argument>%WORK_DIR%</argument>
-					<!-- Server destination path -->
-					<argument>http://dapds00.nci.org.au/thredds/fileServer/rr6/waves/</argument>
 					<!-- System time -->
 					<argument>%TIME0%</argument>
 					<!-- Filename that holds location set to iterate through -->
-					<argument>surgeLocations.csv</argument>
+					<!--argument>surgeLocations.csv</argument-->
 					<!-- Region home path -->
 					<argument>%REGION_HOME%</argument>
-					<!-- Location ID, loops through locations in location set -->
-					<argument>$LOOP_LOCATION_ID$</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

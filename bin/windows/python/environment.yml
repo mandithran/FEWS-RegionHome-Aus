@@ -17,6 +17,7 @@ dependencies:
   - matplotlib
   - rioxarray
   - bs4
+  - xlrd
   - pip:
     - wget
 prefix: .\bin\conda-venv

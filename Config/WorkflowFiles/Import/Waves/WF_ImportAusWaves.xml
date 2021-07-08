@@ -4,6 +4,5 @@
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>RetrieveAusWaves</moduleInstanceId>
         <moduleConfigFileName>RetrieveAusWavesAdapter</moduleConfigFileName>
-		<loopLocationSetId>ausLocations</loopLocationSetId>
 	</activity>
 </workflow>

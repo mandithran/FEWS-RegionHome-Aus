@@ -12,12 +12,10 @@ ModuleInstanceDescriptors.xml -->
         <description>XBeach model run</description>
         <piVersion>1.8</piVersion>
         <rootDir>%REGION_HOME%/Modules/$MODELNAME3$</rootDir>
-        <workDir>%ROOT_DIR%/$LOOP_LOCATION_ID$/runs/latest/workDir</workDir>
+        <workDir>%ROOT_DIR%/$LOOP_LOCATION_ID$/%TIME0%SystemTime-$LOOP_LOCATION_ID$</workDir>
         <exportDir>%ROOT_DIR%/$LOOP_LOCATION_ID$</exportDir>
         <exportDataSetDir>%ROOT_DIR%/$LOOP_LOCATION_ID$</exportDataSetDir>
-        <exportIdMap>IdExport$MODELNAME3$</exportIdMap>
         <importDir>%ROOT_DIR%</importDir>
-        <importIdMap>IdImport$MODELNAME3$</importIdMap>
         <dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
         <dumpDir>%ROOT_DIR%/$LOOP_LOCATION_ID$/diagnostics/</dumpDir>
         <diagnosticFile>%ROOT_DIR%/$LOOP_LOCATION_ID$/diagnostics/diagnostics.xml</diagnosticFile>
@@ -25,6 +23,7 @@ ModuleInstanceDescriptors.xml -->
         <timeZone>
 			<timeZoneName>GMT</timeZoneName>
 		</timeZone>
+        <time0Format>yyyyMMddHH</time0Format>
     </general>
     <activities>
         <executeActivities>
@@ -48,13 +47,13 @@ ModuleInstanceDescriptors.xml -->
                 <ignoreDiagnostics>true</ignoreDiagnostics>
             </executeActivity>
         </executeActivities>
-        <importActivities>
+        <!--importActivities>
             <importPiNetcdfActivity>
                 <importFile>xboutput.nc</importFile>
                 <timeSeriesSets>
-                    <timeSeriesSet>
+                    <timeSeriesSet-->
                         <!--This might not be correct. Check if model or dataset instance needed.-->
-                        <moduleInstanceId>XBeachAdapter</moduleInstanceId>
+                        <!--moduleInstanceId>XBeachAdapter</moduleInstanceId>
                         <valueType>grid</valueType>
                         <parameterId>H_max.simulated</parameterId>
                         <locationId>Dummy</locationId>
@@ -64,6 +63,6 @@ ModuleInstanceDescriptors.xml -->
                     </timeSeriesSet>
                 </timeSeriesSets>
             </importPiNetcdfActivity>
-        </importActivities>
+        </importActivities-->
     </activities>
 </generalAdapterRun>

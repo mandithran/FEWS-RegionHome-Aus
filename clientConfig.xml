@@ -2,5 +2,5 @@
 <clientConfiguration xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/clientConfig.xsd">
 	<clientType>Stand alone</clientType>
 	<jvmOption>-DautoRollingBarrel=false</jvmOption>
-	<autoExportModuleDataSet name="SurgeDownload" exportDir="Modules"/>
+	<autoExportModuleDataSet name="NSSDownload" exportDir="Modules"/>
 </clientConfiguration>

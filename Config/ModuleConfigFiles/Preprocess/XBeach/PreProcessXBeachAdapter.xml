@@ -42,14 +42,8 @@
 					<argument>%REGION_HOME%</argument>
 					<!-- Location ID (looped)-->
 					<argument>$LOOP_LOCATION_ID$</argument>
-					<!-- Model spin-up window in hours -->
-					<argument>12</argument>
 					<!-- Forecast horizon in days -->
 					<argument>3</argument>
-					<!-- Input time series resolution in minutes -->
-					<argument>10</argument>
-					<!-- Location set filename -->
-					<argument>surgeLocations.csv</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

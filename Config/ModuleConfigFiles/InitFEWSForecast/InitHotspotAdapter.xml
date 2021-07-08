@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules</rootDir>
+		<workDir>%ROOT_DIR%/initFEWSForecast</workDir>
+		<exportDir>%ROOT_DIR%/NSSDownload</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/initFEWSForecast</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%/initFEWSForecast</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/initFEWSForecast/diag.xml</diagnosticFile>
+		<time0Format>yyyyMMdd_HHmm</time0Format>
+	</general>
+	<activities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run python script to intialize a hotspot forecast</description>
+				<command>
+					<executable>$PYTHON_EXE$</executable>
+				</command>
+				<arguments>
+					<argument>%WORK_DIR%/python/initialize-hotspot.py</argument>
+                    <argument>%REGION_HOME%</argument>
+                    <argument>%TIME0%</argument>
+                    <argument>$LOOP_LOCATION_ID$</argument>
+                    <argument>%WORK_DIR%</argument>
+				</arguments>
+				<timeOut>7200000</timeOut>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>

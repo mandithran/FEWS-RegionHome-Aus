@@ -4,6 +4,6 @@
 		<runIndependent>true</runIndependent>
 		<moduleInstanceId>PreProcessXBeach</moduleInstanceId>
         <moduleConfigFileName>PreProcessXBeachAdapter</moduleConfigFileName>
-		<loopLocationSetId>ausLocations</loopLocationSetId>
+		<loopLocationSetId>hotspotLocations</loopLocationSetId>
 	</activity>
 </workflow>

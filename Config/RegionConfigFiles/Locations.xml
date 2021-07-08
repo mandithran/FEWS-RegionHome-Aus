@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locations version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locations.xsd">
 	<geoDatum>WGS 1984</geoDatum>
-	<!-- Dummy location assigned for XBeach since locations and locations sets aren't being used for now.-->
-		<location id="Dummy" name="Dummy">
-        <x>0</x>
-        <y>0</y>
-    </location>
-	<location id="NSW" name="New South Wales">
-		<shortName>NSW</shortName>
-		<x>111.975</x>
-		<y>-44.525</y>
-	</location>
-	<location id="WA" name="Western Australia">
-		<shortName>NSW</shortName>
-		<x>115.72912</x>
-		<y>-32.508728</y>
-	</location>
-	<location id="QLD;NSW" name="New South Wales">
-		<shortName>QLD-NSW</shortName>
-		<x>111.975</x>
-		<y>-44.525</y>
-	</location>
 	<!--Grid definitions - Complete Grid -->
-		<location id="GFS" name="GFS Forecast">
+	<location id="GFS" name="GFS Forecast">
 		<x>0</x>
 		<y>0</y>
 	</location>

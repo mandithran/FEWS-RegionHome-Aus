@@ -46,18 +46,34 @@
 			</attribute>
 		</csvFile>
 	</locationSet>
+	<locationSet id="ausStates">
+		<sortingLocationAttributeId>ID</sortingLocationAttributeId>
+        <csvFile>
+            <file>ausStates.csv</file>
+            <geoDatum>WGS 1984</geoDatum>
+            <id>%ID%</id>
+			<name>%Name%</name>
+			<!-- These next two are meaningless but FEWS kept complaining-->
+			<x>%Longitude%</x>
+			<y>%Latitude%</y>
+			<!-- TODO: add parent location-->
+			<attribute id="Region" name="Region">
+				<text>%Region%</text>
+			</attribute>
+        </csvFile>
+    </locationSet>
 	<!-- These surge locations are based on the BOM NSS output.
 	The Lat_NSS and Lon_NSS fields in the .csv file must
 	be pre-determined by examining this output. -->
-	<locationSet id="ausLocations">
+	<locationSet id="hotspotLocations">
 		<sortingLocationAttributeId>ID</sortingLocationAttributeId>
         <csvFile>
-            <file>surgeLocations.csv</file>
+            <file>hotspotLocations.csv</file>
             <geoDatum>GDA94</geoDatum>
             <id>%ID%</id>
 			<name>%Name%</name>
-			<x>%Lon_NSS%</x>
-			<y>%Lat_NSS%</y>
+			<x>%Lon_Surge%</x>
+			<y>%Lat_Surge%</y>
             <relation id="region">
                   <relatedLocationId>%REGION%</relatedLocationId>
             </relation>
