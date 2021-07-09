@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules</rootDir>
+		<workDir>%ROOT_DIR%/PostProcessXBeach</workDir>
+		<exportDir>%ROOT_DIR%/PostProcessXBeach</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/PostProcessXBeach</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%/PostProcessXBeach</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/PostProcessXBeach/diag.xml</diagnosticFile>
+		<time0Format>yyyyMMddHH</time0Format>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/PostProcessXBeach/*.*</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportDataSetActivity>
+				<moduleInstanceId>PostProcessXBeach</moduleInstanceId>
+			</exportDataSetActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run python script to post-process XBeach model</description>
+				<command>
+					<executable>$PYTHON_EXE$</executable>
+				</command>
+				<arguments>
+					<argument>%WORK_DIR%/postprocess-main.py</argument>
+					<!-- Work dir-->
+					<argument>%WORK_DIR%</argument>
+					<!-- System time -->
+					<argument>%TIME0%</argument>
+					<!-- Region home dir -->
+					<argument>%REGION_HOME%</argument>
+					<!-- Location ID (looped)-->
+					<argument>$LOOP_LOCATION_ID$</argument>
+				</arguments>
+				<timeOut>7200000</timeOut>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>

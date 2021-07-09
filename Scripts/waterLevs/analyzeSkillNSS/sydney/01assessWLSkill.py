@@ -8,7 +8,7 @@ import re
 
 
 ####################### Parameters #######################
-siteName = "Mandurah"
+siteName = "Narrabeen"
 # Location of the NSS output node to compare (closes to observation gauge)
 # Sydney gauge: 
 lat = -33.819923
@@ -164,4 +164,4 @@ for fi in df_files['fileName']:
 df = pd.merge(df, df_for, how="inner", left_index=True, right_index=True)
 
 # Send all observations and predictions, with corresponding lead times, to a csv file
-df.to_csv(os.path.join(oDir,"WL-NTR-obsAndpred_%s_2020.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-obsAndpred_%s_2020_NoNTS.csv" % siteName))

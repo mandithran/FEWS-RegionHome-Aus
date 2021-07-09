@@ -1,8 +1,6 @@
-can't set attributeTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 302, in <module>
+[Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\XBeach\\Narrabeen\\20210707_0000SystemTime-Narrabeen\\forecast_hotspot.pkl'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py", line 77, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 283, in main
-    hotspotFcst.formatSystemTimeStr()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xbfewsTools\fewsForecast.py", line 155, in formatSystemTimeStr
-    self.systemTimeStr = self.systemTime.strftime("%Y%m%d%H")
-AttributeError: can't set attribute
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py", line 57, in main
+    hotspotFcst = pickle.load(open(hotspotFcst, "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\XBeach\\Narrabeen\\20210707_0000SystemTime-Narrabeen\\forecast_hotspot.pkl'

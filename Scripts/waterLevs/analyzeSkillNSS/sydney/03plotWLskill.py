@@ -6,16 +6,24 @@ from sklearn.metrics import mean_squared_error, r2_score
 import pytz
 import numpy as np
 import scipy
+from datetime import datetime
 
 # ================= Paths ================= #
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
-waveDirectory = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
+siteName = "Narrabeen"
+workDir ="C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\Sydney"
+waveDirectory = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves\\assessSkill\\Sydney"
 stormPeriods = os.path.join(waveDirectory, "ofiles\\observedStorms_Narrabeen_2020.csv")
 oDir = os.path.join(workDir,"ofiles")
 figDir = os.path.join(workDir,"figs")
+# Start and end times
+startTime = datetime(2020,1,1,tzinfo=pytz.utc)
+endTime = datetime(2020,12,31,tzinfo=pytz.utc)
+#  Set to true to include surge in forecasted TWL. 
+# Set to false to test water level skill when just including astronomical tide predictions and not surge predicitons
+nts = False 
+
 
 # ================= Parameters ================= #
-siteName = "Narrabeen"
 timezoneUTC = pytz.utc
 
 
@@ -49,7 +57,6 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
     # These two functions aren't the same
     # https://stackoverflow.com/questions/36153569/sklearn-r2-score-and-python-stats-lineregress-function-give-very-different-value
     r_value, p = scipy.stats.pearsonr(obs,pred)
-    print(r_value)
     r = round(r_value,2)
     r_value, p = scipy.stats.pearsonr(stormObs,stormPred)
     r_storms = round(r_value,2)
@@ -79,7 +86,8 @@ leadtimes = df['leadtime_hrs'].unique()
 # (and you're testing the skill of the storm periods)
 df = df[df.index.strftime('%M') == '00']
 
-
+df = df[df.index>=startTime] 
+df = df[df.index<endTime]
 # ================= Load Storm Event Data ================= #
 dfs = pd.read_csv(stormPeriods)
 dfs.index=dfs['datetime']
@@ -142,6 +150,10 @@ for leadTime in leadtimes:
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
+    if nts == False:
+        # Set TWL to equal tide predictions, no surge
+        # This tests the impact of removing surge on the skill of the water level predictions
+        df_subset['twl_for'] = df_subset["tide_m"] 
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
@@ -159,9 +171,10 @@ fig.tight_layout()
 fig.subplots_adjust(top=0.94,hspace=.38)
 fig.suptitle("Observed vs. predicted total water levels (tides + surge) - 2020",
              fontsize=10,y=1)
-figName = 'ObsVPred_%s_%s.png' % (siteName, varString)
-fig.delaxes(axes[2,1])
-#plt.show()
+if nts == False:
+        figName = 'ObsVPred_%s_%s_corrected_NoSurge.png' % (siteName, varString)
+else:
+        figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 
 
@@ -181,6 +194,10 @@ for v in varlist:
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
+    if nts == False:
+        # Set TWL to equal tide predictions, no surge
+        # This tests the impact of removing surge on the skill of the water level predictions
+        df_subset['twl_for'] = df_subset["tide_m"] 
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
@@ -196,7 +213,11 @@ fig.tight_layout()
 fig.subplots_adjust(top=0.86,hspace=.45)
 fig.suptitle("Observed vs. predicted\n(72-hr lead time)",
              fontsize=9,y=1)
-figName = 'ObsVPred_%s_%s.png' % (siteName, varString)
+if nts == False:
+        figName = 'ObsVPred_%s_%s_corrected_NoSurge.png' % (siteName, varString)
+        fig.delaxes(axes[0])
+else:
+        figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 plt.show()
 

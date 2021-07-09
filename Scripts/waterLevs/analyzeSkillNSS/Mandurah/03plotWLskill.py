@@ -16,8 +16,14 @@ stormPeriods = os.path.join(waveDirectory, "assessSkill\\%s\\ofiles\\" % siteNam
                             "observedStorms_%s_2020.csv" % siteName)
 # TODO: change back
 #oDir = os.path.join(workDir,"ofiles")
-oDir = os.path.join(workDir,"ofiles","trial1-firstRound")
+oDir = os.path.join(workDir,"ofiles")
 figDir = os.path.join(workDir,"figs")
+# Start and end times
+startTime = datetime(2020,1,1,tzinfo=pytz.utc)
+endTime = datetime(2020,12,31,tzinfo=pytz.utc)
+#  Set to true to include surge in forecasted TWL. 
+# Set to false to test water level skill when just including astronomical tide predictions and not surge predicitons
+nts = False 
 
 
 # ================= Parameters ================= #
@@ -54,7 +60,6 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
     # These two functions aren't the same
     # https://stackoverflow.com/questions/36153569/sklearn-r2-score-and-python-stats-lineregress-function-give-very-different-value
     r_value, p = scipy.stats.pearsonr(obs,pred)
-    print(r_value)
     r = round(r_value,2)
     r_value, p = scipy.stats.pearsonr(stormObs,stormPred)
     r_storms = round(r_value,2)
@@ -69,11 +74,12 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
             c=sc)
     ax.text(textx, texty-3*shift, "$r$ (storms)= %s" % r_storms, transform=ax.transAxes,
             c=sc)
+    print("returning plot for %s lead time" % leadtime)
     return ax, rmse, rmse_storms, r, r_storms
 
 
 # ================= Load Observed and Predicted Data ================= #
-df = pd.read_csv(os.path.join(oDir, "WL-NTR-obsAndpred_%s_2020.csv" % siteName))
+df = pd.read_csv(os.path.join(oDir, "WL-NTR-obsAndpred_%s_2020_corrected.csv" % siteName))
 df.rename(columns={'Unnamed: 0':'datetime'}, inplace=True)
 df.index = df['datetime']
 df = df.drop(['datetime'],axis=1)
@@ -81,13 +87,12 @@ df = df.drop(['datetime'],axis=1)
 df.index = pd.to_datetime(df.index, utc=True)
 # Get the unique number of lead times
 leadtimes = df['leadtime_hrs'].unique()
+print(leadtimes)
 # Reduce temporal resolution to hourly, since wave data collected hourly
 # (and you're testing the skill of the storm periods)
 df = df[df.index.strftime('%M') == '00']
 
-# TODO: Comment these lines out to get the full year
-startTime = datetime(2020,7,1,tzinfo=pytz.utc)
-endTime = datetime(2020,12,31,tzinfo=pytz.utc)
+
 df = df[df.index>=startTime] 
 df = df[df.index<endTime]
 
@@ -95,7 +100,6 @@ df = df[df.index<endTime]
 # ================= Load Storm Event Data ================= #
 dfs = pd.read_csv(stormPeriods)
 dfs.columns = ['datetime','hsig','storm']
-print(dfs.head())
 dfs.index=dfs['datetime']
 dfs.index = pd.to_datetime(dfs.index)
 
@@ -117,13 +121,12 @@ r_list = []
 rstorm_list = []
 rmse_list = []
 rmsestorm_list = []
-for leadTime in leadtimes:
-    print("leadtime: %s" % leadTime)
+for leadTime in leadtimes: 
+    print(leadTime)
     df_subset = df[df['leadtime_hrs']==leadTime]
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
-    print(df_subset.head())
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
@@ -136,11 +139,10 @@ for leadTime in leadtimes:
     counter += 1
 fig.tight_layout()
 fig.subplots_adjust(top=0.94,hspace=.38)
-fig.suptitle("Observed vs. predicted non-tidal residuals (storm surge) - July 2020 - December 2020",
+fig.suptitle("Observed vs. predicted non-tidal residuals (storm surge) - 2020",
              fontsize=10,y=1)
-figName = 'ObsVPred_%s_%s.png' % (siteName, varString)
-fig.delaxes(axes[2,1])
-plt.show()
+figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
+#fig.delaxes(axes[2,1])
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight') 
 
 
@@ -152,15 +154,19 @@ fig, axes = plt.subplots(nrows,2,figsize=(5.5,7.5))
 axs = np.array(axes).reshape(-1)
 counter = 0
 for leadTime in leadtimes:
-    print("leadtime: %s" % leadTime)
     df_subset = df[df['leadtime_hrs']==leadTime]
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
+    if nts == False:
+        # Set TWL to equal tide predictions, no surge
+        # This tests the impact of removing surge on the skill of the water level predictions
+        df_subset['twl_for'] = df_subset["tide_m"] 
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
     varString = "TWL"
+    print(df_subset.columns)
     ax, rmse, rmsestorm, r, r_storms = generateScatterPlot(fig= fig, ax = axs[counter], obs=df_subset.wl_obs, 
                         pred=df_subset.twl_for,
                         leadtime=leadTime,siteName=siteName,
@@ -174,9 +180,12 @@ fig.tight_layout()
 fig.subplots_adjust(top=0.94,hspace=.38)
 fig.suptitle("Observed vs. predicted total water levels (tides + surge) - July 2020 - December 2020",
              fontsize=10,y=1)
-figName = 'ObsVPred_%s_%s.png' % (siteName, varString)
-fig.delaxes(axes[2,1])
-#plt.show()
+if nts == False:
+        figName = 'ObsVPred_%s_%s_corrected_NoSurge.png' % (siteName, varString)
+else:
+        figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
+
+#fig.delaxes(axes[2,1])
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 
 
@@ -189,13 +198,17 @@ fig, axes = plt.subplots(nrows,1,figsize=(3,4))
 axs = np.array(axes).reshape(-1)
 varlist = [['nts','surge'],['wl_obs','twl_for']]
 counter = 0
-leadTime = 72
+leadTime = 66
 for v in varlist:
     print("leadtime: %s" % leadTime)
     df_subset = df[df['leadtime_hrs']==leadTime]
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
+    if nts == False:
+        # Set TWL to equal tide predictions, no surge
+        # This tests the impact of removing surge on the skill of the water level predictions
+        df_subset['twl_for'] = df_subset["tide_m"] 
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
@@ -211,7 +224,11 @@ fig.tight_layout()
 fig.subplots_adjust(top=0.86,hspace=.45)
 fig.suptitle("Observed vs. predicted\n(72-hr lead time)",
              fontsize=9,y=1)
-figName = 'ObsVPred_%s_%s.png' % (siteName, varString)
+if nts == False:
+        figName = 'ObsVPred_%s_%s_corrected_NoSurge.png' % (siteName, varString)
+        fig.delaxes(axes[0])
+else:
+        figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 plt.show()
 
