@@ -24,7 +24,6 @@ lon = 115.704099999999997
 timezoneUTC = pytz.utc
 forecastPeriodStart = timezoneUTC.localize(datetime(year=2020,month=1,day=1)) 
 forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
-#forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
 
 datumCorrection = .54 # Observations are in ZFD, which needs to be converted to AHD
 
@@ -102,7 +101,7 @@ df = pd.merge(dft, df_wl, how="inner", left_index=True, right_index=True)
 
 # ==== Subtract astronomical tide from observed water level to get non-tidal residuals ==== #
 df["nts"] = df["wl_obs"] - df["tide_m"]
-df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s_set0.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s_concatenate.csv" % siteName))
 
 
 ####################### NSS #######################
@@ -123,6 +122,7 @@ df_files['fileDateTime'] = [parseTimeNSS(str(row)) for row in df_files['fileName
 # Make datetime the new index for this df
 df_files = df_files.set_index(["fileDateTime"])
 # Keep only files for certain time period (2020)
+df_files = df_files.sort_index()
 df_files = df_files[df_files.index>=forecastPeriodStart]
 df_files = df_files[df_files.index<forecastPeriodEnd]
 
@@ -133,7 +133,7 @@ df_continuous = pd.DataFrame(['surge','tide'])
 for fi in df_files['fileName']:
     try:
         print("Processing file: %s" % fi)
-        print("File number: %s " % str(counter))
+        print("File number: %s" % counter)
         # Load forecast file
         ds = xr.open_dataset(os.path.join(wlDir,fi))
         # Parse time from file
@@ -143,31 +143,44 @@ for fi in df_files['fileName']:
         # Keep only the point to compare to (nearest point to actual gauge where
         # observations came from)
         ds = ds.where((ds.lat==lat) & (ds.lon==lon), drop=True).squeeze()
-        # Append these vars to df
+        # Make a new time series that points to the files that need to be concatenated
+        # You have the first three days of a forecast covered
+        # Beyond that, you need to take the last 6 hours of subsequent time steps
+        # 16 additional forecast periods beyond the start period need to be slotted out of future time steps and concantenated
+        concatStartFileDatetime = dateTime + timedelta(hours=forecastInterval)
+        concatInterval = int(forecastInterval*(16)) # in hours
+        concatEndFileDatetime = dateTime + timedelta(hours=concatInterval)
+        concatFiles = None
+        concatFiles = df_files.loc[concatStartFileDatetime:concatEndFileDatetime]
+        deltat_nss = ds.time.values[1]-ds.time.values[0]
+        # TODO: load each as a ds, select appropriate time frame, point, and variables (see above); append to ds
+        for fiConcat in concatFiles['fileName']:
+            dsConcat = xr.open_dataset(os.path.join(wlDir,fiConcat))
+            dateTimeConcat = parseTimeNSS(string=fiConcat)
+            dsConcat = dsConcat[['time','surge','tide']]
+            dsConcat = dsConcat.where((dsConcat.lat==lat) & 
+                                      (dsConcat.lon==lon), drop=True).squeeze()
+            # Get the second to last time step of the forecast
+            # Second to last because otherwise you'd create duplicates rows when concatenating
+            endConcat = dsConcat.time.values[-1]
+            # Start of concatenated time frame is from the last six hours of forecast
+            startConcat = endConcat - np.timedelta64(forecastInterval,'h') + deltat_nss
+            # Splice the last 6 hours of the forecast (based on forecastInterval)
+            dsConcat = dsConcat.sel(time=slice(startConcat,endConcat))
+            # Concatenate this dataset with the main dataset
+            ds = xr.concat([ds,dsConcat],"time")
+                # Append these vars to df
         df_file = ds.to_dataframe()
         df_file = df_file.drop(["lat","lon"],axis=1)
         # Make dataset timezone aware
         df_file = df_file.tz_localize(timezoneUTC)
-        #===== Add a 4-7 day period where you set the surge component to to 0 ====#
-        # Generate a new time series based on last value of the forecast
-        delta_t = df_file.index[1]-df_file.index[0]
-        lastTimeStep = df_file.index[-1] 
-        flatStart = lastTimeStep+delta_t
-        flatEnd = lastTimeStep + timedelta(days=4)
-        seriesFlat = pd.date_range(start=flatStart,
-                        end=flatEnd,
-                        freq=delta_t)
-        df_flat = pd.DataFrame({"Datetime_gmt":seriesFlat,
-                                'surge':0}).set_index("Datetime_gmt")
-        # Concatenate these together
-        df_file = pd.concat([df_file,df_flat])
         df_file['fileName'] = fi
         df_file['fileDatetime'] = dateTime
         df_continuous = df_continuous.append(df_file)
         for leadTime in leadtimes:
-            print("Leadtime: %s" % leadTime)
             # Drop the 'fileName' and 'fileDatetime' columns
             df_nss = df_file.drop(['fileDatetime'],axis=1).drop(['fileName'],axis=1)
+            print("Leadtime: %s" % leadTime)
             # Select correct time window to compare to observed water levels
             # Based on lead time and forecast interval
             # Basically chops up each file into 6 hour windows,
@@ -176,8 +189,6 @@ for fi in df_files['fileName']:
             # This then allows for a "continuous" time series of, for example, the 6-hour lead time windows
             startTime = dateTime + timedelta(hours=leadTime)
             endTime = startTime + timedelta(hours=forecastInterval)
-            #print("startTime, endTime")
-            #print(startTime, endTime)
             df_nss = df_nss[df_nss.index>=startTime] 
             df_nss = df_nss[df_nss.index<endTime]
             # Compute tide+surge (forecast, exclude setup because XBeach handles it)
@@ -192,6 +203,8 @@ for fi in df_files['fileName']:
             df_nss['IntervalStartTime'] = startTime
             df_nss['fileName'] = fi
             df_nss['fileDatetime'] = dateTime
+            # Start date time of the series
+            df_nss['StartofSeries'] = dateTime
             # Append to df containing all NSS forecasts\
             # The result is a dataframe with forecasts all stitched together
             # as one continuous timeseries.
@@ -208,7 +221,7 @@ for fi in df_files['fileName']:
 df = pd.merge(df, df_for, how="inner", left_index=True, right_index=True)
 
 # Send all observations and predictions, with corresponding lead times, to a csv file
-df.to_csv(os.path.join(oDir,"WL-NTR-LeadTimeSeries_%s_2020_set0.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-LeadTimeSeries_%s_2020_concatenate.csv" % siteName))
 
 # Send continuous time series forecasts to a csv file
-df_continuous.to_csv(os.path.join(oDir,"WL-NTR-ContinuousTimeSeries_%s_2020_set0.csv" % siteName))
+df_continuous.to_csv(os.path.join(oDir,"WL-NTR-ContinuousTimeSeries_%s_2020_concatenate.csv" % siteName))

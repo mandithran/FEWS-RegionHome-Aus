@@ -26,6 +26,9 @@ datumCorrection = .54 # Observations are in ZFD, which needs to be converted to 
 
 forecastInterval = 6 # hours
 leadtimes = [0,6,12,24,48,66] # in hours
+timezoneUTC = pytz.utc
+forecastPeriodStart = timezoneUTC.localize(datetime(year=2020,month=1,day=1)) 
+forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
 
 
 ####################### Paths and parameters #######################
@@ -33,7 +36,6 @@ leadtimes = [0,6,12,24,48,66] # in hours
 # Did a sanity check plot on observed water levels vs, predicted tides
 # Obs vs pred are in sync
 dataDir = 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\waterLevs\\Mandurah'
-timezoneUTC = pytz.utc
 workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\mandurah"
 oDir = os.path.join(workDir,"ofiles")
 
@@ -53,7 +55,6 @@ def parseTimeNSS(string=None):
 ifile = os.path.join(dataDir,'tidePredictions',
                     'Mandurah_Marina_2019-2022_15min_Harmonic.csv')
 dft = pd.read_csv(ifile)
-print(dft.head())
 # Convert datetime column to datetime objects and set as index
 dft.index = pd.to_datetime(dft['time_utc'], utc=True)
 dft = dft.drop('time_utc',1)
@@ -70,10 +71,8 @@ dft.columns = ["tide_m"]
 ifile = os.path.join(dataDir,'observations',
                     'MAN2020.txt')
 df_wl = pd.read_csv(ifile)
-print(df_wl.head())
 # Drop metadata rows (for some reason, skiprows in read_csv doesn't work)
 df_wl = df_wl.drop(df_wl.index[0:16])
-print(df_wl.head())
 # Rename columns
 df_wl.columns = ['h_cm','datetime']
 # Convert cm to m
@@ -102,7 +101,7 @@ df = pd.merge(dft, df_wl, how="inner", left_index=True, right_index=True)
 
 # ==== Subtract astronomical tide from observed water level to get non-tidal residuals ==== #
 df["nts"] = df["wl_obs"] - df["tide_m"]
-df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s_corrected.csv" % siteName))
 
 
 ####################### NSS #######################
@@ -123,15 +122,13 @@ df_files['fileDateTime'] = [parseTimeNSS(str(row)) for row in df_files['fileName
 # Make datetime the new index for this df
 df_files = df_files.set_index(["fileDateTime"])
 # Keep only files for certain time period (2020)
-forecastPeriodStart = timezoneUTC.localize(datetime(year=2020,month=1,day=1)) 
-forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
 df_files = df_files[df_files.index>=forecastPeriodStart]
 df_files = df_files[df_files.index<forecastPeriodEnd]
-print(df_files.head())
 
 
 counter = 1
 df_for = pd.DataFrame(columns=['surge','tide',"twl_for",'leadtime_hrs','IntervalStartTime'])
+df_continuous = pd.DataFrame(['surge','tide'])
 for fi in df_files['fileName']:
     try:
         print("Processing file: %s" % fi)
@@ -145,13 +142,19 @@ for fi in df_files['fileName']:
         # Keep only the point to compare to (nearest point to actual gauge where
         # observations came from)
         ds = ds.where((ds.lat==lat) & (ds.lon==lon), drop=True).squeeze()
+        # Append these vars to df
+        df_file = ds.to_dataframe()
+        df_file = df_file.drop(["lat","lon"],axis=1)
+        # Make dataset timezone aware
+        df_file = df_file.tz_localize(timezoneUTC)
+        df_file['fileName'] = fi
+        df_file['fileDatetime'] = dateTime
+        # Append this with continuous dataframe
+        df_continuous = df_continuous.append(df_file)
         for leadTime in leadtimes:
-            # Append these vars to df
-            df_nss = ds.to_dataframe()
-            df_nss = df_nss.drop(["lat","lon"],axis=1)
-            # Make dataset timezone aware
-            df_nss = df_nss.tz_localize(timezoneUTC)
             print("Leadtime: %s" % leadTime)
+            # Drop the 'fileName' and 'fileDatetime' columns
+            df_nss = df_file.drop(['fileDatetime'],axis=1).drop(['fileName'],axis=1)
             # Select correct time window to compare to observed water levels
             # Based on lead time and forecast interval
             # Basically chops up each file into 6 hour windows,
@@ -160,14 +163,10 @@ for fi in df_files['fileName']:
             # This then allows for a "continuous" time series of, for example, the 6-hour lead time windows
             startTime = dateTime + timedelta(hours=leadTime)
             endTime = startTime + timedelta(hours=forecastInterval)
-            print("startTime, endTime")
-            print(startTime, endTime)
             df_nss = df_nss[df_nss.index>=startTime] 
             df_nss = df_nss[df_nss.index<endTime]
-            print("df_nss again")
-            print(df_nss)
             # Compute tide+surge (forecast, exclude setup because XBeach handles it)
-            df_nss["twl_for"] = df_nss["surge"] + df_nss["tide"]
+            #df_nss["twl_for"] = df_nss["surge"] + df_nss["tide"]
             # Interpolate surge at same temporal resolution as the observations
             # 15 min intervals, starting at df beginning
             upsampled = df_nss.resample('30T', origin=df_nss.index[0]).asfreq()
@@ -176,6 +175,17 @@ for fi in df_files['fileName']:
             df_nss['leadtime_hrs'] = leadTime
             # Record start time for time interval being tested
             df_nss['IntervalStartTime'] = startTime
+            # Record the corresponding file name
+            # To get a time series that you can actually plot, 
+            # You need to record the start time of the initial file
+            # If you simply group by leadtime, you'll get a messed-up series
+            # that is really only representative of the lead time. It's not a real forecast.
+            # In a time series, each 6 hour interval will have a different lead time
+            # with respect to the initial start time.
+            # This desgination allows you to account for that and plot a 
+            # representation of the actual time series you would be feeding the model.
+            df_nss['fileName'] = fi
+            df_nss['fileDatetime'] = dateTime
             # Append to df containing all NSS forecasts\
             # The result is a dataframe with forecasts all stitched together
             # as one continuous timeseries.
@@ -190,5 +200,7 @@ for fi in df_files['fileName']:
 df = pd.merge(df, df_for, how="inner", left_index=True, right_index=True)
 
 # Send all observations and predictions, with corresponding lead times, to a csv file
-df.to_csv(os.path.join(oDir,"WL-NTR-obsAndpred_%s_2020_NoNTS.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-LeadTimeSeries_%s_2020_corrected.csv" % siteName))
 
+# Send continuous time series forecasts to a csv file
+df_continuous.to_csv(os.path.join(oDir,"WL-NTR-ContinuousTimeSeries_%s_2020_corrected.csv" % siteName))

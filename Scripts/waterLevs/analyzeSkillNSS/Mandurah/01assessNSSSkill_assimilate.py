@@ -26,7 +26,7 @@ forecastPeriodStart = timezoneUTC.localize(datetime(year=2020,month=1,day=1))
 forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
 #forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
 
-datumCorrection = .54 # Observations are in ZFD, which needs to be converted to AHD
+datumCorrection = .54 # Ob servations are in ZFD, which needs to be converted to AHD
 
 forecastInterval = 6 # hours
 leadtimes = [0,6,12,24,48,72,96,120,144,162] # in hours
@@ -102,7 +102,7 @@ df = pd.merge(dft, df_wl, how="inner", left_index=True, right_index=True)
 
 # ==== Subtract astronomical tide from observed water level to get non-tidal residuals ==== #
 df["nts"] = df["wl_obs"] - df["tide_m"]
-df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s.csv_set0" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s_assimilate.csv" % siteName))
 
 
 ####################### NSS #######################
@@ -129,6 +129,7 @@ df_files = df_files[df_files.index<forecastPeriodEnd]
 
 counter = 1
 df_for = pd.DataFrame(columns=['surge','tide',"twl_for",'leadtime_hrs','IntervalStartTime'])
+df_continuous = pd.DataFrame(['surge','tide'])
 for fi in df_files['fileName']:
     try:
         print("Processing file: %s" % fi)
@@ -142,27 +143,32 @@ for fi in df_files['fileName']:
         # Keep only the point to compare to (nearest point to actual gauge where
         # observations came from)
         ds = ds.where((ds.lat==lat) & (ds.lon==lon), drop=True).squeeze()
+        # Append these vars to df
+        df_file = ds.to_dataframe()
+        df_file = df_file.drop(["lat","lon"],axis=1)
+        # Make dataset timezone aware
+        df_file = df_file.tz_localize(timezoneUTC)
+        #===== Add a 4-7 day period where you set the surge component to an assimilated ("real time") observed value ====#
+        # Generate a new time series based on last value of the forecast
+        delta_t = df_file.index[1]-df_file.index[0]
+        lastTimeStep = df_file.index[-1]
+        flatStart = lastTimeStep+delta_t
+        flatEnd = lastTimeStep + timedelta(days=4)
+        seriesFlat = pd.date_range(start=flatStart,
+                        end=flatEnd,
+                        freq=delta_t)
+        observedSurgeValue = df[df.index==lastTimeStep]['nts'].values[0]
+        df_flat = pd.DataFrame({"Datetime_gmt":seriesFlat,
+                                'surge':observedSurgeValue}).set_index("Datetime_gmt")
+        # Concatenate these together
+        df_file = pd.concat([df_file,df_flat])
+        df_file['fileName'] = fi
+        df_file['fileDatetime'] = dateTime
+        df_continuous = df_continuous.append(df_file)
         for leadTime in leadtimes:
-            # Append these vars to df
-            df_nss = ds.to_dataframe()
-            df_nss = df_nss.drop(["lat","lon"],axis=1)
-            # Make dataset timezone aware
-            df_nss = df_nss.tz_localize(timezoneUTC)
             print("Leadtime: %s" % leadTime)
-            #===== Add a 4-7 day period where you set the surge component to an assimilated ("real time") observed value ====#
-            # Generate a new time series based on last value of the forecast
-            delta_t = df_nss.index[1]-df_nss.index[0]
-            lastTimeStep = df_nss.index[-1]
-            flatStart = lastTimeStep+delta_t
-            flatEnd = lastTimeStep + timedelta(days=4)
-            seriesFlat = pd.date_range(start=flatStart,
-                            end=flatEnd,
-                            freq=delta_t)
-            observedSurgeValue = df[df.index==lastTimeStep]['nts'].values[0]
-            df_flat = pd.DataFrame({"Datetime_gmt":seriesFlat,
-                                    'surge':observedSurgeValue}).set_index("Datetime_gmt")
-            # Concatenate these together
-            df_nss = pd.concat([df_nss,df_flat])
+            # Drop the 'fileName' and 'fileDatetime' columns
+            df_nss = df_file.drop(['fileDatetime'],axis=1).drop(['fileName'],axis=1)
             # Select correct time window to compare to observed water levels
             # Based on lead time and forecast interval
             # Basically chops up each file into 6 hour windows,
@@ -185,6 +191,8 @@ for fi in df_files['fileName']:
             df_nss['leadtime_hrs'] = leadTime
             # Record start time for time interval being tested
             df_nss['IntervalStartTime'] = startTime
+            df_nss['fileName'] = fi
+            df_nss['fileDatetime'] = dateTime
             # Append to df containing all NSS forecasts\
             # The result is a dataframe with forecasts all stitched together
             # as one continuous timeseries.
@@ -201,4 +209,7 @@ for fi in df_files['fileName']:
 df = pd.merge(df, df_for, how="inner", left_index=True, right_index=True)
 
 # Send all observations and predictions, with corresponding lead times, to a csv file
-df.to_csv(os.path.join(oDir,"WL-NTR-obsAndpred_%s_2020_assimilate.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-LeadTimeSeries_%s_2020_assimilate.csv" % siteName))
+
+# Send continuous time series forecasts to a csv file
+df_continuous.to_csv(os.path.join(oDir,"WL-NTR-ContinuousTimeSeries_%s_2020_assimilate.csv" % siteName))

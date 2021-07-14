@@ -14,8 +14,6 @@ workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\wate
 waveDirectory = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
 stormPeriods = os.path.join(waveDirectory, "assessSkill\\%s\\ofiles\\" % siteName,
                             "observedStorms_%s_2020.csv" % siteName)
-# TODO: change back
-#oDir = os.path.join(workDir,"ofiles")
 oDir = os.path.join(workDir,"ofiles")
 figDir = os.path.join(workDir,"figs")
 # Start and end times
@@ -24,6 +22,8 @@ endTime = datetime(2020,12,31,tzinfo=pytz.utc)
 #  Set to true to include surge in forecasted TWL. 
 # Set to false to test water level skill when just including astronomical tide predictions and not surge predicitons
 nts = True
+variate = "concatenate"
+titleString = "Concatenate into 7-day forecasts"
 
 
 # ================= Parameters ================= #
@@ -74,11 +74,12 @@ def generateScatterPlot(fig=None, ax=None, obs=None, pred=None,
             c=sc)
     ax.text(textx, texty-3*shift, "$r$ (storms)= %s" % r_storms, transform=ax.transAxes,
             c=sc)
+    print("returning plot for %s lead time" % leadtime)
     return ax, rmse, rmse_storms, r, r_storms
 
 
 # ================= Load Observed and Predicted Data ================= #
-df = pd.read_csv(os.path.join(oDir, "WL-NTR-LeadTimeSeries_%s_2020_corrected.csv" % siteName))
+df = pd.read_csv(os.path.join(oDir, "WL-NTR-LeadTimeSeries_%s_2020_%s.csv" % (siteName,variate)))
 df.rename(columns={'Unnamed: 0':'datetime'}, inplace=True)
 df.index = df['datetime']
 df = df.drop(['datetime'],axis=1)
@@ -89,8 +90,6 @@ leadtimes = df['leadtime_hrs'].unique()
 # Reduce temporal resolution to hourly, since wave data collected hourly
 # (and you're testing the skill of the storm periods)
 df = df[df.index.strftime('%M') == '00']
-# Forecast is the forecasted surge + forecasted tide
-df['twl_for'] = df['tide_m'] + df['surge']
 
 
 df = df[df.index>=startTime] 
@@ -112,8 +111,8 @@ plt.rc('ytick', labelsize=7)
 plt.rc('axes', labelsize=8,labelpad=1)
 plt.rc('legend', handletextpad=0.0, fontsize=6)
 # Plot by lead time
-nrows = 3
-fig, axes = plt.subplots(nrows,2,figsize=(5.5,7.5))
+nrows = 5
+fig, axes = plt.subplots(nrows,2,figsize=(6,8.5))
 #fig.delaxes(axes[-1])
 axs = np.array(axes).reshape(-1)
 counter = 0
@@ -138,18 +137,20 @@ for leadTime in leadtimes:
 
     counter += 1
 fig.tight_layout()
-fig.subplots_adjust(top=0.94,hspace=.38)
-fig.suptitle("Observed vs. predicted non-tidal residuals (storm surge) - 2020",
+fig.subplots_adjust(top=0.94,hspace=.5)
+fig.suptitle("Observed vs. predicted non-tidal residuals (storm surge) - 2020\n" + 
+            "%s" % titleString,
              fontsize=10,y=1)
-figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
+figName = 'ObsVPred_%s_%s_%s.png' % (siteName, varString,variate)
 #fig.delaxes(axes[2,1])
-fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight') 
+fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 plt.show()
+
 
 # ================= Plot total water levels ================= #
 # Plot by lead time
-nrows = 3
-fig, axes = plt.subplots(nrows,2,figsize=(5.5,7.5))
+nrows = 5
+fig, axes = plt.subplots(nrows,2,figsize=(6,8.5))
 #fig.delaxes(axes[-1])
 axs = np.array(axes).reshape(-1)
 counter = 0
@@ -158,10 +159,7 @@ for leadTime in leadtimes:
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
-    if nts == False:
-        # Set TWL to equal tide predictions, no surge
-        # This tests the impact of removing surge on the skill of the water level predictions
-        df_subset['twl_for'] = df_subset["tide_m"] 
+    df_subset['twl_for'] = df_subset["tide_m"] + df_subset['surge']
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
@@ -176,17 +174,19 @@ for leadTime in leadtimes:
     rmsestorm_list.append(rmsestorm)
     counter += 1
 fig.tight_layout()
-fig.subplots_adjust(top=0.94,hspace=.38)
-fig.suptitle("Observed vs. predicted total water levels (tides + surge) - July 2020 - December 2020",
+fig.subplots_adjust(top=0.94,hspace=.5)
+fig.suptitle("Observed vs. predicted offshore water levels - 2020 \n" +
+             "%s" % titleString,
              fontsize=10,y=1)
 if nts == False:
-        figName = 'ObsVPred_%s_%s_corrected_NoSurge.png' % (siteName, varString)
+        figName = 'ObsVPred_%s_%s_%s.png' % (siteName, varString, variate)
 else:
-        figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
+        figName = 'ObsVPred_%s_%s_%s.png' % (siteName, varString, variate)
 
 #fig.delaxes(axes[2,1])
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
-plt.show()
+
+
 
 # ================= Plot lead time of 3 days ================= #
 # Plot by lead time
@@ -194,19 +194,16 @@ nrows = 2
 fig, axes = plt.subplots(nrows,1,figsize=(3,4))
 #fig.delaxes(axes[-1])
 axs = np.array(axes).reshape(-1)
+df['twl_for'] = df['tide_m'] + df['surge']
 varlist = [['nts','surge'],['wl_obs','twl_for']]
 counter = 0
-leadTime = 66
+leadTime = 72
 for v in varlist:
     print("leadtime: %s" % leadTime)
     df_subset = df[df['leadtime_hrs']==leadTime]
     # Merge storm periods here, because merge may not work correctly
     # with all lead time time series present
     df_subset = pd.merge(df_subset, dfs, how='left',left_index=True, right_index=True)
-    if nts == False:
-        # Set TWL to equal tide predictions, no surge
-        # This tests the impact of removing surge on the skill of the water level predictions
-        df_subset['twl_for'] = df_subset["tide_m"] 
     # Filter out storms to plot separately
     df_storms = df_subset[df_subset['storm']==True]
     # Scatter plot for the year, by lead time
@@ -223,10 +220,10 @@ fig.subplots_adjust(top=0.86,hspace=.45)
 fig.suptitle("Observed vs. predicted\n(72-hr lead time)",
              fontsize=9,y=1)
 if nts == False:
-        figName = 'ObsVPred_%s_%s_corrected_NoSurge.png' % (siteName, varString)
+        figName = 'ObsVPred_%s_%s_%s.png' % (siteName, varString, variate)
         fig.delaxes(axes[0])
 else:
-        figName = 'ObsVPred_%s_%s_corrected.png' % (siteName, varString)
+        figName = 'ObsVPred_%s_%s_%s.png' % (siteName, varString, variate)
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 plt.show()
 

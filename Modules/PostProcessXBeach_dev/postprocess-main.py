@@ -4,9 +4,9 @@ import sys
 import traceback
 import shutil
 import pickle
+from xbfewsTools import fewsUtils
 """
 import pandas as pd
-from xbfewsTools import fewsUtils
 from xbfewsTools import xBeachModel
 from xbfewsTools import preProcWatLevs
 from xbfewsTools import preProcWaves
@@ -15,9 +15,9 @@ import fileinput"""
 
 # For debugging:
 # Forecast:
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 20210707_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2021070700 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
 # Hindcast
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 20200707_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020070700 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
 
 def main(args=None):
 
@@ -39,27 +39,25 @@ def main(args=None):
     modelRunDir = os.path.join(regionHome,"Modules\\XBeach",siteName,
                                "%sSystemTime-%s" %(sysTimeStr,siteName))
     
-    #============== Grid parameters ==============#
     
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
     hotspotFcst = os.path.join(modelRunDir,"forecast_hotspot.pkl")
 
-    #============== Generate diagnostics file ==============#
-    # Copy and rename diagOpen.txt
-    shutil.copy(diagBlankFile,diagFile)
-    with open(diagFile, "a") as fileObj:
-        currDir = os.getcwd()
-        fileObj.write("</Diag>")
 
     #============== Load hotspot forecast object with pickle ==============#
     hotspotFcst = pickle.load(open(hotspotFcst, "rb"))
     print(hotspotFcst.roundedTime)
     
 
-    # TODO: run these two to completion, reset FEWS system time so you have a model to work with
-
+    #============== Generate diagnostics file ==============#
+    # Copy and rename diagOpen.txt
+    shutil.copy(diagBlankFile,diagFile)
+    with open(diagFile, "a") as fileObj:
+        currDir = os.getcwd()
+        fileObj.write(fewsUtils.write2DiagFile(3, "Post-processing hotspot run: %s" % hotspotFcst.runName))
+        fileObj.write("</Diag>")
 
 
     ################################# Process extreme water line #################################

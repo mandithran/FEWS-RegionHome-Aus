@@ -102,7 +102,7 @@ df = pd.merge(dft, df_wl, how="inner", left_index=True, right_index=True)
 
 # ==== Subtract astronomical tide from observed water level to get non-tidal residuals ==== #
 df["nts"] = df["wl_obs"] - df["tide_m"]
-df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s.csv_taper" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s_taper.csv" % siteName))
 
 
 ####################### NSS #######################
@@ -129,6 +129,7 @@ df_files = df_files[df_files.index<forecastPeriodEnd]
 
 counter = 1
 df_for = pd.DataFrame(columns=['surge','tide',"twl_for",'leadtime_hrs','IntervalStartTime'])
+df_continuous = pd.DataFrame(['surge','tide'])
 for fi in df_files['fileName']:
     try:
         print("Processing file: %s" % fi)
@@ -142,40 +143,46 @@ for fi in df_files['fileName']:
         # Keep only the point to compare to (nearest point to actual gauge where
         # observations came from)
         ds = ds.where((ds.lat==lat) & (ds.lon==lon), drop=True).squeeze()
+        # Append these vars to df
+        df_file = ds.to_dataframe()
+        df_file = df_file.drop(["lat","lon"],axis=1)
+        # Make dataset timezone aware
+        df_file = df_file.tz_localize(timezoneUTC)
+        # Append this with continuous dataframe
+        #===== Add a 4-7 day period where you taper the surge component to 0 over 2 hours ====#
+        # Generate a new time series based on last value of the forecast
+        delta_t = df_file.index[1]-df_file.index[0]
+        lastTimeStep = df_file.index[-1] 
+        taperStart = lastTimeStep + delta_t
+        taperDuration = timedelta(hours=2)
+        taperEnd = lastTimeStep+taperDuration
+        seriesTapered_time = pd.date_range(start=taperStart,
+                        end=taperEnd,
+                        freq=delta_t)
+        tapered_df = pd.DataFrame({"Datetime_gmt":seriesTapered_time})
+        tapered_df['surge'] = np.nan
+        # Set beginning of the tapered df to the last value of the forecast
+        tapered_df.iloc[0, tapered_df.columns.get_loc('surge')] = df_file.surge[-1]
+        # Set the end of the tapered df to zero
+        tapered_df.iloc[-1, tapered_df.columns.get_loc('surge')] = 0.
+        tapered_df = tapered_df.set_index('Datetime_gmt')
+        tapered_df = tapered_df.interpolate(method='linear')
+        flatStart = taperEnd+delta_t
+        flatEnd = lastTimeStep + timedelta(days=4)
+        seriesFlat = pd.date_range(start=flatStart,
+                        end=flatEnd,
+                        freq=delta_t)
+        df_flat = pd.DataFrame({"Datetime_gmt":seriesFlat,
+                                'surge':0}).set_index("Datetime_gmt")
+        # Concatenate all of these together
+        df_file = pd.concat([df_file,tapered_df,df_flat])
+        df_file['fileName'] = fi
+        df_file['fileDatetime'] = dateTime
+        df_continuous = df_continuous.append(df_file)
         for leadTime in leadtimes:
-            # Append these vars to df
-            df_nss = ds.to_dataframe()
-            df_nss = df_nss.drop(["lat","lon"],axis=1)
-            # Make dataset timezone aware
-            df_nss = df_nss.tz_localize(timezoneUTC)
             print("Leadtime: %s" % leadTime)
-            #===== Add a 4-7 day period where you taper the surge component to 0 over 2 hours ====#
-            # Generate a new time series based on last value of the forecast
-            delta_t = df_nss.index[1]-df_nss.index[0]
-            lastTimeStep = df_nss.index[-1] 
-            taperStart = lastTimeStep + delta_t
-            taperDuration = timedelta(hours=2)
-            taperEnd = lastTimeStep+taperDuration
-            seriesTapered_time = pd.date_range(start=taperStart,
-                            end=taperEnd,
-                            freq=delta_t)
-            tapered_df = pd.DataFrame({"Datetime_gmt":seriesTapered_time})
-            tapered_df['surge'] = np.nan
-            # Set beginning of the tapered df to the last value of the forecast
-            tapered_df.iloc[0, tapered_df.columns.get_loc('surge')] = df_nss.surge[-1]
-            # Set the end of the tapered df to zero
-            tapered_df.iloc[-1, tapered_df.columns.get_loc('surge')] = 0.
-            tapered_df = tapered_df.set_index('Datetime_gmt')
-            tapered_df = tapered_df.interpolate(method='linear')
-            flatStart = taperEnd+delta_t
-            flatEnd = lastTimeStep + timedelta(days=4)
-            seriesFlat = pd.date_range(start=flatStart,
-                            end=flatEnd,
-                            freq=delta_t)
-            df_flat = pd.DataFrame({"Datetime_gmt":seriesFlat,
-                                    'surge':0}).set_index("Datetime_gmt")
-            # Concatenate all of thesee together
-            df_nss = pd.concat([df_nss,tapered_df,df_flat])
+            # Drop the 'fileName' and 'fileDatetime' columns
+            df_nss = df_file.drop(['fileDatetime'],axis=1).drop(['fileName'],axis=1)
             # Select correct time window to compare to observed water levels
             # Based on lead time and forecast interval
             # Basically chops up each file into 6 hour windows,
@@ -198,12 +205,13 @@ for fi in df_files['fileName']:
             df_nss['leadtime_hrs'] = leadTime
             # Record start time for time interval being tested
             df_nss['IntervalStartTime'] = startTime
+            df_nss['fileName'] = fi
+            df_nss['fileDatetime'] = dateTime
             # Append to df containing all NSS forecasts\
             # The result is a dataframe with forecasts all stitched together
             # as one continuous timeseries.
-            # This should result in one continuous timeseries per lead time
+            # This should result in one "continuous" timeseries per lead time
             df_for = df_for.append(df_nss)
-            df_for.to_csv(os.path.join(oDir,'test.csv'))
         print("File processed")
         counter += 1
     except:
@@ -214,4 +222,7 @@ for fi in df_files['fileName']:
 df = pd.merge(df, df_for, how="inner", left_index=True, right_index=True)
 
 # Send all observations and predictions, with corresponding lead times, to a csv file
-df.to_csv(os.path.join(oDir,"WL-NTR-obsAndpred_%s_2020_taper.csv" % siteName))
+df.to_csv(os.path.join(oDir,"WL-NTR-LeadTimeSeries_%s_2020_taper.csv" % siteName))
+
+# Send continuous time series forecasts to a csv file
+df_continuous.to_csv(os.path.join(oDir,"WL-NTR-ContinuousTimeSeries_%s_2020_taper.csv" % siteName))
