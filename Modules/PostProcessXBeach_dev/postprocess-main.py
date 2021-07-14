@@ -48,7 +48,6 @@ def main(args=None):
 
     #============== Load hotspot forecast object with pickle ==============#
     hotspotFcst = pickle.load(open(hotspotFcst, "rb"))
-    print(hotspotFcst.roundedTime)
     
 
     #============== Generate diagnostics file ==============#
@@ -57,10 +56,21 @@ def main(args=None):
     with open(diagFile, "a") as fileObj:
         currDir = os.getcwd()
         fileObj.write(fewsUtils.write2DiagFile(3, "Post-processing hotspot run: %s" % hotspotFcst.runName))
+        fileObj.write(fewsUtils.write2DiagFile(3, "Forecast for time period starting at: %s" % hotspotFcst.roundedTime))
         fileObj.write("</Diag>")
 
 
+    #============== Copy over contents of run directory for post-processing ==============#
+    from distutils.dir_util import copy_tree
+    copy_tree(hotspotFcst.moduleDir,hotspotFcst.xbWorkDir)
+
+
+    #============== Copy over contents of run directory for post-processing ==============#
+    
+
+
     ################################# Process extreme water line #################################
+
 
 
     ################################# Process erosion scarp #################################

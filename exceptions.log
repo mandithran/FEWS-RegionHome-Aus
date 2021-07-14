@@ -1,6 +1,6 @@
-[Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\XBeach\\Narrabeen\\2021070720SystemTime-Narrabeen\\forecast_hotspot.pkl'Traceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach/postprocess-main.py", line 76, in <module>
+No active exception to reraiseTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 317, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach/postprocess-main.py", line 50, in main
-    hotspotFcst = pickle.load(open(hotspotFcst, "rb"))
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\XBeach\\Narrabeen\\2021070720SystemTime-Narrabeen\\forecast_hotspot.pkl'
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 241, in main
+    raise
+RuntimeError: No active exception to reraise

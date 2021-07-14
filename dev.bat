@@ -2,8 +2,8 @@ echo off
 echo The current directory is %CD%
 
 rem #============ Variables ============#
-set "DEV_NAME=PostProcessXBeach_dev"
-set "TAR_NAME=PostProcessXBeach"
+set "DEV_NAME=PreProcessXBeach_dev"
+set "TAR_NAME=PreProcessXBeach"
 
 rem #============ Paths ============#
 set "DEV_PATH=.\Modules\%DEV_NAME%"
