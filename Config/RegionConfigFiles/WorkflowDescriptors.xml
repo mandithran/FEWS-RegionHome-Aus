@@ -9,6 +9,7 @@ individual workflow, which is stored in WorkflowFiles.-->
 		<cardinalTimeStep timeZone="GMT" unit="hour" multiplier="12"/>
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_RunCoastalForecast" name="Run Coastal FEWS forecast" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+		<timeOut unit="hour" multiplier="48"/>
 	</workflowDescriptor>
 	<!--Model Run Workflow Descriptors -->
 	<workflowDescriptor id="WF_InitializeForecast" name="Initialize FEWS forecast" visible="true" forecast="false" autoApprove="true" allowApprove="true">
