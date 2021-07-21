@@ -12,14 +12,6 @@ from xbfewsTools import postProcTools
 import numpy as np
 import pandas as pd
 
-"""
-
-from xbfewsTools import xBeachModel
-from xbfewsTools import preProcWatLevs
-from xbfewsTools import preProcWaves
-from datetime import datetime, timedelta
-import fileinput"""
-
 # For debugging:
 # Forecast:
 # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2021070700 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
@@ -103,12 +95,13 @@ def main(args=None):
     # Caluclate the total run time, including spin-up time
     fcstHotspot.totalRunTime = fcstHotspot.endTime - fcstHotspot.startTime
     epsg = int(fcstHotspot.xbeachEPSG)
+    fcstHotspot.postProcessDir = os.path.join(fcstHotspot.xbWorkDir,"postProcess")
+    
 
-    #print(fcstHotspot.morstart)
-    #fcstHotspot.morstart = 43200.0
+    #print(fcstHotspot.postProcessDir)
+    #fcstHotspot.postProcessDir = 43200.0
     #with open(os.path.join(fcstHotspot.forecastDir,"forecast_%s.pkl" % fcstHotspot.type), "wb") as output:
     #        pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
-
 
     ################################# Process extreme water line #################################
     #========== Remove dummy point from gauges output ==========#
@@ -124,49 +117,57 @@ def main(args=None):
     # Remove dummy pt from dataset
     ds = ds.drop_sel(points=0)
     #========== Loop through, export points and lines for Extreme water line ==========#
+    colIndecesTotalRun = []
+    colIndeces = []
     for d in np.arange(0,ds["pointtime"].sizes["pointtime"],1):
         if d % 100 == 0:    
             print("Processing time step %s" % d)
         time= ds["pointtime"][d].values
         time_str = str(int(time)/3600).zfill(4)
+        # Subset the dataset by point time step
         ds_sub = ds.isel({"pointtime":d})
-        xx = ds_sub["point_xz"][:].values.flatten()
-        yy = ds_sub["point_yz"][:].values.flatten()
-        zz = ds_sub["point_zs"][:].values.flatten()
-        df = pd.DataFrame({"x":xx,
-                            "y":yy,
-                            "z":zz})
-        # Export point shapefile
-        if time % 3600 == 0:
-            geometry = [Point(xy) for xy in zip (xx,yy)]
-            gdf = gpd.GeoDataFrame(df, geometry=geometry,crs=epsg)
-            gdf.to_file(os.path.join(gaugesDirPts,"gauges_%shrs.shp" % time_str))
-            # Export line shapefile
-            gdf2 = gpd.GeoSeries(LineString(gdf.geometry.tolist()),crs=epsg)
-            gdf2.to_file(os.path.join(gaugesDirLines,"gauges_%shrs_lines.shp" % time_str))
-    #========== Determine extreme water line from XBeach output ==========#
-    colIndeces = []
-    print("Determining extreme water line...")
-    for t in np.arange(0,ds["pointtime"].sizes["pointtime"],1):
-        yind = 0
         colIndex = []
-        ds_sub = ds.isel({"pointtime":t})
+        yind = 0
+        # For each time step slice, loop through each row
+        # And locate the x index of the point that is neareest to where the gauge it
         for searchX in ds_sub['point_xz'].values:
             xx = ds.globalx[yind,:].values
             # Find point that is closest to gauge's x value
             landwardx = min(xx, key= lambda x:abs(x-searchX))
             # Return x index of this point
             landwardColInd = np.where(xx==landwardx)[0][0]
+            # Append this point to the collection of points specific to the time step
             colIndex.append(landwardColInd)
             yind += 1
         colIndeces.append(colIndex)
-    dff = pd.DataFrame(colIndeces)
+        colIndecesTotalRun.append(colIndex)
+        if time % 900 == 0: # Exports every 15 min (900 sec)
+            dff = pd.DataFrame(colIndeces)
+            # Return maximum value for each column over the 15 min interval
+            colIndeces = dff.max().values
+            # Loop through these values and return the x and y locations as shapely points
+            maxWaterLine = []
+            yind = 0
+            # Find the relevant x and y values for these max landward gauge points
+            for searchI in colIndeces:
+                xpt = ds.globalx[yind,:][searchI]
+                ypt = ds.globaly[:,searchI][yind]
+                point = Point(xpt,ypt)
+                maxWaterLine.append(point)
+                yind += 1
+            # Export max water line as GeoSeries, convert a line shapefile
+            gdf2 = gpd.GeoSeries(LineString(maxWaterLine),crs=epsg)
+            gdf2.to_file(os.path.join(gaugesDirLines,"gauges_%shrs_lines.shp" % time_str))
+            # Reset the column indeces for the next 15 minute interval
+            colIndeces = []
+    #========== Determine extreme water line from XBeach output ==========#
+    dff = pd.DataFrame(colIndecesTotalRun)
     # Return maximum value for each column
-    colIndeces = dff.max().values
+    colIndecesTotalRun = dff.max().values
     # Loop through these values and return the x and y locations as shapely points
     maxWaterLine = []
     yind = 0
-    for searchI in colIndeces:
+    for searchI in colIndecesTotalRun:
         xpt = ds.globalx[yind,:][searchI]
         ypt = ds.globaly[:,searchI][yind]
         point = Point(xpt,ypt)
@@ -174,8 +175,7 @@ def main(args=None):
         yind += 1
     # Export max water line as GeoSeries, convert a line shapefile
     gdf3 = gpd.GeoSeries(LineString(maxWaterLine),crs=epsg)
-    gdf3.to_file(os.path.join(postProcessDir,"ewl_XBeach.shp"))
-
+    gdf3.to_file(os.path.join(fcstHotspot.postProcessDir,"ewl_XBeach.shp"))
 
     ################################# Process erosion scarp #################################
     # Check to see that morstart isn't equal to the total run time
@@ -188,19 +188,21 @@ def main(args=None):
         # erosion scarp. Correct index is the spinUp interval divided by the timestep
         # Starts one of the first timesteps after the rounded time because of initial slumping creating artefacts in erosion scarp lines
         roundedTimeIndex = int((fcstHotspot.roundedTime - fcstHotspot.startTime).seconds/fcstHotspot.tintm)
-        eroStartIndex = roundedTimeIndex+2
+        dtout = (ds.meantime[1]-ds.meantime[0]).values
+        eroStartIndex = int(fcstHotspot.morstart/dtout)+1
+        print("eroStartIndex:", eroStartIndex)
         ds_zbi = ds.isel({"globaltime":eroStartIndex})
-        print(list(ds.keys()))
         # Initialize dataframe
         df = pd.DataFrame(columns=["timeStepMins","xScarp", 
                                 "yScarp","rowInd",
                                 "colIndexScarp"])
-        for timestep in np.arange(eroStartIndex+1,ds["meantime"].sizes["meantime"],1):
+        for timestep in np.arange(eroStartIndex+2,ds["meantime"].sizes["meantime"],1):
             if timestep == roundedTimeIndex:
                 print("Starting at timestep %s " % roundedTimeIndex)
             if timestep % 10 == 0: 
                 print("Processing time step %s" % timestep)
             # Make string for timestep in number of minutes
+            #TODO: change this
             tstep_hrs = int((timestep*fcstHotspot.tintm)/3600)
             tstring = str(tstep_hrs).zfill(4)
             # Initialize timestep dataframe
@@ -267,15 +269,10 @@ def main(args=None):
                                     crs=epsg)
             gdf = gdf[["geometry"]]
             gdf = gpd.GeoSeries(LineString(gdf.geometry.tolist()),crs=epsg)
-            gdf.to_file(os.path.join(postProcessDir,"maxEroScarp.shp"))
+            gdf.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp.shp"))
         except:
             pass
 
-        
-        #print(fcstHotspot.morstart)
-        #fcstHotspot.morstart = 43200.0
-        #with open(os.path.join(fcstHotspot.forecastDir,"forecast_%s.pkl" % fcstHotspot.type), "wb") as output:
-        #        pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
 
     
 ## If Python throws an error, send to exceptions.log file

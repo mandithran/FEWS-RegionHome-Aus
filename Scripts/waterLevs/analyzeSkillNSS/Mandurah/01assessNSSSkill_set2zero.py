@@ -54,7 +54,7 @@ def parseTimeNSS(string=None):
 ############## Water Levels and Non-tidal residuals ##############
 # ==== Load astronomical tide predictions ==== #
 ifile = os.path.join(dataDir,'tidePredictions',
-                    'Mandurah_Marina_2019-2022_15min_Harmonic.csv')
+                    'Mandurah_Marina_2019-2022_15min_include_SA-SSA.csv')
 dft = pd.read_csv(ifile)
 # Convert datetime column to datetime objects and set as index
 dft.index = pd.to_datetime(dft['time_utc'], utc=True)

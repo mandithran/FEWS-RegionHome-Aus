@@ -42,8 +42,6 @@
 					<argument>%REGION_HOME%</argument>
 					<!-- Location ID (looped)-->
 					<argument>$LOOP_LOCATION_ID$</argument>
-					<!-- Forecast horizon in days -->
-					<argument>3</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

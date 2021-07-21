@@ -22,8 +22,8 @@ endTime = datetime(2020,12,31,tzinfo=pytz.utc)
 #  Set to true to include surge in forecasted TWL. 
 # Set to false to test water level skill when just including astronomical tide predictions and not surge predicitons
 nts = True
-variate = "concatenate"
-titleString = "Concatenate into 7-day forecasts"
+variate = "set0"
+titleString = ""
 
 
 # ================= Parameters ================= #
