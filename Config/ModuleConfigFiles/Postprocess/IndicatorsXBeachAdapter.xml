@@ -3,37 +3,29 @@
 	<general>
 		<piVersion>1.10</piVersion>
 		<rootDir>%REGION_HOME%/Modules</rootDir>
-		<workDir>%ROOT_DIR%/PreProcessXBeach</workDir>
-		<exportDir>%ROOT_DIR%/PreProcessXBeach</exportDir>
+		<workDir>%ROOT_DIR%/IndicatorsXBeach</workDir>
+		<exportDir>%ROOT_DIR%/IndicatorsXBeach</exportDir>
 		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
-		<importDir>%ROOT_DIR%/PreProcessXBeach</importDir>
+		<importDir>%ROOT_DIR%/IndicatorsXBeach</importDir>
 		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
-		<dumpDir>%ROOT_DIR%/PreProcessXBeach</dumpDir>
-		<diagnosticFile>%ROOT_DIR%/PreProcessXBeach/diag.xml</diagnosticFile>
+		<dumpDir>%ROOT_DIR%/IndicatorsXBeach</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/IndicatorsXBeach/diag.xml</diagnosticFile>
 		<time0Format>yyyyMMdd_HHmm</time0Format>
 	</general>
 	<activities>
-		<startUpActivities>
-			<purgeActivity>
-				<filter>%ROOT_DIR%/PreProcessXBeach/*.*</filter>
-			</purgeActivity>
-			<purgeActivity>
-				<filter>%ROOT_DIR%/XBeach/$LOOP_LOCATION_ID$/runs/latest/workDir/*.*</filter>
-			</purgeActivity>
-		</startUpActivities>
 		<exportActivities>
 			<exportDataSetActivity>
-				<moduleInstanceId>PreProcessXBeach</moduleInstanceId>
+				<moduleInstanceId>IndicatorsXBeach</moduleInstanceId>
 			</exportDataSetActivity>
 		</exportActivities>
 		<executeActivities>
 			<executeActivity>
-				<description>Run python script to pre-process XBeach model</description>
+				<description>Run python script to produce storm impact indicators from XBeach model</description>
 				<command>
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/preprocess-main.py</argument>
+					<argument>%WORK_DIR%/indicators-main.py</argument>
 					<!-- Work dir-->
 					<argument>%WORK_DIR%</argument>
 					<!-- System time -->
