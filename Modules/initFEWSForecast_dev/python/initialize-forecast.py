@@ -59,7 +59,8 @@ def main(args=None):
     fcst.determineMode()
 
 
-    ############ Load hotspot location set ############ 
+    ############ Load hotspot location set ############
+    fcst.load_regions()
     fcst.load_hotspots()
 
 

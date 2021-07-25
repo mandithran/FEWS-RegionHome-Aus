@@ -52,7 +52,6 @@ def main(args=None):
     # Make the hotspot forecast directory if it doesn't exist
     fcstHotspot.init_directory()
 
-
     #============== Write out pickle for hotspot forecast ==============#
     with open(os.path.join(fcstHotspot.forecastDir,"forecast_%s.pkl" % fcstHotspot.type), "wb") as output:
             pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)

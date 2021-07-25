@@ -57,6 +57,12 @@
 	<moduleInstanceDescriptor id="PostProcessXBeach">
 		<description>General adapter for pre-processing XBeach model</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="IndicatorsXBeachMod">
+		<description>General adapter for pre-processing XBeach model</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="IndicatorsXBeach">
+		<description>General adapter for pre-processing XBeach model</description>
+	</moduleInstanceDescriptor>
 	<!-- XBeach -->
 	<moduleInstanceDescriptor id="ImportAusSurgeInst">
 		<description>Import storm surge data from local folder</description>

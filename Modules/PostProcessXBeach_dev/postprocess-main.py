@@ -123,7 +123,7 @@ def main(args=None):
         if d % 100 == 0:    
             print("Processing time step %s" % d)
         time= ds["pointtime"][d].values
-        time_str = str(int(time)/3600).zfill(4)
+        time_str = f'{(time/3600):.2f}'.zfill(6)
         # Subset the dataset by point time step
         ds_sub = ds.isel({"pointtime":d})
         colIndex = []
@@ -201,10 +201,8 @@ def main(args=None):
                 print("Starting at timestep %s " % roundedTimeIndex)
             if timestep % 10 == 0: 
                 print("Processing time step %s" % timestep)
-            # Make string for timestep in number of minutes
-            #TODO: change this
-            tstep_hrs = int((timestep*fcstHotspot.tintm)/3600)
-            tstring = str(tstep_hrs).zfill(4)
+            tstep_hrs = round((timestep*fcstHotspot.tintm),2)/3600
+            tstring = f'{tstep_hrs:.2f}'.zfill(6)
             # Initialize timestep dataframe
             dftstep = pd.DataFrame(columns=["xWater","yWater",
                                         "xScarp", "yScarp"])

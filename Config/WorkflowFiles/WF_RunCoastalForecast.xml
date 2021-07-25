@@ -24,4 +24,12 @@
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_runXBeach</workflowId>
 	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<workflowId>WF_PostProcessXBeach</workflowId>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<workflowId>WF_IndicatorsXBeach</workflowId>
+	</activity>
 </workflow>

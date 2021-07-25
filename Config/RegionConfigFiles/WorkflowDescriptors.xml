@@ -31,6 +31,8 @@ individual workflow, which is stored in WorkflowFiles.-->
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_PostProcessXBeach" name="Post-process XBeach Model" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
+	<workflowDescriptor id="WF_IndicatorsXBeach" name="Process Storm Impact Indicators XBeach Model" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
 	<rootNode>
 		<node name="Gridded Data Import (NOMADS)">
 			<workflowId>ImportGFSGrids</workflowId>
@@ -60,6 +62,9 @@ individual workflow, which is stored in WorkflowFiles.-->
 		</node>
 		<node name="XBeach: Post-process">
 			<workflowId>WF_PostProcessXBeach</workflowId>
+		</node>
+		<node name="XBeach: Storm Impact Indicators">
+			<workflowId>WF_IndicatorsXBeach</workflowId>
 		</node>
 	</rootNode>
 </workflowDescriptors>
