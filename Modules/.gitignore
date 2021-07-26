@@ -4,4 +4,6 @@
 !/WaveDownload_dev/
 !/initFEWSForecast_dev/
 !/PostProcessXBeach_dev
-PreProcessXBeach_dev
+!/PreProcessXBeach_dev
+!/IndicatorsXBeach_dev
+!/NSSDownload_dev
