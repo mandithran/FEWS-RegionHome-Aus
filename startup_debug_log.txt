@@ -1,0 +1,6 @@
+ [err] Could not find or initialize main class
+java.lang.NoClassDefFoundError: nl/wldelft/fews/system/workflowrunnertest/WorkflowRunner
+Caused by: java.lang.ClassNotFoundException: nl.wldelft.fews.system.workflowrunnertest.WorkflowRunner
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)

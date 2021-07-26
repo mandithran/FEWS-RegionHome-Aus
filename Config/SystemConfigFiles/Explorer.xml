@@ -311,4 +311,5 @@
 	<fileMenu>
 		<exportTimeSeries visible="true"/>
 	</fileMenu>
+	<piServicePortRange start="8432" end="8432"/>
 </explorer>

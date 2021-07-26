@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FEWS Kamp -->
+<workflowTestRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflowTestRun.xsd">
+	<general>
+		<description>My first workflow test</description>
+		<!-- <systemTime date="2003-01-05" time="12:00:00"/> -->
+    	</general>
+	<activities>
+            <workflowActivity>
+            	<workflowId>WF_InitializeForecast</workflowId>
+            </workflowActivity>
+	</activities>
+</workflowTestRun>
