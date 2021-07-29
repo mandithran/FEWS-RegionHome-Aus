@@ -1,10 +1,9 @@
-time data '2020-08 12:00' does not match format '%Y-%m-%d %H:%M'Traceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 213, in <module>
+Expected 1D or 2D array, got 3D array insteadTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py", line 318, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 101, in main
-    endSystemTime = datetime.strptime(endSystemTime, '%Y-%m-%d %H:%M')
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\_strptime.py", line 565, in _strptime_datetime
-    tt, fraction = _strptime(data_string, format)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\_strptime.py", line 362, in _strptime
-    (data_string, format))
-ValueError: time data '2020-08 12:00' does not match format '%Y-%m-%d %H:%M'
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py", line 303, in main
+    max_flowDepth, delimiter="\t")
+  File "<__array_function__ internals>", line 6, in savetxt
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\numpy\lib\npyio.py", line 1372, in savetxt
+    "Expected 1D or 2D array, got %dD array instead" % X.ndim)
+ValueError: Expected 1D or 2D array, got 3D array instead

@@ -16,7 +16,7 @@ import pandas as pd
 # Forecast:
 # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2021070700 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
 # Hindcast
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020070700 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020020300 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
 
 def main(args=None):
 
@@ -190,7 +190,6 @@ def main(args=None):
         roundedTimeIndex = int((fcstHotspot.roundedTime - fcstHotspot.startTime).seconds/fcstHotspot.tintm)
         dtout = (ds.meantime[1]-ds.meantime[0]).values
         eroStartIndex = int(fcstHotspot.morstart/dtout)+1
-        print("eroStartIndex:", eroStartIndex)
         ds_zbi = ds.isel({"globaltime":eroStartIndex})
         # Initialize dataframe
         df = pd.DataFrame(columns=["timeStepMins","xScarp", 
@@ -270,6 +269,40 @@ def main(args=None):
             gdf.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp.shp"))
         except:
             pass
+
+
+        ############# Compute the maximum 2D erosion, flow depth, and flow velocity over the forecast #############
+        # Start out by computing the intial bed difference and set that as the initial array
+        max_ero = ds_zbi.zb.values-ds_zbi.zb.values
+        ds_flowi = ds_zbi.isel({"meantime":0})
+        max_flowDepth = ds_flowi.zs_max.values-ds_zbi.zb.values
+        max_flowUVel = ds_flowi.u_max.values 
+        max_flowVVel = ds_flowi.v_max.values
+        for timestep in np.arange(eroStartIndex+2,ds["meantime"].sizes["meantime"],1):
+            dsstep = ds.isel({"meantime":timestep})
+            dsstep = dsstep.isel({"globaltime":timestep+1}) # global time and mean time not the same
+            # Get the erosion difference from timestep to beginning
+            ero_step = dsstep.zb.values-ds_zbi.zb.values
+            # Get the flow depth at timestep
+            flowDepth_step = dsstep.zs_max.values-dsstep.zb.values
+            # Get the max u velocities at timestep
+            flowUVel_step = dsstep.u_max.values
+            # Get the max v velocities at timestep
+            flowVVel_step = dsstep.v_max.values
+            # Compute the maximums for each
+            max_ero = np.maximum(max_ero, ero_step)
+            max_flowDepth = np.maximum(max_flowDepth,flowDepth_step)
+            max_flowUVel = np.maximum(max_flowUVel,flowUVel_step)
+            max_flowVVel = np.maximum(max_flowVVel,flowVVel_step)
+        # Export in grd format
+        np.savetxt(os.path.join(fcstHotspot.postProcessDir,'xbout_maxEro.grd'),
+                   max_ero,delimiter="\t")
+        np.savetxt(os.path.join(fcstHotspot.postProcessDir,"xbout_maxFlowDepth.grd"),
+                   max_flowDepth, delimiter="\t")
+        np.savetxt(os.path.join(fcstHotspot.postProcessDir, "xbout_maxUVel.grd"),
+                   max_flowUVel, delimiter="\t")
+        np.savetxt(os.path.join(fcstHotspot.postProcessDir, "xbout_maxVVel.grd"),
+                   max_flowVVel, delimiter="\t")
 
 
     
