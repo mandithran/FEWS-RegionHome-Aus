@@ -31,7 +31,7 @@
 				</command>
 				<arguments>
 					<!-- Python script to run -->
-					<argument>%WORK_DIR%/python/retrieve-waves.py</argument>
+					<argument>%WORK_DIR%/python/retrieveAusWaves.py</argument>
 					<!-- Work directory -->
 					<argument>%WORK_DIR%</argument>
 					<!-- System time -->

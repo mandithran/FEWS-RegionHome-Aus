@@ -20,7 +20,7 @@
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/python/initialize-hotspot.py</argument>
+					<argument>%WORK_DIR%/python/initializeHotspot.py</argument>
                     <argument>%REGION_HOME%</argument>
                     <argument>%TIME0%</argument>
                     <argument>$LOOP_LOCATION_ID$</argument>

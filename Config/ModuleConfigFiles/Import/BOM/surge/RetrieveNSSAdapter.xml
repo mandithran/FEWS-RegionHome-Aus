@@ -30,7 +30,7 @@
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/python/retrieve-nss.py</argument>
+					<argument>%WORK_DIR%/python/retrieveNSS.py</argument>
 					<argument>%WORK_DIR%</argument>
 					<argument>%TIME0%</argument>
 					<argument>%REGION_HOME%</argument>

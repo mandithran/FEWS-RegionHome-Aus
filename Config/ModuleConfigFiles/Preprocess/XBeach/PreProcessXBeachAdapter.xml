@@ -33,7 +33,7 @@
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/preprocess-main.py</argument>
+					<argument>%WORK_DIR%/preprocessMain.py</argument>
 					<!-- Work dir-->
 					<argument>%WORK_DIR%</argument>
 					<!-- System time -->
