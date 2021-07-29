@@ -1,6 +1,9 @@
-No active exception to reraiseTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 398, in <module>
+Expected 1D or 2D array, got 3D array insteadTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py", line 318, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocess-main.py", line 359, in main
-    raise
-RuntimeError: No active exception to reraise
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocess-main.py", line 303, in main
+    max_flowDepth, delimiter="\t")
+  File "<__array_function__ internals>", line 6, in savetxt
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\numpy\lib\npyio.py", line 1372, in savetxt
+    "Expected 1D or 2D array, got %dD array instead" % X.ndim)
+ValueError: Expected 1D or 2D array, got 3D array instead
