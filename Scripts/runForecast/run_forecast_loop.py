@@ -87,7 +87,8 @@ def main(args=None):
     #============================== Unzip module datasets ==============================#
     # TODO: unzip module dataset in correct location
     modules=["initFEWSForecast","AstroTides","NSSDownload",
-             "WaveDownload","PreProcessXBeach"]
+             "WaveDownload","PreProcessXBeach","PostProcessXBeach",
+             "IndicatorsXBeach","WipeForecast"]
     for module in modules:
         unzipModule(module)
 
@@ -198,6 +199,34 @@ def main(args=None):
                     logf.write("Failed. {0}\n".format(str(e)))
                     logf.write('Recorded at %s.\n' % (datetime.now()))
                     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+
+
+                # =============================== Post-process XBeach ===============================#
+                # Mimics the PostProcessXbeachAdapter.xml module in FEWS
+                print("Post-processing XBeach run...")
+                workDir_PostProcessXBeach = os.path.join(moduleDir,"PostProcessXBeach")
+                postProcessXBeachPy = os.path.join(workDir_PostProcessXBeach,"postprocessMain.py")
+                systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
+                arguments = [workDir_PostProcessXBeach,systemTime_str,regionHomeDir,hotspotName]
+                runModule(script=postProcessXBeachPy,args=arguments)
+
+
+                # =============================== Storm Impact Indicators XBeach ===============================#
+                # Mimics the PostProcessXbeachAdapter.xml module in FEWS
+                print("Computing Storm Impact Indicators from XBeach run...")
+                workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
+                indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
+                arguments = [workDir_IndicatorsXBeach,systemTime,regionHomeDir,hotspotName]
+                runModule(script=indicatorsXBeachPy,args=arguments)
+
+
+                # =============================== Wipe Extra Files from Forecast for Space ===============================#
+                # Mimics the WipeForecastAdapter.xml module in FEWS
+                print("Wiping files from forecast...")
+                workDir_WipeForecast = os.path.join(moduleDir,"WipeForecast")
+                wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
+                arguments = [workDir_WipeForecast,systemTime,regionHomeDir,hotspotName]
+                runModule(script=wipeForecastPy,args=arguments)
 
 
                 # =========================== TODO: write information to log file ===========================#

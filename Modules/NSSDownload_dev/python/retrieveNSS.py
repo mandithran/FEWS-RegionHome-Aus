@@ -80,10 +80,10 @@ def main(args=None):
 
     #============== Purge any existing files from that directory ==============#
     ncTargetDir = os.path.join(workDir,'ncFiles')
-    substr = "IDZ00154_"
-    for _file in os.listdir(ncTargetDir):
-        if re.search(substr,_file):
-            os.remove(os.path.join(ncTargetDir,_file))
+    #substr = "IDZ00154_"
+    #for _file in os.listdir(ncTargetDir):
+    #    if re.search(substr,_file):
+    #        os.remove(os.path.join(ncTargetDir,_file))
 
 
     #============== Logic for forecast v hindcast ==============#

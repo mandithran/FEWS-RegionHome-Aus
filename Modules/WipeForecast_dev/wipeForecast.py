@@ -78,7 +78,8 @@ def main(args=None):
             str(hotspotFcst.roundedTime.hour).zfill(2))
     fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
     surgeFile = os.path.join(surgeDirNC,fname)
-    os.remove(surgeFile)
+    if os.path.exists(surgeFile):
+        os.remove(surgeFile)
 
     # Remove wave forecasts
     waveDirNC = os.path.join(modulePath,"WaveDownload/ncFiles")
@@ -93,7 +94,8 @@ def main(args=None):
     cityCode = hotspotFcst.waveCode
     fname = "%s.msh.%s.nc" % (cityCode,bomDT)
     ausWaveFile = os.path.join(waveDirNC, fname)
-    os.remove(ausWaveFile)
+    if os.path.exists(ausWaveFile):
+        os.remove(ausWaveFile)
 
 
 

@@ -48,10 +48,10 @@ def main(args=None):
     ncTargetDir = os.path.join(workDir,'ncFiles')
     if not os.path.exists(ncTargetDir):
         os.makedirs(ncTargetDir)
-    substr = ".msh."
-    for _file in os.listdir(ncTargetDir):
-        if re.search(substr,_file):
-            os.remove(os.path.join(ncTargetDir,_file))
+    #substr = ".msh."
+    #for _file in os.listdir(ncTargetDir):
+    #    if re.search(substr,_file):
+    #        os.remove(os.path.join(ncTargetDir,_file))
 
     #============== Load FEWS forecast object ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))

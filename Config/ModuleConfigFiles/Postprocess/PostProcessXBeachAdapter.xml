@@ -30,7 +30,7 @@
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/postprocess-main.py</argument>
+					<argument>%WORK_DIR%/postprocessMain.py</argument>
 					<!-- Work dir-->
 					<argument>%WORK_DIR%</argument>
 					<!-- System time -->
