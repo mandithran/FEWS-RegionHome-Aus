@@ -32,4 +32,8 @@
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_IndicatorsXBeach</workflowId>
 	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<workflowId>WF_WipeForecast</workflowId>
+	</activity>
 </workflow>

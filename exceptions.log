@@ -1,6 +1,6 @@
-name 'postProcTools' is not definedTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\wipeForecast_dev/wipeForecast.py", line 70, in <module>
+[WinError 2] The system cannot find the file specified: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload\\SYD.msh.20200208T0000Z.nc'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WipeForecast/wipeForecast.py", line 104, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\wipeForecast_dev/wipeForecast.py", line 60, in main
-    postProcTools.delete_files(hotspotFcst.xbWorkDir,"*.nc")
-NameError: name 'postProcTools' is not defined
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WipeForecast/wipeForecast.py", line 97, in main
+    os.remove(ausWaveFile)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\WaveDownload\\SYD.msh.20200208T0000Z.nc'

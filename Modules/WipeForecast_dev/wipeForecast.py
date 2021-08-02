@@ -36,6 +36,7 @@ def main(args=None):
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
     indicatorDir = os.path.join(regionHome,"Data\\Indicators\\Hotspot\\Narrabeen")
+    modulePath = os.path.join(regionHome,"Modules")
 
     #============== Load FEWS forecast object ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
@@ -61,8 +62,39 @@ def main(args=None):
     postProcTools.delete_files(hotspotFcst.xbWorkDir,"*.nc")
     postProcTools.delete_files(hotspotFcst.xbWorkDir,"*.bcf")
 
+
     ############ Remove Module Directory where original run took place #############
-    shutil.rmtree(hotspotFcst.moduleDir)
+    if os.path.exists(hotspotFcst.moduleDir):
+        shutil.rmtree(hotspotFcst.moduleDir)
+
+
+    ############ Remove any wave and water level forecasts from local directory #############
+    # Storm surge already processed for import into FEWS, by ProcessAusSurgeAdapter
+    surgeDirNC = os.path.join(modulePath,"NSSDownload/ncFiles")
+    # Parse BOM file name
+    bomDT = str(str(hotspotFcst.roundedTime.year)+
+            str(hotspotFcst.roundedTime.month).zfill(2)+
+            str(hotspotFcst.roundedTime.day).zfill(2)+
+            str(hotspotFcst.roundedTime.hour).zfill(2))
+    fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
+    surgeFile = os.path.join(surgeDirNC,fname)
+    os.remove(surgeFile)
+
+    # Remove wave forecasts
+    waveDirNC = os.path.join(modulePath,"WaveDownload/ncFiles")
+    # Parse wave filename
+    # Parse date to match Auswave output naming convention
+    bomDate = str(str(hotspotFcst.roundedTime.year)+
+            str(hotspotFcst.roundedTime.month).zfill(2)+
+            str(hotspotFcst.roundedTime.day).zfill(2))
+    bomTime = str(str(hotspotFcst.roundedTime.hour).zfill(2)+
+            str(hotspotFcst.roundedTime.minute).zfill(2))
+    bomDT = str(bomDate+"T"+bomTime+"Z")
+    cityCode = hotspotFcst.waveCode
+    fname = "%s.msh.%s.nc" % (cityCode,bomDT)
+    ausWaveFile = os.path.join(waveDirNC, fname)
+    os.remove(ausWaveFile)
+
 
 
 ## If Python throws an error, send to exceptions.log file

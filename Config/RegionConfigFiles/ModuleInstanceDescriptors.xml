@@ -52,16 +52,22 @@
 		<description>Import NETCDF (generic)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PreProcessXBeach">
-		<description>General adapter for pre-processing XBeach model</description>
+		<description>Module dataset for pre-processing XBeach model</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PostProcessXBeach">
-		<description>General adapter for pre-processing XBeach model</description>
+		<description>Module dataset for post-processing XBeach model</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="IndicatorsXBeachMod">
-		<description>General adapter for pre-processing XBeach model</description>
+		<description>General adapter for computing the storm impact indicators from XBeach forecasts</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="IndicatorsXBeach">
-		<description>General adapter for pre-processing XBeach model</description>
+		<description>Module dataset for computing the storm impact indicators from XBeach forecasts</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="WipeForecast">
+		<description>Module dataset for wiping the forecast directory</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="WipeForecastMod">
+		<description>Module adapter for wiping the forecast directory</description>
 	</moduleInstanceDescriptor>
 	<!-- XBeach -->
 	<moduleInstanceDescriptor id="ImportAusSurgeInst">

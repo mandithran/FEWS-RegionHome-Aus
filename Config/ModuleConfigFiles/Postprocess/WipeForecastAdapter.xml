@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules</rootDir>
+		<workDir>%ROOT_DIR%/WipeForecast</workDir>
+		<exportDir>%ROOT_DIR%/WipeForecast</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/WipeForecast</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%/WipeForecast</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/WipeForecast/diag.xml</diagnosticFile>
+		<time0Format>yyyyMMdd_HHmm</time0Format>
+	</general>
+	<activities>
+		<exportActivities>
+			<exportDataSetActivity>
+				<moduleInstanceId>WipeForecast</moduleInstanceId>
+			</exportDataSetActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run python script to wipe excess forecast files for space.</description>
+				<command>
+					<executable>$PYTHON_EXE$</executable>
+				</command>
+				<arguments>
+					<argument>%WORK_DIR%/wipeForecast.py</argument>
+					<!-- Work dir-->
+					<argument>%WORK_DIR%</argument>
+					<!-- System time -->
+					<argument>%TIME0%</argument>
+					<!-- Region home dir -->
+					<argument>%REGION_HOME%</argument>
+					<!-- Location ID (looped)-->
+					<argument>$LOOP_LOCATION_ID$</argument>
+				</arguments>
+				<timeOut>7200000</timeOut>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>
