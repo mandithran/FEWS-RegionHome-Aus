@@ -143,6 +143,7 @@ def main(args=None):
                 runModule(script=initializeHotspotPy,args=arguments)
 
 
+            
             # ============================= Retrieve Tides =============================#
             # This just involves unzipping the tide predictions from the module dataset
             # See RetrieveAstroTideAdapter.xml
@@ -158,6 +159,7 @@ def main(args=None):
             retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
             arguments = [workDir_RetrieveNSS,systemTime,regionHomeDir]
             runModule(script=retrieveNSSPy,args=arguments)
+
 
 
             # ========================= Retrieve Wave Forecasts ========================#

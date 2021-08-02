@@ -1,0 +1,3 @@
+********************** Initializing the forecast for time: 2020-02-01 00:00:00 GMT **********************
+*********** Initializing hotspot forecast for Narrabeen site in NSW... ***********
+Retrieving BOM National Storm Surge forecasts...
