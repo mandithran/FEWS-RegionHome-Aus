@@ -4,7 +4,7 @@ echo The current directory is %CD%
 
 rem #============ Variables ============#
 rem List of modules to zip
-set list=initFEWSForecast AstroTides NSSDownload WaveDownload PreProcessXBeach 
+set list=initFEWSForecast AstroTides NSSDownload WaveDownload PreProcessXBeach PostProcessXBeach IndicatorsXBeach WipeForecast
 (for %%a in (%list%) do ( 
 
    rem #============ Paths ============#

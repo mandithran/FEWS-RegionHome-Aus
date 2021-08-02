@@ -53,11 +53,7 @@ def main(args=None):
     hotspotForecastDir = os.path.join(forecastDir, regionName,"hotspot",siteName)
     hotspotFcst = pickle.load(open(os.path.join(hotspotForecastDir,"forecast_hotspot.pkl"),"rb"))
 
-    # TODO: change xbWorkDir to hotspotFcst.xbWorkDir
-    xbWorkDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Forecasts\\%s\\NSW\\hotspot\\Narrabeen\\XBeach" % roundedTimeStr
-    # TODO: change postProcessDir to hotspotFcst.postProcessDir
-    postProcessDir = os.path.join(xbWorkDir,"postProcess")
-    hotspotFcst.indicatorResultsDir = os.path.join(postProcessDir,"indicators")
+    hotspotFcst.indicatorResultsDir = os.path.join(hotspotFcst.postProcessDir,"indicators")
     if not os.path.exists(hotspotFcst.indicatorResultsDir):
         os.makedirs(hotspotFcst.indicatorResultsDir)
     plotsShp = os.path.join(indicatorDir,"lotsEPSG%s.shp" % hotspotFcst.xbeachEPSG)
@@ -71,8 +67,8 @@ def main(args=None):
         fileObj.write("</Diag>")
 
     #============== Load key files ==============#
-    ewlOverall = os.path.join(xbWorkDir,"postProcess","ewl_XBeach.shp")
-    scarpOverall = os.path.join(xbWorkDir,"postProcess","maxEroScarp.shp")
+    ewlOverall = os.path.join(hotspotFcst.xbWorkDir,"postProcess","ewl_XBeach.shp")
+    scarpOverall = os.path.join(hotspotFcst.xbWorkDir,"postProcess","maxEroScarp.shp")
     # Load these as geoseries
     ewlOverall = gpd.read_file(ewlOverall)
     try:

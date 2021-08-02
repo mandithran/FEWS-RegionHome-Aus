@@ -304,6 +304,10 @@ def main(args=None):
         np.savetxt(os.path.join(fcstHotspot.postProcessDir, "xbout_maxVVel.grd"),
                    max_flowVVel, delimiter="\t")
 
+    # Use pickle to save xbeach model object info
+    picklePath = os.path.join(fcstHotspot.forecastDir,"forecast_hotspot.pkl")
+    with open(picklePath, "wb") as output:
+        pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
 
     
 ## If Python throws an error, send to exceptions.log file
