@@ -1,0 +1,19 @@
+command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload\python\retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200301_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\' return with error (code 1): b'Traceback (most recent call last):\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\NSSDownload\\python\\retrieveNSS.py", line 11, in <module>\r\n    import fewsForecast\r\nModuleNotFoundError: No module named \'fewsForecast\'\r\n'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 72, in runModule
+    subprocess.check_output(command,shell=True,stderr=subprocess.STDOUT)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv2\lib\subprocess.py", line 424, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv2\lib\subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload\python\retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200301_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 242, in <module>
+    main()
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 161, in main
+    runModule(script=retrieveNSSPy,args=arguments)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 78, in runModule
+    raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+RuntimeError: command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload\python\retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200301_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\' return with error (code 1): b'Traceback (most recent call last):\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\NSSDownload\\python\\retrieveNSS.py", line 11, in <module>\r\n    import fewsForecast\r\nModuleNotFoundError: No module named \'fewsForecast\'\r\n'

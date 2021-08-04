@@ -3,12 +3,11 @@
 import sys
 import os
 import re
-from xbfewsTools import fewsUtils
+from xbfewsTools import fewsForecast, fewsUtils
 from datetime import datetime
 import traceback
 import shutil
 import pickle
-import fewsForecast
 import wget
 
 # For debugging:
