@@ -24,6 +24,7 @@ dependencies:
   - rioxarray
   - bs4
   - xlrd
+  - urllib3
   - pip:
     - wget
 prefix: .\bin\conda-venv
