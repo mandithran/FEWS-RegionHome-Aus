@@ -97,4 +97,8 @@ plt.xlabel("Distance away from profile (m)")
 fig2.savefig(os.path.join(workDir,"wave_distancesHistogram.png"))
 #gdf = gdf.sort_values(by=['wave_dist'],ascending=False)
 #print(gdf.head(20))
-plt.show()
+#plt.show()
+
+# Drop the other geometry columns and export
+gdf = gdf.drop(['geometry_wave','geometry_nss'],axis=1)
+gdf.to_file(os.path.join(dataPath,"01profiles_cleaned.shp"))
