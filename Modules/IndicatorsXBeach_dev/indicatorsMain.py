@@ -42,7 +42,7 @@ def main(args=None):
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
-    indicatorDir = os.path.join(regionHome,"Data\\Indicators\\Hotspot\\Narrabeen")
+    indicatorDir = os.path.join(regionHome,"Data\\Indicators\\Hotspot\\%s" % siteName)
 
     #============== Load FEWS forecast object ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
@@ -57,7 +57,7 @@ def main(args=None):
     if not os.path.exists(hotspotFcst.indicatorResultsDir):
         os.makedirs(hotspotFcst.indicatorResultsDir)
     plotsShp = os.path.join(indicatorDir,"lotsEPSG%s.shp" % hotspotFcst.xbeachEPSG)
-    corridorsShp = os.path.join(indicatorDir,"corridorsPolyline100m.shp")
+    corridorsShp = os.path.join(indicatorDir,"corridors100m.shp")
 
     #============== Generate diagnostics file ==============#
     # Copy and rename diagOpen.txt

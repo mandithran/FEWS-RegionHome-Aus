@@ -1,2 +1,11 @@
 /*
 !.gitignore
+!/Indicators/
+/Indicators/Hotspot/*
+!/Indicators/Hotspot/Narrabeen/
+/Indicators/Hotspot/Narrabeen/*
+!/Indicators/Hotspot/Narrabeen/corridors100m.shp
+!/Indicators/Hotspot/Narrabeen/corridors100m.cpg
+!/Indicators/Hotspot/Narrabeen/corridors100m.dbf
+!/Indicators/Hotspot/Narrabeen/corridors100m.prj
+!/Indicators/Hotspot/Narrabeen/corridors100m.shx
