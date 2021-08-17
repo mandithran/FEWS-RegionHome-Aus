@@ -276,10 +276,10 @@ def main(args=None):
         # Inform user through FEWS
         fewsUtils.clearDiagLastLine(diagFile)
         with open(diagFile, "a") as fileObj:
-            fileObj.write(fewsUtils.write2DiagFile(2, "Pre-processing waves..."))
+            fileObj.write(fewsUtils.write2DiagFile(2, "Warning: more than one storm period detected."))
             fileObj.write("</Diag>")
     # "Try" this, because there might not be any storm periods in the forecast.
-    try:
+    if len(hotspotFcst.stormPeriods) >= 1:
         # Isolate the very first storm
         # Presumably this is the only storm in the 7-day outlook
         # In rare circumstances this may not be the case.

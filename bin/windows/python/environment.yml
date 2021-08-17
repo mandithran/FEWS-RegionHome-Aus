@@ -25,6 +25,7 @@ dependencies:
   - bs4
   - xlrd
   - urllib3
+  - scipy
   - pip:
     - wget
 prefix: .\bin\conda-venv
