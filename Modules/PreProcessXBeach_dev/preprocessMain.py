@@ -38,12 +38,11 @@ def main(args=None):
 
     #============== Grid parameters ==============#
     # Testing Grid:
-    """ncPath = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\ofiles\\xbNarra_zb_2021_testing.nc" % siteName)
+    """
     xgrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\x_testing.grd" % siteName)
     ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
-    zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)"""
-
-    ncPath = os.path.join(regionHome,"Data\\TopoBathy\\%s\\prep\\ofiles\\xbNarra_zb_2021.nc" % siteName)
+    zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
+    """
     xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\4Long" % siteName)
     xgrd = os.path.join(xbFilesPath,"x.grd")
     ygrd = os.path.join(xbFilesPath,"y.grd")
@@ -251,9 +250,9 @@ def main(args=None):
     meshPts["ind"] = meshPts.index.astype(int)
     meshPts["wavefile"] = [f"wavefile{i+1}.txt" for i in meshPts.index]
     # Place these wave time series on the seaward boundary of the XBeach mesh
-    wavesDf, hotspotFcst.ncols, hotspotFcst.nrows = preProcWaves.moveWavestoBoundary(
-                                            ncPath=ncPath,meshPts=meshPts,
-                                            forecast=hotspotFcst)
+    print("CHECK HERE V2")
+    wavesDf, hotspotFcst.ncols, hotspotFcst.nrows = preProcWaves.moveWavestoBoundary(meshPts=meshPts,
+                                                                                     forecast=hotspotFcst)
     # Export the locations of the wave time series 
     # forcing to XBeach-friendly input file
     with open(os.path.join(hotspotFcst.xbWorkDir, "loclist.txt"), 'w') as fp:

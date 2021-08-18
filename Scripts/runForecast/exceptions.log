@@ -1,10 +1,19 @@
-time data '2020-0-08 12:00' does not match format '%Y-%m-%d %H:%M'Traceback (most recent call last):
+command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach\preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach 20200301_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' return with error (code 1): b'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\lib\\site-packages\\xarray\\core\\indexes.py:91: FutureWarning: Indexing a timezone-naive DatetimeIndex with a timezone-aware datetime is deprecated and will raise KeyError in a future version.  Use a timezone-naive object instead.\r\n  indexer = index.slice_indexer(\r\nCHECK HERE\r\nTraceback (most recent call last):\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\PreProcessXBeach\\preprocessMain.py", line 405, in <module>\r\n    main()\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\PreProcessXBeach\\preprocessMain.py", line 255, in main\r\n    raise\r\nRuntimeError: No active exception to reraise\r\n'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 72, in runModule
+    subprocess.check_output(command,shell=True,stderr=subprocess.STDOUT)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\subprocess.py", line 424, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach\preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach 20200301_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 242, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 102, in main
-    endSystemTime = datetime.strptime(endSystemTime, '%Y-%m-%d %H:%M')
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\_strptime.py", line 568, in _strptime_datetime
-    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\_strptime.py", line 349, in _strptime
-    raise ValueError("time data %r does not match format %r" %
-ValueError: time data '2020-0-08 12:00' does not match format '%Y-%m-%d %H:%M'
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 184, in main
+    runModule(script=preProcessXBeachPy,args=arguments)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 78, in runModule
+    raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+RuntimeError: command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach\preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach 20200301_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' return with error (code 1): b'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\lib\\site-packages\\xarray\\core\\indexes.py:91: FutureWarning: Indexing a timezone-naive DatetimeIndex with a timezone-aware datetime is deprecated and will raise KeyError in a future version.  Use a timezone-naive object instead.\r\n  indexer = index.slice_indexer(\r\nCHECK HERE\r\nTraceback (most recent call last):\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\PreProcessXBeach\\preprocessMain.py", line 405, in <module>\r\n    main()\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\PreProcessXBeach\\preprocessMain.py", line 255, in main\r\n    raise\r\nRuntimeError: No active exception to reraise\r\n'
