@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diag xmlns="http://www.wldelft.nl/fews/PI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_diag.xsd" version="1.2">
-<line level="3" description="From PYTHON: XBeach Working Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200101_0000\NSW\hotspot\Narrabeen\XBeach"/>
+<line level="3" description="From PYTHON: XBeach Working Directory: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach"/>
 
-<line level="3" description="From PYTHON: System time (from FEWS): 2020-01-01 00:00:00+00:00"/>
+<line level="3" description="From PYTHON: System time (from FEWS): 2020-02-08 00:00:00+00:00"/>
 
-<line level="3" description="From PYTHON: Rounded time: 2020-01-01 00:00:00+00:00"/>
+<line level="3" description="From PYTHON: Rounded time: 2020-02-08 00:00:00+00:00"/>
 
 <line level="3" description="From PYTHON: Spin-up window : 12:00:00"/>
 
 <line level="3" description="From PYTHON: Forecast horizon : 7 days, 0:00:00"/>
 
-<line level="3" description="From PYTHON: XBeach model start time: 2019-12-31 12:00:00+00:00"/>
+<line level="3" description="From PYTHON: XBeach model start time: 2020-02-07 12:00:00+00:00"/>
 
-<line level="3" description="From PYTHON: XBeach model end time: 2020-01-08 00:00:00+00:00"/>
+<line level="3" description="From PYTHON: XBeach model end time: 2020-02-15 00:00:00+00:00"/>
 <line level="3" description="From PYTHON: Pre-processing water levels..."/>
 <line level="3" description="From PYTHON: Water levels successfully pre-processed."/>
 <line level="3" description="From PYTHON: Pre-processing waves..."/>

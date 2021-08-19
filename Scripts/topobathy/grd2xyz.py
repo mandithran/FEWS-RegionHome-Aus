@@ -2,14 +2,15 @@ import numpy as np
 import os
 import pandas as pd
 
-storm = "2020_08_10"
+storm = "2020_02_09"
+site = "Narrabeen"
 mode = "pre-storm"
 
 workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy"
-ifilePath = os.path.join("C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\xbeach\\grd\\2020_08_10\\pre-storm")
+ifilePath = os.path.join("C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\xbeach\\%s\\grd\\%s\\pre-storm" % (site,storm))
 xgrd = os.path.join(ifilePath,"x.grd")
 ygrd = os.path.join(ifilePath,"y.grd")
-zgrd = os.path.join(ifilePath,"ne_layer.grd")
+zgrd = os.path.join(ifilePath,"z.grd")
 
 def flattenGrd(arr2d_grdfile):
     "Takes a grd file, formatted for XBeach."
@@ -24,4 +25,4 @@ zz = flattenGrd(zgrd)
 df = pd.DataFrame(xx,columns=['x'])
 df['y'] = yy.flatten()
 df['z'] = zz.flatten()
-df.to_csv(os.path.join(ifilePath,'ne_layer_2020_08_10.csv'),index=False)
+df.to_csv(os.path.join(ifilePath,'%s.csv' % storm),index=False)

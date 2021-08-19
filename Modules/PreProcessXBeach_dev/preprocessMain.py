@@ -14,6 +14,9 @@ import pickle
 import numpy as np
 import geopandas as gpd
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 # Debugging
 # Forecast:
 # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev 20200713_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen 3
@@ -250,7 +253,6 @@ def main(args=None):
     meshPts["ind"] = meshPts.index.astype(int)
     meshPts["wavefile"] = [f"wavefile{i+1}.txt" for i in meshPts.index]
     # Place these wave time series on the seaward boundary of the XBeach mesh
-    print("CHECK HERE V2")
     wavesDf, hotspotFcst.ncols, hotspotFcst.nrows = preProcWaves.moveWavestoBoundary(meshPts=meshPts,
                                                                                      forecast=hotspotFcst)
     # Export the locations of the wave time series 
@@ -280,8 +282,8 @@ def main(args=None):
     if len(hotspotFcst.stormPeriods) >= 1:
         # If there's more than one storm period detected, turn on morphology
         # when the first storm starts, then turn it off when the last storm ends
-        stormStart = hotspotFcst.stormPeriods['storm_start'][0].tz_localize(timezone.utc).to_pydatetime()
-        stormEnd = hotspotFcst.stormPeriods['storm_end'][-1].tz_localize(timezone.utc).to_pydatetime()
+        stormStart = hotspotFcst.stormPeriods.iloc[0]['storm_start'].tz_localize(timezone.utc).to_pydatetime()
+        stormEnd = hotspotFcst.stormPeriods.iloc[-1]['storm_end'].tz_localize(timezone.utc).to_pydatetime()
         # Compute the time that morpho would have to start, including spin-up
         stormStart_spinup = stormStart - timedelta(hours=12)
         stormEnd_spinup = stormEnd + timedelta(hours=12)
