@@ -1,19 +1,6 @@
--1Traceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\pandas\core\indexes\range.py", line 385, in get_loc
-    return self._range.index(new_key)
-ValueError: -1 is not in range
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev\preprocessMain.py", line 402, in <module>
-    main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev\preprocessMain.py", line 284, in main
-    stormEnd = hotspotFcst.stormPeriods['storm_end'][-1].tz_localize(timezone.utc).to_pydatetime()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\pandas\core\series.py", line 942, in __getitem__
-    return self._get_value(key)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\pandas\core\series.py", line 1051, in _get_value
-    loc = self.index.get_loc(label)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\pandas\core\indexes\range.py", line 387, in get_loc
-    raise KeyError(key) from err
-KeyError: -1
+compute_scw() takes from 0 to 1 positional arguments but 2 were givenTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 164, in <module>
+    try:
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 158, in main
+    corridors_df['ewl_dist'] = corridors_df.geometry.apply(lambda g: ewlOverall.distance(g).min())
+TypeError: compute_scw() takes from 0 to 1 positional arguments but 2 were given

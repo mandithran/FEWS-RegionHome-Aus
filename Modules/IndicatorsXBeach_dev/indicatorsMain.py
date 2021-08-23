@@ -11,6 +11,9 @@ from xbfewsTools import postProcTools
 import geopandas as gpd
 import pandas as pd
 import numpy as np
+import glob
+import ntpath
+from datetime import datetime, timedelta
 
 
 # Debugging
@@ -56,8 +59,16 @@ def main(args=None):
     hotspotFcst.indicatorResultsDir = os.path.join(hotspotFcst.postProcessDir,"indicators")
     if not os.path.exists(hotspotFcst.indicatorResultsDir):
         os.makedirs(hotspotFcst.indicatorResultsDir)
-    plotsShp = os.path.join(indicatorDir,"lotsEPSG%s.shp" % hotspotFcst.xbeachEPSG)
-    corridorsShp = os.path.join(indicatorDir,"corridors100m.shp")
+    scwDir = os.path.join(hotspotFcst.indicatorResultsDir,"scw")
+    bsdDir = os.path.join(hotspotFcst.indicatorResultsDir, "bsd")
+    if not os.path.exists(scwDir):
+        os.makedirs(scwDir)
+    if not os.path.exists(bsdDir):
+        os.makedirs(bsdDir)
+    #plotsShp = os.path.join(indicatorDir,"lotsEPSG%s.shp" % hotspotFcst.xbeachEPSG)
+    #corridorsShp = os.path.join(indicatorDir,"corridors100m.shp")
+    plotsShp = os.path.join(indicatorDir,"corridor_pts_100m.shp")
+    corridorsShp = os.path.join(indicatorDir,"corridor_pts_100m.shp")
 
     #============== Generate diagnostics file ==============#
     # Copy and rename diagOpen.txt
@@ -66,9 +77,18 @@ def main(args=None):
         currDir = os.getcwd()
         fileObj.write("</Diag>")
 
+
+    #============== More Paths ==============#
+    gaugesDir = os.path.join(hotspotFcst.postProcessDir,"gauges\\points")
+    scarpDir = os.path.join(hotspotFcst.postProcessDir,"scarp\\points")
+
+
     #============== Load key files ==============#
-    ewlOverall = os.path.join(hotspotFcst.xbWorkDir,"postProcess","ewl_XBeach.shp")
-    scarpOverall = os.path.join(hotspotFcst.xbWorkDir,"postProcess","maxEroScarp.shp")
+    # Load plots shapefile as geopandas df
+    plots_df = gpd.read_file(plotsShp)
+    corridors_df = gpd.read_file(corridorsShp)
+    ewlOverall = os.path.join(hotspotFcst.postProcessDir,"ewl_XBeach_points.shp")
+    scarpOverall = os.path.join(hotspotFcst.postProcessDir,"maxEroScarp_points.shp")
     # Load these as geoseries
     ewlOverall = gpd.read_file(ewlOverall)
     try:
@@ -76,56 +96,69 @@ def main(args=None):
     except:
         pass
 
+    # Construct time series to iterate through
+    # Numpy timedelta64 objects are easier to deal with
+    tstep = np.timedelta64(hotspotFcst.tintg,'s')
+    t_total = hotspotFcst.endTime - hotspotFcst.startTime
+    # In seconds
+    t_total = t_total.days*24.*60.*60 + t_total.seconds
+    t_total = np.timedelta64(int(t_total),'s')
+    tseries = np.arange(0, t_total+tstep, tstep)
+    tseries = np.array(tseries, dtype=float)
+    # Then express as hours because time is expressed as hours in files
+    tseries_hrs = np.divide(tseries,3600.)
+
     ############################### Compute the building-scarp distance indicator ###############################
-    # Load plots shapefile as geopandas df
-    plots_df = gpd.read_file(plotsShp)
-    # Drop the fields you don't need
-    fields2keep = ['cadid','geometry']
-    plots_df = plots_df[fields2keep]
+    # Timestep in hours
+    for t_step in tseries_hrs:
+        tstep_hrs_str = f'{(t_step):.2f}'.zfill(6)
+        if t_step % 5 == 0:
+            print("Processing BSD for time: %s hrs" % t_step)
+        fname = "scarp_%shrs_points.shp" % tstep_hrs_str
+        fPath = os.path.join(scarpDir,fname)
+        plots_df_copy = plots_df.copy()
+        # Be careful here - the "try" logic here could conceal bugs
+        # And just assign everything as being "Low"
+        try:
+            scarp_gdf = gpd.read_file(fPath)
+            plots_df_copy['bsd_dist'] = scarp_gdf.geometry.apply(lambda g: plots_df_copy.distance(g).min())
+            plots_df_copy['BSD'] = postProcTools.compute_bsd(plots_df_copy['bsd_dist'])
+        except:
+            plots_df_copy["BSD"] = "Low"
+        ofileName = "bsd_%shrs.shp" % tstep_hrs_str
+        plots_df_copy.to_file(os.path.join(bsdDir,ofileName))
+
+    # Compute overall BSD indicator for the entire forecast
     try: # A scarp might not be detected
         # Compute distance between each building plot and the scarp line
-        plots_df['scarp_dist'] = plots_df.geometry.apply(lambda g: scarpOverall.distance(g).min())
-        #============== Thresholding ==============#
-        thresholdsBSD = [{"lower": 0, "upper": 10, "level": "High"},
-            {"lower": 10, "upper": 20, "level": "Medium"},
-            {"lower": 20, "upper": 10000, "level": "Low"}]
-        thresholdsBSD_df = pd.DataFrame(thresholdsBSD)
-        #create bins
-        bins = list(thresholdsBSD_df["upper"])
-        bins.insert(0,0)
-        plots_df["BSD"] = pd.cut(plots_df["scarp_dist"], bins, labels = thresholdsBSD_df["level"]).astype(str)
-        #============== Label instances where lines intersect bounds ==============#
-        # If they intersect, algorithm above throws a "nan"
-        plots_df = plots_df.replace({'BSD':'nan'},"High")
+        plots_df_copy = plots_df.copy()
+        plots_df_copy['bsd_dist'] = scarpOverall.geometry.apply(lambda g: plots_df_copy.distance(g).min())
+        plots_df_copy['BSD'] = postProcTools.compute_bsd(plots_df_copy['bsd_dist'])
     except:
         plots_df["BSD"] = "Low"
-    plots_df.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall.shp"))
+    plots_df_copy.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall.shp"))
     
 
     ############################### Compute the safe corridor width indicator ###############################
-    corridors_df = gpd.read_file(corridorsShp)
-    # Compute the distance between each corridor section and the scarp line
-    corridors_df['ewl_dist'] = corridors_df.geometry.apply(lambda g: ewlOverall.distance(g).min())
-    thresholdsSCW = [{"lower": 0, "upper": 5, "level": "High"},
-        {"lower": 5, "upper": 10, "level": "Medium"},
-        {"lower": 10, "upper": 10000, "level": "Low"}]
-    thresholdsSCW_df = pd.DataFrame(thresholdsSCW)
-    #create bins
-    bins = list(thresholdsSCW_df["upper"])
-    bins.insert(0,0)
-    corridors_df["SCW"] = pd.cut(corridors_df["ewl_dist"], bins, labels = thresholdsSCW_df["level"]).astype(str)
-    #============== Label instances where lines intersect bounds ==============#
-    # If they intersect, algorithm above throws a "nan"
-    corridors_df = corridors_df.replace({'SCW':'nan'},"High")
-    #print(postProcessDir)
-    corridors_df.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "safe-corridorOverall.shp"))
-    # Copy and rename diagOpen.txt
-    fewsUtils.clearDiagLastLine(diagFile)
-    with open(diagFile, "a") as fileObj:
-        fileObj.write(fewsUtils.write2DiagFile(3,"No erosion scarp detected"))
-        fileObj.write("</Diag>")
+    for t_step in tseries_hrs:
+        tstep_hrs_str = f'{(t_step):.2f}'.zfill(6)
+        if t_step % 5 == 0:
+            print("Processing SCW for time: %s hrs" % t_step)
+        fname = "gauges_%shrs_points.shp" % tstep_hrs_str
+        fPath = os.path.join(gaugesDir,fname)
+        ewl_gdf = gpd.read_file(fPath)
+        # Compute distances between ewl at timestep and corridors
+        corridors_df_copy = corridors_df.copy()
+        corridors_df_copy['ewl_dist'] = ewl_gdf.geometry.apply(lambda g: corridors_df_copy.distance(g).min())
+        corridors_df_copy['SCW'] = postProcTools.compute_scw(ewlDistSeries=corridors_df_copy['ewl_dist'])
+        # export to a file
+        corridors_df_copy.to_file(os.path.join(scwDir,"scw_%shrs.shp" % (tstep_hrs_str)))
 
-
+    # Compute the distance between each corridor section and the extreme water line
+    corridors_df_copy = corridors_df.copy()
+    corridors_df_copy['ewl_dist'] = corridors_df_copy.geometry.apply(lambda g: ewlOverall.distance(g).min())
+    corridors_df_copy['SCW'] = postProcTools.compute_scw(corridors_df_copy['ewl_dist'])
+    corridors_df_copy.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "safe-corridorOverall.shp"))
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":

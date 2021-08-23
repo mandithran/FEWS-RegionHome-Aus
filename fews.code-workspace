@@ -9,8 +9,8 @@
 		"terminal.integrated.shellArgs.windows":["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat .\\bin\\windows\\python\\bin\\conda-venv"],
 		"python.pythonPath": ".\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
 		"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#ffe4e1",
-		"terminalCursor.foreground": "#ffe4e1"
+			"editorCursor.foreground": "#ffe4e1",
+			"terminalCursor.foreground": "#ffe4e1"
 		}
 	}
 	

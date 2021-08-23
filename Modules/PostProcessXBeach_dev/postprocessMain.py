@@ -71,6 +71,8 @@ def main(args=None):
     gaugesDirPts = os.path.join(gaugesDir, "points")
     gaugesDirLines = os.path.join(gaugesDir, "lines")
     scarpDir = os.path.join(postProcessDir,"scarp")
+    scarpDirPts = os.path.join(scarpDir, "points")
+    scarpDirLines = os.path.join(scarpDir, "lines")
     ncOut = os.path.join(fcstHotspot.xbWorkDir, "xboutput.nc")
     # Make directories if they don't exist
     if not os.path.exists(postProcessDir):
@@ -83,6 +85,10 @@ def main(args=None):
         os.makedirs(gaugesDirLines)
     if not os.path.exists(scarpDir):
         os.makedirs(scarpDir)
+    if not os.path.exists(scarpDirPts):
+        os.makedirs(scarpDirPts)
+    if not os.path.exists(scarpDirLines):
+        os.makedirs(scarpDirLines)
 
 
     ################ Load Output ################
@@ -156,6 +162,8 @@ def main(args=None):
                 maxWaterLine.append(point)
                 yind += 1
             # Export max water line as GeoSeries, convert a line shapefile
+            gdf1 = gpd.GeoSeries(maxWaterLine,crs=epsg)
+            gdf1.to_file(os.path.join(gaugesDirPts,"gauges_%shrs_points.shp" % time_str))
             gdf2 = gpd.GeoSeries(LineString(maxWaterLine),crs=epsg)
             gdf2.to_file(os.path.join(gaugesDirLines,"gauges_%shrs_lines.shp" % time_str))
             # Reset the column indeces for the next 15 minute interval
@@ -174,8 +182,10 @@ def main(args=None):
         maxWaterLine.append(point)
         yind += 1
     # Export max water line as GeoSeries, convert a line shapefile
-    gdf3 = gpd.GeoSeries(LineString(maxWaterLine),crs=epsg)
-    gdf3.to_file(os.path.join(fcstHotspot.postProcessDir,"ewl_XBeach.shp"))
+    gdf3 = gpd.GeoSeries(maxWaterLine,crs=epsg)
+    gdf3.to_file(os.path.join(fcstHotspot.postProcessDir,"ewl_XBeach_points.shp"))
+    gdf4 = gpd.GeoSeries(LineString(maxWaterLine),crs=epsg)
+    gdf4.to_file(os.path.join(fcstHotspot.postProcessDir,"ewl_XBeach.shp"))
 
     ################################# Process erosion scarp #################################
     # Check to see that morstart isn't equal to the total run time
@@ -185,7 +195,7 @@ def main(args=None):
         # We want to return the morphology at a time that is a little after the "rounded time"
         # This is right when morphology is meant to be switched on, and it's also after the first
         # couple time steps, where subaerial slumping can mess up the position of the computed
-        # erosion scarp. Correct index is the spinUp interval divided by the timestep
+        # erosion scarp. Correct index is the spinUp interval divided by the timestep 
         # Starts one of the first timesteps after the rounded time because of initial slumping creating artefacts in erosion scarp lines
         roundedTimeIndex = int((fcstHotspot.roundedTime - fcstHotspot.startTime).seconds/fcstHotspot.tintm)
         dtout = (ds.meantime[1]-ds.meantime[0]).values
@@ -195,7 +205,8 @@ def main(args=None):
         df = pd.DataFrame(columns=["timeStepMins","xScarp", 
                                 "yScarp","rowInd",
                                 "colIndexScarp"])
-        for timestep in np.arange(eroStartIndex+2,ds["meantime"].sizes["meantime"],1):
+        #for timestep in np.arange(eroStartIndex+2,ds["meantime"].sizes["meantime"],1):
+        for timestep in np.arange(eroStartIndex+2,ds["globaltime"].sizes["globaltime"],1):
             if timestep == roundedTimeIndex:
                 print("Starting at timestep %s " % roundedTimeIndex)
             if timestep % 10 == 0: 
@@ -208,10 +219,13 @@ def main(args=None):
             # Splice the dataset at the given timestep
             #if timestep % 10 == 0:
                 #print(ds.globaltime,ds.meantime)
-            dsstep = ds.isel({"meantime":timestep})
+            #dsstep = ds.isel({"meantime":timestep})
             #if timestep % 10 == 0:
                 #print(dsstep)
-            dsstep = dsstep.isel({"globaltime":timestep+1}) # global time and mean time not the same
+            #dsstep = dsstep.isel({"globaltime":timestep+1})
+            #dsstep = dsstep.isel({"globaltime":timestep})
+            dsstep = ds.isel({"globaltime":timestep}) # global time and mean time not the same
+            print(timestep,tstring)
             #if timestep % 10 == 0:
                 #print(dsstep)
             # Find the erosion scarp at each time step
@@ -239,11 +253,16 @@ def main(args=None):
                     df = df.append(dftmp)
                     ######### Append information to time step's dataframe ######### 
                     dftstep = dftstep.append(dftmp)
+                    # Export point shapefile for erosion scarp
+                    gdf1 = gpd.GeoDataFrame(dftstep, geometry=gpd.points_from_xy(dftstep.xScarp, dftstep.yScarp), crs=epsg)
+                    gdf1 = gdf1[["geometry"]]
+                    gdf1 = gpd.GeoSeries(gdf1.geometry.tolist(),crs=epsg)
+                    gdf1.to_file(os.path.join(scarpDirPts,"scarp_%shrs_points.shp" % tstring))
                     # Export line shapefile for erosion scarp 
                     gdf2 = gpd.GeoDataFrame(dftstep, geometry=gpd.points_from_xy(dftstep.xScarp, dftstep.yScarp), crs=epsg)
                     gdf2 = gdf2[["geometry"]]
                     gdf2 = gpd.GeoSeries(LineString(gdf2.geometry.tolist()),crs=epsg)
-                    gdf2.to_file(os.path.join(scarpDir,"scarp_%shrs.shp" % tstring))
+                    gdf2.to_file(os.path.join(scarpDirLines,"scarp_%shrs.shp" % tstring))
                 except:
                     pass
         ################ Determine maximum erosion scarp from XBeach output ################
@@ -261,12 +280,18 @@ def main(args=None):
                             how = "right")
             # Drop duplicates
             df_es = df_es.drop_duplicates()
-            # Export max erosion scarp line 
-            gdf = gpd.GeoDataFrame(df_es, geometry="geometry", 
+            # Export max erosion scarp lines as points
+            gdf1 = gpd.GeoDataFrame(df_es, geometry="geometry", 
                                     crs=epsg)
-            gdf = gdf[["geometry"]]
-            gdf = gpd.GeoSeries(LineString(gdf.geometry.tolist()),crs=epsg)
-            gdf.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp.shp"))
+            gdf1 = gdf1[["geometry"]]
+            gdf1 = gpd.GeoSeries(gdf1.geometry.tolist(),crs=epsg)
+            gdf1.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp_points.shp"))
+            # Export max erosion scarp line 
+            gdf2 = gpd.GeoDataFrame(df_es, geometry="geometry", 
+                                    crs=epsg)
+            gdf2 = gdf2[["geometry"]]
+            gdf2 = gpd.GeoSeries(LineString(gdf2.geometry.tolist()),crs=epsg)
+            gdf2.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp.shp"))
         except:
             pass
 

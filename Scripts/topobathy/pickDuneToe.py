@@ -25,7 +25,7 @@ fig, ax = plt.subplots(1,1,figsize=(10,6.))
 # TODO: plot column index instead of x value
 # TODO: add a new color plotting where you think the dune is
 #colIndex = np.arange(0,xx.shape[1],1)
-rowNum = 4
+rowNum = 46
 rowInd = rowNum - 1
 ax.scatter(xx[rowInd,:],zz[rowInd,:], color='b')
 print(xx[rowInd,:])
