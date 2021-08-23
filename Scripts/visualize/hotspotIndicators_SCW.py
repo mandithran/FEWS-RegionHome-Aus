@@ -15,7 +15,7 @@ time_t0_str = time_t0.strftime("%Y%m%d_%H%M")
 
 # Set up time series to loop through
 deltat = timedelta(hours=12) # timestep for water level time series
-startTime = datetime(year=2020,month=2,day=1,hour=12)
+startTime = datetime(year=2020,month=2,day=1,hour=0)
 endTime = datetime(year=2020,month=2,day=29,hour=12)
 
 # These shapefiles are in UTM (EPSG:28356)
@@ -56,14 +56,22 @@ for time in timeSeries:
     step_gdf = gpd.read_file(safeCorrPath)
     step_gdf = step_gdf.rename(columns={"SCW":"%s" % time_pd})
     #TODO: Bring ID and ewl_dist columns back when ID is assigned
-    step_gdf = step_gdf.drop(columns=["id","ewl_dist"],axis=1)
+    step_gdf = step_gdf.drop(columns=["corr_id","ewl_dist",
+                                      "centerxUTM","centeryUTM"],axis=1)
     sc_gdf = sc_gdf.merge(step_gdf,how='left',on=['geometry'],right_index=False)
 
 # Sort by Id - runs north to south
+startTime_str = pd.to_datetime(startTime)
+sc_gdf = sc_gdf.drop(columns=["corr_id_y","centerxUTM_y",
+                              "centeryUTM_y","%s_y" % startTime], axis=1)
+sc_gdf = sc_gdf.rename(columns={"corr_id_x":"corr_id",
+                                "centerxUTM_x":"centerxUTM",
+                                "centeryUTM_x":"centeryUTM",
+                                "%s_x" % startTime_str: startTime_str})
 sc_gdf = sc_gdf.sort_values('corr_id')
 
 # Format dataframe for heatmap
-sc_gdf = sc_gdf.drop(columns=['id','geometry','centerxUTM','centeryUTM'])
+sc_gdf = sc_gdf.drop(columns=['geometry','centerxUTM','centeryUTM'])
 sc_gdf = sc_gdf.set_index(sc_gdf['corr_id'])
 sc_gdf = sc_gdf.drop(columns=['corr_id'],axis=1)
 
@@ -150,4 +158,4 @@ n = 72
 [l.set_visible(False) for (i,l) in enumerate(ax2.xaxis.get_ticklabels()) if i % n != 0]
 plt.subplots_adjust(hspace=0.5)
 plt.show()
-# %%
+

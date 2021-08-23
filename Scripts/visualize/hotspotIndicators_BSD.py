@@ -63,7 +63,7 @@ bs_gdf['centroid_y'] = bs_gdf.geometry.centroid.y
 bs_gdf = bs_gdf.sort_values('centroid_y',ascending=False)
 
 # Format dataframe for heatmap
-bs_gdf = bs_gdf.drop(columns=['geometry','centroid_y'])
+bs_gdf = bs_gdf.drop(columns=['geometry','centroid_y','scarp_dist'])
 bs_gdf = bs_gdf.set_index(bs_gdf['cadid'])
 bs_gdf = bs_gdf.drop(columns=['cadid'])
 
@@ -79,8 +79,8 @@ from matplotlib.dates import DateFormatter
 
 
 #date_form = DateFormatter("%Y-%m-%d\n%H:%M")
-
 # create dictionary with value to integer mappings
+#bs_gdf = bs_gdf.applymap(str)
 value_to_int = {value: i for i, value in enumerate(sorted(pd.unique(bs_gdf.values.ravel())))}
 n = len(value_to_int)     
 # discrete colormap (n samples from a given cmap)

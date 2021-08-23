@@ -1,10 +1,19 @@
-time data '2020-0-08 12:00' does not match format '%Y-%m-%d %H:%M'Traceback (most recent call last):
+command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach\indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach 20200101_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' return with error (code 1): b'Traceback (most recent call last):\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\IndicatorsXBeach\\indicatorsMain.py", line 133, in <module>\r\n    main()\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\IndicatorsXBeach\\indicatorsMain.py", line 48, in main\r\n    fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))\r\nFileNotFoundError: [Errno 2] No such file or directory: \'C:\\\\Users\\\\z3531278\\\\Documents\\\\01_FEWS-RegionHome-Aus\\\\Forecasts\\\\20200101_0000\\\\forecast.pkl\'\r\n'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 72, in runModule
+    subprocess.check_output(command,shell=True,stderr=subprocess.STDOUT)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\subprocess.py", line 424, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach\indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach 20200101_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 242, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 102, in main
-    endSystemTime = datetime.strptime(endSystemTime, '%Y-%m-%d %H:%M')
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\_strptime.py", line 568, in _strptime_datetime
-    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\_strptime.py", line 349, in _strptime
-    raise ValueError("time data %r does not match format %r" %
-ValueError: time data '2020-0-08 12:00' does not match format '%Y-%m-%d %H:%M'
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 222, in main
+    runModule(script=indicatorsXBeachPy,args=arguments)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 78, in runModule
+    raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+RuntimeError: command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach\indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach 20200101_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' return with error (code 1): b'Traceback (most recent call last):\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\IndicatorsXBeach\\indicatorsMain.py", line 133, in <module>\r\n    main()\r\n  File "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\IndicatorsXBeach\\indicatorsMain.py", line 48, in main\r\n    fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))\r\nFileNotFoundError: [Errno 2] No such file or directory: \'C:\\\\Users\\\\z3531278\\\\Documents\\\\01_FEWS-RegionHome-Aus\\\\Forecasts\\\\20200101_0000\\\\forecast.pkl\'\r\n'
