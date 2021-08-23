@@ -279,6 +279,7 @@ def main(args=None):
         with open(diagFile, "a") as fileObj:
             fileObj.write(fewsUtils.write2DiagFile(2, "Warning: more than one storm period detected."))
             fileObj.write("</Diag>")
+    # "Try" this, because there might not be any storm periods in the forecast.
     if len(hotspotFcst.stormPeriods) >= 1:
         # If there's more than one storm period detected, turn on morphology
         # when the first storm starts, then turn it off when the last storm ends
@@ -290,6 +291,8 @@ def main(args=None):
         # Compute what morstart would be in this scenario
         morstart_ = (stormStart_spinup-hotspotFcst.startTime).total_seconds()
         morstop_ = (stormEnd_spinup-hotspotFcst.startTime).total_seconds()
+    except:
+        pass
     # Check if morstart_, with is own spinup, is shorter than the spinup time the model actually needs
     # at the start of the run. If it's shorter, then set morstart to the model spin-up time of 
     # 12-hours. The waves still need this spin-up so that they reach the coast before the morphology
