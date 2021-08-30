@@ -1,40 +1,35 @@
-C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shp is not a directory.Traceback (most recent call last):
-  File "fiona/_shim.pyx", line 83, in fiona._shim.gdal_open_vector
-  File "fiona/_err.pyx", line 291, in fiona._err.exc_wrap_pointer
-fiona._err.CPLE_OpenFailedError: Unable to open C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shx or C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.SHX. Set SHAPE_RESTORE_SHX config option to YES to restore or create it.
+[Errno 2] No such file or directory: b'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Forecasts\\20200210_0000\\NSW\\hotspot\\Narrabeen\\XBeach\\xboutput.nc'Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\file_manager.py", line 199, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\lru_cache.py", line 53, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Forecasts\\20200210_0000\\NSW\\hotspot\\Narrabeen\\XBeach\\xboutput.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "fiona/ogrext.pyx", line 1028, in fiona.ogrext.WritingSession.start
-  File "fiona/_shim.pyx", line 90, in fiona._shim.gdal_open_vector
-fiona.errors.DriverError: Unable to open C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shx or C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.SHX. Set SHAPE_RESTORE_SHX config option to YES to restore or create it.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "fiona/_shim.pyx", line 110, in fiona._shim.gdal_create
-  File "fiona/_err.pyx", line 291, in fiona._err.exc_wrap_pointer
-fiona._err.CPLE_AppDefinedError: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shp is not a directory.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 181, in <module>
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev\postprocessMain.py", line 348, in <module>
     main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 149, in main
-    scarpOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\geopandas\geodataframe.py", line 1086, in to_file
-    _to_file(self, filename, driver, schema, index, **kwargs)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\geopandas\io\file.py", line 327, in _to_file
-    with fiona.open(
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\fiona\env.py", line 400, in wrapper
-    return f(*args, **kwargs)
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\fiona\__init__.py", line 272, in open
-    c = Collection(path, mode, crs=crs, driver=driver, schema=this_schema,
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\fiona\collection.py", line 165, in __init__
-    self.session.start(self, **kwargs)
-  File "fiona/ogrext.pyx", line 1032, in fiona.ogrext.WritingSession.start
-  File "fiona/ogrext.pyx", line 1033, in fiona.ogrext.WritingSession.start
-  File "fiona/_shim.pyx", line 114, in fiona._shim.gdal_create
-fiona.errors.DriverError: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shp is not a directory.
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev\postprocessMain.py", line 102, in main
+    ds = xr.open_dataset(ncOut)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\api.py", line 497, in open_dataset
+    backend_ds = backend.open_dataset(
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\netCDF4_.py", line 551, in open_dataset
+    store = NetCDF4DataStore.open(
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\netCDF4_.py", line 380, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\netCDF4_.py", line 328, in __init__
+    self.format = self.ds.data_model
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\netCDF4_.py", line 389, in ds
+    return self._acquire()
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\netCDF4_.py", line 383, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\contextlib.py", line 117, in __enter__
+    return next(self.gen)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\file_manager.py", line 187, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\file_manager.py", line 205, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src\netCDF4\_netCDF4.pyx", line 2330, in netCDF4._netCDF4.Dataset.__init__
+  File "src\netCDF4\_netCDF4.pyx", line 1948, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Forecasts\\20200210_0000\\NSW\\hotspot\\Narrabeen\\XBeach\\xboutput.nc'

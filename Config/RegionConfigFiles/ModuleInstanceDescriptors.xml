@@ -94,5 +94,4 @@
 	<moduleInstanceDescriptor id="runXBeach">
 		<description>Module dataset for running XBeach - contains python script</description>
 	</moduleInstanceDescriptor>
-	<!-- TODO: Replace instances of "XBEACH" with Variable-->
 </moduleInstanceDescriptors>

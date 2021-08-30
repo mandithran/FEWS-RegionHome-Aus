@@ -122,9 +122,6 @@ try:
                 
             print('Starting download of BOM Storm Wave files from ' + str(download_start_date))
                 
-                
-            #============================================================================#
-            # TODO: build a list of files to download
             #============================================================================#
 
             times = np.arange(download_start_date, todaysdate, timedelta(hours=12))
