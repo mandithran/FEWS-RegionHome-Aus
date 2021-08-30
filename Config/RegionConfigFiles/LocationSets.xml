@@ -56,7 +56,6 @@
 			<!-- These next two are meaningless but FEWS kept complaining-->
 			<x>%Longitude%</x>
 			<y>%Latitude%</y>
-			<!-- TODO: add parent location-->
 			<attribute id="Region" name="Region">
 				<text>%Region%</text>
 			</attribute>

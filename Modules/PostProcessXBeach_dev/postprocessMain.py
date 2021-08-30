@@ -34,7 +34,6 @@ def main(args=None):
 
     #============== Determine appropriate forecast directory ==============#
     # This is based on system time given from FEWS
-    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\XBeach\Narrabeen\2020070700SystemTime-Narrabeen
     modelRunDir = os.path.join(regionHome,"Modules\\XBeach",siteName,
                                "%sSystemTime-%s" %(sysTimeStr,siteName))
     
@@ -42,10 +41,18 @@ def main(args=None):
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
-    fcstHotspot = os.path.join(modelRunDir,"forecast_hotspot.pkl")
+    hotspotLocSet = os.path.join(regionHome,"Config\\MapLayerFiles\\hotspotLocations.csv")
+
+
+    #============== Load hotspot location set ==============#
+    hotspotLocSet = pd.read_csv(hotspotLocSet)
+    regionName = hotspotLocSet.loc[hotspotLocSet['ID']==siteName]['Region'][0]
 
 
     #============== Load hotspot forecast object with pickle ==============#
+    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200201_0000\NSW\hotspot\Narrabeen
+    t_str = sysTimeStr[0:8] + '_' + sysTimeStr[8:] + '00'
+    fcstHotspot = os.path.join(regionHome,"Forecasts",t_str,regionName,"hotspot",siteName,"forecast_hotspot.pkl")
     fcstHotspot = pickle.load(open(fcstHotspot, "rb"))
     
 

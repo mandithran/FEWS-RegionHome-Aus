@@ -28,7 +28,6 @@ oDir = os.path.join(workDir,'ofiles')
 # Location of the Auswave output node to compare (closest to observation gauge)
 # Mandurah offshore wave buoy is at -32.452787 115.572227 (GDA2020)
 # Source: https://www.transport.wa.gov.au/imarine/download-tide-wave-data.asp
-# TODO: visualize a PER wave mesh in QGIS
 lat = -32.45543
 lon = 115.56795
 

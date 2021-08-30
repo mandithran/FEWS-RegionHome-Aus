@@ -128,7 +128,6 @@ try:
             # download file (try until host responds)
             attempts=0
             print("Downloading %s" % url)
-            # TODO: uncomment this line
             file = wget.download(url, out=rawfilepath) 
         
     # Remove any duplicates
