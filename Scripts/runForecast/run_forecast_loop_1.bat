@@ -1,4 +1,3 @@
-rem Run: START /B C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop_1.bat > forecastLog_1.txt 2>&1
 rem arguments to test/debug: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ 2020-02-07 00:00 2020-02-07 12:00
 set regionHome=C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\
 rem Format: YYYY-MM-DD

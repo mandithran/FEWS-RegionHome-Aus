@@ -6,7 +6,7 @@ set systemStartDate=2020-02-01
 rem Format: HH:MM
 set systemStartTime=00:00
 rem Format: YYYY-MM-DD
-set systemEndDate=2020-02-01
+set systemEndDate=2020-02-29
 rem Format: HH:MM
 set systemEndTime=12:00
 set CONDAPATH=C:\Users\z3531278\Anaconda3
