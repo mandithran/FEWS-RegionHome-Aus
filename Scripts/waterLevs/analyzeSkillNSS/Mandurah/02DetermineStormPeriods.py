@@ -40,8 +40,7 @@ def parseTimeAusWv(string=None):
     dateTime = timezoneUTC.localize(dateTime)
     return dateTime
 
-# TODO: comment back in
-"""# ================== Analyze forecast wave data ================== #
+# ================== Analyze forecast wave data ================== #
 # Load list of files - NSS Forecast
 filesList = []
 # We only want the netcdf files
@@ -89,7 +88,7 @@ for fi in df_files['fileName']:
     df_storms = df_storms.append(df)
     counter += 1
 
-df_storms.to_csv(os.path.join(waveOutDir, "forecastedStorms_%s_2020.csv" % siteName))"""
+df_storms.to_csv(os.path.join(waveOutDir, "forecastedStorms_%s_2020.csv" % siteName))
 
 
 # ================== Analyze observed wave data ================== #

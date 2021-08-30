@@ -30,7 +30,6 @@ buildScarpPath_t0 = os.path.join(indicatorPath_t0,"building-scarpDistOverall.shp
 bs_gdf = gpd.read_file(buildScarpPath_t0)
 newColName2 = "%s" % time_t0
 bs_gdf[newColName2] = bs_gdf['BSD']
-# TODO: bring ID column back when IDs are assigned
 bs_gdf = bs_gdf.drop(columns=['BSD'],axis=1)
 print(bs_gdf.head())
 
@@ -48,7 +47,6 @@ for time in timeSeries:
     buildScarpPath = os.path.join(indicatorPath,"building-scarpDistOverall.shp")
     step_gdf = gpd.read_file(buildScarpPath)
     step_gdf = step_gdf.rename(columns={"BSD":"%s" % time_pd})
-    #TODO: Bring ID and ewl_dist columns back when ID is assigned
     step_gdf = step_gdf.drop(columns=["geometry"],axis=1)
     try:
         step_gdf = step_gdf.drop(columns=["scarp_dist"],axis=1)

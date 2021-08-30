@@ -30,7 +30,6 @@ for v in vars2process:
 
 #################### Load dataset ####################
 ds = xr.open_dataset(xboutput)
-# TODO: remove these two lines
 ds = ds.isel({"globaltime":globaltime})
 ds = ds[["zb"]]
 

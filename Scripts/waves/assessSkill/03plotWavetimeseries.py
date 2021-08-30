@@ -119,7 +119,6 @@ df = pd.merge(df, dfw_obs, how='left',left_index=True, right_index=True)
 
 
 # ================= Plot wave time series ================= #
-# TODO: loop through params
 # Font sizes
 plt.rcParams.update({'font.size':7})
 plt.rc('xtick', labelsize=7)
@@ -128,7 +127,6 @@ plt.rc('axes', labelsize=7,labelpad=1)
 plt.rc('legend', handletextpad=1, fontsize=6)
 
 # Plot time series
-# TODO: subplots
 for index,row in dfp.iterrows():
     # Fig params
     fig, axes = plt.subplots(4,1,figsize=(5,8),sharex=False)

@@ -14,8 +14,6 @@ workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\wate
 waveDirectory = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
 stormPeriods = os.path.join(waveDirectory, "assessSkill\\%s\\ofiles\\" % siteName,
                             "observedStorms_%s_2020.csv" % siteName)
-# TODO: change back
-#oDir = os.path.join(workDir,"ofiles")
 oDir = os.path.join(workDir,"ofiles")
 figDir = os.path.join(workDir,"figs")
 # Start and end times
