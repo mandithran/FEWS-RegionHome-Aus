@@ -201,7 +201,6 @@ for fi in df_files['fileName']:
         print("File processed")
         counter += 1
     except:
-        # TODO: change back to "pass"
         pass
 
 # Merge NSS forecast with non-tidal residual observations

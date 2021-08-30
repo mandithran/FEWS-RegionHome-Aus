@@ -16,7 +16,6 @@ zfile = os.path.join(xbWorkDir,"ne_layer.grd")
 
 #################### Load dataset ####################
 ds = xr.open_dataset(xbOutput)
-# TODO: remove these two lines
 ds = ds.isel({"globaltime":0})
 ds = ds[["zb"]]
 

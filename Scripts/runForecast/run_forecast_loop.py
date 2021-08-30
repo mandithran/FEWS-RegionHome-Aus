@@ -228,9 +228,6 @@ def main(args=None):
                 runModule(script=wipeForecastPy,args=arguments)
 
 
-                # =========================== TODO: write information to log file ===========================#
-
-
 
 ## If Python throws an error, send to exceptions.log file
 
