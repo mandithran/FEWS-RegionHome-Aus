@@ -1,6 +1,40 @@
-compute_scw() takes from 0 to 1 positional arguments but 2 were givenTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 164, in <module>
-    try:
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 158, in main
-    corridors_df['ewl_dist'] = corridors_df.geometry.apply(lambda g: ewlOverall.distance(g).min())
-TypeError: compute_scw() takes from 0 to 1 positional arguments but 2 were given
+C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shp is not a directory.Traceback (most recent call last):
+  File "fiona/_shim.pyx", line 83, in fiona._shim.gdal_open_vector
+  File "fiona/_err.pyx", line 291, in fiona._err.exc_wrap_pointer
+fiona._err.CPLE_OpenFailedError: Unable to open C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shx or C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.SHX. Set SHAPE_RESTORE_SHX config option to YES to restore or create it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fiona/ogrext.pyx", line 1028, in fiona.ogrext.WritingSession.start
+  File "fiona/_shim.pyx", line 90, in fiona._shim.gdal_open_vector
+fiona.errors.DriverError: Unable to open C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shx or C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.SHX. Set SHAPE_RESTORE_SHX config option to YES to restore or create it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fiona/_shim.pyx", line 110, in fiona._shim.gdal_create
+  File "fiona/_err.pyx", line 291, in fiona._err.exc_wrap_pointer
+fiona._err.CPLE_AppDefinedError: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shp is not a directory.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 181, in <module>
+    main()
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 149, in main
+    scarpOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\geopandas\geodataframe.py", line 1086, in to_file
+    _to_file(self, filename, driver, schema, index, **kwargs)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\geopandas\io\file.py", line 327, in _to_file
+    with fiona.open(
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\fiona\env.py", line 400, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\fiona\__init__.py", line 272, in open
+    c = Collection(path, mode, crs=crs, driver=driver, schema=this_schema,
+  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\fiona\collection.py", line 165, in __init__
+    self.session.start(self, **kwargs)
+  File "fiona/ogrext.pyx", line 1032, in fiona.ogrext.WritingSession.start
+  File "fiona/ogrext.pyx", line 1033, in fiona.ogrext.WritingSession.start
+  File "fiona/_shim.pyx", line 114, in fiona._shim.gdal_create
+fiona.errors.DriverError: C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200208_0000\NSW\hotspot\Narrabeen\XBeach\postProcess\indicators\building-scarpDistOverall_pts.shp is not a directory.

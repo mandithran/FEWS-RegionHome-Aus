@@ -28,6 +28,7 @@ dependencies:
   - scipy
   - pip:
     - wget
+    - pyepsg
 prefix: .\bin\conda-venv
 
 # If numpy gives you errors, activate the environment 
