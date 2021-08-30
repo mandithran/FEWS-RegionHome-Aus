@@ -14,6 +14,7 @@ import numpy as np
 import glob
 import ntpath
 from datetime import datetime, timedelta
+from shapely.geometry import Point, LineString, shape
 
 
 # Debugging
@@ -60,11 +61,17 @@ def main(args=None):
     if not os.path.exists(hotspotFcst.indicatorResultsDir):
         os.makedirs(hotspotFcst.indicatorResultsDir)
     scwDir = os.path.join(hotspotFcst.indicatorResultsDir,"scw")
+    scwDirPts = os.path.join(scwDir,"points")
     bsdDir = os.path.join(hotspotFcst.indicatorResultsDir, "bsd")
+    bsdDirPts = os.path.join(bsdDir,'points')
     if not os.path.exists(scwDir):
         os.makedirs(scwDir)
+    if not os.path.exists(scwDirPts):
+        os.makedirs(scwDirPts)
     if not os.path.exists(bsdDir):
         os.makedirs(bsdDir)
+    if not os.path.exists(bsdDirPts):
+        os.makedirs(bsdDirPts)
     #plotsShp = os.path.join(indicatorDir,"lotsEPSG%s.shp" % hotspotFcst.xbeachEPSG)
     #corridorsShp = os.path.join(indicatorDir,"corridors100m.shp")
     plotsShp = os.path.join(indicatorDir,"corridor_pts_100m.shp")
@@ -116,27 +123,30 @@ def main(args=None):
             print("Processing BSD for time: %s hrs" % t_step)
         fname = "scarp_%shrs_points.shp" % tstep_hrs_str
         fPath = os.path.join(scarpDir,fname)
-        plots_df_copy = plots_df.copy()
         # Be careful here - the "try" logic here could conceal bugs
         # And just assign everything as being "Low"
         try:
             scarp_gdf = gpd.read_file(fPath)
-            plots_df_copy['bsd_dist'] = scarp_gdf.geometry.apply(lambda g: plots_df_copy.distance(g).min())
-            plots_df_copy['BSD'] = postProcTools.compute_bsd(plots_df_copy['bsd_dist'])
+            scarp_gdf['bsd_dist'] = plots_df.geometry.apply(lambda g: scarp_gdf.distance(g).min())
+            scarp_gdf['BSD'] = postProcTools.compute_bsd(scarp_gdf['bsd_dist'])
         except:
-            plots_df_copy["BSD"] = "Low"
+            pass
+            #scarp_gdf["BSD"] = "Low"
+        # Export these as points
         ofileName = "bsd_%shrs.shp" % tstep_hrs_str
-        plots_df_copy.to_file(os.path.join(bsdDir,ofileName))
+        try:
+            scarp_gdf.to_file(os.path.join(bsdDirPts,ofileName))
+        except:
+            pass
 
     # Compute overall BSD indicator for the entire forecast
     try: # A scarp might not be detected
         # Compute distance between each building plot and the scarp line
-        plots_df_copy = plots_df.copy()
-        plots_df_copy['bsd_dist'] = scarpOverall.geometry.apply(lambda g: plots_df_copy.distance(g).min())
-        plots_df_copy['BSD'] = postProcTools.compute_bsd(plots_df_copy['bsd_dist'])
+        scarpOverall['bsd_dist'] = plots_df.geometry.apply(lambda g: scarpOverall.distance(g).min())
+        scarpOverall['BSD'] = postProcTools.compute_bsd(scarpOverall['bsd_dist'])
     except:
         plots_df["BSD"] = "Low"
-    plots_df_copy.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall.shp"))
+    scarpOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
     
 
     ############################### Compute the safe corridor width indicator ###############################
@@ -147,18 +157,23 @@ def main(args=None):
         fname = "gauges_%shrs_points.shp" % tstep_hrs_str
         fPath = os.path.join(gaugesDir,fname)
         ewl_gdf = gpd.read_file(fPath)
-        # Compute distances between ewl at timestep and corridors
-        corridors_df_copy = corridors_df.copy()
-        corridors_df_copy['ewl_dist'] = ewl_gdf.geometry.apply(lambda g: corridors_df_copy.distance(g).min())
-        corridors_df_copy['SCW'] = postProcTools.compute_scw(ewlDistSeries=corridors_df_copy['ewl_dist'])
+        # Compute distances between ewl and corridors at timestep
+        ewl_gdf['ewl_dist'] = corridors_df.geometry.apply(lambda g: ewl_gdf.distance(g).min())
+        ewl_gdf['SCW'] = postProcTools.compute_scw(ewlDistSeries=ewl_gdf['ewl_dist'])
         # export to a file
-        corridors_df_copy.to_file(os.path.join(scwDir,"scw_%shrs.shp" % (tstep_hrs_str)))
+        ewl_gdf.to_file(os.path.join(scwDirPts,"scw_%shrs.shp" % (tstep_hrs_str)))
+
+        # OLD WAY WHERE INDICATORS ASSIGNED TO FIXED DUNE TOE POINTS RATHER THAN MOVING EWL POINTS
+        #corridors_df_copy = corridors_df.copy()
+        #corridors_df_copy['ewl_dist'] = ewl_gdf.geometry.apply(lambda g: corridors_df_copy.distance(g).min())
+        #corridors_df_copy['SCW'] = postProcTools.compute_scw(ewlDistSeries=corridors_df_copy['ewl_dist'])
+        # export to a file
+        #corridors_df_copy.to_file(os.path.join(scwDir,"scw_%shrs.shp" % (tstep_hrs_str)))
 
     # Compute the distance between each corridor section and the extreme water line
-    corridors_df_copy = corridors_df.copy()
-    corridors_df_copy['ewl_dist'] = corridors_df_copy.geometry.apply(lambda g: ewlOverall.distance(g).min())
-    corridors_df_copy['SCW'] = postProcTools.compute_scw(corridors_df_copy['ewl_dist'])
-    corridors_df_copy.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "safe-corridorOverall.shp"))
+    ewlOverall['ewl_dist'] = ewlOverall.geometry.apply(lambda g: corridors_df.distance(g).min())
+    ewlOverall['SCW'] = postProcTools.compute_scw(ewlOverall['ewl_dist'])
+    ewlOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "safe-corridorOverall_pts.shp"))
 
 ## If Python throws an error, send to exceptions.log file
 if __name__ == "__main__":
