@@ -11,7 +11,8 @@
 		"workbench.colorCustomizations": {
 			"editorCursor.foreground": "#ffe4e1",
 			"terminalCursor.foreground": "#ffe4e1"
-		}
+		},
+		"terminal.integrated.automationShell.windows": ""
 	}
 	
 }

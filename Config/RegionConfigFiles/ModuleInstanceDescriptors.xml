@@ -8,6 +8,9 @@
 	<moduleInstanceDescriptor id="InitializeHotspotForecast">
 		<description>Initialize a hotspot forecast</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="InitializeRegionalForecast">
+		<description>Initialize a regional forecast</description>
+	</moduleInstanceDescriptor>
 	<!--Import Scalar Data-->
 	<moduleInstanceDescriptor id="NSSDownload">
 		<description>Storm surge Download module</description>

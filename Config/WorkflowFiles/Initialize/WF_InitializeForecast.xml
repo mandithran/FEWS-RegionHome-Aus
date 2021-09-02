@@ -8,6 +8,12 @@
 	</activity>
 	<activity>
 		<runIndependent>true</runIndependent>
+		<moduleInstanceId>InitializeRegionalForecast</moduleInstanceId>
+        <moduleConfigFileName>InitRegionalAdapter</moduleConfigFileName>
+		<loopLocationSetId>ausStates</loopLocationSetId>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
 		<moduleInstanceId>InitializeHotspotForecast</moduleInstanceId>
         <moduleConfigFileName>InitHotspotAdapter</moduleConfigFileName>
 		<loopLocationSetId>hotspotLocations</loopLocationSetId>

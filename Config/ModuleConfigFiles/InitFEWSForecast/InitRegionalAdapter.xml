@@ -4,7 +4,7 @@
 		<piVersion>1.10</piVersion>
 		<rootDir>%REGION_HOME%/Modules</rootDir>
 		<workDir>%ROOT_DIR%/initFEWSForecast</workDir>
-		<exportDir>%ROOT_DIR%/initFEWSForecast</exportDir>
+		<exportDir>%ROOT_DIR%/NSSDownload</exportDir>
 		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
 		<importDir>%ROOT_DIR%/initFEWSForecast</importDir>
 		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
@@ -13,34 +13,21 @@
 		<time0Format>yyyyMMdd_HHmm</time0Format>
 	</general>
 	<activities>
-	<startUpActivities>
-			<purgeActivity>
-				<filter>%ROOT_DIR%/initFEWSForecast/*.*</filter>
-			</purgeActivity>
-		</startUpActivities>
-		<exportActivities>
-			<exportDataSetActivity>
-				<moduleInstanceId>initFEWSForecast</moduleInstanceId>
-			</exportDataSetActivity>
-		</exportActivities>
 		<executeActivities>
 			<executeActivity>
-				<description>Run python script to initialize a FEWS forecast</description>
+				<description>Run python script to intialize a hotspot forecast</description>
 				<command>
 					<executable>$PYTHON_EXE$</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/python/test.py</argument>
+					<argument>%WORK_DIR%/python/initializeRegional.py</argument>
+                    <argument>%REGION_HOME%</argument>
+                    <argument>%TIME0%</argument>
+                    <argument>$LOOP_LOCATION_ID$</argument>
+                    <argument>%WORK_DIR%</argument>
 				</arguments>
-				<!--arguments>
-					<argument>%WORK_DIR%/python/initializeForecast.py</argument>
-					<argument>%REGION_HOME%</argument>
-					<argument>%TIME0%</argument>
-					<argument>$LOOP_LOCATION_ID$</argument>
-					<argument>%WORK_DIR%</argument>
-				</arguments-->
 				<timeOut>7200000</timeOut>
-				<ignoreDiagnostics>true</ignoreDiagnostics>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
 			</executeActivity>
 		</executeActivities>
 	</activities>

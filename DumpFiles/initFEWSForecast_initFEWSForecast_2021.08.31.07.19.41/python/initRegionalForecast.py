@@ -1,20 +1,18 @@
-############ Modules ############
-from xbfewsTools import fewsForecast
-from xbfewsTools import fewsUtils
+# Modules
+
 import traceback
 import sys
 import os
 import shutil
 import pickle
+from xbfewsTools import fewsUtils
+from xbfewsTools import fewsForecast
 
 
 def main(args=None):
 
     # For debugging:
-    # Hindcast:
-    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 Narrabeen C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
-    # Forecast:
-    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210620_0100 Narrabeen C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
+    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initRegionalForecast.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 NSW C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
 
     ############ Arguments ############ 
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
@@ -25,10 +23,9 @@ def main(args=None):
     # System time according to FEWS
     sysTimeStr = str(args[1])
     # Site Name
-    siteName = str(args[2])
+    regionName = str(args[2])
     # Work dir
     workDir = str(args[3])
-
 
     ############ Paths ############ 
     diagFile = os.path.join(workDir,"diagOpen.txt")
@@ -44,22 +41,23 @@ def main(args=None):
     #============== Load FEWS forecast object ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
 
+    
+    #============== Initialize regional forecast ==============#
+    fcstRegional = fewsForecast.regionalForecast(fcst, regionName)
 
-    #============== Initialize hotspot forecast ==============#
-    fcstHotspot = fewsForecast.hotspotForecast(fcst, siteName)
-    # Isolates and loads up relevant row from df containing hotspot info (a loaded location set in MapLayerFiles)
-    fcstHotspot.init_hotspotInfo()
+
     # Make the hotspot forecast directory if it doesn't exist
-    fcstHotspot.init_directory()
+    fcstRegional.init_directory()
+
 
     #============== Write out pickle for hotspot forecast ==============#
-    with open(os.path.join(fcstHotspot.forecastDir,"forecast_%s.pkl" % fcstHotspot.type), "wb") as output:
-            pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
+    with open(os.path.join(fcstRegional.forecastDir,"forecast_%s.pkl" % fcstRegional.type), "wb") as output:
+            pickle.dump(fcstRegional, output, pickle.HIGHEST_PROTOCOL)
 
-
+    
     #============== Generate diagnostics file ==============#
     diagBlankFile = fcst.blankDiagFilePath
-    diagFile = os.path.join(fcstHotspot.forecastDir, "diag.xml")
+    diagFile = os.path.join(fcstRegional.forecastDir, "diag.xml")
     # Copy and rename diagOpen.txt
     shutil.copy(diagBlankFile,diagFile)
     # Write to diagnostic file
@@ -68,7 +66,7 @@ def main(args=None):
         fileObj.write(fewsUtils.write2DiagFile(3,
             "Command-line arguments sent to python script from FEWS: %s" 
             % (str(args)) ))
-        fileObj.write(fewsUtils.write2DiagFile(3,"Hotspot forecast for %s site initiated" % siteName ))
+        fileObj.write(fewsUtils.write2DiagFile(3,"Regional forecast for %s initiated" % regionName ))
         fileObj.write(fewsUtils.write2DiagFile(3,"If Python error exit code 1 is triggered, see exceptions.log file in Module directory."))
         fileObj.write("</Diag>")
 

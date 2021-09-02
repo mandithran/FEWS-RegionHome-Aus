@@ -57,7 +57,7 @@ individual workflow, which is stored in WorkflowFiles.-->
 		<node name="XBeach: Pre-process">
 			<workflowId>WF_PreProcessXBeach</workflowId>
 		</node>
-		<node name="Run Model - $MODELNAME3$">
+		<node name="XBeach: Run Model">
 			<!--workflowId>WF_XBeach_Delilah_test</workflowId-->
 			<workflowId>WF_XBeach_Narra_test</workflowId>
 			<workflowId>WF_runXBeach</workflowId>

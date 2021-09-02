@@ -5,9 +5,11 @@ import pandas as pd
 storm = "2020_02_09"
 site = "Narrabeen"
 mode = "pre-storm"
+longshoreReso = '100m'
 
 workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy"
-ifilePath = os.path.join("C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\xbeach\\%s\\grd\\%s\\pre-storm" % (site,storm))
+regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+ifilePath = os.path.join("Data\\xbeach\\%s\\grd\\%s\\pre-storm\\%sAlongshore" % (site,storm,longshoreReso))
 xgrd = os.path.join(ifilePath,"x.grd")
 ygrd = os.path.join(ifilePath,"y.grd")
 zgrd = os.path.join(ifilePath,"z.grd")
@@ -25,4 +27,5 @@ zz = flattenGrd(zgrd)
 df = pd.DataFrame(xx,columns=['x'])
 df['y'] = yy.flatten()
 df['z'] = zz.flatten()
-df.to_csv(os.path.join(ifilePath,'%s.csv' % storm),index=False)
+fname = '%s_%s_%s.csv' % (site,storm,longshoreReso)
+df.to_csv(os.path.join(ifilePath,fname),index=False)

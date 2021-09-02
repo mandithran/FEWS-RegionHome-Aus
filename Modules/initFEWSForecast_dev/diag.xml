@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diag xmlns="http://www.wldelft.nl/fews/PI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_diag.xsd" version="1.2">
 
-<line level="3" description="From PYTHON: Command-line arguments sent to python script from FEWS: ['c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus', '20200202_1200', 'NSW', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast_dev']"/>
+<line level="3" description="From PYTHON: Command-line arguments sent to python script from FEWS: ['c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus', '20210830_0000', 'NSW', 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast_dev']"/>
 
 <line level="3" description="From PYTHON: Forecast initiated"/>
 

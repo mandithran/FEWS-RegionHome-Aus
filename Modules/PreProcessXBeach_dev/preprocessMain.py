@@ -46,7 +46,7 @@ def main(args=None):
     ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
     zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
     """
-    xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\4Long" % siteName)
+    xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\25mAlongshore" % siteName)
     xgrd = os.path.join(xbFilesPath,"x.grd")
     ygrd = os.path.join(xbFilesPath,"y.grd")
     zgrd = os.path.join(xbFilesPath,"z.grd")
@@ -291,8 +291,6 @@ def main(args=None):
         # Compute what morstart would be in this scenario
         morstart_ = (stormStart_spinup-hotspotFcst.startTime).total_seconds()
         morstop_ = (stormEnd_spinup-hotspotFcst.startTime).total_seconds()
-    except:
-        pass
     # Check if morstart_, with is own spinup, is shorter than the spinup time the model actually needs
     # at the start of the run. If it's shorter, then set morstart to the model spin-up time of 
     # 12-hours. The waves still need this spin-up so that they reach the coast before the morphology

@@ -117,9 +117,9 @@ def main(args=None):
             sysTime_dt = datetime.strptime(systemTime, '%Y%m%d_%H%M')
             print("********************** Initializing the forecast for time: %s GMT **********************" % sysTime_dt)
             workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
-            """initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
+            initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
             arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
-            runModule(script=initializeForecastPy,args=arguments)"""
+            runModule(script=initializeForecastPy,args=arguments)
 
             
             # ========================== Initialize Hotspot Forecasts Module ==========================#
@@ -136,9 +136,9 @@ def main(args=None):
                 print("*********** Initializing hotspot forecast for %s site in %s... ***********" %(hotspotName,region))
                 # Arguments
                 workDir_initializeHotspotPy = os.path.join(moduleDir,"initFEWSForecast")
-                """initializeHotspotPy = os.path.join(workDir_initializeForecastPy,"python\\initializeHotspot.py")
+                initializeHotspotPy = os.path.join(workDir_initializeForecastPy,"python\\initializeHotspot.py")
                 arguments = [regionHomeDir,systemTime,hotspotName,workDir_initializeHotspotPy]
-                runModule(script=initializeHotspotPy,args=arguments)"""
+                runModule(script=initializeHotspotPy,args=arguments)
 
 
             
@@ -154,9 +154,9 @@ def main(args=None):
             # does what the RetrieveNSSAdapter.xml FEWS Module adapter does
             print("Retrieving BOM National Storm Surge forecasts...")
             workDir_RetrieveNSS = os.path.join(moduleDir,"NSSDownload")
-            """retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
+            retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
             arguments = [workDir_RetrieveNSS,systemTime,regionHomeDir]
-            runModule(script=retrieveNSSPy,args=arguments)"""
+            runModule(script=retrieveNSSPy,args=arguments)
 
 
 
@@ -165,9 +165,9 @@ def main(args=None):
             # does what the RetrieveAusWavesAdapter.xml FEWS Module adapter does
             print("Retrieving BOM Wave Forecast...")
             workDir_RetrieveAusWaves = os.path.join(moduleDir,"WaveDownload")
-            """retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
+            retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
             arguments = [workDir_RetrieveAusWaves,systemTime,regionHomeDir]
-            runModule(script=retrieveAusWavesPy,args=arguments)"""
+            runModule(script=retrieveAusWavesPy,args=arguments)
 
 
             # Loop through hotspots
@@ -177,9 +177,9 @@ def main(args=None):
                 # does what the PreProcessXBeachAdapter.xml FEWS Module adapter does
                 print("Pre-processing XBeach Run...")
                 workDir_PreProcessXBeach = os.path.join(moduleDir,"PreProcessXBeach")
-                """preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
+                preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
                 arguments = [workDir_PreProcessXBeach,systemTime,regionHomeDir,hotspotName]
-                runModule(script=preProcessXBeachPy,args=arguments)"""
+                runModule(script=preProcessXBeachPy,args=arguments)
 
 
                 # =============================== Run XBeach ===============================#
@@ -214,10 +214,10 @@ def main(args=None):
                 # =============================== Storm Impact Indicators XBeach ===============================#
                 # Mimics the PostProcessXbeachAdapter.xml module in FEWS
                 print("Computing Storm Impact Indicators from XBeach run...")
-                workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
+                """workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
                 indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
                 arguments = [workDir_IndicatorsXBeach,systemTime,regionHomeDir,hotspotName]
-                runModule(script=indicatorsXBeachPy,args=arguments)
+                runModule(script=indicatorsXBeachPy,args=arguments)"""
 
 
                 # =============================== Wipe Extra Files from Forecast for Space ===============================#
