@@ -13,10 +13,7 @@ import numpy as np
 import pandas as pd
 
 # For debugging:
-# Forecast:
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020030100 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
-# Hindcast
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020020300 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020020300 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
 
 def main(args=None):
 

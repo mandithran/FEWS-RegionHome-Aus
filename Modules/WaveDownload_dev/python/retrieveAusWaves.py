@@ -12,10 +12,7 @@ import numpy as np
 import pickle
 
 # Debugging:
-# Forecast
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev 20210627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
-# Hindcast
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
 
 
 def main(args=None):

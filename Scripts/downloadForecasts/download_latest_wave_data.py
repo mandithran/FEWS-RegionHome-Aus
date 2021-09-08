@@ -6,7 +6,9 @@
 
 import os
 import datetime
+import traceback
 workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
+print("Downloading waves...")
 
 logf = open(os.path.join(workDir,"exceptionsWaves.log"), "w")
 
@@ -22,7 +24,7 @@ try:
     from datetime import timedelta
     import pytz
     import pandas as pd
-    import smtplib, ssl
+    import smtplib
     import time
 
     np.seterr(all='ignore') # raise/ignore divisions by 0 and nans
@@ -146,5 +148,6 @@ try:
 
 except Exception as e:     # most generic exception you can catch
     logf.write("Failed. {0}\n".format(str(e)))
+    logf.write(traceback.format_exc())
     logf.write('Recorded at %s.\n' % 
                 (datetime.datetime.now()))

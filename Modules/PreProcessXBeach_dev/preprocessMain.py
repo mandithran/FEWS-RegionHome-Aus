@@ -18,10 +18,7 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # Debugging
-# Forecast:
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev 20200713_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen 3
-# Hindcast:
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev 20200713_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen 3
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev 20200713_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen 3
 
 
 def main(args=None):
@@ -46,7 +43,7 @@ def main(args=None):
     ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
     zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
     """
-    xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\25mAlongshore" % siteName)
+    xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\100mAlongshore" % siteName)
     xgrd = os.path.join(xbFilesPath,"x.grd")
     ygrd = os.path.join(xbFilesPath,"y.grd")
     zgrd = os.path.join(xbFilesPath,"z.grd")

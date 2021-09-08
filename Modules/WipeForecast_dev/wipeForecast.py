@@ -7,7 +7,7 @@ from xbfewsTools import postProcTools
 import sys
 
 #Debug
-#C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\wipeForecast_dev/wipeForecast.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WipeForecast_dev 20200208_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+#C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\wipeForecast_dev/wipeForecast.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WipeForecast_dev 20200208_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
 
 
 def main(args=None):

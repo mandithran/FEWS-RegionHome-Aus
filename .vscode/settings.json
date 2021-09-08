@@ -1,8 +1,11 @@
 {
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "terminal.integrated.shellArgs.windows": ["/K", "C:\\ProgramData\\Anaconda3\\Scripts\\activate.bat C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
+    "python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe", 
+    "terminal.integrated.automationShell.windows": "",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
     "python.terminal.activateEnvironment": false,
     "python.terminal.launchArgs": [
     
-    ],
-    "python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe"
+    ]
 }

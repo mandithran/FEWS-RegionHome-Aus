@@ -3,7 +3,8 @@ import datetime
 workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
 
 
-logf = open(os.path.join(workDir,"exceptions.log"), "w")
+logf = open(os.path.join(workDir,"exceptionsWLs.log"), "w")
+print("downloading surge data...")
 try:    
 
     #============================================================================#
