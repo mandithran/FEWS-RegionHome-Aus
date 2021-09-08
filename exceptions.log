@@ -1,6 +1,0 @@
-[Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast\\test.txt'Traceback (most recent call last):
-  File "c:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\test.py", line 21, in <module>
-    main()
-  File "c:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\test.py", line 15, in main
-    with open(os.path.join(workDir,'test.txt'), 'w') as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast\\test.txt'

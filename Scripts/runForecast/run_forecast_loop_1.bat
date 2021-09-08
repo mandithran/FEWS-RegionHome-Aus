@@ -9,8 +9,8 @@ rem Format: YYYY-MM-DD
 set systemEndDate=2020-02-07
 rem Format: HH:MM
 set systemEndTime=12:00
-set CONDAPATH=C:\Users\z3531278\Anaconda3
-set ENVPATH=%regionHome%\bin\windows\python\bin\conda-venv\
+set CONDAPATH=C:\\Users\\z3531278\\Anaconda3
+set ENVPATH=%regionHome%\\bin\\windows\\python\\bin\\conda-venv
 call %CONDAPATH%\Scripts\activate.bat %ENVPATH%
-"C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe" "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py" %regionHome% %systemStartDate% %systemStartTime% %systemEndDate% %systemEndTime%
+"python" "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py" %regionHome% %systemStartDate% %systemStartTime% %systemEndDate% %systemEndTime%
 pause

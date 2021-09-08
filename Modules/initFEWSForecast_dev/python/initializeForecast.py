@@ -8,9 +8,6 @@ import shutil
 import pickle
 
 # Commands for debugging
-# Hindcast
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus 20210901_0000 NSW C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
-# Forecast
 # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus 20210620_0100 NSW C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
 
 def main(args=None):
@@ -27,8 +24,7 @@ def main(args=None):
     region = str(args[2])
     # Work dir
     workDir = str(args[3])
-
-
+    
     ############ Paths ############ 
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")

@@ -1,15 +1,15 @@
 # To set up, run: 
 #   conda env create -f environment.yml --prefix .\bin\conda-venv
 # Then, copy xbfewsTools directory into the following directory:
-#   [RegionHomeDirectory]\bin\windows\python\bin\conda-venv2\Lib\site-packages
-# Navigate to [RegionHomeDirectory]\bin\windows\python\bin\conda-venv\Lib\site-packages\xbfewsTools and run:
+#   [conda environment location]\conda-venv\Lib\site-packages
+# Navigate to [conda environment location]\conda-venv\Lib\site-packages\xbfewsTools and run:
 #   python setup.py install
 name: conda-venv
 channels:
 #  - defaults: this created issues with finding dynamic libraries
   - conda-forge
 dependencies:
-  - python=3.9
+  - python=3.8
   - setuptools
   - xarray
   - geopandas
@@ -41,3 +41,6 @@ prefix: .\bin\conda-venv
 
 # If pyproj gives you issues, try un-installing and re-installing with pip:
 # pip uninstall pyproj && pip install pyproj
+
+# If scipy gives you issues, try un-installing and re-installing with pip:
+# pip uninstall scipy && pip install scipy

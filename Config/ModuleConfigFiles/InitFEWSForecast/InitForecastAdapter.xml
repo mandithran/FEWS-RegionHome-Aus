@@ -27,18 +27,15 @@
 			<executeActivity>
 				<description>Run python script to initialize a FEWS forecast</description>
 				<command>
-					<executable>$PYTHON_EXE$</executable>
+					<executable>%WORK_DIR%/initializeForecast.bat</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/python/test.py</argument>
-				</arguments>
-				<!--arguments>
-					<argument>%WORK_DIR%/python/initializeForecast.py</argument>
+					<argument>%WORK_DIR%\python\initializeForecast.py</argument>
 					<argument>%REGION_HOME%</argument>
 					<argument>%TIME0%</argument>
 					<argument>$LOOP_LOCATION_ID$</argument>
 					<argument>%WORK_DIR%</argument>
-				</arguments-->
+				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>true</ignoreDiagnostics>
 			</executeActivity>

@@ -11,10 +11,7 @@ import pickle
 import wget
 
 # For debugging:
-    # Forecast mode
-    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev/python/retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
-    # Hindcast mode
-    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev/python/retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
+# C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev/python/retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
 
 
 def main(args=None):

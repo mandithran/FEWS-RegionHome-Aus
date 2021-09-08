@@ -5,14 +5,40 @@
 		}
 	],
 	"settings": {
-		"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-		"terminal.integrated.shellArgs.windows":["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat .\\bin\\windows\\python\\bin\\conda-venv"],
-		"python.pythonPath": ".\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
+		"python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
 		"workbench.colorCustomizations": {
 			"editorCursor.foreground": "#ffe4e1",
 			"terminalCursor.foreground": "#ffe4e1"
 		},
-		"terminal.integrated.automationShell.windows": ""
+		"terminal.integrated.automationShell.windows": "",
+		"terminal.integrated.defaultProfile.windows": "Command Prompt",
+		"terminal.integrated.profiles.windows": {
+
+			
+			"Command Prompt": {
+				"path": [
+					"${env:windir}\\Sysnative\\cmd.exe",
+					"${env:windir}\\System32\\cmd.exe"
+				],
+				"args": ["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
+				"icon": "terminal-cmd"
+			},
+			"Git Bash": {
+				"source": "Git Bash"
+			}
+		},
+		"python.terminal.launchArgs": [
+			{
+				"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+				"terminal.integrated.shellArgs.windows": ["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
+				"python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
+				"terminal.integrated.automationShell.windows": "",
+				"terminal.integrated.defaultProfile.windows": "Command Prompt",
+				"python.terminal.activateEnvironment": false,
+
+			}
+		],
+		"python.terminal.activateEnvironment": false
 	}
 	
 }

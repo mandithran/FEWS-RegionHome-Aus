@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diag xmlns="http://www.wldelft.nl/fews/PI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_diag.xsd" version="1.2">
 
-<line level="3" description="From PYTHON: Post-processing hotspot run: 20200210_0000-Narrabeen"/>
+<line level="3" description="From PYTHON: Post-processing hotspot run: 20200208_0000-Narrabeen"/>
 
-<line level="3" description="From PYTHON: Forecast for time period starting at: 2020-02-10 00:00:00+00:00"/>
+<line level="3" description="From PYTHON: Forecast for time period starting at: 2020-02-08 00:00:00+00:00"/>
 </Diag>

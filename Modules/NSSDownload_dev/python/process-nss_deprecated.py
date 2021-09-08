@@ -11,10 +11,7 @@ import shutil
 import pickle
 
 # For debugging
-# Forecast:
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload/python/process-nss.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload hotspotLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20210627_0500
-# Hindcast:
-# C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload/python/process-nss.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload hotspotLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20210627_0500
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload/python/process-nss.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload hotspotLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20210627_0500
 
 def main(args=None):
     """The main routine."""
@@ -72,11 +69,6 @@ def main(args=None):
     locSetPath = os.path.join(regionHome, "./Config/MapLayerFiles", locSetFilename)
     df = pd.read_csv(locSetPath)
 
-    # Debugging: 
-    # Hindcast:
-    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSS_dev/python/process-surge.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSS hotspotLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200620_010
-    # Forecast: 
-    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSS_dev/python/process-surge.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\ hotspotLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200620_010
 
     #============== Parse downloaded surge nc file ==============#
     # Uses a function from processSurge.py
