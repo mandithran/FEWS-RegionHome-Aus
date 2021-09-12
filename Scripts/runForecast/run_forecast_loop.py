@@ -19,6 +19,18 @@ import subprocess
 
 def main(args=None):
 
+    # Flags
+    initFEWSForecast_flag = True
+    initRegionalForecast_flag = True
+    initHotspotForecast_flag = True
+    NSSDownload_flag = True
+    WaveDownload_flag = True
+    PreProcessXBeach_flag = False
+    runXBeach_flag = False
+    PostProcessXBeach_flag = False
+    IndicatorsXBeach_flag = False
+    WipeForecast_flag = False
+
 
     #============================== Scripts that FEWS Runs ==============================#
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
@@ -113,53 +125,70 @@ def main(args=None):
             # Arguments are regionHomeDir, the system time, the region, and the working directory of
             # the python script being called
             # See InitForecastAdapter.xml
-            sysTime_dt = datetime.strptime(systemTime, '%Y%m%d_%H%M')
-            print("********************** Initializing the forecast for time: %s GMT **********************" % sysTime_dt)
-            workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
-            initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
-            arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
-            runModule(script=initializeForecastPy,args=arguments)
+            if initFEWSForecast_flag:
+                sysTime_dt = datetime.strptime(systemTime, '%Y%m%d_%H%M')
+                print("********************** Initializing the forecast for time: %s GMT **********************" % sysTime_dt)
+                workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
+                initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
+                arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
+                runModule(script=initializeForecastPy,args=arguments)
 
-            
-            # ========================== Initialize Hotspot Forecasts Module ==========================#
-            # Initialize the hotspot forecasts. Also within WF_InitializeForecast.xml
-            # Arguments are region home, system time, location ID for the hotspot, and
-            # the working directory of the python script being called
-            # See InitHotspotAdapter.xml for FEWS Module Adapter, this code block
-            # basically mimics this
-            # Load hotspot locations for the respective state
-            hotspots_subset = hotspots_df[hotspots_df['Region']==region]
-            hotspotIDs = hotspots_subset['ID'].unique()
-            # Loop through hotspots
-            for hotspotName in hotspotIDs:
-                print("*********** Initializing hotspot forecast for %s site in %s... ***********" %(hotspotName,region))
-                # Arguments
-                workDir_initializeHotspotPy = os.path.join(moduleDir,"initFEWSForecast")
-                initializeHotspotPy = os.path.join(workDir_initializeForecastPy,"python\\initializeHotspot.py")
-                arguments = [regionHomeDir,systemTime,hotspotName,workDir_initializeHotspotPy]
-                runModule(script=initializeHotspotPy,args=arguments)
+
+            # ================================ Initialize Regional Forecast Module ================================#
+            # Initialize regional forecast. Also within WF_InitializeForecast.xml workflow
+            # Arguments are regionHomeDir, the system time, the region, and the working directory of
+            # the python script being called
+            # See InitRegionalAdapter.xml
+            if initRegionalForecast_flag:
+                print("**************** Initializing regional forecast for time: %s GMT ****************" % sysTime_dt)
+                workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
+                initializeRegionalPy = os.path.join(workDir_initializeForecastPy,"python\\initializeRegional.py")
+                arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
+                runModule(script=initializeRegionalPy,args=arguments)
+
+                
+                # ========================== Initialize Hotspot Forecasts Module ==========================#
+                # Initialize the hotspot forecasts. Also within WF_InitializeForecast.xml
+                # Arguments are region home, system time, location ID for the hotspot, and
+                # the working directory of the python script being called
+                # See InitHotspotAdapter.xml for FEWS Module Adapter, this code block
+                # basically mimics this
+                # Load hotspot locations for the respective state
+                if initHotspotForecast_flag:
+                    hotspots_subset = hotspots_df[hotspots_df['Region']==region]
+                    hotspotIDs = hotspots_subset['ID'].unique()
+                    # Loop through hotspots
+                    for hotspotName in hotspotIDs:
+                        print("*********** Initializing hotspot forecast for %s site in %s... ***********" %(hotspotName,region))
+                        # Arguments
+                        workDir_initializeHotspotPy = os.path.join(moduleDir,"initFEWSForecast")
+                        initializeHotspotPy = os.path.join(workDir_initializeForecastPy,"python\\initializeHotspot.py")
+                        arguments = [regionHomeDir,systemTime,hotspotName,workDir_initializeHotspotPy]
+                        runModule(script=initializeHotspotPy,args=arguments)
 
 
 
             # ============= Retrieve National Storm Surge System Forecasts =============#
             # This is contained within the WF_ImportAusSurge.xml workflow, and basically
             # does what the RetrieveNSSAdapter.xml FEWS Module adapter does
-            print("Retrieving BOM National Storm Surge forecasts...")
-            workDir_RetrieveNSS = os.path.join(moduleDir,"NSSDownload")
-            retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
-            arguments = [regionHomeDir, systemTime, workDir_RetrieveNSS]
-            runModule(script=retrieveNSSPy,args=arguments)
+            if NSSDownload_flag:
+                print("Retrieving BOM National Storm Surge forecasts...")
+                workDir_RetrieveNSS = os.path.join(moduleDir,"NSSDownload")
+                retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
+                arguments = [regionHomeDir, systemTime, workDir_RetrieveNSS]
+                runModule(script=retrieveNSSPy,args=arguments)
 
 
 
             # ========================= Retrieve Wave Forecasts ========================#
             # This is contained within the WF_ImportAusWaves.xml workflow, and basically
             # does what the RetrieveAusWavesAdapter.xml FEWS Module adapter does
-            print("Retrieving BOM Wave Forecast...")
-            workDir_RetrieveAusWaves = os.path.join(moduleDir,"WaveDownload")
-            retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
-            arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves]
-            runModule(script=retrieveAusWavesPy,args=arguments)
+            if WaveDownload_flag:
+                print("Retrieving BOM Wave Forecast...")
+                workDir_RetrieveAusWaves = os.path.join(moduleDir,"WaveDownload")
+                retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
+                arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves]
+                runModule(script=retrieveAusWavesPy,args=arguments)
 
 
             # Loop through hotspots
@@ -167,58 +196,63 @@ def main(args=None):
                 # =========================== Pre-process XBeach ===========================#
                 # This is contained within the WF_PreProcessXBeach.xml workflow, and basically
                 # does what the PreProcessXBeachAdapter.xml FEWS Module adapter does
-                print("Pre-processing XBeach Run...")
-                workDir_PreProcessXBeach = os.path.join(moduleDir,"PreProcessXBeach")
-                preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
-                arguments = [regionHomeDir,systemTime,hotspotName,workDir_PreProcessXBeach]
-                runModule(script=preProcessXBeachPy,args=arguments)
+                if PreProcessXBeach_flag:
+                    print("Pre-processing XBeach Run...")
+                    workDir_PreProcessXBeach = os.path.join(moduleDir,"PreProcessXBeach")
+                    preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
+                    arguments = [regionHomeDir,systemTime,hotspotName,workDir_PreProcessXBeach]
+                    runModule(script=preProcessXBeachPy,args=arguments)
 
 
                 # =============================== Run XBeach ===============================#
                 # Mimics the XBeachAdapter.xml module in FEWS
-                print("Running XBeach...")
-                #Reforamt system time string to get the path
-                systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
-                workDir_runXBeachName = "%sSystemTime-%s" % (systemTime_str,hotspotName)
-                workDir_runXBeach = os.path.join(moduleDir,"XBeach",hotspotName,workDir_runXBeachName)
-                xbeach_exe = os.path.join(workDir_runXBeach,"xbeach.exe")
-                try:
-                    os.chdir(workDir_runXBeach)
-                    subprocess.check_output(xbeach_exe,shell=True,stderr=subprocess.STDOUT)
-                    subprocess.run(xbeach_exe, check=True, shell=True)
-                    os.chdir(regionHomeDir)
-                except subprocess.CalledProcessError as e:  # most generic exception you can catch
-                    logf.write("Failed. {0}\n".format(str(e)))
-                    logf.write('Recorded at %s.\n' % (datetime.now()))
-                    raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+                if runXBeach_flag:
+                    print("Running XBeach...")
+                    #Reforamt system time string to get the path
+                    systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
+                    workDir_runXBeachName = "%sSystemTime-%s" % (systemTime_str,hotspotName)
+                    workDir_runXBeach = os.path.join(moduleDir,"XBeach",hotspotName,workDir_runXBeachName)
+                    xbeach_exe = os.path.join(workDir_runXBeach,"xbeach.exe")
+                    try:
+                        os.chdir(workDir_runXBeach)
+                        subprocess.check_output(xbeach_exe,shell=True,stderr=subprocess.STDOUT)
+                        subprocess.run(xbeach_exe, check=True, shell=True)
+                        os.chdir(regionHomeDir)
+                    except subprocess.CalledProcessError as e:  # most generic exception you can catch
+                        logf.write("Failed. {0}\n".format(str(e)))
+                        logf.write('Recorded at %s.\n' % (datetime.now()))
+                        raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
 
                 # =============================== Post-process XBeach ===============================#
                 # Mimics the PostProcessXbeachAdapter.xml module in FEWS
-                print("Post-processing XBeach run...")
-                workDir_PostProcessXBeach = os.path.join(moduleDir,"PostProcessXBeach")
-                postProcessXBeachPy = os.path.join(workDir_PostProcessXBeach,"postprocessMain.py")
-                systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
-                arguments = [regionHomeDir,systemTime_str,hotspotName,workDir_PostProcessXBeach]
-                runModule(script=postProcessXBeachPy,args=arguments)
+                if PostProcessXBeach_flag:
+                    print("Post-processing XBeach run...")
+                    workDir_PostProcessXBeach = os.path.join(moduleDir,"PostProcessXBeach")
+                    postProcessXBeachPy = os.path.join(workDir_PostProcessXBeach,"postprocessMain.py")
+                    systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
+                    arguments = [regionHomeDir,systemTime_str,hotspotName,workDir_PostProcessXBeach]
+                    runModule(script=postProcessXBeachPy,args=arguments)
 
 
                 # =============================== Storm Impact Indicators XBeach ===============================#
                 # Mimics the IndicatorsXbeachAdapter.xml module in FEWS
-                print("Computing Storm Impact Indicators from XBeach run...")
-                workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
-                indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
-                arguments = [regionHomeDir,systemTime,hotspotName,workDir_IndicatorsXBeach]
-                runModule(script=indicatorsXBeachPy,args=arguments)
+                if IndicatorsXBeach_flag:
+                    print("Computing Storm Impact Indicators from XBeach run...")
+                    workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
+                    indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
+                    arguments = [regionHomeDir,systemTime,hotspotName,workDir_IndicatorsXBeach]
+                    runModule(script=indicatorsXBeachPy,args=arguments)
 
 
                 # =============================== Wipe Extra Files from Forecast for Space ===============================#
                 # Mimics the WipeForecastAdapter.xml module in FEWS
-                print("Wiping files from forecast...")
-                workDir_WipeForecast = os.path.join(moduleDir,"WipeForecast")
-                wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
-                arguments = [regionHomeDir,systemTime,hotspotName,workDir_WipeForecast]
-                runModule(script=wipeForecastPy,args=arguments)
+                if WipeForecast_flag:
+                    print("Wiping files from forecast...")
+                    workDir_WipeForecast = os.path.join(moduleDir,"WipeForecast")
+                    wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
+                    arguments = [regionHomeDir,systemTime,hotspotName,workDir_WipeForecast]
+                    runModule(script=wipeForecastPy,args=arguments)
 
 
                 # =========================== TODO: write information to log file ===========================#

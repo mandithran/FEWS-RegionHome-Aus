@@ -11,7 +11,7 @@ from xbfewsTools import fewsForecast
 def main(args=None):
 
     # For debugging:
-    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initRegionalForecast.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 NSW C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
+    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeRegional.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210910_0000 NSW C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
 
     ############ Arguments ############ 
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
@@ -29,7 +29,7 @@ def main(args=None):
     with open(os.path.join(workDir,'test.txt'), 'w') as f:
         f.write('here')
 
-    """############ Paths ############ 
+    ############ Paths ############ 
     diagFile = os.path.join(workDir,"diagOpen.txt")
 
 
@@ -70,7 +70,7 @@ def main(args=None):
             % (str(args)) ))
         fileObj.write(fewsUtils.write2DiagFile(3,"Regional forecast for %s initiated" % regionName ))
         fileObj.write(fewsUtils.write2DiagFile(3,"If Python error exit code 1 is triggered, see exceptions.log file in Module directory."))
-        fileObj.write("</Diag>")"""
+        fileObj.write("</Diag>")
 
 
 ## If Python throws an error, send to exceptions.log file
