@@ -17,7 +17,7 @@
 			<executeActivity>
 				<description>Run python script to intialize a hotspot forecast</description>
 				<command>
-					<executable>$PYTHON_EXE$</executable>
+					<executable>%WORK_DIR%/initializeHotspot.bat</executable>
 				</command>
 				<arguments>
 					<argument>%WORK_DIR%/python/initializeHotspot.py</argument>

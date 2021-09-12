@@ -78,7 +78,7 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        with open("exceptions.log"), "w") as logfile:
+        with open("exceptions.log", "w") as logfile:
             logfile.write(str(e))
             logfile.write(traceback.format_exc())
         raise

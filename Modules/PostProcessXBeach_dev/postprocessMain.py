@@ -20,14 +20,15 @@ def main(args=None):
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
-    # Path to Region Home, defined in global properties file
-    workDir = str(args[0])
+    # Region home
+    regionHome = str(args[0])
     # System time according to FEWS
     sysTimeStr = str(args[1])
-    # Region home
-    regionHome = str(args[2])
     # Site Name
-    siteName = str(args[3])
+    siteName = str(args[2])
+    # Path to Region Home, defined in global properties file
+    workDir = str(args[3])
+
 
     #============== Determine appropriate forecast directory ==============#
     # This is based on system time given from FEWS

@@ -4,3 +4,4 @@ Modules\NSSDownload\ncFiles
 Modules\NSSDownload\python
 Modules\NSSDownload\python\process-nss_deprecated.py
 Modules\NSSDownload\python\retrieveNSS.py
+Modules\NSSDownload\retrieveNSS.bat

@@ -154,7 +154,7 @@ def main(args=None):
             print("Retrieving BOM National Storm Surge forecasts...")
             workDir_RetrieveNSS = os.path.join(moduleDir,"NSSDownload")
             retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
-            arguments = [workDir_RetrieveNSS,systemTime,regionHomeDir]
+            arguments = [regionHomeDir, systemTime, workDir_RetrieveNSS]
             runModule(script=retrieveNSSPy,args=arguments)
 
 
@@ -165,7 +165,7 @@ def main(args=None):
             print("Retrieving BOM Wave Forecast...")
             workDir_RetrieveAusWaves = os.path.join(moduleDir,"WaveDownload")
             retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
-            arguments = [workDir_RetrieveAusWaves,systemTime,regionHomeDir]
+            arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves]
             runModule(script=retrieveAusWavesPy,args=arguments)
 
 
@@ -177,7 +177,7 @@ def main(args=None):
                 print("Pre-processing XBeach Run...")
                 workDir_PreProcessXBeach = os.path.join(moduleDir,"PreProcessXBeach")
                 preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
-                arguments = [workDir_PreProcessXBeach,systemTime,regionHomeDir,hotspotName]
+                arguments = [regionHomeDir,systemTime,hotspotName,workDir_PreProcessXBeach]
                 runModule(script=preProcessXBeachPy,args=arguments)
 
 
@@ -206,16 +206,16 @@ def main(args=None):
                 workDir_PostProcessXBeach = os.path.join(moduleDir,"PostProcessXBeach")
                 postProcessXBeachPy = os.path.join(workDir_PostProcessXBeach,"postprocessMain.py")
                 systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
-                arguments = [workDir_PostProcessXBeach,systemTime_str,regionHomeDir,hotspotName]
+                arguments = [regionHomeDir,systemTime_str,hotspotName,workDir_PostProcessXBeach]
                 runModule(script=postProcessXBeachPy,args=arguments)
 
 
                 # =============================== Storm Impact Indicators XBeach ===============================#
-                # Mimics the PostProcessXbeachAdapter.xml module in FEWS
+                # Mimics the IndicatorsXbeachAdapter.xml module in FEWS
                 print("Computing Storm Impact Indicators from XBeach run...")
                 workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
                 indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
-                arguments = [workDir_IndicatorsXBeach,systemTime,regionHomeDir,hotspotName]
+                arguments = [regionHomeDir,systemTime,hotspotName,workDir_IndicatorsXBeach]
                 runModule(script=indicatorsXBeachPy,args=arguments)
 
 
@@ -224,7 +224,7 @@ def main(args=None):
                 print("Wiping files from forecast...")
                 workDir_WipeForecast = os.path.join(moduleDir,"WipeForecast")
                 wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
-                arguments = [workDir_WipeForecast,systemTime,regionHomeDir,hotspotName]
+                arguments = [regionHomeDir,systemTime,hotspotName,workDir_WipeForecast]
                 runModule(script=wipeForecastPy,args=arguments)
 
 
@@ -233,7 +233,6 @@ def main(args=None):
 
 
 ## If Python throws an error, send to exceptions.log file
-
 if __name__ == "__main__":
     try:
         main()

@@ -21,12 +21,13 @@ def main(args=None):
     #============== Parse arguments from FEWS ==============#
     # First argument in Module config file is the path to this python script
     # First argument read by this python script is the second argument in the config file
-    # First argument is the current working directory
-    workDir = str(args[0])
-    # Third argument is the system time
+    # First argument is the region home
+    regionHome = str(args[0])
+    # Second argument is the system time
     sysTimeStr = str(args[1])
-    # Fourth argument is the region home
-    regionHome = str(args[2])
+    # Third argument is the current working directory
+    workDir = str(args[2])
+    
 
 
     #============== Paths ==============#

@@ -22,18 +22,18 @@
 			<executeActivity>
 				<description>Run python script to wipe excess forecast files for space.</description>
 				<command>
-					<executable>$PYTHON_EXE$</executable>
+					<executable>%WORK_DIR%/wipeForecast.bat</executable>
 				</command>
 				<arguments>
 					<argument>%WORK_DIR%/wipeForecast.py</argument>
-					<!-- Work dir-->
-					<argument>%WORK_DIR%</argument>
-					<!-- System time -->
-					<argument>%TIME0%</argument>
 					<!-- Region home dir -->
 					<argument>%REGION_HOME%</argument>
+					<!-- System time -->
+					<argument>%TIME0%</argument>					
 					<!-- Location ID (looped)-->
 					<argument>$LOOP_LOCATION_ID$</argument>
+					<!-- Work dir-->
+					<argument>%WORK_DIR%</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

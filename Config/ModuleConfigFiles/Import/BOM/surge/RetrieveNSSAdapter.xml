@@ -27,13 +27,13 @@
 			<executeActivity>
 				<description>Run python script to download storm surge</description>
 				<command>
-					<executable>$PYTHON_EXE$</executable>
+					<executable>%WORK_DIR%/retrieveNSS.bat</executable>
 				</command>
 				<arguments>
 					<argument>%WORK_DIR%/python/retrieveNSS.py</argument>
-					<argument>%WORK_DIR%</argument>
-					<argument>%TIME0%</argument>
 					<argument>%REGION_HOME%</argument>
+					<argument>%TIME0%</argument>
+					<argument>%WORK_DIR%</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

@@ -19,7 +19,7 @@ from shapely.geometry import Point, LineString, shape
 
 # Debugging
 # Forecast:
-# C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev/indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev 20200713_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev/indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200208_0000 Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev
 
 
 def main(args=None):
@@ -27,14 +27,11 @@ def main(args=None):
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
-    workDir = str(args[0])
+    regionHome = str(args[0])
     sysTime = str(args[1])
-    regionHome = str(args[2])
-    siteName = str(args[3])
-    #workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\IndicatorsXBeach_dev"
-    #sysTime = "20200203_0000"
-    #regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
-    #siteName = "Narrabeen"
+    siteName = str(args[2])
+    workDir = str(args[3])
+    
 
     #============== Parse system time and find directory of current forecast ==============#
     systemTime = fewsUtils.parseFEWSTime(sysTime)
@@ -102,6 +99,19 @@ def main(args=None):
         scarpOverall = gpd.read_file(scarpOverall)
     except:
         pass
+
+
+    #============== Error-handling ==============#
+    # Check to make sure there are the same number of plots and corridors
+    # as there are ewl and scarp points. Difference in the number of points
+    # implies different longshore resolutions. plotsShp and corridorsShp
+    # need to be manually created for each different grid used, or else
+    # the indicator module will not work properly.
+    print(len(ewlOverall))
+    print(len(corridors_df))
+    if len(ewlOverall) != len(corridors_df):
+        raise ValueError("Corridors shapefile does not have the same number of rows used in the XBeach model.")
+
 
     # Construct time series to iterate through
     # Numpy timedelta64 objects are easier to deal with

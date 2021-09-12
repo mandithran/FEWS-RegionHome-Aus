@@ -17,10 +17,10 @@
 			<executeActivity>
 				<description>Run python script to intialize a hotspot forecast</description>
 				<command>
-					<executable>$PYTHON_EXE$</executable>
+					<executable>%WORK_DIR%\initializeRegional.bat</executable>
 				</command>
 				<arguments>
-					<argument>%WORK_DIR%/python/initializeRegional.py</argument>
+					<argument>%WORK_DIR%\python\initializeRegional.py</argument>
                     <argument>%REGION_HOME%</argument>
                     <argument>%TIME0%</argument>
                     <argument>$LOOP_LOCATION_ID$</argument>

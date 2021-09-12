@@ -27,7 +27,7 @@
 			<executeActivity>
 				<description>Run python script to initialize a FEWS forecast</description>
 				<command>
-					<executable>%WORK_DIR%/initializeForecast.bat</executable>
+					<executable>%WORK_DIR%\initializeForecast.bat</executable>
 				</command>
 				<arguments>
 					<argument>%WORK_DIR%\python\initializeForecast.py</argument>

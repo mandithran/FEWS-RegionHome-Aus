@@ -26,10 +26,11 @@ def main(args=None):
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
-    workDir = str(args[0])
+    regionHome = str(args[0])
     sysTime = str(args[1])
-    regionHome = str(args[2])
-    siteName = str(args[3])
+    siteName = str(args[2])
+    workDir = str(args[3])
+    
     #spinUpWindow = str(args[4]) # in hours
     #forecastHorizon = str(args[4]) # in days
     #deltat_str =  str(args[5]) 
@@ -156,7 +157,7 @@ def main(args=None):
     # Tides must be in GMT
     tidesPath = os.path.join(dataPath,"Tides//%s//processed" % hotspotFcst.city)
     shutil.copy(os.path.join(tidesPath,"%sTidesGMT.csv" % hotspotFcst.city), workDir)
-    # Load tide date, chop at start and end time (inherited in xBeachModel class)
+    # Load tide date, chop at start and end time
     tideFile = os.path.join(workDir,"%sTidesGMT.csv" % hotspotFcst.city)
     tideSeries = preProcWatLevs.loadTideData(ifile=tideFile,
                                              forecast=hotspotFcst)

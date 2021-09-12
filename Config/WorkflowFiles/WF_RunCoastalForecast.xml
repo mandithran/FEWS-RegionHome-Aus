@@ -4,10 +4,10 @@
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_InitializeForecast</workflowId>
 	</activity>
-    <activity>
+    <!--activity>
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_ImportAstroTide</workflowId>
-	</activity>
+	</activity-->
 	<activity>
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_ImportAusSurge</workflowId>
@@ -16,7 +16,7 @@
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_ImportAusWaves</workflowId>
 	</activity>
-	<!--activity>
+	<activity>
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_PreProcessXBeach</workflowId>
 	</activity>
@@ -35,5 +35,5 @@
 	<activity>
 		<runIndependent>true</runIndependent>
 		<workflowId>WF_WipeForecast</workflowId>
-	</activity-->
+	</activity>
 </workflow>

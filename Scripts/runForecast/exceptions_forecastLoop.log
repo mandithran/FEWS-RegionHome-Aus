@@ -1,2 +1,2 @@
-Failed. Command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach\postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach 2021090500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ Narrabeen' returned non-zero exit status 2.
-Recorded at 2021-09-07 21:47:59.197655.
+Failed. Command 'python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach\indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\ 20210910_0000 Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach' returned non-zero exit status 1.
+Recorded at 2021-09-11 12:49:54.564456.

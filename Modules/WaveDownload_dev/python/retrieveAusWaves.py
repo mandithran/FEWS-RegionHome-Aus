@@ -21,9 +21,9 @@ def main(args=None):
 
     #============== Parse arguments from FEWS ==============#
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
-    workDir = str(args[0])
+    regionHome = str(args[0])
     sysTimeStr = str(args[1])
-    regionHome = str(args[2])
+    workDir = str(args[2])
     
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
