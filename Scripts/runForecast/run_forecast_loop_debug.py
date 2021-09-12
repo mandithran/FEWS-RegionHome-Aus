@@ -84,7 +84,7 @@ def main(args=None):
 
 
     #============================== Unzip module datasets ==============================#
-    modules=["initFEWSForecast","AstroTides","NSSDownload",
+    modules=["initFEWSForecast","NSSDownload",
              "WaveDownload","PreProcessXBeach","PostProcessXBeach",
              "IndicatorsXBeach","WipeForecast"]
     for module in modules:
@@ -141,12 +141,6 @@ def main(args=None):
                 runModule(script=initializeHotspotPy,args=arguments)
 
 
-            
-            # ============================= Retrieve Tides =============================#
-            # This just involves unzipping the tide predictions from the module dataset
-            # See RetrieveAstroTideAdapter.xml
-            # This is done above in the "Unzip Module Datasets" code block
-            pass
 
 
             # ============= Retrieve National Storm Surge System Forecasts =============#
