@@ -1,2 +1,2 @@
-﻿ID,Name,Latitude,Longitude,Region,Timezone,offshoreWave_lat,offshoreWave_lon
-NSW,New South Wales,-33.830097,151.275633,NSW,UTC+11:00,-33.76273,151.40324
+﻿ID,Name,Latitude,Longitude,Region,Timezone,offshoreWave_lat,offshoreWave_lon,tide_Location
+NSW,New South Wales,-33.830097,151.275633,NSW,UTC+11:00,-33.76273,151.40324,Sydney

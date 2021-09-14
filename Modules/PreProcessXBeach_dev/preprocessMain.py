@@ -3,22 +3,11 @@ import os
 import sys
 import traceback
 import shutil
-import pandas as pd
-from xbfewsTools import fewsUtils
-from xbfewsTools import xBeachModel
-from xbfewsTools import preProcWatLevs
-from xbfewsTools import preProcWaves
-from datetime import datetime, timezone, timedelta
-import fileinput
-import pickle
-import numpy as np
-import geopandas as gpd
-
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # Debugging
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev 20200713_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen 3
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20210910_0000 Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev
 
 
 def main(args=None):
@@ -30,21 +19,29 @@ def main(args=None):
     sysTime = str(args[1])
     siteName = str(args[2])
     workDir = str(args[3])
-    
-    #spinUpWindow = str(args[4]) # in hours
-    #forecastHorizon = str(args[4]) # in days
-    #deltat_str =  str(args[5]) 
-    #locSetFilename = str(args[7])
+
+
+    #============== Modules ==============#
+    import pandas as pd
+    from xbfewsTools import fewsUtils
+    from xbfewsTools import xBeachModel
+    from xbfewsTools import preProcWatLevs
+    from xbfewsTools import preProcWaves
+    from datetime import datetime, timezone, timedelta
+    import fileinput
+    import pickle
+    import numpy as np
+    import geopandas as gpd
 
 
     #============== Grid parameters ==============#
-    # Testing Grid:
+    # Low resolution grid for testing:
     """
     xgrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\x_testing.grd" % siteName)
     ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
     zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
     """
-    xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\100mAlongshore" % siteName)
+    xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\50mAlongshore" % siteName)
     xgrd = os.path.join(xbFilesPath,"x.grd")
     ygrd = os.path.join(xbFilesPath,"y.grd")
     zgrd = os.path.join(xbFilesPath,"z.grd")

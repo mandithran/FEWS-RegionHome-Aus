@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules</rootDir>
+		<workDir>%ROOT_DIR%/PreProcessRegional</workDir>
+		<exportDir>%ROOT_DIR%/PreProcessRegional</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/PreProcessRegional</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%/PreProcessRegional</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/PreProcessRegional/diag.xml</diagnosticFile>
+		<time0Format>yyyyMMdd_HHmm</time0Format>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/PreProcessRegional/*.*</filter>
+			</purgeActivity>
+			<!--purgeActivity>
+				<filter>%ROOT_DIR%/XBeach/$LOOP_LOCATION_ID$/runs/latest/workDir/*.*</filter>
+			</purgeActivity-->
+		</startUpActivities>
+		<exportActivities>
+			<exportDataSetActivity>
+				<moduleInstanceId>PreProcessRegional</moduleInstanceId>
+			</exportDataSetActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run python script to pre-process a regional forecast</description>
+				<command>
+					<executable>%WORK_DIR%/preprocessMainRegional.bat</executable>
+				</command>
+				<arguments>
+					<argument>%WORK_DIR%/preprocessMainRegional.py</argument>
+					<!-- Region home dir -->
+					<argument>%REGION_HOME%</argument>
+					<!-- System time -->
+					<argument>%TIME0%</argument>
+					<!-- Location ID (looped)-->
+					<argument>$LOOP_LOCATION_ID$</argument>
+					<!-- Work dir-->
+					<argument>%WORK_DIR%</argument>
+				</arguments>
+				<timeOut>7200000</timeOut>
+				<ignoreDiagnostics>false</ignoreDiagnostics>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>

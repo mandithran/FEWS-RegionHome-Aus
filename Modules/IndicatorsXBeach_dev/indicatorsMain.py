@@ -70,9 +70,9 @@ def main(args=None):
     if not os.path.exists(bsdDirPts):
         os.makedirs(bsdDirPts)
     #plotsShp = os.path.join(indicatorDir,"lotsEPSG%s.shp" % hotspotFcst.xbeachEPSG)
-    #corridorsShp = os.path.join(indicatorDir,"corridors100m.shp")
-    plotsShp = os.path.join(indicatorDir,"corridor_pts_100m.shp")
-    corridorsShp = os.path.join(indicatorDir,"corridor_pts_100m.shp")
+    #corridorsShp = os.path.join(indicatorDir,"corridors50m.shp")
+    plotsShp = os.path.join(indicatorDir,"corridor_pts_50m.shp")
+    corridorsShp = os.path.join(indicatorDir,"corridor_pts_50m.shp")
 
     #============== Generate diagnostics file ==============#
     # Copy and rename diagOpen.txt

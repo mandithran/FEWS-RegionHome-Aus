@@ -5,7 +5,7 @@ import pandas as pd
 storm = "2020_02_09"
 site = "Narrabeen"
 mode = "pre-storm"
-longshoreReso = '100m'
+longshoreReso = '50m'
 
 workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy"
 regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"

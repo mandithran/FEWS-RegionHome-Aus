@@ -23,6 +23,8 @@ individual workflow, which is stored in WorkflowFiles.-->
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_PreProcessXBeach" name="Pre-process XBeach Model" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
+	<workflowDescriptor id="WF_PreProcessRegional" name="Pre-process Regional Forecast" visible="true" forecast="false" autoApprove="true" allowApprove="true">
+	</workflowDescriptor>
 	<workflowDescriptor id="WF_XBeach_Delilah_test" name="Run XBeach Delilah Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
 	</workflowDescriptor>
 	<workflowDescriptor id="WF_XBeach_Narra_test" name="Run XBeach Narrabeen Test Case" visible="true" forecast="false" autoApprove="true" allowApprove="true">
@@ -53,6 +55,9 @@ individual workflow, which is stored in WorkflowFiles.-->
 		</node>
 		<node name="Import Auswave Predictions">
 			<workflowId>WF_ImportAusWaves</workflowId>
+		</node>
+		<node name="Regional: Pre-process">
+			<workflowId>WF_PreProcessRegional</workflowId>
 		</node>
 		<node name="XBeach: Pre-process">
 			<workflowId>WF_PreProcessXBeach</workflowId>

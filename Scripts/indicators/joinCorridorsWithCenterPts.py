@@ -11,9 +11,9 @@ regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
 siteName = "Narrabeen"
 dataPath = os.path.join(regionHome,"Data")
 indicatorPath = os.path.join(dataPath, "Indicators\\Hotspot\\%s"  % siteName)
-corrshp = os.path.join(indicatorPath, "corridorsPolyline100m.shp")
-corrpts = os.path.join(indicatorPath, "corridorsPolyline100m_centerpts.shp")
-corr_out = os.path.join(indicatorPath,"corridors100m.shp")
+corrshp = os.path.join(indicatorPath, "corridorsPolyline50m.shp")
+corrpts = os.path.join(indicatorPath, "corridorsPolyline50m_centerpts.shp")
+corr_out = os.path.join(indicatorPath,"corridors50m.shp")
 
 # Load files
 gdf = gpd.read_file(corrshp)

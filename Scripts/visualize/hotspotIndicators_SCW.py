@@ -36,7 +36,7 @@ sc_gdf = sc_gdf.drop(columns=['SCW','ewl_dist'],axis=1)
 
 
 # TODO: for now, merge assigned ids for corridors so that they can go from north to south
-idsPath = os.path.join(regionHome,"Data\\Indicators\\Hotspot\\Narrabeen\\corridors100m.shp")
+idsPath = os.path.join(regionHome,"Data\\Indicators\\Hotspot\\Narrabeen\\corridors50m.shp")
 id_gdf = gpd.read_file(idsPath)
 sc_gdf = sc_gdf.merge(id_gdf,how='left',on=['geometry'],right_index=False)
 # Drop the Nans for now

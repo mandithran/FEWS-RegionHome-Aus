@@ -25,10 +25,11 @@ def main(args=None):
     initHotspotForecast_flag = True
     NSSDownload_flag = True
     WaveDownload_flag = True
-    PreProcessXBeach_flag = False
+    PreProcessXBeach_flag = True
     runXBeach_flag = False
     PostProcessXBeach_flag = False
     IndicatorsXBeach_flag = False
+    PreProcessRegional_flag = True
     WipeForecast_flag = False
 
 
@@ -97,7 +98,8 @@ def main(args=None):
     #============================== Unzip module datasets ==============================#
     modules=["initFEWSForecast","NSSDownload",
              "WaveDownload","PreProcessXBeach","PostProcessXBeach",
-             "IndicatorsXBeach","WipeForecast"]
+             "IndicatorsXBeach","WipeForecast",
+             "PreProcessRegional"]
     for module in modules:
         unzipModule(module)
 
@@ -189,6 +191,22 @@ def main(args=None):
                 retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
                 arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves]
                 runModule(script=retrieveAusWavesPy,args=arguments)
+
+
+
+            # ======================== Pre-process Regional Forecast Module ========================#
+            # Pre-processing for regional forecast. Contained within WF_PreProcessRegional.xml workflow.
+            # Basically does wihat PreProcessRegionalAdapter.xml FEWS Module adapter does
+            # Arguments are regionHomeDir, the system time, the region, and the working directory of
+            # the python script being called
+            # See PreProcessRegionalAdapter.xml
+            if PreProcessRegional_flag:
+                print("**************** Pre-processing regional forecast for time: %s GMT ****************" % sysTime_dt)
+                workDir_preProcessRegionalPy = os.path.join(moduleDir,"PreProcessRegional")
+                preProcessRegionalPy = os.path.join(workDir_preProcessRegionalPy,"preprocessMainRegional.py")
+                arguments = [regionHomeDir,systemTime,region,workDir_preProcessRegionalPy]
+                runModule(script=preProcessRegionalPy,args=arguments)
+            
 
 
             # Loop through hotspots

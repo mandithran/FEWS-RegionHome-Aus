@@ -3,9 +3,6 @@ import traceback
 import sys
 import os
 import shutil
-import pickle
-from xbfewsTools import fewsUtils
-from xbfewsTools import fewsForecast
 
 
 def main(args=None):
@@ -26,8 +23,13 @@ def main(args=None):
     # Work dir
     workDir = str(args[3])
 
-    with open(os.path.join(workDir,'test.txt'), 'w') as f:
-        f.write('here')
+
+    ############ Modules ############ 
+    from datetime import timedelta
+    import pickle
+    from xbfewsTools import fewsUtils
+    from xbfewsTools import fewsForecast
+
 
     ############ Paths ############ 
     diagFile = os.path.join(workDir,"diagOpen.txt")
@@ -46,10 +48,9 @@ def main(args=None):
     
     #============== Initialize regional forecast ==============#
     fcstRegional = fewsForecast.regionalForecast(fcst, regionName)
-
-
     # Make the hotspot forecast directory if it doesn't exist
     fcstRegional.init_directory()
+    fcstRegional.init_runInfo()
 
 
     #============== Write out pickle for hotspot forecast ==============#

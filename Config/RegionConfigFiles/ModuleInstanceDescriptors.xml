@@ -54,6 +54,9 @@
 	<moduleInstanceDescriptor id="ImportNETCDF">
 		<description>Import NETCDF (generic)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreProcessRegional">
+		<description>Module dataset for pre-processing XBeach model</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PreProcessXBeach">
 		<description>Module dataset for pre-processing XBeach model</description>
 	</moduleInstanceDescriptor>
