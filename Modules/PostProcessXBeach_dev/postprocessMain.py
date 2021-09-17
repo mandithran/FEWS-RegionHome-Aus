@@ -1,25 +1,46 @@
+"""
+postprocessMain.py
+Author: Mandi Thran
+Date: 16/09/21
+
+This script computes the storm impact indicators from XBeach model output.
+It computes two indicators: the safe corridor width, and the "building-scarp
+distance". Locations of interest (in this version, the dune toes) are
+imported for each row along the XBeach grid. 
+
+Safe corridor width procedure: the distances between these dune toes and the extreme 
+water lines are calculated. Depending on how close the extreme water line
+comes to the dune toe, a Safe Corridor Width indicator of either "Low", "Medium",
+or "High" is assigned. The closer the extreme water line, the higher the
+indicator. Indicators are exported at each time step.
+
+Building-scarp distance procedure: the distances between the dune toes and the
+simulated scarp location (i.e. the landward most extent of the erosion) are
+calculated. Depending on how close the scarp comes to the dune toe, a "Building-
+scarp distance" indicator is assigned either a "Low", "Medium', or "High." The
+closer the scarp, the higher the indicator. Indicators are exported at each time step.s
+
+Note that the script initially was written such that the locations of interest
+were buildings, hence the name of the indicator. Then, property boundaries (plots)
+were used. Finally, it was determined that the dune toe would be more appropriate
+to use in order to compute the indicator. This created a lack of consistency with
+some of the syntax. 
+
+"""
+
 # Modules
 import os
 import sys
 import traceback
 import shutil
-import pickle
-from xbfewsTools import fewsUtils
-import geopandas as gpd
-from shapely.geometry import Point, LineString, shape
-import xarray as xr
-from xbfewsTools import postProcTools
-import numpy as np
-import pandas as pd
 
-# For debugging:
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev 2020020300 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus Narrabeen
+# For debugging. Enter the following line into a command line with the conda-venv environemnt activated.
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 2020020800 Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev
 
 def main(args=None):
 
-    args = [a for a in sys.argv[1:] if not a.startswith("-")]
-
     #============== Parse arguments from FEWS ==============#
+    args = [a for a in sys.argv[1:] if not a.startswith("-")]
     # Region home
     regionHome = str(args[0])
     # System time according to FEWS
@@ -30,27 +51,45 @@ def main(args=None):
     workDir = str(args[3])
 
 
-    #============== Determine appropriate forecast directory ==============#
+    #============== Modules ==============#
+    # These modules are loaded here in case there are any errors with
+    # loading them. The errors will be sent to the log file at the 
+    # bottom of this script.
+    import pickle
+    from xbfewsTools import fewsUtils
+    import geopandas as gpd
+    from shapely.geometry import Point, LineString, shape
+    import xarray as xr
+    from xbfewsTools import postProcTools
+    import numpy as np
+    import pandas as pd
+
+
+    #============== Find the active forecast directory ==============#
     # This is based on system time given from FEWS
     modelRunDir = os.path.join(regionHome,"Modules\\XBeach",siteName,
                                "%sSystemTime-%s" %(sysTimeStr,siteName))
     
     
     #============== Paths ==============#
+    # Diagnostics file needed by FEWS
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
+    # Location set used by FEWS ("hotspotLocations")
     hotspotLocSet = os.path.join(regionHome,"Config\\MapLayerFiles\\hotspotLocations.csv")
 
 
     #============== Load hotspot location set ==============#
     hotspotLocSet = pd.read_csv(hotspotLocSet)
+    # Get the region name relevant to the hotspot
     regionName = hotspotLocSet.loc[hotspotLocSet['ID']==siteName]['Region'][0]
 
 
     #============== Load hotspot forecast object with pickle ==============#
-    # C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Forecasts\20200201_0000\NSW\hotspot\Narrabeen
+    # Convert time to appropriate string
     t_str = sysTimeStr[0:8] + '_' + sysTimeStr[8:] + '00'
     fcstHotspot = os.path.join(regionHome,"Forecasts",t_str,regionName,"hotspot",siteName,"forecast_hotspot.pkl")
+    # Load object with pickle
     fcstHotspot = pickle.load(open(fcstHotspot, "rb"))
     
 
@@ -96,7 +135,7 @@ def main(args=None):
         os.makedirs(scarpDirLines)
 
 
-    ################ Load Output ################
+    ################ Load XBeach output ################
     ds = xr.open_dataset(ncOut)
 
 
@@ -105,17 +144,14 @@ def main(args=None):
     fcstHotspot = pickle.load(open(os.path.join(fcstHotspot.forecastDir,"forecast_hotspot.pkl"), "rb"))
     # Caluclate the total run time, including spin-up time
     fcstHotspot.totalRunTime = fcstHotspot.endTime - fcstHotspot.startTime
+    # Set epsg (projection of grid used in XBeach run)
     epsg = int(fcstHotspot.xbeachEPSG)
     fcstHotspot.postProcessDir = os.path.join(fcstHotspot.xbWorkDir,"postProcess")
     
 
-    #print(fcstHotspot.postProcessDir)
-    #fcstHotspot.postProcessDir = 43200.0
-    #with open(os.path.join(fcstHotspot.forecastDir,"forecast_%s.pkl" % fcstHotspot.type), "wb") as output:
-    #        pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
-
     ################################# Process extreme water line #################################
     #========== Remove dummy point from gauges output ==========#
+    # The dummy point is there because XBeach complains if it isn't
     dummyPt = Point(fcstHotspot.dummyPtX,fcstHotspot.dummyPtY)
     # Convert xarray ds to geodataframe to do point searching
     dsSearch = ds[['point_xz', 'point_yz', 'point_zs']]
@@ -128,19 +164,27 @@ def main(args=None):
     # Remove dummy pt from dataset
     ds = ds.drop_sel(points=0)
     #========== Loop through, export points and lines for Extreme water line ==========#
+    # Keep track of the column indeces of the extreme water line over the coarse of the
+    # entire run
     colIndecesTotalRun = []
+    # Keep track of the column indeces of the extreme water line for each time step
     colIndeces = []
+    # Loop through each time step for the "pointtime" output
+    # The gauges in XBeach export separate output that abides by a different
+    # timestep to provide higher temporal resolution.
     for d in np.arange(0,ds["pointtime"].sizes["pointtime"],1):
         if d % 100 == 0:    
             print("Processing time step %s" % d)
         time= ds["pointtime"][d].values
         time_str = f'{(time/3600):.2f}'.zfill(6)
-        # Subset the dataset by point time step
+        # Subset the dataset by point time steps
         ds_sub = ds.isel({"pointtime":d})
         colIndex = []
         yind = 0
-        # For each time step slice, loop through each row
-        # And locate the x index of the point that is neareest to where the gauge it
+        # For each time step slice, loop through each row and locate the
+        # x (column) index of the point that is neareest to where the gauge is
+        # The gauges move with the water line in XBeach, so we are essentially
+        # fetching the location of the water line for each row
         for searchX in ds_sub['point_xz'].values:
             xx = ds.globalx[yind,:].values
             # Find point that is closest to gauge's x value
@@ -173,7 +217,9 @@ def main(args=None):
             gdf2.to_file(os.path.join(gaugesDirLines,"gauges_%shrs_lines.shp" % time_str))
             # Reset the column indeces for the next 15 minute interval
             colIndeces = []
-    #========== Determine extreme water line from XBeach output ==========#
+    #========== Determine overall extreme water line from XBeach output ==========#
+    # This represents the line where the water was most landward over the entire
+    # simulation (i.e. the maximum extreme water line)
     dff = pd.DataFrame(colIndecesTotalRun)
     # Return maximum value for each column
     colIndecesTotalRun = dff.max().values
@@ -196,6 +242,7 @@ def main(args=None):
     # Check to see that morstart isn't equal to the total run time
     # This indicates that morphology was turned on before the run ended
     # If this condition is satisfied, the erosion line is calculated
+    print("Processing erosion scarps...")
     if fcstHotspot.morstart < fcstHotspot.totalRunTime.total_seconds():
         # We want to return the morphology at a time that is a little after the "rounded time"
         # This is right when morphology is meant to be switched on, and it's also after the first
@@ -210,34 +257,26 @@ def main(args=None):
         df = pd.DataFrame(columns=["timeStepMins","xScarp", 
                                 "yScarp","rowInd",
                                 "colIndexScarp"])
-        #for timestep in np.arange(eroStartIndex+2,ds["meantime"].sizes["meantime"],1):
+        # Loop through each time step of the XBeach output
         for timestep in np.arange(eroStartIndex+2,ds["globaltime"].sizes["globaltime"],1):
+            # Let the user know how post-processing is progressing
             if timestep == roundedTimeIndex:
                 print("Starting at timestep %s " % roundedTimeIndex)
             if timestep % 10 == 0: 
                 print("Processing time step %s" % timestep)
+            # Convert timestep to appropriate string for saving the files
             tstep_hrs = round((timestep*fcstHotspot.tintm),2)/3600
             tstring = f'{tstep_hrs:.2f}'.zfill(6)
             # Initialize timestep dataframe
             dftstep = pd.DataFrame(columns=["xWater","yWater",
                                         "xScarp", "yScarp"])
             # Splice the dataset at the given timestep
-            #if timestep % 10 == 0:
-                #print(ds.globaltime,ds.meantime)
-            #dsstep = ds.isel({"meantime":timestep})
-            #if timestep % 10 == 0:
-                #print(dsstep)
-            #dsstep = dsstep.isel({"globaltime":timestep+1})
-            #dsstep = dsstep.isel({"globaltime":timestep})
             dsstep = ds.isel({"globaltime":timestep}) # global time and mean time not the same
-            print(timestep,tstring)
-            #if timestep % 10 == 0:
-                #print(dsstep)
-            # Find the erosion scarp at each time step
+            # Find the erosion scarp at each row of the XBeach grid, at each time step
             for index in np.arange(0,len(ds.globaly[:,0]),1):
-                # Access initial elevation at each row
+                # Access initial elevation along each row
                 elev_i = ds_zbi.zb[index,:].values
-                # Access elevation at each row (cross-shore, x points)
+                # Access elevation at time step along each row (cross-shore, x points)
                 elevations = dsstep.zb[index,:].values
                 # Compute the change in elevation from the start of simulation
                 deltaz = elev_i - elevations
@@ -248,8 +287,8 @@ def main(args=None):
                     maxIndex2 = np.max(np.where(elev_bool))
                     # Get point x,y point locations for the erosion scarp in each row
                     xScarp = dsstep.globalx[index,maxIndex2].values
-                    yScarp = dsstep.globaly[index,maxIndex2].values               
-                    ######### Append information to main dataframe######### 
+                    yScarp = dsstep.globaly[index,maxIndex2].values 
+                    ######### Append information to main dataframe ######### 
                     data = {"timeStepHrs":[tstep_hrs],
                             "xScarp":[xScarp],"yScarp":[yScarp],
                             "rowInd":[index],
@@ -258,20 +297,29 @@ def main(args=None):
                     df = df.append(dftmp)
                     ######### Append information to time step's dataframe ######### 
                     dftstep = dftstep.append(dftmp)
-                    # Export point shapefile for erosion scarp
-                    gdf1 = gpd.GeoDataFrame(dftstep, geometry=gpd.points_from_xy(dftstep.xScarp, dftstep.yScarp), crs=epsg)
-                    gdf1 = gdf1[["geometry"]]
-                    gdf1 = gpd.GeoSeries(gdf1.geometry.tolist(),crs=epsg)
-                    gdf1.to_file(os.path.join(scarpDirPts,"scarp_%shrs_points.shp" % tstring))
-                    # Export line shapefile for erosion scarp 
-                    gdf2 = gpd.GeoDataFrame(dftstep, geometry=gpd.points_from_xy(dftstep.xScarp, dftstep.yScarp), crs=epsg)
-                    gdf2 = gdf2[["geometry"]]
-                    gdf2 = gpd.GeoSeries(LineString(gdf2.geometry.tolist()),crs=epsg)
-                    gdf2.to_file(os.path.join(scarpDirLines,"scarp_%shrs.shp" % tstring))
                 except:
-                    pass
+                    pass         
+            # Export point shapefile for erosion scarp
+            # We won't always get a scarp, so we "try" to export the file
+            try:
+                gdf1 = gpd.GeoDataFrame(dftstep, geometry=gpd.points_from_xy(dftstep.xScarp, dftstep.yScarp), crs=epsg)
+                gdf1 = gdf1[["geometry","rowInd"]]
+                gdf1.to_file(os.path.join(scarpDirPts,"scarp_%shrs_points.shp" % tstring))
+            except:
+                pass
+            # You might not always have enough points to make a line, so we "try"
+            # exporting as a line
+            try:
+                # Export line shapefile for erosion scarp 
+                gdf2 = gpd.GeoDataFrame(dftstep, geometry=gpd.points_from_xy(dftstep.xScarp, dftstep.yScarp), crs=epsg)
+                gdf2 = gdf2[["geometry","rowInd"]]
+                gdf2 = gpd.GeoSeries(LineString(gdf2.geometry.tolist()),crs=epsg)
+                gdf2.to_file(os.path.join(scarpDirLines,"scarp_%shrs.shp" % tstring))
+            except:
+                pass
         ################ Determine maximum erosion scarp from XBeach output ################
         # If there's no erosion detected there won't be a maximim landward erosion scarp detected
+        # So we "try" to compute it
         try:
             gdf_es = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.xScarp, df.yScarp), 
                                     crs=epsg)
@@ -308,7 +356,7 @@ def main(args=None):
         max_flowDepth = ds_flowi.zs_max.values-ds_zbi.zb.values
         max_flowUVel = ds_flowi.u_max.values 
         max_flowVVel = ds_flowi.v_max.values
-        for timestep in np.arange(eroStartIndex+2,ds["meantime"].sizes["meantime"],1):
+        for timestep in np.arange(0,ds["meantime"].sizes["meantime"],1):
             dsstep = ds.isel({"meantime":timestep})
             dsstep = dsstep.isel({"globaltime":timestep+1}) # global time and mean time not the same
             # Get the erosion difference from timestep to beginning
@@ -340,7 +388,7 @@ def main(args=None):
         pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
 
     
-## If Python throws an error, send to exceptions.log file
+## If Python throws an error, send to exceptions.log file in workDir
 if __name__ == "__main__":
     try:
         main()

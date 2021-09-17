@@ -1,20 +1,9 @@
 # Modules
 import traceback
-from xbfewsTools import fewsUtils
 import os
 import sys
 import traceback
 import shutil
-import pickle
-from xbfewsTools import fewsUtils
-from xbfewsTools import postProcTools
-import geopandas as gpd
-import pandas as pd
-import numpy as np
-import glob
-import ntpath
-from datetime import datetime, timedelta
-from shapely.geometry import Point, LineString, shape
 
 
 # Debugging
@@ -31,6 +20,17 @@ def main(args=None):
     sysTime = str(args[1])
     siteName = str(args[2])
     workDir = str(args[3])
+
+
+    #============== Modules ==============#
+    import pickle
+    from xbfewsTools import fewsUtils
+    from xbfewsTools import postProcTools
+    import geopandas as gpd
+    import pandas as pd
+    import numpy as np
+    from shapely import geometry
+    from xbfewsTools import fewsUtils
     
 
     #============== Parse system time and find directory of current forecast ==============#
@@ -53,6 +53,7 @@ def main(args=None):
     regionName = fcst.hotspotDF.loc[fcst.hotspotDF['ID']==siteName]['Region'][0]
     hotspotForecastDir = os.path.join(forecastDir, regionName,"hotspot",siteName)
     hotspotFcst = pickle.load(open(os.path.join(hotspotForecastDir,"forecast_hotspot.pkl"),"rb"))
+    epsg = int(hotspotFcst.xbeachEPSG)
 
     hotspotFcst.indicatorResultsDir = os.path.join(hotspotFcst.postProcessDir,"indicators")
     if not os.path.exists(hotspotFcst.indicatorResultsDir):
@@ -89,8 +90,8 @@ def main(args=None):
 
     #============== Load key files ==============#
     # Load plots shapefile as geopandas df
-    plots_df = gpd.read_file(plotsShp)
-    corridors_df = gpd.read_file(corridorsShp)
+    plots_gdf = gpd.read_file(plotsShp)
+    corridors_gdf = gpd.read_file(corridorsShp)
     ewlOverall = os.path.join(hotspotFcst.postProcessDir,"ewl_XBeach_points.shp")
     scarpOverall = os.path.join(hotspotFcst.postProcessDir,"maxEroScarp_points.shp")
     # Load these as geoseries
@@ -101,17 +102,33 @@ def main(args=None):
         pass
 
 
+    #========= Add key fields to plots_gdf and corridors_gdf =========#
+    # Add the row index to the plots_gdf and corridors_gdf The dataframes
+    # will then be merged on this value. This is an important step.
+    # Otherwise, the storm impact indicators won't be computed 
+    # correctly. 
+    
+    # Sort values by name. This will put them in north-to-south order.
+    # The names were determined manually (this naming convention is)
+    # deliberately north-south.
+    plots_gdf = plots_gdf.sort_values('ID')
+    plots_gdf = plots_gdf.reset_index(drop=True)
+    # Assign a new field based on the index
+    plots_gdf['rowInd'] = plots_gdf.index
+    # Repeat the process for the corridors_gdf
+    corridors_gdf = corridors_gdf.sort_values('ID')
+    corridors_gdf = corridors_gdf.reset_index(drop=True)
+    # Assign a new field based on the index
+    corridors_gdf['rowInd'] = corridors_gdf.index
+
     #============== Error-handling ==============#
     # Check to make sure there are the same number of plots and corridors
     # as there are ewl and scarp points. Difference in the number of points
     # implies different longshore resolutions. plotsShp and corridorsShp
     # need to be manually created for each different grid used, or else
     # the indicator module will not work properly.
-    print(len(ewlOverall))
-    print(len(corridors_df))
-    if len(ewlOverall) != len(corridors_df):
+    if len(ewlOverall) != len(corridors_gdf):
         raise ValueError("Corridors shapefile does not have the same number of rows used in the XBeach model.")
-
 
     # Construct time series to iterate through
     # Numpy timedelta64 objects are easier to deal with
@@ -134,30 +151,49 @@ def main(args=None):
         fname = "scarp_%shrs_points.shp" % tstep_hrs_str
         fPath = os.path.join(scarpDir,fname)
         # Be careful here - the "try" logic here could conceal bugs
-        # And just assign everything as being "Low"
+        # This could potentially just assign everything as being "Low" risk
         try:
             scarp_gdf = gpd.read_file(fPath)
-            scarp_gdf['bsd_dist'] = plots_df.geometry.apply(lambda g: scarp_gdf.distance(g).min())
+            # Merge the scarp_gdf with the plots_gdf
+            # This ensures the correct points are being compared with one another
+            scarp_gdf = scarp_gdf.merge(plots_gdf, how="inner", on="rowInd")
+            # Re-name geometry columns
+            # Regular "geometry" column contain the scarp locations
+            # "geometry_plots" contains locations of where the indicator is being
+            # measured from. Before, it was the locations of plots of land.
+            # In this version, it is from the dune toe. So in this version, 
+            # "geometry_plots" contains the dune toe geometries at every row in
+            # the XBeach grid.
+            scarp_gdf = scarp_gdf.rename(columns={"geometry_x":"geometry",
+                                                  "geometry_y":"geometry_plots"})
+            scarp_gdf = gpd.GeoDataFrame(scarp_gdf, geometry=scarp_gdf.geometry)
+            scarp_gdf['bsd_dist'] = scarp_gdf.geometry_plots.apply(lambda g: scarp_gdf.distance(g).min())
             scarp_gdf['BSD'] = postProcTools.compute_bsd(scarp_gdf['bsd_dist'])
+            # Remove the "geometry_plots" field so file can be exported
+            scarp_gdf = scarp_gdf.drop(columns='geometry_plots',axis=1)
+            scarp_gdf = scarp_gdf.set_crs(epsg=epsg)
         except:
             pass
-            #scarp_gdf["BSD"] = "Low"
+
         # Export these as points
         ofileName = "bsd_%shrs.shp" % tstep_hrs_str
         try:
             scarp_gdf.to_file(os.path.join(bsdDirPts,ofileName))
         except:
             pass
-
+    
     # Compute overall BSD indicator for the entire forecast
     try: # A scarp might not be detected
         # Compute distance between each building plot and the scarp line
-        scarpOverall['bsd_dist'] = plots_df.geometry.apply(lambda g: scarpOverall.distance(g).min())
+        scarpOverall= scarpOverall.merge(plots_gdf, how="inner", on="rowInd")
+        scarpOverall = scarpOverall.rename(columns={"geometry_x":"geometry",
+                                                  "geometry_y":"geometry_plots"})
+        scarpOverall = gpd.GeoDataFrame(scarpOverall, geometry=scarpOverall.geometry)
+        scarpOverall['bsd_dist'] = scarpOverall.geometry_plots.apply(lambda g: scarpOverall.distance(g).min())
         scarpOverall['BSD'] = postProcTools.compute_bsd(scarpOverall['bsd_dist'])
     except:
-        plots_df["BSD"] = "Low"
+        plots_gdf["BSD"] = "Low"
     scarpOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
-    
 
     ############################### Compute the safe corridor width indicator ###############################
     for t_step in tseries_hrs:
@@ -168,20 +204,13 @@ def main(args=None):
         fPath = os.path.join(gaugesDir,fname)
         ewl_gdf = gpd.read_file(fPath)
         # Compute distances between ewl and corridors at timestep
-        ewl_gdf['ewl_dist'] = corridors_df.geometry.apply(lambda g: ewl_gdf.distance(g).min())
+        ewl_gdf['ewl_dist'] = corridors_gdf.geometry.apply(lambda g: ewl_gdf.distance(g).min())
         ewl_gdf['SCW'] = postProcTools.compute_scw(ewlDistSeries=ewl_gdf['ewl_dist'])
         # export to a file
         ewl_gdf.to_file(os.path.join(scwDirPts,"scw_%shrs.shp" % (tstep_hrs_str)))
 
-        # OLD WAY WHERE INDICATORS ASSIGNED TO FIXED DUNE TOE POINTS RATHER THAN MOVING EWL POINTS
-        #corridors_df_copy = corridors_df.copy()
-        #corridors_df_copy['ewl_dist'] = ewl_gdf.geometry.apply(lambda g: corridors_df_copy.distance(g).min())
-        #corridors_df_copy['SCW'] = postProcTools.compute_scw(ewlDistSeries=corridors_df_copy['ewl_dist'])
-        # export to a file
-        #corridors_df_copy.to_file(os.path.join(scwDir,"scw_%shrs.shp" % (tstep_hrs_str)))
-
     # Compute the distance between each corridor section and the extreme water line
-    ewlOverall['ewl_dist'] = ewlOverall.geometry.apply(lambda g: corridors_df.distance(g).min())
+    ewlOverall['ewl_dist'] = ewlOverall.geometry.apply(lambda g: corridors_gdf.distance(g).min())
     ewlOverall['SCW'] = postProcTools.compute_scw(ewlOverall['ewl_dist'])
     ewlOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "safe-corridorOverall_pts.shp"))
 

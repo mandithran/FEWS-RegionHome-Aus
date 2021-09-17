@@ -11,7 +11,7 @@ import pickle
 import wget
 
 # For debugging:
-# C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev/python/retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev\python\retrieveNSS.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev
 
 
 def main(args=None):
@@ -75,13 +75,6 @@ def main(args=None):
         fileObj.write(fewsUtils.write2DiagFile(3,"If Python error exit code 1 is triggered, see exceptions.log file in Module directory."))
         fileObj.write("</Diag>")
 
-    #============== Purge any existing files from that directory ==============#
-    ncTargetDir = os.path.join(workDir,'ncFiles')
-    #substr = "IDZ00154_"
-    #for _file in os.listdir(ncTargetDir):
-    #    if re.search(substr,_file):
-    #        os.remove(os.path.join(ncTargetDir,_file))
-
 
     #============== Logic for forecast v hindcast ==============#
     # BOM doesn't store files indefinitely, so we grab them from our own local server
@@ -93,7 +86,7 @@ def main(args=None):
     elif fcst.mode == "hindcast":
         # Typical os.path.join() doesn't work here because of mixed up slashes
         drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-        serverLoc = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw")
+        serverLoc = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\corrected")
     
 
     #============== Fetch file from server  ==============#
@@ -102,9 +95,9 @@ def main(args=None):
     if not os.path.exists(downloadDir):
         os.makedirs(downloadDir)
     if fcst.mode == "forecast":
-        bomFile = wget.download(url, out=ncTargetDir)
+        bomFile = wget.download(url, out=downloadDir)
     elif fcst.mode == "hindcast":
-        shutil.copy(url,ncTargetDir)
+        shutil.copy(url,downloadDir)
 
     
     #============== Write out new pickle file again  ==============#

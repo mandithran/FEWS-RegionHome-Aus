@@ -2,17 +2,12 @@ import os
 import re
 import traceback
 from datetime import datetime
-import pandas as pd
 import shutil
-from xbfewsTools import fewsUtils
-from xbfewsTools import preProcWaves
-import wget
 import sys
-import numpy as np
-import pickle
+
 
 # Debugging:
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev 20200627_0500 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus
+# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev
 
 
 def main(args=None):
@@ -31,24 +26,21 @@ def main(args=None):
     serverLoc = "http://dapds00.nci.org.au/thredds/fileServer/rr6/waves/"
 
 
+    #============== Modules ==============#
+    import pandas as pd
+    import numpy as np
+    import pickle
+    from xbfewsTools import fewsUtils
+    from xbfewsTools import preProcWaves
+    import wget
+
+
     #============== Parse system time and find directory of current forecast ==============#
     systemTime = fewsUtils.parseFEWSTime(sysTimeStr)
     roundedTime = fewsUtils.round_hours(systemTime, 12)
     roundedTimeStr = roundedTime.strftime("%Y%m%d_%H%M")
     forecastDir = os.path.join(regionHome,"Forecasts",roundedTimeStr)
-    # Subtract twelve hours from this rounded time to give a proper spin-up period
-    #rt = pd.to_datetime(str(roundedTime))
-    #roundedTimeSpin = rt - np.timedelta64(12, "h") 
 
-    #============== Purge any existing files from that directory ==============#
-    # Make target directory if it doesn't exist
-    ncTargetDir = os.path.join(workDir,'ncFiles')
-    if not os.path.exists(ncTargetDir):
-        os.makedirs(ncTargetDir)
-    #substr = ".msh."
-    #for _file in os.listdir(ncTargetDir):
-    #    if re.search(substr,_file):
-    #        os.remove(os.path.join(ncTargetDir,_file))
 
     #============== Load FEWS forecast object ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
@@ -73,7 +65,7 @@ def main(args=None):
         elif fcst.mode == "hindcast":
             # Typical os.path.join() doesn't work here because of mixed up slashes
             drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-            serverLoc = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh")
+            serverLoc = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh\\%s" % code)
 
         #============== Fetch file from server  ==============#
         downloadDir = os.path.join(workDir,"ncFiles")
@@ -82,10 +74,10 @@ def main(args=None):
         if fcst.mode == "forecast":
             servDir = serverLoc + "%s/%s/" %(bomDate,bomTime)
             url = servDir + fname
-            bomFile = wget.download(url, out=ncTargetDir)
+            bomFile = wget.download(url, out=downloadDir)
         elif fcst.mode == "hindcast":
             url = os.path.join(serverLoc,fname)
-            shutil.copy(url,ncTargetDir)
+            shutil.copy(url,downloadDir)
 
 
     #============== Generate diagnostics file ==============#

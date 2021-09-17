@@ -3,8 +3,6 @@
 #============================================================================#
 
 
-#try:
-
 #============================== Modules ==============================#
 import os
 from datetime import datetime,timedelta
@@ -25,12 +23,12 @@ def main(args=None):
     initHotspotForecast_flag = True
     NSSDownload_flag = True
     WaveDownload_flag = True
-    PreProcessXBeach_flag = True
-    runXBeach_flag = False
-    PostProcessXBeach_flag = False
-    IndicatorsXBeach_flag = False
     PreProcessRegional_flag = True
-    WipeForecast_flag = False
+    PreProcessXBeach_flag = True
+    runXBeach_flag = True
+    PostProcessXBeach_flag = True
+    IndicatorsXBeach_flag = True
+    WipeForecast_flag = True
 
 
     #============================== Scripts that FEWS Runs ==============================#
@@ -141,6 +139,8 @@ def main(args=None):
             # Arguments are regionHomeDir, the system time, the region, and the working directory of
             # the python script being called
             # See InitRegionalAdapter.xml
+            hotspots_subset = hotspots_df[hotspots_df['Region']==region]
+            hotspotIDs = hotspots_subset['ID'].unique()
             if initRegionalForecast_flag:
                 print("**************** Initializing regional forecast for time: %s GMT ****************" % sysTime_dt)
                 workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
@@ -157,8 +157,6 @@ def main(args=None):
                 # basically mimics this
                 # Load hotspot locations for the respective state
                 if initHotspotForecast_flag:
-                    hotspots_subset = hotspots_df[hotspots_df['Region']==region]
-                    hotspotIDs = hotspots_subset['ID'].unique()
                     # Loop through hotspots
                     for hotspotName in hotspotIDs:
                         print("*********** Initializing hotspot forecast for %s site in %s... ***********" %(hotspotName,region))
@@ -233,7 +231,7 @@ def main(args=None):
                     xbeach_exe = os.path.join(workDir_runXBeach,"xbeach.exe")
                     try:
                         os.chdir(workDir_runXBeach)
-                        subprocess.check_output(xbeach_exe,shell=True,stderr=subprocess.STDOUT)
+                        #subprocess.check_output(xbeach_exe,shell=True,stderr=subprocess.STDOUT)
                         subprocess.run(xbeach_exe, check=True, shell=True)
                         os.chdir(regionHomeDir)
                     except subprocess.CalledProcessError as e:  # most generic exception you can catch
