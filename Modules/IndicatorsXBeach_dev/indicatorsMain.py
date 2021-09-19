@@ -8,7 +8,7 @@ import shutil
 
 # Debugging
 # Forecast:
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev/indicatorsMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200208_0000 Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev/indicatorsMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev
 
 
 def main(args=None):

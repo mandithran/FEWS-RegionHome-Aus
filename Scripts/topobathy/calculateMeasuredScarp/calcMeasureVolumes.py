@@ -5,7 +5,7 @@ from matplotlib.colors import BoundaryNorm
 from matplotlib.ticker import MaxNLocator
 
 # Load up each of these files
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy\\calculateMeasuredScarp"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy\\calculateMeasuredScarp"
 sgrd_post = os.path.join(workDir,'./2020-09-02_poststorm_s.csv')
 pgrd_post = os.path.join(workDir,'./2020-09-02_poststorm_p.csv')
 zgrd_post = os.path.join(workDir,'./2020-09-02_poststorm_z.csv')

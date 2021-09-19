@@ -15,7 +15,7 @@ from xbfewsTools import postProcTools
 epsg = int(28356)
 
 ################ Paths ################
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 # TODO: CHANGE DIRECTORY BACK
 xbWorkDir = os.path.join(regionHome, "Modules\\XBeach\\Narrabeen\\runs\\latest\\workDir")
 postProcessDir = os.path.join(xbWorkDir,"postProcess")

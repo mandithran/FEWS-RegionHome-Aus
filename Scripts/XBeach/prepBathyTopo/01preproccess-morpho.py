@@ -5,7 +5,7 @@ import pandas as pd
 
 
 #============== Paths / inputs ==============#
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 siteName = "Narrabeen"
 gridsDir = os.path.join(regionHome, "Data\\Grids\\%s\\xb-ready-files\\lowres-testing" % siteName)
 depDir = os.path.join(regionHome, "Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing" % siteName)

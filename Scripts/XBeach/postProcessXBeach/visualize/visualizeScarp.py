@@ -17,8 +17,8 @@ epsg = 28356
 
 ################ Paths ################
 
-regionHome = "\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus"
-xbWorkDir = "\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Modules\\XBeach\\%s\\runs\\latest\\workDir" % siteName
+regionHome = "\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus"
+xbWorkDir = "\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus\\Modules\\XBeach\\%s\\runs\\latest\\workDir" % siteName
 postProcessDir = os.path.join(xbWorkDir,"postProcess")
 scarpDir = os.path.join(postProcessDir,"scarp")
 gaugesDir = os.path.join(postProcessDir,"gauges\\lines")

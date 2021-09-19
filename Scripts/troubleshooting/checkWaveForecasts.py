@@ -9,7 +9,7 @@ pd.set_option('display.max_rows', 1000)
 
 # Paths
 wavesDir = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh"
-forecastDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Forecasts_firstrun\\20200203_0000\\NSW\\hotspot\\Narrabeen"
+forecastDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Forecasts_firstrun\\20200203_0000\\NSW\\hotspot\\Narrabeen"
 
 hotspotFcst = pickle.load(open(os.path.join(forecastDir,"forecast_hotspot.pkl"),"rb"))
 wavesDs = preProcWaves.loadAuswave(forecast=hotspotFcst, wavesDir=wavesDir)

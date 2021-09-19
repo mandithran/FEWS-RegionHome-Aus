@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 #============== Variables ==============#
-regionHomeDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus"
+regionHomeDir = "C:\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus"
 workDir = os.path.join(regionHomeDir,"Scripts\\XBeach\\prepBathyTopo")
 
 

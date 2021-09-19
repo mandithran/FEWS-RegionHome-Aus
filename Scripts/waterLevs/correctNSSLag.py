@@ -13,7 +13,7 @@ import matplotlib.dates as mdates
 #====================== Paths ======================#
 drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
 nssDir = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw")
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
 outDir = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\corrected")
 
 from numpy import savetxt

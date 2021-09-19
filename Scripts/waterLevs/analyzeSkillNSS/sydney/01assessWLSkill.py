@@ -22,11 +22,11 @@ datumCorrection = .925 # Observations are in ZFD, which needs to be converted to
 forecastInterval = 6 # hours
 leadtimes = [0,6,12,24,48,66] # in hours
 # Tide predictions In GMT
-ifile = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Tides\\Sydney\\processed\\SydneyTidesGMT.csv"
+ifile = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Tides\\Sydney\\processed\\SydneyTidesGMT.csv"
 timezoneUTC = pytz.utc
 
 ####################### Paths #######################
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\sydney"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\sydney"
 oDir = os.path.join(workDir,"ofiles")
 
 

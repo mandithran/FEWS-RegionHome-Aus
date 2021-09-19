@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
 outDir = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\corrected")
 
 fixPeriodStart = datetime(2019,9,13,0)

@@ -10,8 +10,8 @@ from datetime import datetime
 
 # ================= Paths ================= #
 siteName = 'Mandurah'
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\%s" % siteName
-waveDirectory = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\%s" % siteName
+waveDirectory = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
 stormPeriods = os.path.join(waveDirectory, "assessSkill\\%s\\ofiles\\" % siteName,
                             "observedStorms_%s_2020.csv" % siteName)
 # TODO: change back

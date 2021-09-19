@@ -12,7 +12,7 @@ globaltime = 84
 
 
 #################### Paths ####################
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 xbWorkDir = os.path.join(regionHome,"Modules\\XBeach\\%s\\runs\\latest\\workDir" % siteName)
 postProcessDir = os.path.join(xbWorkDir,"postProcess")
 gridsDir = os.path.join(postProcessDir,"grids")

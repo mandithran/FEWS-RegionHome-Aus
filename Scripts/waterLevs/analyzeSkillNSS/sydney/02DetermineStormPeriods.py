@@ -11,10 +11,10 @@ import xarray as xr
 # ================== Paths ================== #
 waveDirectory = "J:\\Coastal\\Data\\Wave"
 waveForecastDir = os.path.join(waveDirectory,"Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh")
-waveAnalysisDir = ("C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves")
+waveAnalysisDir = ("C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves")
 waveObs = os.path.join(waveAnalysisDir, "ifiles\\offshoreSydneyWaveObs.csv")
 waveOutDir = os.path.join(waveAnalysisDir,"ofiles")
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs"
 print(waveObs)
 oDir = os.path.join(workDir,'ofiles')
 

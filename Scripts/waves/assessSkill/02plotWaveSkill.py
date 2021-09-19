@@ -8,7 +8,7 @@ import numpy as np
 import scipy
 
 # ================= Paths ================= #
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
 stormPeriods = os.path.join(workDir, "ofiles\\observedStorms_Narrabeen_2020.csv")
 oDir = os.path.join(workDir,"ofiles")
 figDir = os.path.join(workDir,"figs")

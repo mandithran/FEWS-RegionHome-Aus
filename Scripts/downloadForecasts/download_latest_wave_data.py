@@ -7,7 +7,7 @@
 import os
 import datetime
 import traceback
-workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
+workDir = "C:\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
 print("Downloading waves...")
 
 logf = open(os.path.join(workDir,"exceptionsWaves.log"), "w")

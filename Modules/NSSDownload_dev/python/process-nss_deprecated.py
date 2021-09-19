@@ -11,7 +11,7 @@ import shutil
 import pickle
 
 # For debugging
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload/python/process-nss.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload hotspotLocations.csv C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20210627_0500
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload/python/process-nss.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload hotspotLocations.csv C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20210627_0500
 
 def main(args=None):
     """The main routine."""

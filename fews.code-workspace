@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
+		"python.pythonPath": "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
 		"workbench.colorCustomizations": {
 			"editorCursor.foreground": "#ffe4e1",
 			"terminalCursor.foreground": "#ffe4e1"
@@ -20,7 +20,7 @@
 					"${env:windir}\\Sysnative\\cmd.exe",
 					"${env:windir}\\System32\\cmd.exe"
 				],
-				"args": ["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
+				"args": ["/K", "C:\\Users\\mandiruns\\Anaconda3\\Scripts\\activate.bat C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
 				"icon": "terminal-cmd"
 			},
 			"Git Bash": {
@@ -30,8 +30,8 @@
 		"python.terminal.launchArgs": [
 			{
 				"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
-				"terminal.integrated.shellArgs.windows": ["/K", "C:\\Users\\z3531278\\Anaconda3\\Scripts\\activate.bat C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
-				"python.pythonPath": "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
+				"terminal.integrated.shellArgs.windows": ["/K", "C:\\Users\\mandiruns\\Anaconda3\\Scripts\\activate.bat C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv"],
+				"python.pythonPath": "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv\\python.exe",
 				"terminal.integrated.automationShell.windows": "",
 				"terminal.integrated.defaultProfile.windows": "Command Prompt"
 

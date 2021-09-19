@@ -3,8 +3,8 @@ import os
 import matplotlib.pyplot as plt
 
 # Paths
-dataPath = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\CoastSat\\NSW"
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\CoastSat"
+dataPath = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data\\CoastSat\\NSW"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\CoastSat"
 
 # Projections
 wgs84 = int(4326)

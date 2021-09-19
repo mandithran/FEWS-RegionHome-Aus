@@ -7,8 +7,8 @@ site = "Narrabeen"
 mode = "pre-storm"
 longshoreReso = '50m'
 
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy"
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 ifilePath = os.path.join("Data\\xbeach\\%s\\grd\\%s\\pre-storm\\%sAlongshore" % (site,storm,longshoreReso))
 xgrd = os.path.join(ifilePath,"x.grd")
 ygrd = os.path.join(ifilePath,"y.grd")

@@ -4,7 +4,7 @@ import pandas as pd
 import xarray as xr
 
 # Paths
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\TopoBathy\\Narrabeen\\prep"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data\\TopoBathy\\Narrabeen\\prep"
 
 # Column to begin "cropping"
 colIndex = 13

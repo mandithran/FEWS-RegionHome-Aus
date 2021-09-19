@@ -19,7 +19,7 @@ startTime = datetime(year=2020,month=2,day=1,hour=0)
 endTime = datetime(year=2020,month=2,day=29,hour=12)
 
 # These shapefiles are in UTM (EPSG:28356)
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 indicatorPath_t0 = os.path.join(regionHome, "Forecasts", time_t0_str, 
                             "NSW\\hotspot\\Narrabeen\\XBeach\\postProcess\\indicators")
 safeCorrPath_t0 = os.path.join(indicatorPath_t0,"safe-corridorOverall.shp")

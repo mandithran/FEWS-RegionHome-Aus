@@ -7,7 +7,7 @@ wgs84 = int(4326)
 utm = int(28356)
 
 # Paths
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 siteName = "Narrabeen"
 dataPath = os.path.join(regionHome,"Data")
 indicatorPath = os.path.join(dataPath, "Indicators\\Hotspot\\%s"  % siteName)

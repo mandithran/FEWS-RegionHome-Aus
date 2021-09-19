@@ -11,10 +11,7 @@ import pickle
 def main(args=None):
 
     # For debugging:
-    # Hindcast:
-    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 Narrabeen C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
-    # Forecast:
-    # python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus 20210620_0100 Narrabeen C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
+    # python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 Narrabeen C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
 
     ############ Arguments ############ 
     args = [a for a in sys.argv[1:] if not a.startswith("-")]

@@ -36,8 +36,8 @@ leadtimes = [0,6,12,24,48,72,96,120,144,162] # in hours
 # Tide predictions In UTC, as per Mike's email
 # Did a sanity check plot on observed water levels vs, predicted tides
 # Obs vs pred are in sync
-dataDir = 'C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\waterLevs\\Mandurah'
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\mandurah"
+dataDir = 'C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data\\waterLevs\\Mandurah'
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\mandurah"
 oDir = os.path.join(workDir,"ofiles")
 
 

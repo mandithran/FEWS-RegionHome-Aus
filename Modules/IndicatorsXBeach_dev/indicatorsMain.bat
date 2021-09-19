@@ -5,8 +5,8 @@ set TIME_0=%3
 set SITE_NAME=%4
 set WORK_DIR=%5
 
-set CONDAPATH=C:\\Users\\z3531278\\Anaconda3
-set ENVPATH=C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv
+set CONDAPATH=C:\\Users\\mandiruns\\Anaconda3
+set ENVPATH=C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\bin\\windows\\python\\bin\\conda-venv
 
 call %CONDAPATH%\Scripts\activate.bat %ENVPATH%
 "python" %PYTHON_SCRIPT% %REGION_HOME% %TIME_0% %SITE_NAME% %WORK_DIR%

@@ -9,7 +9,7 @@ from xbfewsTools import postProcTools
 
 ################ Paths ################
 
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 xbWorkDir = os.path.join(regionHome, "Modules\\XBeach\\Narrabeen\\runs\\latest\\workDir")
 ncOut = os.path.join(xbWorkDir, "xboutput.nc")
 postProcessDir = os.path.join(xbWorkDir,"postProcess")

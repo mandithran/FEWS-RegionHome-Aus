@@ -2,7 +2,7 @@ import os
 import xarray as xr
 import numpy as np
 
-regionHome = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
 runsDir = os.path.join(regionHome,"Modules\\XBeach\\Narrabeen\\runs\\")
 
 model1WorkDir = os.path.join(runsDir, "2021050300\\workDir")

@@ -12,12 +12,12 @@ import xarray as xr
 siteName = "Mandurah"
 waveDirectory = "J:\\Coastal\\Data\\Wave"
 waveForecastDir = os.path.join(waveDirectory,"Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh\\test\\PER")
-waveAnalysisDir = ("C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves\\assessSkill\\%s" % siteName)
-dataDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data"
+waveAnalysisDir = ("C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves\\assessSkill\\%s" % siteName)
+dataDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data"
 waveObs = os.path.join(dataDir, "Waves\\Mandurah\\MAN54_YEARLY_PROCESSED",
                        "MDW2020_Z.csv")
 waveOutDir = os.path.join(waveAnalysisDir,"ofiles")
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\mandurah"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\mandurah"
 oDir = os.path.join(workDir,'ofiles')
 
 

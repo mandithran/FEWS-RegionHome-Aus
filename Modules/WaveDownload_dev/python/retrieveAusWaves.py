@@ -7,7 +7,7 @@ import sys
 
 
 # Debugging:
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev
 
 
 def main(args=None):

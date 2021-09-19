@@ -12,9 +12,9 @@ import matplotlib.dates as mdates
 
 # ================= Paths ================= #
 siteName = 'Mandurah'
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\%s" % siteName
-waveDirectory = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
-waveData = os.path.join("C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Waves\\Mandurah\\MAN54_YEARLY_PROCESSED\\MDW2020_Z.csv")
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waterLevs\\analyzeSkillNSS\\%s" % siteName
+waveDirectory = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
+waveData = os.path.join("C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data\\Waves\\Mandurah\\MAN54_YEARLY_PROCESSED\\MDW2020_Z.csv")
 oDir = os.path.join(workDir,"ofiles")
 figDir = os.path.join(workDir,"figs")
 variate = 'set0'

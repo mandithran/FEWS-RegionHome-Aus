@@ -8,7 +8,7 @@ import shutil
 import pickle
 
 # Commands for debugging
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/z3531278/Documents/01_FEWS-RegionHome-Aus 20210620_0100 NSW C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/mandiruns/Documents/01_FEWS-RegionHome-Aus 20210620_0100 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
 
 def main(args=None):
 

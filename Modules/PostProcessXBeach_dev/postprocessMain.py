@@ -35,7 +35,7 @@ import traceback
 import shutil
 
 # For debugging. Enter the following line into a command line with the conda-venv environemnt activated.
-# python C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus 2020020800 Narrabeen C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 2020020800 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev
 
 def main(args=None):
 

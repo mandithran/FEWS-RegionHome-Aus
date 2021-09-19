@@ -29,7 +29,7 @@ forecastPeriodEnd = forecastPeriodStart + timedelta(days=366) # leap year!
 
 
 ####################### Paths #######################
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves"
 oDir = os.path.join(workDir,"ofiles")
 
 

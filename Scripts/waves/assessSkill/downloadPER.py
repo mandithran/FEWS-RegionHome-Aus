@@ -15,7 +15,7 @@ import wget
 #   spec - 
 
 drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts"
+workDir = "C:\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus\\Scripts"
 
 # TODO: run again for spectral
 # Starts from March 5th 2020

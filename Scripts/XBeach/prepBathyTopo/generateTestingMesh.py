@@ -5,7 +5,7 @@ import xarray as xr
 import numpy as np
 
 # Paths
-workDir = "C:\\Users\\z3531278\\Documents\\01_FEWS-RegionHome-Aus\\Data\\TopoBathy\\Narrabeen\\prep"
+workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data\\TopoBathy\\Narrabeen\\prep"
 
 # Load XBeach mesh as geodataframe - netCDF format
 xbf = os.path.join(workDir,"ofiles","xbNarra_zb_2021.nc")
@@ -16,7 +16,7 @@ nrowXB = xbds.nrows
 # Select every 4 rows
 rowArr = np.arange(0,nrowXB,4)
 
-# Select every 8 columns
+# Select every 4 columns
 colArr = np.arange(0,ncolXB,4)
 
 # Index ds (select)
