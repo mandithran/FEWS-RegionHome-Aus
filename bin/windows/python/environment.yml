@@ -6,10 +6,13 @@
 #   python setup.py install
 name: conda-venv
 channels:
-#  - defaults: this created issues with finding dynamic libraries
+#  - defaults: this setting created issues with finding dynamic libraries
   - conda-forge
 dependencies:
   - python=3.8
+  - pip:
+    - wget
+    - pyepsg
   - setuptools
   - xarray
   - geopandas
@@ -26,9 +29,6 @@ dependencies:
   - xlrd
   - urllib3
   - scipy=1.6.2
-  - pip:
-    - wget
-    - pyepsg
 prefix: .\bin\conda-venv
 
 # If numpy gives you errors, activate the environment 
@@ -44,3 +44,7 @@ prefix: .\bin\conda-venv
 
 # If scipy gives you issues, try un-installing and re-installing with pip:
 # pip uninstall scipy && pip install scipy
+
+# Complaints about files not found:
+# Update conda in administrator mode:
+# conda update -n base -c defaults conda
