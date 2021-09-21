@@ -9,7 +9,7 @@ longshoreReso = '50m'
 
 workDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\topobathy"
 regionHome = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus"
-ifilePath = os.path.join("Data\\xbeach\\%s\\grd\\%s\\pre-storm\\%sAlongshore" % (site,storm,longshoreReso))
+ifilePath = os.path.join(regionHome, "Data\\xbeach\\%s\\grd\\%s\\pre-storm\\%sAlongshore" % (site,storm,longshoreReso))
 xgrd = os.path.join(ifilePath,"x.grd")
 ygrd = os.path.join(ifilePath,"y.grd")
 zgrd = os.path.join(ifilePath,"z.grd")
@@ -17,6 +17,7 @@ zgrd = os.path.join(ifilePath,"z.grd")
 def flattenGrd(arr2d_grdfile):
     "Takes a grd file, formatted for XBeach."
     arr2d = np.loadtxt(arr2d_grdfile,delimiter='\t')
+    print(arr2d.shape)
     arr1d = arr2d.flatten()
     return arr1d
 

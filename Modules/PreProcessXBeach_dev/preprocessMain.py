@@ -24,7 +24,6 @@ def main(args=None):
     #============== Modules ==============#
     import pandas as pd
     from xbfewsTools import fewsUtils
-    from xbfewsTools import xBeachModel
     from xbfewsTools import preProcWatLevs
     from xbfewsTools import preProcWaves
     from datetime import datetime, timezone, timedelta

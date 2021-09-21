@@ -1,6 +1,0 @@
-local variable 'hotspotIDs' referenced before assignmentTraceback (most recent call last):
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 281, in <module>
-    main()
-  File "C:\Users\z3531278\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 211, in main
-    for hotspotName in hotspotIDs:
-UnboundLocalError: local variable 'hotspotIDs' referenced before assignment

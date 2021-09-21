@@ -21,7 +21,7 @@ bsdFlag = True
 
 ################ Paths ################
 
-regionHome = "\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus"
+regionHome = "\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus"
 forecastDir = os.path.join(regionHome, "Forecasts\\20200208_0000\\NSW\\hotspot\\Narrabeen")
 workDir = os.path.join(regionHome,"Scripts\\visualize\\Animations\\Hotspot\\Narrabeen")
 xbWorkDir = os.path.join(forecastDir,"XBeach")

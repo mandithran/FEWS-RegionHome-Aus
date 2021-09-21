@@ -78,7 +78,7 @@ def main(args=None):
         try:
             arguments = " ".join(args)
             command = "python %s %s" % (script, arguments)
-            subprocess.check_output(command,shell=True,stderr=subprocess.STDOUT)
+            #subprocess.check_output(command,shell=True,stderr=subprocess.STDOUT)
             subprocess.run(command, check=True, shell=True)
             #os.system('python %s %s %s %s' % (script,systemTime,region,workDir_initializeForecastPy))
         except subprocess.CalledProcessError as e:  # most generic exception you can catch
@@ -125,8 +125,8 @@ def main(args=None):
             # Arguments are regionHomeDir, the system time, the region, and the working directory of
             # the python script being called
             # See InitForecastAdapter.xml
+            sysTime_dt = datetime.strptime(systemTime, '%Y%m%d_%H%M')
             if initFEWSForecast_flag:
-                sysTime_dt = datetime.strptime(systemTime, '%Y%m%d_%H%M')
                 print("********************** Initializing the forecast for time: %s GMT **********************" % sysTime_dt)
                 workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
                 initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
