@@ -6,6 +6,8 @@
 #============================== Modules ==============================#
 import os
 from datetime import datetime,timedelta
+import numpy as np
+import pandas as pd
 from shutil import copyfile
 import zipfile
 import sys
@@ -23,10 +25,10 @@ def main(args=None):
     WaveDownload_flag = True
     PreProcessRegional_flag = True
     PreProcessXBeach_flag = True
-    runXBeach_flag = True
-    PostProcessXBeach_flag = True
-    IndicatorsXBeach_flag = True
-    WipeForecast_flag = True
+    runXBeach_flag = False
+    PostProcessXBeach_flag = False
+    IndicatorsXBeach_flag = False
+    WipeForecast_flag = False
 
 
     #============================== Scripts that FEWS Runs ==============================#
@@ -41,11 +43,6 @@ def main(args=None):
     startSystemTime = str(args[2])
     endSystemDate = str(args[3])
     endSystemTime = str(args[4])
-
-
-    #============================== Modules ==============================#
-    import numpy as np
-    import pandas as pd
 
     #============================== Paths ==============================#
     workDir = os.path.join(regionHomeDir,"Scripts\\runForecast")
@@ -130,7 +127,7 @@ def main(args=None):
             # See InitForecastAdapter.xml
             sysTime_dt = datetime.strptime(systemTime, '%Y%m%d_%H%M')
             if initFEWSForecast_flag:
-                print("**********************Running initialization module for time: %s GMT **********************" % sysTime_dt)
+                print("********************** Initializing the forecast for time: %s GMT **********************" % sysTime_dt)
                 workDir_initializeForecastPy = os.path.join(moduleDir,"initFEWSForecast")
                 initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
                 arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
@@ -175,7 +172,7 @@ def main(args=None):
             # This is contained within the WF_ImportAusSurge.xml workflow, and basically
             # does what the RetrieveNSSAdapter.xml FEWS Module adapter does
             if NSSDownload_flag:
-                print("*********Running NSSDownload module for time: %s GMT *********")
+                print("Retrieving BOM National Storm Surge forecasts...")
                 workDir_RetrieveNSS = os.path.join(moduleDir,"NSSDownload")
                 retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
                 arguments = [regionHomeDir, systemTime, workDir_RetrieveNSS]
@@ -187,7 +184,7 @@ def main(args=None):
             # This is contained within the WF_ImportAusWaves.xml workflow, and basically
             # does what the RetrieveAusWavesAdapter.xml FEWS Module adapter does
             if WaveDownload_flag:
-                print("*********Running WaveDownload module for time: %s GMT *********")
+                print("Retrieving BOM Wave Forecast...")
                 workDir_RetrieveAusWaves = os.path.join(moduleDir,"WaveDownload")
                 retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
                 arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves]
@@ -202,7 +199,7 @@ def main(args=None):
             # the python script being called
             # See PreProcessRegionalAdapter.xml
             if PreProcessRegional_flag:
-                print("*********Running PreProcessRegional module for time: %s GMT *********" % sysTime_dt)
+                print("**************** Pre-processing regional forecast for time: %s GMT ****************" % sysTime_dt)
                 workDir_preProcessRegionalPy = os.path.join(moduleDir,"PreProcessRegional")
                 preProcessRegionalPy = os.path.join(workDir_preProcessRegionalPy,"preprocessMainRegional.py")
                 arguments = [regionHomeDir,systemTime,region,workDir_preProcessRegionalPy]
@@ -216,7 +213,7 @@ def main(args=None):
                 # This is contained within the WF_PreProcessXBeach.xml workflow, and basically
                 # does what the PreProcessXBeachAdapter.xml FEWS Module adapter does
                 if PreProcessXBeach_flag:
-                    print("*********Running PreProcessXBeach module for time: %s GMT *********")
+                    print("Pre-processing XBeach Run...")
                     workDir_PreProcessXBeach = os.path.join(moduleDir,"PreProcessXBeach")
                     preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_PreProcessXBeach]
@@ -226,7 +223,7 @@ def main(args=None):
                 # =============================== Run XBeach ===============================#
                 # Mimics the XBeachAdapter.xml module in FEWS
                 if runXBeach_flag:
-                    print("*********Running PreProcessXBeach module for time: %s GMT *********")
+                    print("Running XBeach...")
                     #Reforamt system time string to get the path
                     systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
                     workDir_runXBeachName = "%sSystemTime-%s" % (systemTime_str,hotspotName)
@@ -246,7 +243,7 @@ def main(args=None):
                 # =============================== Post-process XBeach ===============================#
                 # Mimics the PostProcessXbeachAdapter.xml module in FEWS
                 if PostProcessXBeach_flag:
-                    print("*********Running PostProcessXBeach module for time: %s GMT *********")
+                    print("Post-processing XBeach run...")
                     workDir_PostProcessXBeach = os.path.join(moduleDir,"PostProcessXBeach")
                     postProcessXBeachPy = os.path.join(workDir_PostProcessXBeach,"postprocessMain.py")
                     systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
@@ -257,7 +254,7 @@ def main(args=None):
                 # =============================== Storm Impact Indicators XBeach ===============================#
                 # Mimics the IndicatorsXbeachAdapter.xml module in FEWS
                 if IndicatorsXBeach_flag:
-                    print("*********Running IndicatorsXBeach module for time: %s GMT *********")
+                    print("Computing Storm Impact Indicators from XBeach run...")
                     workDir_IndicatorsXBeach = os.path.join(moduleDir,"IndicatorsXBeach")
                     indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_IndicatorsXBeach]
@@ -267,7 +264,7 @@ def main(args=None):
                 # =============================== Wipe Extra Files from Forecast for Space ===============================#
                 # Mimics the WipeForecastAdapter.xml module in FEWS
                 if WipeForecast_flag:
-                    print("*********Running WipeForecast module for time: %s GMT *********")
+                    print("Wiping files from forecast...")
                     workDir_WipeForecast = os.path.join(moduleDir,"WipeForecast")
                     wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_WipeForecast]
