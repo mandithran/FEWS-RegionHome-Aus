@@ -19,14 +19,14 @@ def main(args=None):
     initFEWSForecast_flag = True
     initRegionalForecast_flag = True
     initHotspotForecast_flag = True
-    NSSDownload_flag = False
+    NSSDownload_flag = True
     WaveDownload_flag = True
-    PreProcessRegional_flag = False
-    PreProcessXBeach_flag = False
-    runXBeach_flag = False
-    PostProcessXBeach_flag = False
-    IndicatorsXBeach_flag = False
-    WipeForecast_flag = False
+    PreProcessRegional_flag = True
+    PreProcessXBeach_flag = True
+    runXBeach_flag = True
+    PostProcessXBeach_flag = True
+    IndicatorsXBeach_flag = True
+    WipeForecast_flag = True
 
 
     #============================== Scripts that FEWS Runs ==============================#
