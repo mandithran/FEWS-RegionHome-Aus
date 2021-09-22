@@ -38,6 +38,9 @@
 					<argument>%TIME0%</argument>
 					<!-- Work directory -->
 					<argument>%WORK_DIR%</argument>
+					<!-- ##### The following final argument is the folder location of the forecasts ##### -->
+					<!-- WRL1 Loccation -->
+					<argument>//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

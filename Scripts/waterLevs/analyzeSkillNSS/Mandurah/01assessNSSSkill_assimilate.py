@@ -109,7 +109,7 @@ df.to_csv(os.path.join(oDir,"WL-NTR-obs_%s_assimilate.csv" % siteName))
 # Note there was a bug in the NSS from at least before July 10, 2020
 # This caused a time lag of the surge signal by 48 hrs
 # Paths
-wlDir = "J:\\Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\corrected"
+wlDir = "J:\\Coastal\\Data\\Tide\\WL_Forecast\\BOM_Storm_Surge\\raw\\corrected"
 # Load list of files - NSS Forecast
 filesList = []
 # We only want the netcdf files

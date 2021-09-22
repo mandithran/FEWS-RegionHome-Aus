@@ -36,7 +36,7 @@ try:
     #                                   Paths                                    #
     #============================================================================#
     drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-    targetDir = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\corrected")
+    targetDir = os.path.join(drive,"Coastal\\Data\\Tide\\WL_Forecast\\BOM_Storm_Surge\\raw\\corrected")
 
     #============================================================================#
     # Get today's date, check when the last time that the data was successfully

@@ -33,7 +33,7 @@ forecastTypes = {'Spectral':'spec'}
 # TODO: iterate through and generate the necessary paths based on datetime
 for key in forecastTypes:
     for location in locations:
-        targetDir = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\%s\\test\\%s" % (key,location))
+        targetDir = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM_products\\BOM_nearshore_wave_transformation_tool\\raw\\%s\\test\\%s" % (key,location))
         for t in times:
             dtstr = pd.to_datetime(str(t))
             datestr = dtstr.strftime("%Y%m%d")

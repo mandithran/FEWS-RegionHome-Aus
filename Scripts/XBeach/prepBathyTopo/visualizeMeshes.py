@@ -18,7 +18,7 @@ workDir = os.path.join(regionHomeDir,"Scripts\\XBeach\\prepBathyTopo")
 
 #============== Paths ==============#
 #meshFile = os.path.join(workDir, "ncFiles", "SYD.msh.20210220T1200Z.nc")
-meshFile = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh\\test\\PER\\PER.msh.20200305T0000Z.nc"
+meshFile = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM_products\\BOM_nearshore_wave_transformation_tool\\raw\\Mesh\\test\\PER\\PER.msh.20200305T0000Z.nc"
 specFile = os.path.join(workDir, "ncFiles", "SYD.spec.20210220T1200Z.nc")
 xBeachNC = os.path.join(regionHomeDir,"Data\\TopoBathy\\Narrabeen\\prep\\ifiles", "xboutput.nc")
 oDir =  os.path.join(workDir,"ofiles")

@@ -19,6 +19,7 @@ def main(args=None):
     regionHome = str(args[0])
     sysTimeStr = str(args[1])
     workDir = str(args[2])
+    forecastLocation = str(args[3])
     
     #============== Paths ==============#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
@@ -64,8 +65,7 @@ def main(args=None):
         # Otherwise grab it from the WRL J: drive
         elif fcst.mode == "hindcast":
             # Typical os.path.join() doesn't work here because of mixed up slashes
-            drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-            serverLoc = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh\\%s" % code)
+            serverLoc = forecastLocation +"/%s" % code
 
         #============== Fetch file from server  ==============#
         downloadDir = os.path.join(workDir,"ncFiles")
@@ -76,7 +76,8 @@ def main(args=None):
             url = servDir + fname
             bomFile = wget.download(url, out=downloadDir)
         elif fcst.mode == "hindcast":
-            url = os.path.join(serverLoc,fname)
+            # Typical os.path.join() doesn't work here because of mixed up slashes
+            url = serverLoc + "/%s" % fname
             shutil.copy(url,downloadDir)
 
 

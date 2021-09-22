@@ -1,17 +1,17 @@
-command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload\python\retrieveNSS.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200101_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload' return with error (code 1): NoneTraceback (most recent call last):
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_test.py", line 82, in runModule
+command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload\python\retrieveAusWaves.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200201_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload //ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh' return with error (code 1): NoneTraceback (most recent call last):
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 85, in runModule
     subprocess.run(command, check=True, shell=True)
   File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\subprocess.py", line 516, in run
     raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload\python\retrieveNSS.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200101_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload' returned non-zero exit status 1.
+subprocess.CalledProcessError: Command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload\python\retrieveAusWaves.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200201_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload //ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh' returned non-zero exit status 1.
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_test.py", line 281, in <module>
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 290, in <module>
     main()
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_test.py", line 179, in main
-    runModule(script=retrieveNSSPy,args=arguments)
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_test.py", line 87, in runModule
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 200, in main
+    runModule(script=retrieveAusWavesPy,args=arguments)
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 90, in runModule
     raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-RuntimeError: command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload\python\retrieveNSS.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200101_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload' return with error (code 1): None
+RuntimeError: command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload\python\retrieveAusWaves.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200201_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload //ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh' return with error (code 1): None

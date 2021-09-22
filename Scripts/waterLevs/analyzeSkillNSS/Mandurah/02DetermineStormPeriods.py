@@ -11,7 +11,7 @@ import xarray as xr
 # ================== Paths ================== #
 siteName = "Mandurah"
 waveDirectory = "J:\\Coastal\\Data\\Wave"
-waveForecastDir = os.path.join(waveDirectory,"Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh\\test\\PER")
+waveForecastDir = os.path.join(waveDirectory,"Forecast\\BOM_products\\BOM_nearshore_wave_transformation_tool\\raw\\Mesh\\test\\PER")
 waveAnalysisDir = ("C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\waves\\assessSkill\\%s" % siteName)
 dataDir = "C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Data"
 waveObs = os.path.join(dataDir, "Waves\\Mandurah\\MAN54_YEARLY_PROCESSED",

@@ -34,6 +34,11 @@
 					<argument>%REGION_HOME%</argument>
 					<argument>%TIME0%</argument>
 					<argument>%WORK_DIR%</argument>
+					<!-- ##### The following final argument is the folder location of the forecasts ##### -->
+					<!-- Location if downloading from WRL1-->
+					<!--argument>//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Tide/WL_Forecast/BOM_Storm_Surge/raw/corrected</argument-->
+					<!-- Loation if downloading from local folder -->
+					<argument>%REGION_HOME%/ExternalForecasts/BOM/surge</argument>
 				</arguments>
 				<timeOut>7200000</timeOut>
 				<ignoreDiagnostics>false</ignoreDiagnostics>

@@ -1,0 +1,10 @@
+[Errno 2] No such file or directory: '//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh/SYD/SYD.msh.20200201T0000Z.nc'Traceback (most recent call last):
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload\python\retrieveAusWaves.py", line 106, in <module>
+    main()
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload\python\retrieveAusWaves.py", line 81, in main
+    shutil.copy(url,downloadDir)
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\shutil.py", line 418, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc, open(dst, 'wb') as fdst:
+FileNotFoundError: [Errno 2] No such file or directory: '//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh/SYD/SYD.msh.20200201T0000Z.nc'

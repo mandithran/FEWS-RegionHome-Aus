@@ -63,7 +63,7 @@ dfw_obs.columns = ['hs_obs','tp_obs','dir_obs']
 
 
 ####################### Auswave #######################
-waveDirectory = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\Mesh"
+waveDirectory = "J:\\Coastal\\Data\\Wave\\Forecast\\BOM_products\\BOM_nearshore_wave_transformation_tool\\raw\\Mesh"
 # Load list of files - NSS Forecast
 filesList = []
 # We only want the netcdf files

@@ -27,6 +27,8 @@ def main(args=None):
     sysTimeStr = str(args[1])
     # Third argument is the current working directory
     workDir = str(args[2])
+    # Fourth argument is the folder location
+    forecastLocation = str(args[3])
     
 
 
@@ -81,12 +83,9 @@ def main(args=None):
     # If in forecast mode, grab from BOM server
     if fcst.mode == "forecast":
         serverLoc = serverLoc
-        url = os.path.join(serverLoc,fname)
     # Otherwise grab it from the WRL J: drive
     elif fcst.mode == "hindcast":
-        # Typical os.path.join() doesn't work here because of mixed up slashes
-        drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
-        serverLoc = os.path.join(drive,"Coastal\\Data\\Tide\\WL Forecast\\BOM Storm Surge\\raw\\corrected")
+        serverLoc = forecastLocation
     
 
     #============== Fetch file from server  ==============#
