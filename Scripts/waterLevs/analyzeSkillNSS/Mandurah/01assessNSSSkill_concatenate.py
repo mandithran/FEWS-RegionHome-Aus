@@ -153,7 +153,7 @@ for fi in df_files['fileName']:
         concatFiles = None
         concatFiles = df_files.loc[concatStartFileDatetime:concatEndFileDatetime]
         deltat_nss = ds.time.values[1]-ds.time.values[0]
-        # TODO: load each as a ds, select appropriate time frame, point, and variables (see above); append to ds
+        # load each as a ds, select appropriate time frame, point, and variables (see above); append to ds
         for fiConcat in concatFiles['fileName']:
             dsConcat = xr.open_dataset(os.path.join(wlDir,fiConcat))
             dateTimeConcat = parseTimeNSS(string=fiConcat)
@@ -169,7 +169,6 @@ for fi in df_files['fileName']:
             dsConcat = dsConcat.sel(time=slice(startConcat,endConcat))
             # Concatenate this dataset with the main dataset
             ds = xr.concat([ds,dsConcat],"time")
-                # Append these vars to df
         df_file = ds.to_dataframe()
         df_file = df_file.drop(["lat","lon"],axis=1)
         # Make dataset timezone aware
@@ -214,7 +213,6 @@ for fi in df_files['fileName']:
         print("File processed")
         counter += 1
     except:
-        # TODO: change back to "pass"
         pass
 
 # Merge NSS forecast with non-tidal residual observations

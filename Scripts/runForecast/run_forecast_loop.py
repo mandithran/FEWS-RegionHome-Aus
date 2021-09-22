@@ -1,5 +1,9 @@
 #============================================================================#
-
+# The main script used to conduct a series of forecasts. Basically acts like
+# FEWS in headless mode; it calls each of the modules that FEWS does.
+# This script should mainly be used to run hindcasts in succession. 
+# It also provides a decent overview of what FEWS and python are actually doing
+# under the hood.
 #============================================================================#
 
 
@@ -32,10 +36,10 @@ def main(args=None):
     #============================== Scripts that FEWS Runs ==============================#
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
-    #============== Parse arguments from FEWS ==============#
-    # Path to Region Home, defined in global properties file
+    #============== Parse arguments from run_forecast_loop.bat file ==============#
+    # Path to Region Home, defined in global properties file in main FEWS directory
     regionHomeDir = str(args[0])
-    # Start time for the forecasts, format should be: "YYYY-MM-DD HH:MM"
+    # Start/end date/time for the hindcast times you want to loop through, format should be: "YYYY-MM-DD HH:MM"
     # Assumes UTC
     startSystemDate = str(args[1])
     startSystemTime = str(args[2])
@@ -48,42 +52,59 @@ def main(args=None):
     import pandas as pd
 
     #============================== Paths ==============================#
+    # Current working directory
     workDir = os.path.join(regionHomeDir,"Scripts\\runForecast")
+    # These are the paths/files where location sets are defined for FEWS
     mapLayersDir = os.path.join(regionHomeDir,"Config\\MapLayerFiles")
     ausStates = os.path.join(mapLayersDir,"ausStates.csv")
     hotspots = os.path.join(mapLayersDir,"hotspotLocations.csv")
+    # Directory where FEWS external modules are exported to from ModuleDataSetFiles
     moduleDir = os.path.join(regionHomeDir,"Modules")
+    # ModuleDataSetFiles, where scripts for each of the modules (one module per zip file)
+    # Are unzipped when the module is called in FEWS. This scripts mimics this unzipping
+    # and execution of the external module.
     moduleDataSetDir = os.path.join(regionHomeDir,"Config\\ModuleDataSetFiles")
+    # Any python-related errors dumped here
     logf = open(os.path.join(workDir,"exceptions_forecastLoop.log"), "w")
 
 
     #============================== Variables ==============================#
-    # Times. Assumes UTC.
+    # Format hindcast times to loop through. Assumes UTC.
     startSystemTime = str(startSystemDate+' '+startSystemTime)
     endSystemTime = str(endSystemDate+' '+endSystemTime)
     forecastInt = timedelta(hours=12)
 
+
     #============================== Local functions ==============================#
     def unzipModule(moduleDataSet=None):
+
+        # In order to run an external module, FEWS has to unzip it from the ModuleDataSetFiles
+        # directory. This function mimics that process
+
         # Copy zipped module dataset to Module directory
         zipName = "%s.zip" % moduleDataSet
         srcPath = os.path.join(moduleDataSetDir,zipName)
         destPath = os.path.join(moduleDir,zipName)
         copyfile(srcPath, destPath)
-        # Unzip file in its current location (Modules directory in Region Home)
+
+        # Unzip file in its current location (Modules directory in regionHome, designated above)
         with zipfile.ZipFile(destPath, 'r') as zip_ref:
             zip_ref.extractall(moduleDir)
-        # Remove the zip file
+
+        # Remove the original .zip file once unzipped
         os.remove(destPath)
 
 
     def runModule(script=None, args=None):
+        # Mimics the way FEWS runs external modules
+        # Throws an error if there are any errors raised in relevant
+        # python scripts
         try:
+            # Each external FEWS module takes on its own individual arguments
             arguments = " ".join(args)
             command = "python %s %s" % (script, arguments)
             #subprocess.check_output(command,shell=True,stderr=subprocess.STDOUT)
             subprocess.run(command, check=True, shell=True)
-            #os.system('python %s %s %s %s' % (script,systemTime,region,workDir_initializeForecastPy))
         except subprocess.CalledProcessError as e:  # most generic exception you can catch
             logf.write("Failed. {0}\n".format(str(e)))
             logf.write('Recorded at %s.\n' % (datetime.now()))
@@ -91,6 +112,7 @@ def main(args=None):
 
 
     #============================== Load location sets ==============================#
+    # Mimics what FEWS does
     ausStates_df = pd.read_csv(ausStates)
     regions = ausStates_df['ID'].unique()
     hotspots_df = pd.read_csv(hotspots)
@@ -113,12 +135,13 @@ def main(args=None):
     startSystemTime = datetime.strptime(startSystemTime, '%Y-%m-%d %H:%M')
     endSystemTime = datetime.strptime(endSystemTime, '%Y-%m-%d %H:%M')
     forecastTimes = np.arange(startSystemTime,endSystemTime+forecastInt,forecastInt)
-    # Format these into strings that FEWS sent to the python scripts
+    # Format these into strings that FEWS sends to the python scripts
     forecastTimes_str = [pd.to_datetime(str(date_obj)) for date_obj in forecastTimes]
     forecastTimes_str = [date_obj.strftime('%Y%m%d_%H%M') for date_obj in forecastTimes_str]
 
-    # Loop through times
+    # Loop through hindcast times
     for systemTime in forecastTimes_str:
+        # Loop through regions (specified in ausStates.csv location set file, regions are Australian states)
         for region in regions:
 
             # ================================ Initialize Forecast Module ================================#
@@ -171,6 +194,7 @@ def main(args=None):
 
 
 
+
             # ============= Retrieve National Storm Surge System Forecasts =============#
             # This is contained within the WF_ImportAusSurge.xml workflow, and basically
             # does what the RetrieveNSSAdapter.xml FEWS Module adapter does
@@ -216,6 +240,7 @@ def main(args=None):
                 arguments = [regionHomeDir,systemTime,region,workDir_preProcessRegionalPy]
                 runModule(script=preProcessRegionalPy,args=arguments)
             
+
 
 
             # Loop through hotspots
@@ -280,9 +305,6 @@ def main(args=None):
                     wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_WipeForecast]
                     runModule(script=wipeForecastPy,args=arguments)
-
-
-                # =========================== TODO: write information to log file ===========================#
 
 
 

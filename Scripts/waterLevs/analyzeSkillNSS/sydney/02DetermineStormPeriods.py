@@ -81,7 +81,6 @@ for fi in df_files['fileName']:
     # Keep all points in time series where significant wave height
     # is greater than or equal to 3 m 
     df = df[df['hs']>=3.]
-    # TODO: set storm equal to true
     df['storm'] = True
     df_storms = df_storms.append(df)
     counter += 1
