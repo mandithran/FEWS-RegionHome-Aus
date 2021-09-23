@@ -7,18 +7,16 @@ rem Location if grabbing files from WRL1, keep the forward slashes or else it do
 rem set surgeForecastLoc = "//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Tide/WL_Forecast/BOM_Storm_Surge/raw/corrected"
 rem # Location if grabbing file from a local folder
 set surgeForecastLoc=%regionHome%/ExternalForecasts/BOM/surge
-echo %surgeForecastLoc%
 
 rem Location if grabbing files from WRL1, keep the forward slashes or else it doesn't work
 rem set waveForecastLoc = "//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh"
 rem Location if grabbing file from a local folder
 set waveForecastLoc=%regionHome%/ExternalForecasts/BOM/waves
-echo %waveForecastLoc%
 
 rem Format: YYYY-MM-DD
 set systemStartDate=2020-01-01 
 rem Format: HH:MM
-set systemStartTime=00:00
+set systemStartTime=12:00
 rem Format: YYYY-MM-DD
 set systemEndDate=2020-02-11
 rem Format: HH:MM
