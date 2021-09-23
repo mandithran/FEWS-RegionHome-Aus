@@ -17,7 +17,6 @@ import wget
 drive = "\\\\ad.unsw.edu.au\\OneUNSW\\ENG\\WRL\\WRL1"
 workDir = "C:\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus\\Scripts"
 
-# TODO: run again for spectral
 # Starts from March 5th 2020
 startTime = datetime.datetime(year=2021,month=3,day=4,tzinfo=pytz.utc)
 endTime = datetime.datetime.now()
@@ -30,7 +29,6 @@ times = np.arange(startTime,endTime-timedelta(hours=12),timedelta(hours=12))
 locations = ['PER']
 forecastTypes = {'Mesh':'msh', 'Spectral':'spec'}
 forecastTypes = {'Spectral':'spec'}
-# TODO: iterate through and generate the necessary paths based on datetime
 for key in forecastTypes:
     for location in locations:
         targetDir = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM_products\\BOM_nearshore_wave_transformation_tool\\raw\\%s\\test\\%s" % (key,location))

@@ -31,7 +31,6 @@ safeCorrPath_t0 = os.path.join(indicatorPath_t0,"safe-corridorOverall.shp")
 sc_gdf = gpd.read_file(safeCorrPath_t0)
 newColName2 = "%s" % time_t0
 sc_gdf[newColName2] = sc_gdf['SCW']
-# TODO: bring ID column back when IDs are assigned
 sc_gdf = sc_gdf.drop(columns=['SCW','ewl_dist'],axis=1)
 
 
@@ -55,7 +54,6 @@ for time in timeSeries:
     safeCorrPath = os.path.join(indicatorPath,"safe-corridorOverall.shp")
     step_gdf = gpd.read_file(safeCorrPath)
     step_gdf = step_gdf.rename(columns={"SCW":"%s" % time_pd})
-    #TODO: Bring ID and ewl_dist columns back when ID is assigned
     step_gdf = step_gdf.drop(columns=["corr_id","ewl_dist",
                                       "centerxUTM","centeryUTM"],axis=1)
     sc_gdf = sc_gdf.merge(step_gdf,how='left',on=['geometry'],right_index=False)
