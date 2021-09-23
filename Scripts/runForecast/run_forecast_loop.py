@@ -19,7 +19,8 @@ import subprocess
 
 def main(args=None):
 
-    # Flags
+    # Module Flags
+    # Set as True if you want to run it, set as False if you don't
     initFEWSForecast_flag = True
     initRegionalForecast_flag = True
     initHotspotForecast_flag = True

@@ -307,30 +307,6 @@ def main(args=None):
     else:
         # This should happen when morstop_ = None, i.e. when there are no storms found
         hotspotFcst.morstop = runTime_sec
-    # The old way of checking for storm conditions - using the model forcing    
-    """hs_ds = wavesDs[['hs']]
-    # If we find values that are >= 3 m, just set the minIndex to be the last index
-    # So there is something to compare to
-    minIndex = len(hs_ds.time.values)
-    for index in np.arange(0,hs_ds.sizes['node']):
-        hvals = hs_ds.hs[:,index].values
-        boolArr = np.greater_equal(hvals,3.)
-        idx_values = np.where(boolArr==True)
-        if np.any(boolArr):
-            minTest = np.amin(idx_values)
-            if minTest < minIndex:
-                minIndex = minTest
-            print(hvals)
-        else:
-            # Otherwise just pass
-            pass  
-    # Determine when to turn on morpho based on spin-up time
-    spinup_s = hotspotFcst.spinUpWindow.total_seconds()
-    waveforecastTs = hs_ds.time.values
-    waveStep = waveforecastTs[1]-waveforecastTs[0]
-    # Convert from numpy timedelta64 nanoseconds to seconds (as an integer)
-    waveStep = waveStep.item() / 1000000000
-    hotspotFcst.morstart = spinup_s + (waveStep*(minIndex-1))"""
 
     #============== Format gauges for params.txt file =================#
     gauges = hotspotFcst.dfGauges.to_csv(index=False, sep=" ", header=False)
