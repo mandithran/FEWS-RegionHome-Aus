@@ -79,7 +79,7 @@ try:
     for forecastType in forecastTypes:
         for location in locations:
 
-            targetDir = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM products\\BOM nearshore wave transformation tool\\raw\\%s\\%s" % (forecastType,location))
+            targetDir = os.path.join(drive,"Coastal\\Data\\Wave\\Forecast\\BOM_products\\BOM_nearshore_wave_transformation_tool\\raw\\%s\\%s" % (forecastType,location))
 
             # Case 1 - No previous files exist, downloads initiated for previous day's files 
             if os.listdir(targetDir) == []:
