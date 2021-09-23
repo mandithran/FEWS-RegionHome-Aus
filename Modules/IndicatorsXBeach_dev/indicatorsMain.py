@@ -96,10 +96,10 @@ def main(args=None):
     scarpOverall = os.path.join(hotspotFcst.postProcessDir,"maxEroScarp_points.shp")
     # Load these as geoseries
     ewlOverall = gpd.read_file(ewlOverall)
-    try:
-        scarpOverall = gpd.read_file(scarpOverall)
-    except:
-        pass
+    if os.path.exists(scarpOverall):
+        scarpOverall_gdf = gpd.read_file(scarpOverall)
+    else:
+        scarpOverall_gdf = None
 
 
     #========= Add key fields to plots_gdf and corridors_gdf =========#
@@ -183,17 +183,19 @@ def main(args=None):
             pass
     
     # Compute overall BSD indicator for the entire forecast
-    try: # A scarp might not be detected
+    print(scarpOverall_gdf)
+    if scarpOverall_gdf is not None: # A scarp might not be detected
         # Compute distance between each building plot and the scarp line
-        scarpOverall= scarpOverall.merge(plots_gdf, how="inner", on="rowInd")
-        scarpOverall = scarpOverall.rename(columns={"geometry_x":"geometry",
+        scarpOverall_gdf= scarpOverall_gdf.merge(plots_gdf, how="inner", on="rowInd")
+        scarpOverall_gdf = scarpOverall_gdf.rename(columns={"geometry_x":"geometry",
                                                   "geometry_y":"geometry_plots"})
-        scarpOverall = gpd.GeoDataFrame(scarpOverall, geometry=scarpOverall.geometry)
-        scarpOverall['bsd_dist'] = scarpOverall.geometry_plots.apply(lambda g: scarpOverall.distance(g).min())
-        scarpOverall['BSD'] = postProcTools.compute_bsd(scarpOverall['bsd_dist'])
-    except:
+        scarpOverall_gdf = gpd.GeoDataFrame(scarpOverall_gdf, geometry=scarpOverall_gdf.geometry)
+        scarpOverall_gdf['bsd_dist'] = scarpOverall_gdf.geometry_plots.apply(lambda g: scarpOverall_gdf.distance(g).min())
+        scarpOverall_gdf['BSD'] = postProcTools.compute_bsd(scarpOverall_gdf['bsd_dist'])
+    else:
         plots_gdf["BSD"] = "Low"
-    scarpOverall.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
+        scarpOverall_gdf = plots_gdf
+    scarpOverall_gdf.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
 
     ############################### Compute the safe corridor width indicator ###############################
     for t_step in tseries_hrs:
