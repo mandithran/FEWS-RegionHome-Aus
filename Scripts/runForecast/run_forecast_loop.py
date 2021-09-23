@@ -41,6 +41,8 @@ def main(args=None):
     startSystemTime = str(args[2])
     endSystemDate = str(args[3])
     endSystemTime = str(args[4])
+    surgeLocation = str(args[5])
+    wavesLocation = str(args[6])
 
 
     #============================== Modules ==============================#
@@ -178,10 +180,7 @@ def main(args=None):
                 print("*********Running NSSDownload module for time: %s GMT *********" % sysTime_dt)
                 workDir_RetrieveNSS = os.path.join(moduleDir,"NSSDownload")
                 retrieveNSSPy = os.path.join(workDir_RetrieveNSS,"python\\retrieveNSS.py")
-                # Location if grabbing files from WRL1, keep the forward slashes or else it doesn't work
-                #serverLoc = "//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Tide/WL_Forecast/BOM_Storm_Surge/raw/corrected"
-                # Location if grabbing file from a local folder
-                serverLoc = os.path.join(regionHomeDir,"ExternalForecasts/BOM/surge")
+                serverLoc = surgeLocation
                 arguments = [regionHomeDir, systemTime, workDir_RetrieveNSS, serverLoc]
                 runModule(script=retrieveNSSPy,args=arguments)
 
@@ -194,10 +193,7 @@ def main(args=None):
                 print("*********Running WaveDownload module for time: %s GMT *********" % sysTime_dt)
                 workDir_RetrieveAusWaves = os.path.join(moduleDir,"WaveDownload")
                 retrieveAusWavesPy = os.path.join(workDir_RetrieveAusWaves,"python\\retrieveAusWaves.py")
-                # Location if grabbing files from WRL1, keep the forward slashes or else it doesn't work
-                # serverLoc = "//ad.unsw.edu.au/OneUNSW/ENG/WRL/WRL1/Coastal/Data/Wave/Forecast/BOM_products/BOM_nearshore_wave_transformation_tool/raw/Mesh"
-                # Location if grabbing file from a local folder
-                serverLoc = os.path.join(regionHomeDir,"ExternalForecasts/BOM/waves")
+                serverLoc = wavesLocation
                 arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves, serverLoc]
                 runModule(script=retrieveAusWavesPy,args=arguments)
 
