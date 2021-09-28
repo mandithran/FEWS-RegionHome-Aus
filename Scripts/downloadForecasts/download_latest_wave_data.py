@@ -7,7 +7,7 @@
 import os
 import datetime
 import traceback
-workDir = "C:\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
+workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
 print("Downloading waves...")
 
 logf = open(os.path.join(workDir,"exceptionsWaves.log"), "w")
@@ -16,16 +16,11 @@ try:
 
     import os, ssl
     import numpy as np
-    import urllib3
-    from bs4 import BeautifulSoup
     import wget
-    import re
     import datetime
     from datetime import timedelta
     import pytz
     import pandas as pd
-    import smtplib
-    import time
 
     np.seterr(all='ignore') # raise/ignore divisions by 0 and nans
 

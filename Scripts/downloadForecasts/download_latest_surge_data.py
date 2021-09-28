@@ -1,6 +1,6 @@
 import os
 import datetime
-workDir = "C:\\Users\\mandiruns\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
+workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"
 
 
 logf = open(os.path.join(workDir,"exceptionsWLs.log"), "w")
@@ -18,13 +18,11 @@ try:
     import urllib3
     from bs4 import BeautifulSoup
     import wget
-    import re
     import datetime
     from datetime import timedelta
     import pytz
     import pandas as pd
-    import smtplib, ssl
-    import time
+    import ssl
 
     np.seterr(all='ignore') # raise/ignore divisions by 0 and nans
 
