@@ -1,6 +1,0 @@
-'NoneType' object has no attribute 'to_file'Traceback (most recent call last):
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 222, in <module>
-    main()
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev\indicatorsMain.py", line 198, in main
-    scarpOverall_gdf.to_file(os.path.join(hotspotFcst.indicatorResultsDir, "building-scarpDistOverall_pts.shp"))
-AttributeError: 'NoneType' object has no attribute 'to_file'

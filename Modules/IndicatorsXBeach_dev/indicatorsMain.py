@@ -183,8 +183,9 @@ def main(args=None):
             pass
     
     # Compute overall BSD indicator for the entire forecast
-    print(scarpOverall_gdf)
     if scarpOverall_gdf is not None: # A scarp might not be detected
+        # Convert column to integer
+        scarpOverall_gdf = scarpOverall_gdf.astype({"rowInd": int})
         # Compute distance between each building plot and the scarp line
         scarpOverall_gdf= scarpOverall_gdf.merge(plots_gdf, how="inner", on="rowInd")
         scarpOverall_gdf = scarpOverall_gdf.rename(columns={"geometry_x":"geometry",
@@ -192,6 +193,7 @@ def main(args=None):
         scarpOverall_gdf = gpd.GeoDataFrame(scarpOverall_gdf, geometry=scarpOverall_gdf.geometry)
         scarpOverall_gdf['bsd_dist'] = scarpOverall_gdf.geometry_plots.apply(lambda g: scarpOverall_gdf.distance(g).min())
         scarpOverall_gdf['BSD'] = postProcTools.compute_bsd(scarpOverall_gdf['bsd_dist'])
+        scarpOverall_gdf = scarpOverall_gdf.drop(columns="geometry_plots", axis=1)
     else:
         plots_gdf["BSD"] = "Low"
         scarpOverall_gdf = plots_gdf

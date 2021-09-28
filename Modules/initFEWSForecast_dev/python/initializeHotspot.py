@@ -1,6 +1,4 @@
 ############ Modules ############
-from xbfewsTools import fewsForecast
-from xbfewsTools import fewsUtils
 import traceback
 import sys
 import os
@@ -25,6 +23,11 @@ def main(args=None):
     siteName = str(args[2])
     # Work dir
     workDir = str(args[3])
+
+
+    ############ Modules ############
+    from xbfewsTools import fewsForecast
+    from xbfewsTools import fewsUtils
 
 
     ############ Paths ############ 
