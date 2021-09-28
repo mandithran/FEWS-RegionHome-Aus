@@ -18,12 +18,12 @@
 	<moduleInstanceDescriptor id="WaveDownload">
 		<description>Waves download - moduleDataSet file</description>
 	</moduleInstanceDescriptor>
-	<!--moduleInstanceDescriptor id="AstroTides">
+	<moduleInstanceDescriptor id="AstroTides">
 		<description>Astronomical tides - moduleDataSet file containing main file</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveAstroTide">
 		<description>Download Australia storm surge forecast output</description>
-	</moduleInstanceDescriptor-->
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="RetrieveNSS">
 		<description>Download Australia's National Storm Surge System forecast output</description>
 	</moduleInstanceDescriptor>
