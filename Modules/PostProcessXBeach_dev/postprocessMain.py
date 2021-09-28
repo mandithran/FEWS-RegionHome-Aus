@@ -35,6 +35,7 @@ import traceback
 import shutil
 
 # For debugging. Enter the following line into a command line with the conda-venv environemnt activated.
+# Note the time argument is formatted slightly differently YYYYMMDDHH
 # python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 2020020800 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev
 
 def main(args=None):
@@ -336,14 +337,12 @@ def main(args=None):
             # Export max erosion scarp lines as points
             gdf1 = gpd.GeoDataFrame(df_es, geometry="geometry", 
                                     crs=epsg)
-            gdf1 = gdf1[["geometry"]]
-            gdf1 = gpd.GeoSeries(gdf1.geometry.tolist(),crs=epsg)
+            gdf1 = gdf1[["geometry","rowInd"]]
             gdf1.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp_points.shp"))
             # Export max erosion scarp line 
             gdf2 = gpd.GeoDataFrame(df_es, geometry="geometry", 
                                     crs=epsg)
-            gdf2 = gdf2[["geometry"]]
-            gdf2 = gpd.GeoSeries(LineString(gdf2.geometry.tolist()),crs=epsg)
+            gdf2 = gdf2[["geometry","rowInd"]]
             gdf2.to_file(os.path.join(fcstHotspot.postProcessDir,"maxEroScarp.shp"))
         except:
             pass
