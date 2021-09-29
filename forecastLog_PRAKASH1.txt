@@ -1,0 +1,14 @@
+**********************Running initialization module for time: 2020-07-24 00:00:00 GMT **********************
+**************** Initializing regional forecast for time: 2020-07-24 00:00:00 GMT ****************
+*********** Initializing hotspot forecast for Narrabeen site in NSW... ***********
+*********Running NSSDownload module for time: 2020-07-24 00:00:00 GMT *********
+*********Running WaveDownload module for time: 2020-07-24 00:00:00 GMT *********
+*********Running PreProcessRegional module for time: 2020-07-24 00:00:00 GMT *********
+*********Running PreProcessXBeach module for time: 2020-07-24 00:00:00 GMT *********
+**********************Running initialization module for time: 2020-07-24 00:00:00 GMT **********************
+**************** Initializing regional forecast for time: 2020-07-24 00:00:00 GMT ****************
+*********** Initializing hotspot forecast for Narrabeen site in NSW... ***********
+*********Running NSSDownload module for time: 2020-07-24 00:00:00 GMT *********
+*********Running WaveDownload module for time: 2020-07-24 00:00:00 GMT *********
+*********Running PreProcessRegional module for time: 2020-07-24 00:00:00 GMT *********
+*********Running PreProcessXBeach module for time: 2020-07-24 00:00:00 GMT *********
