@@ -1,3 +1,13 @@
+"""
+mergeBeachSlope.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script merges the CoastSat profiles with their corresponding beach slopes. The beach 
+slope will be an essential input for the regional-scale forecasting system.
+"""
+
 # Modules
 import os
 import pandas as pd

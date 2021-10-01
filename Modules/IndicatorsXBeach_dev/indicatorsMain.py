@@ -1,14 +1,103 @@
+"""
+indicatorsMain.py
+Author: Mandi Thran
+Date: 30/09/21
+
+DESCRIPTION:
+This script computes the storm impact indicators from XBeach model output. It computes two 
+indicators: the safe corridor width, and the "building-scarp distance". Locations of 
+interest (in this version, the dune toes) are imported for each row along the XBeach grid.   
+
+Safe corridor width procedure: the distances between these dune toes and the extreme  water 
+lines are calculated. Depending on how close the extreme water line comes to the dune toe, 
+a Safe Corridor Width indicator of either "Low", "Medium", or "High" is assigned. The 
+closer the extreme water line, the higher the indicator. Indicators are exported at each 
+time step.  
+
+Building-scarp distance procedure: the distances between the dune toes and the simulated 
+scarp location (i.e. the landward most extent of the erosion) are calculated. Depending on 
+how close the scarp comes to the dune toe, a "Building- scarp distance" indicator is 
+assigned either a "Low", "Medium', or "High." The closer the scarp, the higher the 
+indicator. 
+
+Indicators are exported at each time step.  Note that the script initially was written 
+such that the locations of interest were buildings, hence the name of the indicator. Then, 
+property boundaries (plots) were used. Finally, it was determined that the dune toe would 
+be more appropriate to use in order to compute the indicator. This created a lack of 
+consistency with some of the syntax.
+
+ARGUMENTS FOR THE SCRIPT:
+Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if 
+running the Python wrapper, and in the IndicatorsXBeachAdapter.xml file if using FEWS. 
+The following are the script’s arguments:
+    - regionHome: The path to the Region Home directory
+    - systemTimeStr: The system time for the forecast/hindcast, in the format: “YYYYMMDDHH”
+    - siteName: The name of the region. This will either be “Narrabeen” or “Mandurah”, and 
+    it is designated in hotspotLocations.csv
+    - workDir: Working directory. This should be the Module directory 
+    ([Region Home]\Modules\IndicatorsXBeach).
+
+KEY VARIABLES/INPUTS/PARAMETERS:
+    - diagOpen.txt: A template file that FEWS populates and uses as a log file
+    - forecast.pkl: The pickle file that stores all the attributes of the instance of the 
+    fewsForecast class
+    - forecast_hotspot.pkl: The pickle file that stores all the attributes of the instance 
+    of the hotspotForecast class
+    - corridor_pts_50m.shp: Positions of the dune toes along each cross-shore profile of 
+    the XBeach mesh (see Section 4.1.5.6)
+    - gauges\points: Folder containing positions of the extreme water line at each timestep, 
+    given both as point and line shapefiles.
+    - scarp\points: Folder containing positions of the maximum landward extent of erosion 
+    (i.e. the erosion scarp), given as point and line shapefiles
+    - ewl_XBeach_points.shp: Maximum extreme water line over the course of the entire 
+    XBeach simulation, in points
+    - maxEroScarp_points.shp: Maximum landward extent of erosion (scarp) over the entire 
+    XBeach simulation, in points
+    - dune toe-scarp distance indicator thresholds (defined in postProcTools.py, 
+    compute_bsd function): Thresholds that define the “Low”, “Medium”, and “High” indicators 
+    for the distance between the dune toe (or other point of interest) and the computed 
+    scarp. At the moment, these are set to default values of: 
+        - Low: distance > 20 m
+        - Medium: 10 m < distance <= 20 m
+        - High: distance <= 10 m
+    - Safe corridor width indicator thresholds (defined in postProcTools.py, compute_scw 
+    function): Thresholds that define the “Low”, “Medium”, and “High” indicators for the 
+    distance between the dune toe (or other point of interest) and the extreme water line. 
+    At the moment, these are set to default values of: 
+        - Low: distance > 10 m
+        - Medium: 5 m < distance <= 10 m
+        - High: distance <= 5 m
+
+KEY OUTPUTS:
+    - indicators\bsd: Folder containing the time-dependent building-scarp distance 
+    indicators (which are actually the dune toe-scarp distance indicators), expressed as 
+    points. 
+    - indicators\scw: Folder containing the time-dependent safe corridor width indicators, 
+    expressed as points.
+    - building-scarpDistOverall_pts.shp: Building-scarp distance indicators (i.e., dune 
+    toe-scarp distance indicators) representing the highest indicator levels over the entire 
+    forecast window. 
+    - safe-corridorOverall_pts.shp: Safe corridor width indicators representing the highest 
+    indicator levels over the entire forecast window
+    - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to 
+    its console) 
+    - forecast_hotspot.pkl: The updated pickle file that stores all the attributes of the 
+    hotspotForecast instance
+
+COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+python [path to this script] [path to Region Home] [System time in format YYYYMMDDHH] [site name] [working directory, i.e. the path to the folder containing this script]
+e.g.,
+python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev/indicatorsMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev
+
+
+"""
+
 # Modules
 import traceback
 import os
 import sys
 import traceback
 import shutil
-
-
-# Debugging
-# Forecast:
-# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev/indicatorsMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\IndicatorsXBeach_dev
 
 
 def main(args=None):

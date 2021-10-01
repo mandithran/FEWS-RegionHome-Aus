@@ -1,3 +1,14 @@
+"""
+download_latest_surge_data.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script downloads the latest storm surge forecast files from BoM servers. It is 
+executed by run_download.bat, and is designed to be run in the Task Scheduler.
+
+"""
+
 import os
 import datetime
 workDir = "C:\\Users\\z3531278\Documents\\01_FEWS-RegionHome-Aus\\Scripts\\downloadForecasts"

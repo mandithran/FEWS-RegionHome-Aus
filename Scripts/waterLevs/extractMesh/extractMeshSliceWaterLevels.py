@@ -1,3 +1,12 @@
+"""
+extractMeshSliceWaterLevels.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTON:
+This script extracts a mesh slice from the BoM National Storm Surge system.
+"""
+
 # Modules
 import os
 import xarray as xr

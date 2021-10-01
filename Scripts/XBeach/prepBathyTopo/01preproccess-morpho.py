@@ -1,3 +1,12 @@
+"""
+01preprocess-morpho.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script takes XBeach output and converts it to an xyz (.csv) file. 
+"""
+
 import os
 import xarray as xr
 import numpy as np

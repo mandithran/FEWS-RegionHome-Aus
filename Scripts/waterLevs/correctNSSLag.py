@@ -1,3 +1,15 @@
+"""
+correctNSSLag.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+For some of the 2020 National Storm Surge System forecasts, there was a lag in the storm 
+surge signal. This script re-processes the raw netCDF files and corrects the lag. It puts 
+the corrected storm surge files into a new folder called “corrected”. Note: this has 
+already been done for the problematic period in the 2020 forecasts.
+"""
+
 #====================== Modules ======================#
 import os
 import xarray as xr

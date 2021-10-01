@@ -1,3 +1,12 @@
+"""
+extractMeshSlice.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script extracts a mesh slice from the BoM nearshore wave forecasting system. 
+"""
+
 # Modules
 import os
 import xarray as xr

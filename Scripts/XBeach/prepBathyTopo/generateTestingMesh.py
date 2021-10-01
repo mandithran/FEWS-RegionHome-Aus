@@ -1,3 +1,13 @@
+"""
+generateTestingMesh.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script does something similar to reduceResolutionGrd.py. It generates a set 
+lower-resolution XBeach grids for testing and troubleshooting. 
+"""
+
 # Modules
 import os
 import pandas as pd

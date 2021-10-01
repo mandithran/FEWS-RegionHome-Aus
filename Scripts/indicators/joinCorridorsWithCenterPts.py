@@ -1,3 +1,14 @@
+"""
+joinCorridorsWithCenterPts.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script merges the corridors (when they were polylines) to their respective center 
+points. If switching corridors back to lines instead of points (which is what they 
+currently are) this script may be useful. 
+"""
+
 # Modules
 import os
 import geopandas as gpd

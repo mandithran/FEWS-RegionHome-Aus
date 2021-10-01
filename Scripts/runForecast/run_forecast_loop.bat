@@ -20,21 +20,24 @@ set waveForecastLoc=%regionHome%/ExternalForecasts/BOM/waves
 
 rem #=========== Dates and Times for Batch of Hindcast Runs ============#
 rem Start date of hindcasts, format: YYYY-MM-DD
-set systemStartDate=2020-01-01 
+set systemStartDate=2020-02-08 
 rem Start time of hindcasts, format: HH:MM
-set systemStartTime=12:00
+set systemStartTime=00:00
 rem Format: YYYY-MM-DD
-set systemEndDate=2020-02-11
+set systemEndDate=2020-02-08
 rem Format: HH:MM
 set systemEndTime=00:00
 
 rem #================== Anaconda virtual environment ===================#
-rem Specify the path
+rem Specify the path for Anaconda, should have activate.bat in it
 set CONDAPATH=C:\\Users\\mandiruns\\Anaconda3
+rem Specify the path to the virtual environment
 set ENVPATH=%regionHome%\\bin\\windows\\python\\bin\\conda-venv
 rem Call the script that activates the virtual environment
 call %CONDAPATH%\Scripts\activate.bat %ENVPATH% >> %logFile%
+rem Path to script
+set SCRIPTPATH=%regionHome%\Scripts\runForecast\run_forecast_loop.py
 
 rem #==================== Run run_forecast_loopy.py ====================#
-"python" "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py" %regionHome% %systemStartDate% %systemStartTime% %systemEndDate% %systemEndTime% %surgeForecastLoc% %waveForecastLoc% >> %logFile%
+"python" %SCRIPTPATH% %regionHome% %systemStartDate% %systemStartTime% %systemEndDate% %systemEndTime% %surgeForecastLoc% %waveForecastLoc% >> %logFile%
 pause

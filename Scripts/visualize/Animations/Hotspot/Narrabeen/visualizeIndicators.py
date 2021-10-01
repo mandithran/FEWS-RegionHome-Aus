@@ -1,3 +1,15 @@
+"""
+visualizeIndicators.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script generates a series of snapshots to create animations of how the
+safe corridor width and dune toe-scarp distance storm impact indicators
+evolve over a forecast.
+"""
+
+# Modules
 import numpy as np
 import rasterio
 import os

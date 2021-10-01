@@ -1,3 +1,12 @@
+"""
+cropNarra.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script crops a netCDF file containing the XBeach output and sends it to a csv file. 
+"""
+
 # Modules
 import os
 import pandas as pd

@@ -1,4 +1,9 @@
 """
+visualizeMeshes.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRPTION:
 This script exports the meshes for the SYD.msh output, the SYD.spec output,
 and the XBeach output. The csv outputs can then be quickly visualized
 using GIS software. 

@@ -1,9 +1,17 @@
+"""
+reduceResolutionGrd.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTON: 
+This script reduces the resolution of XBeach-formatted grids (x.grd, y.grd, z.grd). This 
+is useful for testing and debugging low-resolution versions of the model run. 
+"""
+
+# Modules
 import numpy as np
 import os
 import pandas as pd
-
-#np.set_printoptions(suppress=True,
-#   formatter={'float_kind':'{:16.3f}'.format}, linewidth=130)
 
 reductionFactorLongshore = int(1)
 reductionFactorCrosshore = int(1)
@@ -28,6 +36,3 @@ reduceReso(xgrd,reductionFactorLongshore,reductionFactorCrosshore)
 reduceReso(ygrd,reductionFactorLongshore,reductionFactorCrosshore)
 reduceReso(zgrd,reductionFactorLongshore,reductionFactorCrosshore)
 reduceReso(ne_layer,reductionFactorLongshore,reductionFactorCrosshore)
-
-
-#print(arr2d[::2,:])

@@ -1,17 +1,66 @@
-# Main script for retrieving and importing storm surge
+"""
+retrieveNSS.py
+Author: Mandi Thran
+Date: 29/09/2021
+
+
+DESCRIPTION:
+This module retrieves the BoM’s National Storm surge forecasts for pre-processing. Depending on 
+whether the run is a forecast or a hindcast, the script will grab the relevant file either directly 
+from the BoM server (forecast mode), from our local WRL1 server (hindcast mode), or from a local 
+folder. The netCDF file is used by the hotspot forecast, and it will probably be used by the 
+regional forecast. More specifically, this script does the following: 
+    - Determines the current running forecast/hindcasts
+    - Loads the relevant pickle file containing the object instance of the fewsForecast class
+    - Parses the correct BoM file name to fetch using the system time
+    - Determines the correct location to download the BoM file from (either the BoM server or the 
+    WRL1 Coastal folder)
+    - Fetches the file and downloads it to a local directory
+    - Writes out diagnostics
+    - Updates the original pickle file
+
+
+ARGUMENTS FOR THE SCRIPT:
+Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if running 
+the Python wrapper, and in the RetrieveNSSAdapter.xml file if using FEWS. The following are the 
+script’s arguments:
+    - regionHome: The path to the Region Home directory
+    - systemTime: The system time for the forecast/hindcast, in the format: “YYYYMMDD_HHMM”
+    - workDir: Working directory. This should be the Module directory 
+    ([Region Home]\Modules\NSSDownload).
+    - forecastLocation: If running a hindcast, this is where the BoM forecast files location is 
+    specified. For more info on how to set this, see Section 5.1.2.  
+
+
+KEY INPUTS:
+    - diagOpen.txt: A template file that FEWS populates and uses as a log file
+    - serverLoc: The full path to the BoM server, where the forecasts are hosted. The script will 
+    use this location if running in “forecast” mode. 
+
+
+KEY OUTPUTS:
+    - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to its 
+    console) 
+    - IDZ00154_StormSurge_national_YYMMDDHH.nc: The BoM National Storm Surge System forecast file 
+    that the script fetches and sends to [Region Home]\ Modules\NSSDownload\ncFiles
+    - forecast.pkl: Updated pickle file for the instance of the fewsForecast class. 
+
+
+COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [working directory, i.e. the path to the folder containing this script] [path to local folder where forecasts are stored]
+e.g.
+python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev\python\retrieveNSS.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ExternalForecasts\BOM\surge
+"""
+
+
 # ============= Modules ============= #
 import sys
 import os
 import re
-from xbfewsTools import fewsForecast, fewsUtils
 from datetime import datetime
 import traceback
 import shutil
-import pickle
 import wget
-
-# For debugging:
-# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload_dev\python\retrieveNSS.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev
 
 
 def main(args=None):
@@ -29,7 +78,11 @@ def main(args=None):
     workDir = str(args[2])
     # Fourth argument is the folder location
     forecastLocation = str(args[3])
-    
+
+
+    # ========== More Modules ========== #
+    from xbfewsTools import fewsForecast, fewsUtils
+    import pickle
 
 
     #============== Paths ==============#

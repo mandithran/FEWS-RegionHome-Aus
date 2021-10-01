@@ -1,3 +1,14 @@
+"""
+hotspotIndicators_SCW.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script generates “heatmaps” of how the safe corridor width storm impact indicator 
+evolves over time. These heat maps are not meant to be “picture perfect” – they were 
+used as a tool to assess how the hotspot-scale forecast is performing over time.
+"""
+
 # modules
 import os
 import numpy as np

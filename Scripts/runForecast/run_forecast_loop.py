@@ -1,14 +1,45 @@
-#============================================================================#
-# run_forecast_loopy.py
-# Author: Mandi Thran
-# Date: 24/09/2021
-#
-# The main script used to conduct a series of forecasts. Basically acts like
-# FEWS in headless mode; it calls each of the modules that FEWS does.
-# This script should mainly be used to run hindcasts in succession. 
-# It also provides a decent overview of what FEWS and python are actually doing
-# under the hood.
-#============================================================================#
+"""
+run_forecast_loopy.py
+Author: Mandi Thran
+Date: 24/09/2021
+
+The main script used to conduct a series of forecasts. Basically acts like
+FEWS in headless mode; it calls each of the modules that FEWS does.
+This script should mainly be used to run hindcasts in succession. 
+It also provides a decent overview of what FEWS and python are actually doing
+under the hood.
+
+ARGUMENTS:
+Arguments are set in run_forecast_loop.bat. They are parsed in the "Arguments from 
+run_forecast_loop*.bat file" code block. The arguments are:
+ - The path to the region home directory
+ - System Start Date (which the forecast will start looping through)
+ - System Start Time 
+ - System End Date (which the forecast will stop on when looping)
+ - System End Time
+ - The path to the BoM storm surge forecasts
+ - The path to the BoM nearshore wave forecasts
+For more on these arguments, see the run_forecast_loop.bat file. 
+
+KEY INPUTS:
+    - forecastInt: Forecast interval, currently set to 12 hours
+    - modules: Full list of external modules to run
+    - initFEWSForecast_flag: Set to "True" if you want the initFEWSForecast module
+    to run, set to "False" if you don't. 
+    - initRegionalForecast_flag: "True" to run module, "False" to not.
+    - initHotspotForecast_flag: "True" to run module, "False" to not.
+    - NSSDownload_flag: "True" to run module, "False" to not.
+    - WaveDownload_flag: "True" to run module, "False" to not.
+    - PreProcessRegional_flag: "True" to run module, "False" to not.
+    - PreProcessXBeach_flag: "True" to run module, "False" to not.
+    - runXBeach_flag: "True" to run module, "False" to not.
+    - PostProcessXBeach_flag: "True" to run module, "False" to not.
+    - IndicatorsXBeach_flag: "True" to run module, "False" to not.
+    - WipeForecast_flag: "True" to run module, "False" to not.
+
+For inputs pertaining to the individual modules, see their relevant code blocks. 
+
+"""
 
 
 #============================== Modules ==============================#
@@ -22,12 +53,12 @@ import subprocess
 
 # Full script resides in this "main" function so that
 # the script can receive command-line arguments from 
-# FEWS/Python wrapper
+# FEWS/Python wrapper and error log. 
 def main(args=None):
 
     # Module Flags
-    # Set as True if you want to run it, set as False if you don't
-    # These module names correspond to the module folders
+    # Set as True if you want to run a given module, set as False if you don't
+    # These flag names correspond to the module folders
     initFEWSForecast_flag = True
     initRegionalForecast_flag = True
     initHotspotForecast_flag = True
@@ -38,7 +69,7 @@ def main(args=None):
     runXBeach_flag = True
     PostProcessXBeach_flag = True
     IndicatorsXBeach_flag = True
-    WipeForecast_flag = True
+    WipeForecast_flag = False
 
 
     #============== Arguments from run_forecast_loop*.bat file =============#
@@ -46,7 +77,7 @@ def main(args=None):
 
     #============== Parse arguments  ==============#
     # Path to Region Home
-    # When using Python wrapper, defined in run_forecast_loop*.bat
+    # When using Python wrapper, this is defined in run_forecast_loop*.bat
     regionHomeDir = str(args[0])
     # Start/end date/time for the hindcast times you want to loop through
     # Format should be: "YYYY-MM-DD HH:MM", assumes UTC/GMT
@@ -55,7 +86,7 @@ def main(args=None):
     startSystemTime = str(args[2])
     endSystemDate = str(args[3])
     endSystemTime = str(args[4])
-    # Location of BoM forecasts, set in run_forecast_loop*.bat
+    # Locations of BoM forecasts, set in run_forecast_loop*.bat
     surgeLocation = str(args[5])
     wavesLocation = str(args[6])
 
@@ -63,6 +94,17 @@ def main(args=None):
     #===================== Modules ======================#
     import numpy as np
     import pandas as pd
+
+    
+    #============================== Variables ==============================#
+    # Forecast interval, runs once per 12-hour period
+    forecastInt = timedelta(hours=12)
+    # The list of all the modules. Should correspond to the names of 
+    # any zipped folders in the [Region Home]\Config\ModuleDataSetFiles
+    modules=["initFEWSForecast","NSSDownload",
+             "WaveDownload","PreProcessXBeach","PostProcessXBeach",
+             "IndicatorsXBeach","WipeForecast",
+             "PreProcessRegional"]
 
 
     #============================== Paths ==============================#
@@ -84,14 +126,6 @@ def main(args=None):
     # Any python-related errors dumped here
     logf = open(os.path.join(workDir,"exceptions_forecastLoop.log"), "w")
 
-
-    #============================== Variables ==============================#
-    # Format hindcast times to loop through. Assumes UTC.
-    # Combines date and time into a full datetime string
-    startSystemTime = str(startSystemDate+' '+startSystemTime)
-    endSystemTime = str(endSystemDate+' '+endSystemTime)
-    # Forecast interval, runs once per 12-hour period
-    forecastInt = timedelta(hours=12)
 
 
     #============================== Local functions ==============================#
@@ -158,12 +192,6 @@ def main(args=None):
 
 
     #==================== Unzip module datasets ====================#
-    # The list of all the modules. Should correspond to the names of 
-    # any zipped folders in the [Region Home]\Config\ModuleDataSetFiles
-    modules=["initFEWSForecast","NSSDownload",
-             "WaveDownload","PreProcessXBeach","PostProcessXBeach",
-             "IndicatorsXBeach","WipeForecast",
-             "PreProcessRegional"]
     # Call the unzipModule functin defined above
     for module in modules:
         unzipModule(module)
@@ -171,6 +199,10 @@ def main(args=None):
 
 
     #======================================== Main forecast loop ========================================#
+    # Format hindcast times to loop through. Assumes UTC.
+    # Combines date and time into a full datetime string
+    startSystemTime = str(startSystemDate+' '+startSystemTime)
+    endSystemTime = str(endSystemDate+' '+endSystemTime)
     # Construct the series of times to hindcast for. The forecast loop will loop through these times.
     # Parse start time
     startSystemTime = datetime.strptime(startSystemTime, '%Y-%m-%d %H:%M')
@@ -205,7 +237,8 @@ def main(args=None):
                 initializeForecastPy = os.path.join(workDir_initializeForecastPy,"python\\initializeForecast.py")
                 # Arguments for the above Python script
                 arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
-                # Run the module, calling the function runModule defined above
+                # Run the module (i.e. run the python script), calling the function runModule defined 
+                # above
                 runModule(script=initializeForecastPy,args=arguments)
 
 
@@ -229,7 +262,8 @@ def main(args=None):
                 initializeRegionalPy = os.path.join(workDir_initializeForecastPy,"python\\initializeRegional.py")
                 # Arguments for the above Python script
                 arguments = [regionHomeDir,systemTime,region,workDir_initializeForecastPy]
-                # Run the module, calling the function runModule defined above
+                # Run the module (i.e. run the python script), calling the function runModule defined 
+                # above
                 runModule(script=initializeRegionalPy,args=arguments)
 
 
@@ -252,7 +286,8 @@ def main(args=None):
                         initializeHotspotPy = os.path.join(workDir_initializeForecastPy,"python\\initializeHotspot.py")
                         # Arguments for the above Python script
                         arguments = [regionHomeDir,systemTime,hotspotName,workDir_initializeHotspotPy]
-                        # Run the module, calling the function runModule defined above
+                        # Run the module (i.e. run the python script), calling the function runModule defined 
+                        # above
                         runModule(script=initializeHotspotPy,args=arguments)
 
 
@@ -280,7 +315,8 @@ def main(args=None):
                 serverLoc = surgeLocation
                 # Arguments for the above Python script
                 arguments = [regionHomeDir, systemTime, workDir_RetrieveNSS, serverLoc]
-                # Run the module, calling the function runModule defined above
+                # Run the module (i.e. run the python script), calling the function runModule defined 
+                # above
                 runModule(script=retrieveNSSPy,args=arguments)
 
 
@@ -307,7 +343,8 @@ def main(args=None):
                 serverLoc = wavesLocation
                 # Arguments for the above Python script
                 arguments = [regionHomeDir,systemTime,workDir_RetrieveAusWaves, serverLoc]
-                # Run the module, calling the function runModule defined above
+                # Run the module (i.e. run the python script), calling the function runModule defined 
+                # above
                 runModule(script=retrieveAusWavesPy,args=arguments)
 
 
@@ -330,7 +367,8 @@ def main(args=None):
                 preProcessRegionalPy = os.path.join(workDir_preProcessRegionalPy,"preprocessMainRegional.py")
                 # Arguments for the above Python script
                 arguments = [regionHomeDir,systemTime,region,workDir_preProcessRegionalPy]
-                # Run the module, calling the function runModule defined above
+                # Run the module (i.e. run the python script), calling the function runModule defined 
+                # above
                 runModule(script=preProcessRegionalPy,args=arguments)
             
 
@@ -357,7 +395,8 @@ def main(args=None):
                     preProcessXBeachPy = os.path.join(workDir_PreProcessXBeach,"preprocessMain.py")
                     # Arguments for the above Python script
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_PreProcessXBeach]
-                    # Run the module, calling the function runModule defined above
+                    # Run the module (i.e. run the python script), calling the function runModule defined 
+                    # above
                     runModule(script=preProcessXBeachPy,args=arguments)
 
 
@@ -417,7 +456,8 @@ def main(args=None):
                     systemTime_str = sysTime_dt.strftime('%Y%m%d%H')
                     # Arguments for the above Python script
                     arguments = [regionHomeDir,systemTime_str,hotspotName,workDir_PostProcessXBeach]
-                    # Run the module, calling the function runModule defined above
+                    # Run the module (i.e. run the python script), calling the function runModule defined 
+                    # above
                     runModule(script=postProcessXBeachPy,args=arguments)
 
 
@@ -438,7 +478,8 @@ def main(args=None):
                     indicatorsXBeachPy = os.path.join(workDir_IndicatorsXBeach,"indicatorsMain.py")
                     # Arguments for the above Python script
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_IndicatorsXBeach]
-                    # Run the module, calling the function runModule defined above
+                    # Run the module (i.e. run the python script), calling the function runModule defined 
+                    # above
                     runModule(script=indicatorsXBeachPy,args=arguments)
 
 
@@ -459,7 +500,8 @@ def main(args=None):
                     wipeForecastPy = os.path.join(workDir_WipeForecast,"wipeForecast.py")
                     # Arguments for the above Python script
                     arguments = [regionHomeDir,systemTime,hotspotName,workDir_WipeForecast]
-                    # Run the module, calling the function runModule defined above
+                    # Run the module (i.e. run the python script), calling the function runModule defined 
+                    # above
                     runModule(script=wipeForecastPy,args=arguments)
 
 

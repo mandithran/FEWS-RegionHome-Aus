@@ -1,8 +1,17 @@
 """
-Note from WA Transport about datum:
+sanityCheck.py
+Author: Mandi Thran
+Date: 01/10/21
 
-Mandurah datum is the Low Water 2008, which is 2.682 m below benchmark, “Man Tidal 02” and 0.54 m below AHD (2009).  
-If you want to convert the water levels to AHD, you need to subtract 0.54 m from the water levels.
+DESCRIPTION:
+This script plots the Mandurah tide predictions against the observed water levels. It 
+provides a “sanity check” on the astronomical tide predictions.
+
+Note from WA Transport about datum:
+Mandurah datum is the Low Water 2008, which is 2.682 m below benchmark, “Man Tidal 02” 
+and 0.54 m below AHD (2009).  
+If you want to convert the water levels to AHD, you need to subtract 0.54 m from the 
+water levels.
 """
 
 

@@ -1,3 +1,12 @@
+"""
+convertlines2Pts.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script converts the extreme water line and erosion scarp line shapefiles to points. 
+"""
+
 #=========== Modules ===========#
 import os
 import pandas as pd

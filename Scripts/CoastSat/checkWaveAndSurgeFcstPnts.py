@@ -1,3 +1,17 @@
+"""
+checkWaveandSurgeFcstPnts.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script checks and visualizes the distances between each CoastSat profile and the 
+assigned points on the BoM wave and water level meshes. This is to ensure each of the 
+CoastSat profiles are being assigned reasonable points on the forecast meshes, so that 
+the prescribed wave and water level forcing for the regional forecast is appropriate.
+
+"""
+
+
 import geopandas as gpd
 import os
 import matplotlib.pyplot as plt

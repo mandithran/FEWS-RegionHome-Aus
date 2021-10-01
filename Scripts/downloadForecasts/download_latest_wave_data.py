@@ -1,8 +1,13 @@
-#============================================================================#
-# Script to download the AUSWAVE global wave data from the BOM OpenDap servers
-# for the previous day. This script is used in automatically downloading the
-# forecasts
-#============================================================================#
+"""
+download_latest_wave_data.py
+Author: Mandi Thran
+Date: 01/10/21
+
+DESCRIPTION:
+This script downloads the latest wave forecast files from BoM servers. It is executed by 
+run_download.bat, and is designed to be run in the Task Scheduler.
+
+"""
 
 import os
 import datetime

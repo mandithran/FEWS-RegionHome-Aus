@@ -3,28 +3,73 @@ postprocessMain.py
 Author: Mandi Thran
 Date: 16/09/21
 
-This script computes the storm impact indicators from XBeach model output.
-It computes two indicators: the safe corridor width, and the "building-scarp
-distance". Locations of interest (in this version, the dune toes) are
-imported for each row along the XBeach grid. 
+DESCRIPTION:
+This script does the post-processing of the XBeach simulation, generating time-dependent 
+extreme water lines, erosion scarps, and key grids. More specifically, this script does 
+the following:
+    - Determines the current running forecast/hindcast
+    - Loads the relevant pickle file containing the object instance of the fewsForecast 
+    class
+    - Loads the relevant pickle file containing the object instance of the hotspotForecast 
+    class
+    - Copies over the XBeach run to the main forecast directory in [Region Home]\Forecasts
+    - Processes and exports the extreme water line over each time step, and determines the 
+    extreme water line over the entire simulation 
+    - Processes and exports the erosion scarps over each time step, and determines the 
+    landward most line of erosion over the entire simulation 
+    - Computes the maximum erosion, max flow depth, and max flow velocity over the entire 
+    simulation, and exports these grids. 
+    - Updates pickle file with hotspotForecast instance
+    - Writes out diagnostics
 
-Safe corridor width procedure: the distances between these dune toes and the extreme 
-water lines are calculated. Depending on how close the extreme water line
-comes to the dune toe, a Safe Corridor Width indicator of either "Low", "Medium",
-or "High" is assigned. The closer the extreme water line, the higher the
-indicator. Indicators are exported at each time step.
+ARGUMENTS FOR THE SCRIPT:
+Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if 
+running the Python wrapper, and in the PostProcessXBeachAdapter.xml file if using FEWS. 
+The following are the script’s arguments:
+    - regionHome: The path to the Region Home directory
+    - systemTimeStr: The system time for the forecast/hindcast, in the format: “YYYYMMDDHH”
+    - siteName: The name of the region. This will either be “Narrabeen” or “Mandurah”, and 
+    it is designated in hotspotLocations.csv
+    - workDir: Working directory. This should be the Module directory 
+    ([Region Home]\Modules\PostProcessXBeach).
 
-Building-scarp distance procedure: the distances between the dune toes and the
-simulated scarp location (i.e. the landward most extent of the erosion) are
-calculated. Depending on how close the scarp comes to the dune toe, a "Building-
-scarp distance" indicator is assigned either a "Low", "Medium', or "High." The
-closer the scarp, the higher the indicator. Indicators are exported at each time step.s
+KEY VARIABLES/INPUTS/PARAMETERS
+    - diagOpen.txt: A template file that FEWS populates and uses as a log file
+    - forecast.pkl: The pickle file that stores all the attributes of the instance of the 
+    fewsForecast class
+    - forecast_hotspot.pkl: The pickle file that stores all the attributes of the instance 
+    of the hotspotForecast class
+    - xboutput.nc: XBeach output netCDF file. 
+    - Erosion scarp threshold: This is the erosion threshold where the maximum landward 
+    erosion lines (i.e. the scarps) are delineated. Currently, this is set to 0.5 m. 
 
-Note that the script initially was written such that the locations of interest
-were buildings, hence the name of the indicator. Then, property boundaries (plots)
-were used. Finally, it was determined that the dune toe would be more appropriate
-to use in order to compute the indicator. This created a lack of consistency with
-some of the syntax. 
+KEY OUTPUTS:
+    - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to 
+    its console) 
+    - gauges\: Folder containing positions of the extreme water line at each timestep, 
+    given both as point and line shapefiles.
+    - ewl_XBeach_points.shp: Maximum extreme water line over the course of the entire 
+    XBeach simulation, in points
+    - ewl_XBeach.shp: Maximum extreme water line over the course of the entire XBeach 
+    simulation, as a line
+    - scarp\: Folder containing positions of the maximum landward extent of erosion (i.e. 
+    the erosion scarp), given as point and line shapefiles
+    - maxEroScarp_points.shp: Maximum landward extent of erosion (scarp) over the entire 
+    XBeach simulation, in points
+    - maxEroScarp.shp: Maximum landward extent of erosion (scarp) over the entire XBeach 
+    simulation, as a line
+    - xbout_maxEro.grd: Maximum erosion over the entire XBeach simulation
+    - xbout_maxFlowDepth.grd: Maximum flow depth over the entire XBeach simulation
+    - xbout_maxUVel.grd: Maximum u flow velocity over the entire XBeach simulation 
+    - xbout_maxVVel.grd: Maximum v flow velocity over the entire XBeach simulation 
+    - forecast_hotspot.pkl: The updated pickle file that stores all the attributes of the 
+    hotspotForecast instance
+
+COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+python [path to this script] [path to Region Home] [System time in format YYYYMMDDHH] [site name] [working directory, i.e. the path to the folder containing this script]
+e.g.,
+python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 2020020800 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev
+
 
 """
 
@@ -34,9 +79,6 @@ import sys
 import traceback
 import shutil
 
-# For debugging. Enter the following line into a command line with the conda-venv environemnt activated.
-# Note the time argument is formatted slightly differently YYYYMMDDHH
-# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev/postprocessMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 2020020800 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PostProcessXBeach_dev
 
 def main(args=None):
 
