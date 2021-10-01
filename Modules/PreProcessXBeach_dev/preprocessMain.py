@@ -1,92 +1,92 @@
-"""
-preprocessMain.py
-Author: Mandi Thran
-Date: 30/09/2021
+#============================================================================================
+# preprocessMain.py
+# Author: Mandi Thran
+# Date: 30/09/2021
 
-DESCRIPTION:
-This script does all the essential pre-processing of XBeach inputs in preparation for the 
-XBeach model run. More specifically, this script does the following:
-    - Determines the current running forecast/hindcasts
-    - Loads the relevant pickle file containing the object instance of the fewsForecast 
-    class
-    - Loads the relevant pickle file containing the object instance of the hotspotForecast 
-    class
-    - Set some parameters for the hotspotForecast instance
-    - Copies prepped XBeach grids, executable into an XBeach run folder
-    - Generates run-up gauges according to the input XBeach grids
-    - Pre-processes the astronomical tide and storm surge predictions to produce a water 
-    level boundary condition for XBeach
-    - Pre-processes wave forecasts to provide boundary condition for XBeach
-    - Determines when to turn morstart on depending on when storm conditions are detected 
-    in the offshore forecast
-    - Populates XBeach params.txt file 
-    - Updates pickle file with hotspotForecast instance
-    - Writes out diagnostics
+# DESCRIPTION:
+# This script does all the essential pre-processing of XBeach inputs in preparation for the 
+# XBeach model run. More specifically, this script does the following:
+#     - Determines the current running forecast/hindcasts
+#     - Loads the relevant pickle file containing the object instance of the fewsForecast 
+#     class
+#     - Loads the relevant pickle file containing the object instance of the hotspotForecast 
+#     class
+#     - Set some parameters for the hotspotForecast instance
+#     - Copies prepped XBeach grids, executable into an XBeach run folder
+#     - Generates run-up gauges according to the input XBeach grids
+#     - Pre-processes the astronomical tide and storm surge predictions to produce a water 
+#     level boundary condition for XBeach
+#     - Pre-processes wave forecasts to provide boundary condition for XBeach
+#     - Determines when to turn morstart on depending on when storm conditions are detected 
+#     in the offshore forecast
+#     - Populates XBeach params.txt file 
+#     - Updates pickle file with hotspotForecast instance
+#     - Writes out diagnostics
 
-ARGUMENTS FOR THE SCRIPT:
-Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if 
-running the Python wrapper, and in the PreProcessXBeachAdapter.xml file if using FEWS. 
-The following are the script’s arguments:
-    - regionHome: The path to the Region Home directory
-    - systemTimeStr: The system time for the forecast/hindcast, in the format: 
-    “YYYYMMDD_HHMM”
-    - siteName: The name of the region. This will either be “Narrabeen” or “Mandurah”, and 
-    it is designated in hotspotLocations.csv
-    - workDir: Working directory. This should be the Module directory 
-    ([Region Home]\Modules\PreProcessXBeach).
+# ARGUMENTS FOR THE SCRIPT:
+# Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if 
+# running the Python wrapper, and in the PreProcessXBeachAdapter.xml file if using FEWS. 
+# The following are the script’s arguments:
+#     - regionHome: The path to the Region Home directory
+#     - systemTimeStr: The system time for the forecast/hindcast, in the format: 
+#     “YYYYMMDD_HHMM”
+#     - siteName: The name of the region. This will either be “Narrabeen” or “Mandurah”, and 
+#     it is designated in hotspotLocations.csv
+#     - workDir: Working directory. This should be the Module directory 
+#     ([Region Home]\Modules\PreProcessXBeach).
 
-KEY VARIABLES/INPUTS/PARAMETERS:
-    - xgrd: The prepped XBeach grid containing x locations of the mesh. The file has the 
-    same dimensions as the mesh. For more information, see the XBeach documentation. 
-    - ygrd: The prepped XBeach grid containing y locations of the mesh. The file has the 
-    same dimensions as the mesh. 
-    - zgrd: The prepped XBeach grid containing  locations of the mesh. The file has the 
-    same dimensions as the mesh. 
-    ne_layer: The prepped XBeach non-erodible layer. The file has the same dimensions as 
-    the mesh. 
-    - deltat_str: The input time series resolution that will be set for XBeach inputs  
-    - diagOpen.txt: A template file that FEWS populates and uses as a log file
-    - forecast.pkl: The pickle file that stores all the attributes of the instance of the 
-    fewsForecast class
-    - forecast_hotspot.pkl: The pickle file that stores all the attributes of the instance 
-    of the hotspotForecast class
-    - [city]TidesGmt.csv: The process astronomical tides for a given city, in GMT (see 
-    Section 4.1.3)
-    - IDZ00154_StormSurge_national_YYMMDDHH.nc: The BoM surge forecast that gets fetched by 
-    the NSSDownload module. 
-    - [citycode].msh.YYYYMMDDTHHMMZ.nc: The BoM nearshore wave forecast that gets fetched 
-    by the WaveDownload module. 
-    - auswaveOutPts_[site name].csv: Csv file that lists the points on the BoM wave 
-    forecast mesh that are closest to the XBeach grid boundary points (see Section 4.1.5.3).
-    - JONSWAP parameters (set in preProcWaves.py, function generateWaveFiles): Several 
-    JONSWAP parameters that XBeach uses to generate the wave spectra from the forecast 
-    input. 
-    - Significant wave height threshold that determines storm (set in preProcWaves.py, 
-    function determineStormPeriods): The Hsig threshold used to determine whether there are 
-    storm conditions forecasted. It has a current default value of 3 m. 
-    - Length of a storm period (set in preProcWaves.py, function determineStormPeriods): 
-    The length, in hours, of a full storm period. Currently, a “storm” is classified as a 
-    period of Hsig >=3 for 6 hours or more.
-    - Length of the “quiet” time interval needed to separate storms (set in preProcWaves.py, 
-    function determineStormPeriods): Currently, if there is a quiet period that last more 
-    than 48 hours between storm conditions, these two storm events are considered to be 
-    separate. If storm conditions subside for a period of less than 48 hours, but then 
-    worsen again, this is considered to be a single storm event. 
+# KEY VARIABLES/INPUTS/PARAMETERS:
+#     - xgrd: The prepped XBeach grid containing x locations of the mesh. The file has the 
+#     same dimensions as the mesh. For more information, see the XBeach documentation. 
+#     - ygrd: The prepped XBeach grid containing y locations of the mesh. The file has the 
+#     same dimensions as the mesh. 
+#     - zgrd: The prepped XBeach grid containing  locations of the mesh. The file has the 
+#     same dimensions as the mesh. 
+#     ne_layer: The prepped XBeach non-erodible layer. The file has the same dimensions as 
+#     the mesh. 
+#     - deltat_str: The input time series resolution that will be set for XBeach inputs  
+#     - diagOpen.txt: A template file that FEWS populates and uses as a log file
+#     - forecast.pkl: The pickle file that stores all the attributes of the instance of the 
+#     fewsForecast class
+#     - forecast_hotspot.pkl: The pickle file that stores all the attributes of the instance 
+#     of the hotspotForecast class
+#     - [city]TidesGmt.csv: The process astronomical tides for a given city, in GMT (see 
+#     Section 4.1.3)
+#     - IDZ00154_StormSurge_national_YYMMDDHH.nc: The BoM surge forecast that gets fetched by 
+#     the NSSDownload module. 
+#     - [citycode].msh.YYYYMMDDTHHMMZ.nc: The BoM nearshore wave forecast that gets fetched 
+#     by the WaveDownload module. 
+#     - auswaveOutPts_[site name].csv: Csv file that lists the points on the BoM wave 
+#     forecast mesh that are closest to the XBeach grid boundary points (see Section 4.1.5.3).
+#     - JONSWAP parameters (set in preProcWaves.py, function generateWaveFiles): Several 
+#     JONSWAP parameters that XBeach uses to generate the wave spectra from the forecast 
+#     input. 
+#     - Significant wave height threshold that determines storm (set in preProcWaves.py, 
+#     function determineStormPeriods): The Hsig threshold used to determine whether there are 
+#     storm conditions forecasted. It has a current default value of 3 m. 
+#     - Length of a storm period (set in preProcWaves.py, function determineStormPeriods): 
+#     The length, in hours, of a full storm period. Currently, a “storm” is classified as a 
+#     period of Hsig >=3 for 6 hours or more.
+#     - Length of the “quiet” time interval needed to separate storms (set in preProcWaves.py, 
+#     function determineStormPeriods): Currently, if there is a quiet period that last more 
+#     than 48 hours between storm conditions, these two storm events are considered to be 
+#     separate. If storm conditions subside for a period of less than 48 hours, but then 
+#     worsen again, this is considered to be a single storm event. 
 
-KEY OUTPUTS
-    - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to 
-    its console) 
-    - XBeach output directory: Includes params.txt, tide.txt, wave files, loclist.txt, 
-    x.grd, y.grd, z.grd, ne_layer.grd, XBeach executable
-    - forecast_hotspot.pkl: The updated pickle file that stores all the attributes of the 
-    hotspotForecast instance
+# KEY OUTPUTS
+#     - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to 
+#     its console) 
+#     - XBeach output directory: Includes params.txt, tide.txt, wave files, loclist.txt, 
+#     x.grd, y.grd, z.grd, ne_layer.grd, XBeach executable
+#     - forecast_hotspot.pkl: The updated pickle file that stores all the attributes of the 
+#     hotspotForecast instance
 
-COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
-python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [site name] [working directory, i.e. the path to the folder containing this script]
-e.g.,
-python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20210910_0000 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev
+# COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+# python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [site name] [working directory, i.e. the path to the folder containing this script]
+# e.g.,
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev/preprocessMain.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20210910_0000 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessXBeach_dev
+#============================================================================================
 
-"""
 
 # Modules
 import os
@@ -122,11 +122,9 @@ def main(args=None):
 
     #============== Grid parameters ==============#
     # Low resolution grid for testing:
-    """
-    xgrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\x_testing.grd" % siteName)
-    ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
-    zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
-    """
+    # xgrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\x_testing.grd" % siteName)
+    # ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
+    # zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
     xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\50mAlongshore" % siteName)
     xgrd = os.path.join(xbFilesPath,"x.grd")
     ygrd = os.path.join(xbFilesPath,"y.grd")

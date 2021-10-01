@@ -1,20 +1,20 @@
-"""
-Script: pickDuneToe.py
-Author: Mandi Thran
-Date: 15 September 2021
+#====================================================================================
+# Script: pickDuneToe.py
+# Author: Mandi Thran
+# Date: 15 September 2021
 
-This script visualizes the cross-shore profiles of an XBeach input grid, one by one.
-To control the row number of the profile that is visualized, change the rowNum 
-variable. This script is used to identify the location of the dune toes, which are
-used to generate the storm impact indicators for the hotspot forecasts. It this 
-case, rowNum=1 relates to the northern-most row (profile). As rowNum increases,
-profiles are visualized progressively to the south.
+# This script visualizes the cross-shore profiles of an XBeach input grid, one by one.
+# To control the row number of the profile that is visualized, change the rowNum 
+# variable. This script is used to identify the location of the dune toes, which are
+# used to generate the storm impact indicators for the hotspot forecasts. It this 
+# case, rowNum=1 relates to the northern-most row (profile). As rowNum increases,
+# profiles are visualized progressively to the south.
 
-The inputs are designated in the "Variables" section.
+# The inputs are designated in the "Variables" section.
 
-For best results, activate and run in the virtual environment associated with
-running FEWS forecasts.
-"""
+# For best results, activate and run in the virtual environment associated with
+# running FEWS forecasts.
+#====================================================================================
 
 
 #=============== Modules ===============#

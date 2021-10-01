@@ -228,12 +228,12 @@ else:
 fig.savefig(os.path.join(figDir,figName),dpi=250,bbox_inches='tight')
 plt.show()
 
-"""# Plot line plot of lead time vs skill
-import seaborn as sns
-fig, axes = plt.subplots(2,1,figsize=(6,6))
-sns.lineplot(x=leadtimes,y=r_list, ax=axes[0])
-sns.lineplot(x=leadtimes,y=rstorm_list, ax=axes[0])
-sns.lineplot(x=leadtimes,y=rmse_list, ax=axes[1])
-sns.lineplot(x=leadtimes,y=rmsestorm_list, ax=axes[1])
-print(r_list,rmse_list)
-plt.show()"""
+# Plot line plot of lead time vs skill
+# import seaborn as sns
+# fig, axes = plt.subplots(2,1,figsize=(6,6))
+# sns.lineplot(x=leadtimes,y=r_list, ax=axes[0])
+# sns.lineplot(x=leadtimes,y=rstorm_list, ax=axes[0])
+# sns.lineplot(x=leadtimes,y=rmse_list, ax=axes[1])
+# sns.lineplot(x=leadtimes,y=rmsestorm_list, ax=axes[1])
+# print(r_list,rmse_list)
+# plt.show()

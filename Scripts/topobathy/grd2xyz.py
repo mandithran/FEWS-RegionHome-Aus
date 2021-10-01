@@ -1,12 +1,13 @@
-"""
-grd2xyz.py
-Author: Mandi Thran
-Date: 01/10/21
+#==========================================================================================
+# grd2xyz.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTION:
-This script converts XBeach-formatted grids (x.grd, y.grd, z.grd) to an xyz (.csv) file. 
-This is useful for visualizing the grid in QGIS. 
-"""
+# DESCRIPTION:
+# This script converts XBeach-formatted grids (x.grd, y.grd, z.grd) to an xyz (.csv) file. 
+# This is useful for visualizing the grid in QGIS. 
+#==========================================================================================
+
 
 import numpy as np
 import os

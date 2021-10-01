@@ -1,45 +1,44 @@
-"""
-run_forecast_loopy.py
-Author: Mandi Thran
-Date: 24/09/2021
+#====================================================================================
+# run_forecast_loopy.py
+# Author: Mandi Thran
+# Date: 24/09/2021
 
-The main script used to conduct a series of forecasts. Basically acts like
-FEWS in headless mode; it calls each of the modules that FEWS does.
-This script should mainly be used to run hindcasts in succession. 
-It also provides a decent overview of what FEWS and python are actually doing
-under the hood.
+# The main script used to conduct a series of forecasts. Basically acts like
+# FEWS in headless mode; it calls each of the modules that FEWS does.
+# This script should mainly be used to run hindcasts in succession. 
+# It also provides a decent overview of what FEWS and python are actually doing
+# under the hood.
 
-ARGUMENTS:
-Arguments are set in run_forecast_loop.bat. They are parsed in the "Arguments from 
-run_forecast_loop*.bat file" code block. The arguments are:
- - The path to the region home directory
- - System Start Date (which the forecast will start looping through)
- - System Start Time 
- - System End Date (which the forecast will stop on when looping)
- - System End Time
- - The path to the BoM storm surge forecasts
- - The path to the BoM nearshore wave forecasts
-For more on these arguments, see the run_forecast_loop.bat file. 
+# ARGUMENTS:
+# Arguments are set in run_forecast_loop.bat. They are parsed in the "Arguments from 
+# run_forecast_loop*.bat file" code block. The arguments are:
+#  - The path to the region home directory
+#  - System Start Date (which the forecast will start looping through)
+#  - System Start Time 
+#  - System End Date (which the forecast will stop on when looping)
+#  - System End Time
+#  - The path to the BoM storm surge forecasts
+#  - The path to the BoM nearshore wave forecasts
+# For more on these arguments, see the run_forecast_loop.bat file. 
 
-KEY INPUTS:
-    - forecastInt: Forecast interval, currently set to 12 hours
-    - modules: Full list of external modules to run
-    - initFEWSForecast_flag: Set to "True" if you want the initFEWSForecast module
-    to run, set to "False" if you don't. 
-    - initRegionalForecast_flag: "True" to run module, "False" to not.
-    - initHotspotForecast_flag: "True" to run module, "False" to not.
-    - NSSDownload_flag: "True" to run module, "False" to not.
-    - WaveDownload_flag: "True" to run module, "False" to not.
-    - PreProcessRegional_flag: "True" to run module, "False" to not.
-    - PreProcessXBeach_flag: "True" to run module, "False" to not.
-    - runXBeach_flag: "True" to run module, "False" to not.
-    - PostProcessXBeach_flag: "True" to run module, "False" to not.
-    - IndicatorsXBeach_flag: "True" to run module, "False" to not.
-    - WipeForecast_flag: "True" to run module, "False" to not.
+# KEY INPUTS:
+#     - forecastInt: Forecast interval, currently set to 12 hours
+#     - modules: Full list of external modules to run
+#     - initFEWSForecast_flag: Set to "True" if you want the initFEWSForecast module
+#     to run, set to "False" if you don't. 
+#     - initRegionalForecast_flag: "True" to run module, "False" to not.
+#     - initHotspotForecast_flag: "True" to run module, "False" to not.
+#     - NSSDownload_flag: "True" to run module, "False" to not.
+#     - WaveDownload_flag: "True" to run module, "False" to not.
+#     - PreProcessRegional_flag: "True" to run module, "False" to not.
+#     - PreProcessXBeach_flag: "True" to run module, "False" to not.
+#     - runXBeach_flag: "True" to run module, "False" to not.
+#     - PostProcessXBeach_flag: "True" to run module, "False" to not.
+#     - IndicatorsXBeach_flag: "True" to run module, "False" to not.
+#     - WipeForecast_flag: "True" to run module, "False" to not.
 
-For inputs pertaining to the individual modules, see their relevant code blocks. 
+# For inputs pertaining to the individual modules, see their relevant code blocks. 
 
-"""
 
 
 #============================== Modules ==============================#

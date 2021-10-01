@@ -1,13 +1,13 @@
-"""
-downloadPER.py
-Author: Mandi Thran
-Date: 01/10/21
-DESCRIPTION:
-This script was used to download some of the BoM nearshore wave forecast files for the 
-Perth area and surrounds. This was done to retain local copies of the forecasts, which 
-are not permanently stored on BoM servers. This will allow for hindcasts for 2020-2021 
-in Western Australia.
-"""
+#========================================================================================
+# downloadPER.py
+# Author: Mandi Thran
+# Date: 01/10/21
+# DESCRIPTION:
+# This script was used to download some of the BoM nearshore wave forecast files for the 
+# Perth area and surrounds. This was done to retain local copies of the forecasts, which 
+# are not permanently stored on BoM servers. This will allow for hindcasts for 2020-2021 
+# in Western Australia.
+#========================================================================================
 
 # Modules
 import datetime

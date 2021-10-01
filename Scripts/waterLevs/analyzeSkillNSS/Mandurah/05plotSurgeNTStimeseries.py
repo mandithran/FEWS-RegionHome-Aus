@@ -23,16 +23,16 @@ figDir = os.path.join(workDir,"figs")
 timezoneUTC = pytz.utc
 leadTime = 72
 # Storm periods to plot
-"""d = {
-    # May 2020 storm, May 23 to 29 GMT
-    "May 2020 storm 1":('2020-05-2','2020-05-16'),
-    # May 2020 storm, May 23 to 29 GMT
-    "May 2020 storm 2":('2020-05-20','2020-06-02'),
-    # June 2020 storm
-    "June 2020 storm":('2020-06-20','2020-07-04n'),
-    # July 2020 storm
-    "July 2020 storm":('2020-07-10','2020-07-24')
-}"""
+# d = {
+#     # May 2020 storm, May 23 to 29 GMT
+#     "May 2020 storm 1":('2020-05-2','2020-05-16'),
+#     # May 2020 storm, May 23 to 29 GMT
+#     "May 2020 storm 2":('2020-05-20','2020-06-02'),
+#     # June 2020 storm
+#     "June 2020 storm":('2020-06-20','2020-07-04n'),
+#     # July 2020 storm
+#     "July 2020 storm":('2020-07-10','2020-07-24')
+# }
 
 # Non-storms for interest
 d = {

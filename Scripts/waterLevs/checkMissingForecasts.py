@@ -1,12 +1,13 @@
-"""
-checkMissingForecasts.py
-Author: Mandi Thran
-Date: 01/10/21
+#======================================================================================
+# checkMissingForecasts.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTION:
-This script checks for any BoM National Storm Surge forecasts that may be missing from 
-the WRL1 Coastal folder.  
-"""
+# DESCRIPTION:
+# This script checks for any BoM National Storm Surge forecasts that may be missing from 
+# the WRL1 Coastal folder.  
+#======================================================================================
+
 
 from datetime import datetime, timedelta
 import os

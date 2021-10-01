@@ -14,10 +14,9 @@ import pickle
 # python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload/python/process-nss.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus/Import/AusSurge/ Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\NSSDownload hotspotLocations.csv C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20210627_0500
 
 def main(args=None):
-    """The main routine."""
+    
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
-    foo
 
     #============== Parse arguments from FEWS ==============#
     # First argument in Module config file is the path to this python script

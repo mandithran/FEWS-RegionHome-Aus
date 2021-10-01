@@ -36,17 +36,17 @@ d = {
 }
 
 
-"""# Non-storms for interest
-d = {
-    # May 2020 storm, May 23 to 29 GMT
-    "Jan2020":('2020-01-01','2020-01-14'),
-    # June 2020 storm
-    "March2020":('2020-03-01','2020-03-14'),
-    # July 2020 storm
-    "June2020":('2020-06-01','2020-06-14'),
-    # August 2020 storm
-    "Sept2020":('2020-09-01','2020-09-14')
-}"""
+# Non-storms for interest
+# d = {
+#     # May 2020 storm, May 23 to 29 GMT
+#     "Jan2020":('2020-01-01','2020-01-14'),
+#     # June 2020 storm
+#     "March2020":('2020-03-01','2020-03-14'),
+#     # July 2020 storm
+#     "June2020":('2020-06-01','2020-06-14'),
+#     # August 2020 storm
+#     "Sept2020":('2020-09-01','2020-09-14')
+# }
 
 # ================= Local functions ================= #
 def generateTimeseriesPlot(fig=None, ax=None, df=None):

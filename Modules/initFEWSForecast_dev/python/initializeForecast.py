@@ -1,59 +1,58 @@
-"""
-initializeForecast.py
-Author: Mandi Thran
-Date: 27/09/2021
-
-DESCRIPTION
-This script initializes the forecast, setting key parameters and generating key folders/files that 
-are relevant for the overall forecast (regional scale + hotspot scale). When initializing, it is 
-designed to loop through forecast/hindcast times at 12-hour intervals. For each forecast interval 
-of interest, the script does the following:
-- Creates an instance of what is known as a fewsForecast class (defined in xbfewsTools)
-- Sets several key attributes
-- Determines whether the run is in forecast/hindcast mode
-- Generates the directory where all outputs will be held for a given forecast time, across all 
-regions and hotspot areas. This folder takes on the naming convention “YYYYMMDD_HHMM”
-- Writes out a “pickle” file for the forecast (so that the instance of the fewsForecast class 
-can be loaded across scripts, and attributes can be easily access).
-
-
-ARGUMENTS FOR THE SCRIPT:
-Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if running the 
-Python wrapper, and in the initForecastAdapter.xml file if using FEWS. The following are the 
-script’s arguments:
-    - regionHome: The path to the Region Home directory
-    - systemTime: The system time for the forecast/hindcast, in the format: “YYYYMMDD_HHMM”
-    - region: The ID of the region. This will either be “NSW” or “WA”, and it is designated in 
-    ausStates.csv
-    - workDir: Working directory. This should be the Module directory 
-    ([Region Home]\Modules\initFEWSForecast).
+# ====================================================================================================
+# initializeForecast.py
+# Author: Mandi Thran
+# Date: 27/09/2021
+#
+# DESCRIPTION
+# This script initializes the forecast, setting key parameters and generating key folders/files that 
+# are relevant for the overall forecast (regional scale + hotspot scale). When initializing, it is 
+# designed to loop through forecast/hindcast times at 12-hour intervals. For each forecast interval 
+# of interest, the script does the following:
+# - Creates an instance of what is known as a fewsForecast class (defined in xbfewsTools)
+# - Sets several key attributes
+# - Determines whether the run is in forecast/hindcast mode
+# - Generates the directory where all outputs will be held for a given forecast time, across all 
+# regions and hotspot areas. This folder takes on the naming convention “YYYYMMDD_HHMM”
+# - Writes out a “pickle” file for the forecast (so that the instance of the fewsForecast class 
+# can be loaded across scripts, and attributes can be easily access).
 
 
-KEY INPUTS:
-- diagOpen.txt: A template file that FEWS populates and uses as a log file. 
-- fcst.roundedTime: Here is where you set how the System Time is rounded down. Right now, the module 
-takes the System Time and rounds it down to the nearest 12-hour interval (this is compatible with 
-twice-daily forecasts). Note: be careful changing this parameter – if you round down to a different 
-time, you’ll have to do a search for “round_hours” throughout the entire Region Home to ensure that 
-that function is rounding down to the nearest desired interval.
-- Regions Location Set (set by ausStates.csv): These are where the different regional locations (for 
-the regional-scale forecasts) are set.
-- Hotspot Location Set (set by hotspotLocations.csv): These are where the different hotspot 
-locations (for the hotspot-scale forecasts) are set. 
+# ARGUMENTS FOR THE SCRIPT:
+# Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if running the 
+# Python wrapper, and in the initForecastAdapter.xml file if using FEWS. The following are the 
+# script’s arguments:
+#     - regionHome: The path to the Region Home directory
+#     - systemTime: The system time for the forecast/hindcast, in the format: “YYYYMMDD_HHMM”
+#     - region: The ID of the region. This will either be “NSW” or “WA”, and it is designated in 
+#     ausStates.csv
+#     - workDir: Working directory. This should be the Module directory 
+#     ([Region Home]\Modules\initFEWSForecast).
 
 
-KEY OUTPUTS:
-- diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to its console)
-- forecast.pkl: The output pickle file that stores all the attributes of the newly-created instance 
-of the fewsForecast classs
+# KEY INPUTS:
+# - diagOpen.txt: A template file that FEWS populates and uses as a log file. 
+# - fcst.roundedTime: Here is where you set how the System Time is rounded down. Right now, the module 
+# takes the System Time and rounds it down to the nearest 12-hour interval (this is compatible with 
+# twice-daily forecasts). Note: be careful changing this parameter – if you round down to a different 
+# time, you’ll have to do a search for “round_hours” throughout the entire Region Home to ensure that 
+# that function is rounding down to the nearest desired interval.
+# - Regions Location Set (set by ausStates.csv): These are where the different regional locations (for 
+# the regional-scale forecasts) are set.
+# - Hotspot Location Set (set by hotspotLocations.csv): These are where the different hotspot 
+# locations (for the hotspot-scale forecasts) are set. 
 
 
-COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
-python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [Region ID] [working directory, i.e. the path to the folder containing this script]
-e.g.
-python C:\Users\mandiruns\Documents\\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/mandiruns/Documents/01_FEWS-RegionHome-Aus 20210620_0100 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
+# KEY OUTPUTS:
+# - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to its console)
+# - forecast.pkl: The output pickle file that stores all the attributes of the newly-created instance 
+# of the fewsForecast classs
 
-"""
+
+# COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+# python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [Region ID] [working directory, i.e. the path to the folder containing this script]
+# e.g.
+# python C:\Users\mandiruns\Documents\\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/mandiruns/Documents/01_FEWS-RegionHome-Aus 20210620_0100 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
+# ====================================================================================================
 
 
 

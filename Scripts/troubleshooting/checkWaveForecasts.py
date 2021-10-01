@@ -1,12 +1,13 @@
-"""
-checkWaveForecast.py
-Author: Mandi Thran
-Date: 01/10/21
+#========================================================================================================
+# checkWaveForecast.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTION:
-This script checks the storm periods that are determined from the BoM wave forecasts. It is an isolated 
-snippet taken from preprocessMain.py. 
-"""
+# DESCRIPTION:
+# This script checks the storm periods that are determined from the BoM wave forecasts. It is an isolated 
+# snippet taken from preprocessMain.py. 
+#========================================================================================================
+
 
 import xarray as xr
 from xbfewsTools import preProcWaves

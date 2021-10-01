@@ -1,65 +1,65 @@
-"""
-retrieveAusWaves.py
-Author: Mandi Thran
-Date: 30/09/2021
+#============================================================================
+# retrieveAusWaves.py
+# Author: Mandi Thran
+# Date: 30/09/2021
 
-DESCRIPTION
-This script fetches the BoM nearshore wave forecast netCDF file needed to 
-run a forecast. The netCDF file is used by the hotspot forecast, and it 
-will probably be used by the regional forecast. More specifically, this 
-script does the following: 
-    - Determines the current running forecast/hindcasts
-    - Loads the relevant pickle file containing the object instance of the 
-    fewsForecast class
-    - Parses the correct BoM file name to fetch using the system time, for 
-    each city code
-    - Determines the correct location to download the BoM file from (either 
-    the BoM server, the WRL1 Coastal server, or a local folder)
-    - Fetches the file and downloads it to a local directory
-    - Writes out diagnostics
-    - Updates the original pickle file
-
-
-ARGUMENTS FOR THE SCRIPT:
-Arguments for this script are set in run_forecast_loop*.bat and 
-run_forecast_loop.py if running the Python wrapper, and in the 
-RetrieveAusWavesAdapter.xml file if using FEWS. The following are the 
-script’s arguments:
-    - regionHome: The path to the Region Home directory
-    - systemTimeStr: The system time for the forecast/hindcast, in the 
-    format: “YYYYMMDD_HHMM”
-    - workDir: Working directory. This should be the Module directory 
-    ([Region Home]\Modules\WaveDownload).
-    - forecastLocation: If running a hindcast, this is where the BoM 
-    forecast files location is specified. For more info on how to set this, 
-    see Section 5.1.2.  
+# DESCRIPTION
+# This script fetches the BoM nearshore wave forecast netCDF file needed to 
+# run a forecast. The netCDF file is used by the hotspot forecast, and it 
+# will probably be used by the regional forecast. More specifically, this 
+# script does the following: 
+#     - Determines the current running forecast/hindcasts
+#     - Loads the relevant pickle file containing the object instance of the 
+#     fewsForecast class
+#     - Parses the correct BoM file name to fetch using the system time, for 
+#     each city code
+#     - Determines the correct location to download the BoM file from (either 
+#     the BoM server, the WRL1 Coastal server, or a local folder)
+#     - Fetches the file and downloads it to a local directory
+#     - Writes out diagnostics
+#     - Updates the original pickle file
 
 
-KEY VARIABLES/INPUTS/PARAMETERS:
-    - diagOpen.txt: A template file that FEWS populates and uses as a log 
-    file
-    - serverLoc: The full path to the BoM server, where the forecasts are 
-    hosted. The script will use this location if running in “forecast” 
-    mode.
-    - forecast.pkl: The pickle file that stores all the attributes of the 
-    instance of the fewsForecast class
+# ARGUMENTS FOR THE SCRIPT:
+# Arguments for this script are set in run_forecast_loop*.bat and 
+# run_forecast_loop.py if running the Python wrapper, and in the 
+# RetrieveAusWavesAdapter.xml file if using FEWS. The following are the 
+# script’s arguments:
+#     - regionHome: The path to the Region Home directory
+#     - systemTimeStr: The system time for the forecast/hindcast, in the 
+#     format: “YYYYMMDD_HHMM”
+#     - workDir: Working directory. This should be the Module directory 
+#     ([Region Home]\Modules\WaveDownload).
+#     - forecastLocation: If running a hindcast, this is where the BoM 
+#     forecast files location is specified. For more info on how to set this, 
+#     see Section 5.1.2.  
 
 
-KEY OUTPUTS:
-    - diag.xml: The resulting diagnostic file that FEWS populates and uses 
-    (i.e. prints to its console) 
-    - [city code].msh.YYYYMMDDTHHMMZ.nc: The BoM National Storm Surge 
-    System forecast file that the script fetches and sends to 
-    [Region Home]\ Modules\WaveDownload\ncFiles
-    - forecast.pkl: Updated pickle file for the instance of the 
-    fewsForecast class. 
+# KEY VARIABLES/INPUTS/PARAMETERS:
+#     - diagOpen.txt: A template file that FEWS populates and uses as a log 
+#     file
+#     - serverLoc: The full path to the BoM server, where the forecasts are 
+#     hosted. The script will use this location if running in “forecast” 
+#     mode.
+#     - forecast.pkl: The pickle file that stores all the attributes of the 
+#     instance of the fewsForecast class
 
-COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
-python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [working directory, i.e. the path to the folder containing this script] [location of BoM forecasts]
-e.g.
-python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev [Region Home]\ExternalForecasts\BOM\waves
 
-"""
+# KEY OUTPUTS:
+#     - diag.xml: The resulting diagnostic file that FEWS populates and uses 
+#     (i.e. prints to its console) 
+#     - [city code].msh.YYYYMMDDTHHMMZ.nc: The BoM National Storm Surge 
+#     System forecast file that the script fetches and sends to 
+#     [Region Home]\ Modules\WaveDownload\ncFiles
+#     - forecast.pkl: Updated pickle file for the instance of the 
+#     fewsForecast class. 
+
+# COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+# python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [working directory, i.e. the path to the folder containing this script] [location of BoM forecasts]
+# e.g.
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev/python/retrieveAusWaves.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WaveDownload_dev [Region Home]\ExternalForecasts\BOM\waves
+#============================================================================
+
 
 import os
 import re

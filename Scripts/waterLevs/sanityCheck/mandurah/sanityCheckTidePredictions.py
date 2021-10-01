@@ -1,9 +1,10 @@
-"""
-Note from WA Transport about datum:
+#===================================================================================================================
+# Note from WA Transport about datum:
 
-Mandurah datum is the Low Water 2008, which is 2.682 m below benchmark, “Man Tidal 02” and 0.54 m below AHD (2009).  
-If you want to convert the water levels to AHD, you need to subtract 0.54 m from the water levels.
-"""
+# Mandurah datum is the Low Water 2008, which is 2.682 m below benchmark, “Man Tidal 02” and 0.54 m below AHD (2009).  
+# If you want to convert the water levels to AHD, you need to subtract 0.54 m from the water levels.
+#===================================================================================================================
+
 
 
 #================ Modules ================#

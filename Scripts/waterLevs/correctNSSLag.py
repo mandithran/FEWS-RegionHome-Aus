@@ -1,14 +1,15 @@
-"""
-correctNSSLag.py
-Author: Mandi Thran
-Date: 01/10/21
+#==========================================================================================
+# correctNSSLag.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTION:
-For some of the 2020 National Storm Surge System forecasts, there was a lag in the storm 
-surge signal. This script re-processes the raw netCDF files and corrects the lag. It puts 
-the corrected storm surge files into a new folder called “corrected”. Note: this has 
-already been done for the problematic period in the 2020 forecasts.
-"""
+# DESCRIPTION:
+# For some of the 2020 National Storm Surge System forecasts, there was a lag in the storm 
+# surge signal. This script re-processes the raw netCDF files and corrects the lag. It puts 
+# the corrected storm surge files into a new folder called “corrected”. Note: this has 
+# already been done for the problematic period in the 2020 forecasts.
+#==========================================================================================
+
 
 #====================== Modules ======================#
 import os
@@ -166,73 +167,73 @@ d = {
 }
 
 
-"""# ================= Local functions ================= #
-def generateTimeseriesPlot(fig=None, ax=None, df=None, correctedx=None,correctedy=None):
-    # Plot total water levels
-    ax.plot(df.index,df.nts,color='dimgrey')
-    ax.plot(df.index,df.surge,color='royalblue')
-    ax.plot(correctedx,correctedy,color='purple')
-    print(df.wl_obs)
-    ax.set_ylim(-1,2)
-    ax.set_ylabel(variable)
-    ax.set_title("%s" % (key))
-    # Legend
-    ax.legend(['observed non-tidal residual','predicted non-tidal residual'],loc='upper left')
-    # Format the x axis 
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d-%b %H:%M"))
-    ax.tick_params(axis='x', which='major', bottom=True, 
-                   labelbottom=True, rotation=30,labelsize=6)
-    return ax
+# # ================= Local functions ================= #
+# def generateTimeseriesPlot(fig=None, ax=None, df=None, correctedx=None,correctedy=None):
+#     # Plot total water levels
+#     ax.plot(df.index,df.nts,color='dimgrey')
+#     ax.plot(df.index,df.surge,color='royalblue')
+#     ax.plot(correctedx,correctedy,color='purple')
+#     print(df.wl_obs)
+#     ax.set_ylim(-1,2)
+#     ax.set_ylabel(variable)
+#     ax.set_title("%s" % (key))
+#     # Legend
+#     ax.legend(['observed non-tidal residual','predicted non-tidal residual'],loc='upper left')
+#     # Format the x axis 
+#     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d-%b %H:%M"))
+#     ax.tick_params(axis='x', which='major', bottom=True, 
+#                    labelbottom=True, rotation=30,labelsize=6)
+#     return ax
 
 
-# ================= Load Observed and Predicted Data ================= #
-siteName = "Mandurah"
-df = pd.read_csv(os.path.join(workDir, "WL-NTR-obsAndpred_%s_2020.csv" % siteName))
-df.index = df['Unnamed: 0']
-df = df.drop(['Unnamed: 0'],axis=1)
-# Already in a format that is timezone-aware
-df.index = pd.to_datetime(df.index)
-# Reduce temporal resolution to hourly, since wave data collected hourly
-# (and you're testing the skill of the storm periods)
-df = df[df.index.strftime('%M') == '00']
+# # ================= Load Observed and Predicted Data ================= #
+# siteName = "Mandurah"
+# df = pd.read_csv(os.path.join(workDir, "WL-NTR-obsAndpred_%s_2020.csv" % siteName))
+# df.index = df['Unnamed: 0']
+# df = df.drop(['Unnamed: 0'],axis=1)
+# # Already in a format that is timezone-aware
+# df.index = pd.to_datetime(df.index)
+# # Reduce temporal resolution to hourly, since wave data collected hourly
+# # (and you're testing the skill of the storm periods)
+# df = df[df.index.strftime('%M') == '00']
 
 
-# ================= Plot non-tidal residuals and surge time series ================= #
-# Font sizes
-leadTime = 72
-plt.rcParams.update({'font.size':7})
-plt.rc('xtick', labelsize=7)
-plt.rc('ytick', labelsize=7)
-plt.rc('axes', labelsize=7,labelpad=1)
-plt.rc('legend', handletextpad=1, fontsize=6)
-# Fig params
-fig, axes = plt.subplots(4,1,figsize=(5,8),sharex=False)
-fig.subplots_adjust(top=0.94,hspace=.7)
-df_subset = df[df['leadtime_hrs']==leadTime]
-axs = np.array(axes).reshape(-1)
+# # ================= Plot non-tidal residuals and surge time series ================= #
+# # Font sizes
+# leadTime = 72
+# plt.rcParams.update({'font.size':7})
+# plt.rc('xtick', labelsize=7)
+# plt.rc('ytick', labelsize=7)
+# plt.rc('axes', labelsize=7,labelpad=1)
+# plt.rc('legend', handletextpad=1, fontsize=6)
+# # Fig params
+# fig, axes = plt.subplots(4,1,figsize=(5,8),sharex=False)
+# fig.subplots_adjust(top=0.94,hspace=.7)
+# df_subset = df[df['leadtime_hrs']==leadTime]
+# axs = np.array(axes).reshape(-1)
 
 
-# Isolate corrected timeseries at Mandurah
-lat = -32.508727999999998
-lon = 115.704099999999997
-dsTest = ds.where((ds.lat==lat) & (ds.lon==lon), drop=True).squeeze()
-print(list(dsTest.keys()))
+# # Isolate corrected timeseries at Mandurah
+# lat = -32.508727999999998
+# lon = 115.704099999999997
+# dsTest = ds.where((ds.lat==lat) & (ds.lon==lon), drop=True).squeeze()
+# print(list(dsTest.keys()))
 
-# Plot time series
-variable = "surge (m)"
-counter = 0
-for key in d:
-    # Subset data based on storm periods
-    stormBegin = d[key][0]
-    stormEnd = d[key][1]
-    df_sub = df_subset[stormBegin:stormEnd]
-    print(df_sub.columns)
-    # Plot time series of twl and hsig (for reference)
-    axwl = generateTimeseriesPlot(fig=fig,ax=axs[counter],df=df_sub,
-                                  correctedx=dsTest.time.values,
-                                  correctedy=dsTest.surge.values)
-    counter += 1
-# Save fig
-figName = 'SurgeCorrectionTest_%shrsLeadTime.png' % leadTime
-fig.savefig(os.path.join(workDir,figName),dpi=250,bbox_inches='tight')
-plt.show()"""
+# # Plot time series
+# variable = "surge (m)"
+# counter = 0
+# for key in d:
+#     # Subset data based on storm periods
+#     stormBegin = d[key][0]
+#     stormEnd = d[key][1]
+#     df_sub = df_subset[stormBegin:stormEnd]
+#     print(df_sub.columns)
+#     # Plot time series of twl and hsig (for reference)
+#     axwl = generateTimeseriesPlot(fig=fig,ax=axs[counter],df=df_sub,
+#                                   correctedx=dsTest.time.values,
+#                                   correctedy=dsTest.surge.values)
+#     counter += 1
+# # Save fig
+# figName = 'SurgeCorrectionTest_%shrsLeadTime.png' % leadTime
+# fig.savefig(os.path.join(workDir,figName),dpi=250,bbox_inches='tight')
+# plt.show()

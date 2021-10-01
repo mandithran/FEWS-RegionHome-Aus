@@ -1,12 +1,13 @@
-"""
-reduceResolutionGrd.py
-Author: Mandi Thran
-Date: 01/10/21
+#==========================================================================================
+# reduceResolutionGrd.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTON: 
-This script reduces the resolution of XBeach-formatted grids (x.grd, y.grd, z.grd). This 
-is useful for testing and debugging low-resolution versions of the model run. 
-"""
+# DESCRIPTON: 
+# This script reduces the resolution of XBeach-formatted grids (x.grd, y.grd, z.grd). This 
+# is useful for testing and debugging low-resolution versions of the model run. 
+#==========================================================================================
+
 
 # Modules
 import numpy as np

@@ -1,0 +1,17 @@
+command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast\python\initializeForecast.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20201027_1200 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast' return with error (code 1): NoneTraceback (most recent call last):
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 173, in runModule
+    subprocess.run(command, check=True, shell=True)
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\subprocess.py", line 516, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast\python\initializeForecast.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20201027_1200 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 512, in <module>
+    main()
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 242, in main
+    runModule(script=initializeForecastPy,args=arguments)
+  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Scripts\runForecast\run_forecast_loop.py", line 179, in runModule
+    raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+RuntimeError: command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast\python\initializeForecast.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20201027_1200 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast' return with error (code 1): None

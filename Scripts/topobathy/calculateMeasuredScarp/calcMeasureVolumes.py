@@ -15,21 +15,21 @@ pgrd_post = np.loadtxt(pgrd_post)
 zgrd_post = np.loadtxt(zgrd_post)
 
 # Determine if x and y spacing are equal everywhere
-"""# Check x spacing
-nrows,ncols = sgrd_post.shape
-print(nrows)
-for row in range(nrows):
-    arr=sgrd_post[row,:]
-    flag=all(np.diff(arr)==np.diff(arr)[0])
-    if flag == False:
-        print("False s (x)")
-# Check y spacing
-#for col in range(ncols):
-for col in range(ncols):
-    arr=pgrd_post[:,col]
-    flag=all(np.diff(arr)==np.diff(arr)[0])
-    if flag == False:
-        print("False z (y)")"""
+# Check x spacing
+# nrows,ncols = sgrd_post.shape
+# print(nrows)
+# for row in range(nrows):
+#     arr=sgrd_post[row,:]
+#     flag=all(np.diff(arr)==np.diff(arr)[0])
+#     if flag == False:
+#         print("False s (x)")
+# # Check y spacing
+# #for col in range(ncols):
+# for col in range(ncols):
+#     arr=pgrd_post[:,col]
+#     flag=all(np.diff(arr)==np.diff(arr)[0])
+#     if flag == False:
+#         print("False z (y)")
 
 # make these smaller to increase the resolution
 # generate 2 2d grids for the x & y bounds

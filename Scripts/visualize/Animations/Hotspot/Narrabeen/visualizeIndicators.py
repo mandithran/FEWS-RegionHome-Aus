@@ -1,13 +1,13 @@
-"""
-visualizeIndicators.py
-Author: Mandi Thran
-Date: 01/10/21
+#=============================================================================
+# visualizeIndicators.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTION:
-This script generates a series of snapshots to create animations of how the
-safe corridor width and dune toe-scarp distance storm impact indicators
-evolve over a forecast.
-"""
+# DESCRIPTION:
+# This script generates a series of snapshots to create animations of how the
+# safe corridor width and dune toe-scarp distance storm impact indicators
+# evolve over a forecast.
+#=============================================================================
 
 # Modules
 import numpy as np
@@ -146,9 +146,9 @@ def plotmymap(fig, axs, gaugefile=None, ewlgdf= None,
     # Plot EWL points
     #gdf_clipped.plot(ax = axs, color="dodgerblue", edgecolors='black', markersize=70)
 
-    """# Plot extreme water line
-    ewlgdf_clipped = postProcTools.clipShp(shp=ewlgdf, mask=my_image)
-    ewlgdf_clipped.plot(ax = axs, color="darkblue")"""
+    # Plot extreme water line
+    # ewlgdf_clipped = postProcTools.clipShp(shp=ewlgdf, mask=my_image)
+    # ewlgdf_clipped.plot(ax = axs, color="darkblue")
 
     # Plot SCW Indicators:
     if scwMode:

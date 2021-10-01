@@ -1,12 +1,12 @@
-"""
-generateTestingMesh.py
-Author: Mandi Thran
-Date: 01/10/21
+#====================================================================================
+# generateTestingMesh.py
+# Author: Mandi Thran
+# Date: 01/10/21
 
-DESCRIPTION:
-This script does something similar to reduceResolutionGrd.py. It generates a set 
-lower-resolution XBeach grids for testing and troubleshooting. 
-"""
+# DESCRIPTION:
+# This script does something similar to reduceResolutionGrd.py. It generates a set 
+# lower-resolution XBeach grids for testing and troubleshooting. 
+#====================================================================================
 
 # Modules
 import os
@@ -51,11 +51,11 @@ df = pd.DataFrame({"x":xx,
 df.to_csv(os.path.join(workDir,"ofiles", "xBeachGrid_2021_testing.csv"), index=False)
 
 
-"""data = np.arange(20).reshape(4, 5)
-ds = xr.Dataset({"A": (["x", "y"], data)})
-print(ds.A)
-print("result:")
-ds2 = ds.isel(x=[0,2],y=[0,2,4])
-print(ds2.A)"""
+# data = np.arange(20).reshape(4, 5)
+# ds = xr.Dataset({"A": (["x", "y"], data)})
+# print(ds.A)
+# print("result:")
+# ds2 = ds.isel(x=[0,2],y=[0,2,4])
+# print(ds2.A)
 #ds2 = ds.drop_sel(y=["a", "c"])
 #print(ds2.A)

@@ -30,10 +30,10 @@ plotPeriods = [datetime(2020,5,2,0),
                datetime(2020,6,26,0),
                #datetime(2020,7,12,0),
                datetime(2020,8,8,0)]
-"""plotPeriods = [np.datetime64('2020-05-23T00:00'),
-               np.datetime64('2020-06-26T00:00'),
-               np.datetime64('2020-07-12T00:00'),
-               np.datetime64('2020-08-08T00:00')]"""
+# plotPeriods = [np.datetime64('2020-05-23T00:00'),
+#                np.datetime64('2020-06-26T00:00'),
+#                np.datetime64('2020-07-12T00:00'),
+#                np.datetime64('2020-08-08T00:00')]
 
 # ================= Local functions ================= #
 def generateTimeseriesPlot(fig=None, ax=None, df=None):
@@ -87,21 +87,21 @@ df = df[df.index.strftime('%M') == '00']
 df = df.sort_values(by='datetime')
 
 
-"""# ================= Load Wave Data ================= #
-dfw_obs = pd.read_csv(waveData, skiprows=4)
-dfw_obs = dfw_obs.iloc[:,0:2]
-# Convert datetime column to datetime objects and set as index
-dfw_obs.index = pd.to_datetime(dfw_obs['Unnamed: 0'], format="%d/%m/%Y %H:%M")
-awst = pytz.timezone("Australia/Perth")
-dfw_obs.index = dfw_obs.index.tz_localize(awst).tz_convert(pytz.utc)
-dfw_obs = dfw_obs.drop('Unnamed: 0',1)
-# Rename columns
-dfw_obs.columns = ['hsig']
+# # ================= Load Wave Data ================= #
+# dfw_obs = pd.read_csv(waveData, skiprows=4)
+# dfw_obs = dfw_obs.iloc[:,0:2]
+# # Convert datetime column to datetime objects and set as index
+# dfw_obs.index = pd.to_datetime(dfw_obs['Unnamed: 0'], format="%d/%m/%Y %H:%M")
+# awst = pytz.timezone("Australia/Perth")
+# dfw_obs.index = dfw_obs.index.tz_localize(awst).tz_convert(pytz.utc)
+# dfw_obs = dfw_obs.drop('Unnamed: 0',1)
+# # Rename columns
+# dfw_obs.columns = ['hsig']
 
 
-# ================= Merge water levels and storm event data ================= #
-df = pd.merge(df, dfw_obs, how='left',left_index=True, right_index=True)
-print(df.head())"""
+# # ================= Merge water levels and storm event data ================= #
+# df = pd.merge(df, dfw_obs, how='left',left_index=True, right_index=True)
+# print(df.head())
 
 
 # ================= Merge observations and forecasts ================= #

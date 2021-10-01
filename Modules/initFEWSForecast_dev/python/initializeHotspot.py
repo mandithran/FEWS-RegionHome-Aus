@@ -1,57 +1,59 @@
-"""
-initializeHotspot.py
-Author: Mandi Thran
-Date: 29/09/2021
+#===================================================================================================
+# initializeHotspot.py
+# Author: Mandi Thran
+# Date: 29/09/2021
 
-DESCRIPTION:
-This script initializes the hotspot component of the entire forecast, setting key 
-parameters and generating key folders/files. More specifically, the script does the 
-following:
-    - Determines the current forecast using the System Time as an argument
-    - Makes key directory/directories for each of the hotspots
-    - Uses the above instance of the fewsForecast class to create a new instance of a 
-    class called “hotspotForecast”
-    - Sets several key attributes for the hotspot forecast
-    - Writes out a pickle file for the hotspot forecast
-
-
-ARGUMENTS FOR THE SCRIPT:
-Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if running 
-the Python wrapper, and in the initHotspotAdapter.xml file if using FEWS. The following are the 
-script’s arguments:
-    - regionHome: The path to the Region Home directory
-    - systemTime: The system time for the forecast/hindcast, in the format: “YYYYMMDD_HHMM”
-    - siteName: The name of the site. This will either be “Narrabeen” or “Mandurah”, and it is 
-    designated in hotspotLocations.csv
-    - workDir: Working directory. This should be the Module directory ([Region Home]\Modules\initFEWSForecast).
+# DESCRIPTION:
+# This script initializes the hotspot component of the entire forecast, setting key 
+# parameters and generating key folders/files. More specifically, the script does the 
+# following:
+#     - Determines the current forecast using the System Time as an argument
+#     - Makes key directory/directories for each of the hotspots
+#     - Uses the above instance of the fewsForecast class to create a new instance of a 
+#     class called “hotspotForecast”
+#     - Sets several key attributes for the hotspot forecast
+#     - Writes out a pickle file for the hotspot forecast
 
 
-KEY INPUTS
-    - diagOpen.txt: A template file that FEWS populates and uses as a log file
-    - spinUpWindow (set in fewsForecast.py, class hotspotForecast): The number of 
-    hours that XBeach will spin-up. Currently, it is set to a default value of 12 
-    hours. 
-    - forecastHorizon (set in fewsForecast.py, class hotspotForecast): This is where 
-    the forecast horizon is set. Currently, it is set to a default value of 7 days.
-    - tintm (set in fewsForecast.py, class hotspotForecast): This is where the 
-    time-averaged XBeach output timestep is set, and it corresponds to “tintm” in the 
-    params.txt file. Currently, it is set to a default value of 900 s. 
-    - tintg (set in fewsForecast.py, class hotspotForecast): Instantaneous spatial 
-    output timestep for XBeach, and it corresponds to the “tintg” parameter in 
-    params.txt file. Currently, it is set to a default value of 900 s.
-
-KEY OUTPUT
-    - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. 
-    prints to its console) 
-    - forecast_hotspot.pkl: The output pickle file that stores all the attributes of 
-    the newly-created instance of the fewsForecast class
+# ARGUMENTS FOR THE SCRIPT:
+# Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if running 
+# the Python wrapper, and in the initHotspotAdapter.xml file if using FEWS. The following are the 
+# script’s arguments:
+#     - regionHome: The path to the Region Home directory
+#     - systemTime: The system time for the forecast/hindcast, in the format: “YYYYMMDD_HHMM”
+#     - siteName: The name of the site. This will either be “Narrabeen” or “Mandurah”, and it is 
+#     designated in hotspotLocations.csv
+#     - workDir: Working directory. This should be the Module directory 
+#     ([Region Home]\Modules\initFEWSForecast).
 
 
-COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
-python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [Site ID] [working directory, i.e. the path to the folder containing this script]
-e.g.
-python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 Narrabeen C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
-"""
+# KEY INPUTS
+#     - diagOpen.txt: A template file that FEWS populates and uses as a log file
+#     - spinUpWindow (set in fewsForecast.py, class hotspotForecast): The number of 
+#     hours that XBeach will spin-up. Currently, it is set to a default value of 12 
+#     hours. 
+#     - forecastHorizon (set in fewsForecast.py, class hotspotForecast): This is where 
+#     the forecast horizon is set. Currently, it is set to a default value of 7 days.
+#     - tintm (set in fewsForecast.py, class hotspotForecast): This is where the 
+#     time-averaged XBeach output timestep is set, and it corresponds to “tintm” in the 
+#     params.txt file. Currently, it is set to a default value of 900 s. 
+#     - tintg (set in fewsForecast.py, class hotspotForecast): Instantaneous spatial 
+#     output timestep for XBeach, and it corresponds to the “tintg” parameter in 
+#     params.txt file. Currently, it is set to a default value of 900 s.
+
+# KEY OUTPUT
+#     - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. 
+#     prints to its console) 
+#     - forecast_hotspot.pkl: The output pickle file that stores all the attributes of 
+#     the newly-created instance of the fewsForecast class
+
+
+# COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+# python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [Site ID] [working directory, i.e. the path to the folder containing this script]
+# e.g.
+# python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeHotspot.py C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus 20210830_0000 Narrabeen C:\\Users\\mandiruns\\Documents\\01_FEWS-RegionHome-Aus\\Modules\\initFEWSForecast
+#===================================================================================================
+
 
 ############ Modules ############
 import traceback

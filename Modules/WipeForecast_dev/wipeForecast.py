@@ -1,60 +1,59 @@
-"""
-wipeForecast.py
-Author: Mandi Thran
-Date: 30/09/21
+#=============================================================================================
+# wipeForecast.py
+# Author: Mandi Thran
+# Date: 30/09/21
 
-DESCRIPTION:
-This script wipes all the larger files associated with the forecast. More specifically, 
-this script:
-    - Determines the current running forecast/hindcast
-    - Loads the relevant pickle file containing the object instance of the fewsForecast 
-    class
-    - Loads the relevant pickle file containing the object instance of the hotspotForecast 
-    class
-    - Remove xboutput.nc and the *bcf files
-    - Removes the directory where the XBeach run was executed ([Region Home]\Modules\XBeach)
-    - Removes the BoM wave and water level forecasts from their local module directories:
-        - [Region Home]\Modules\WaveDownload\ncFiles
-        - [Region Home]\Modules\NSSDownload\ncFiles
-        - NOTE: This doesn’t (and isn’t supposed to) remove the forecasts from the original 
-        locations they were downloaded from. 
-    - Writes out diagnostics
+# DESCRIPTION:
+# This script wipes all the larger files associated with the forecast. More specifically, 
+# this script:
+#     - Determines the current running forecast/hindcast
+#     - Loads the relevant pickle file containing the object instance of the fewsForecast 
+#     class
+#     - Loads the relevant pickle file containing the object instance of the hotspotForecast 
+#     class
+#     - Remove xboutput.nc and the *bcf files
+#     - Removes the directory where the XBeach run was executed ([Region Home]\Modules\XBeach)
+#     - Removes the BoM wave and water level forecasts from their local module directories:
+#         - [Region Home]\Modules\WaveDownload\ncFiles
+#         - [Region Home]\Modules\NSSDownload\ncFiles
+#         - NOTE: This doesn’t (and isn’t supposed to) remove the forecasts from the original 
+#         locations they were downloaded from. 
+#     - Writes out diagnostics
 
-Arguments for the Script
-Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if 
-running the Python wrapper, and in the WipeForecastAdapter.xml file if using FEWS. The 
-following are the script’s arguments:
-    - regionHome: The path to the Region Home directory
-    - systemTimeStr: The system time for the forecast/hindcast, in the format: “YYYYMMDDHH”
-    - siteName: The name of the region. This will either be “Narrabeen” or “Mandurah”, and 
-    it is designated in hotspotLocations.csv
-    - workDir: Working directory. This should be the Module directory 
-    ([Region Home]\Modules\WipeForecast).
+# Arguments for the Script
+# Arguments for this script are set in run_forecast_loop*.bat and run_forecast_loop.py if 
+# running the Python wrapper, and in the WipeForecastAdapter.xml file if using FEWS. The 
+# following are the script’s arguments:
+#     - regionHome: The path to the Region Home directory
+#     - systemTimeStr: The system time for the forecast/hindcast, in the format: “YYYYMMDDHH”
+#     - siteName: The name of the region. This will either be “Narrabeen” or “Mandurah”, and 
+#     it is designated in hotspotLocations.csv
+#     - workDir: Working directory. This should be the Module directory 
+#     ([Region Home]\Modules\WipeForecast).
 
-Key Variables/Inputs/Parameters
-    - diagOpen.txt: A template file that FEWS populates and uses as a log file
-    - forecast.pkl: The pickle file that stores all the attributes of the instance of the 
-    fewsForecast class
-    - forecast_hotspot.pkl: The pickle file that stores all the attributes of the instance 
-    of the hotspotForecast class
-    - xboutput.nc: XBeach output netCDF file. 
-    - *.bcf: XBeach .bcf output files
-    - IDZ00154_StormSurge_national_YYMMDDHH.nc:	The BoM National Storm Surge System 
-    forecast, stored as a netCDF file.
-    - [city code].msh.YYYYMMDDTHHMMZ.nc: The BoM nearshore wave forecast, fetched from the 
-    WaveDownload module.
+# Key Variables/Inputs/Parameters
+#     - diagOpen.txt: A template file that FEWS populates and uses as a log file
+#     - forecast.pkl: The pickle file that stores all the attributes of the instance of the 
+#     fewsForecast class
+#     - forecast_hotspot.pkl: The pickle file that stores all the attributes of the instance 
+#     of the hotspotForecast class
+#     - xboutput.nc: XBeach output netCDF file. 
+#     - *.bcf: XBeach .bcf output files
+#     - IDZ00154_StormSurge_national_YYMMDDHH.nc:	The BoM National Storm Surge System 
+#     forecast, stored as a netCDF file.
+#     - [city code].msh.YYYYMMDDTHHMMZ.nc: The BoM nearshore wave forecast, fetched from the 
+#     WaveDownload module.
 
-Key Outputs
-    - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to 
-    its console) 
+# Key Outputs
+#     - diag.xml: The resulting diagnostic file that FEWS populates and uses (i.e. prints to 
+#     its console) 
 
-COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
-python [path to this script] [path to Region Home] [System time in format YYYYMMDDHH] [site name] [working directory, i.e. the path to the folder containing this script]
-e.g.,
+# COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
+# python [path to this script] [path to Region Home] [System time in format YYYYMMDDHH] [site name] [working directory, i.e. the path to the folder containing this script]
+# e.g.,
 # python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\wipeForecast_dev/wipeForecast.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus 20200208_0000 Narrabeen C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\WipeForecast_dev
+#=============================================================================================
 
-
-"""
 
 # Modules
 import os
