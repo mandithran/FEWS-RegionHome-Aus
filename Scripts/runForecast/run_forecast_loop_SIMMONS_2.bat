@@ -14,7 +14,7 @@ rem Location if grabbing file from a local folder
 set waveForecastLoc=%regionHome%/ExternalForecasts/BOM/waves
 
 rem Format: YYYY-MM-DD
-set systemStartDate=2020-11-24 
+set systemStartDate=2020-11-25
 rem Format: HH:MM
 set systemStartTime=00:00
 rem Format: YYYY-MM-DD
