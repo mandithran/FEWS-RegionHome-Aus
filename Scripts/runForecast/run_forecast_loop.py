@@ -63,12 +63,12 @@ def main(args=None):
     initHotspotForecast_flag = True
     NSSDownload_flag = True
     WaveDownload_flag = True
-    PreProcessRegional_flag = True
+    PreProcessRegional_flag = False
     PreProcessXBeach_flag = True
     runXBeach_flag = True
     PostProcessXBeach_flag = True
     IndicatorsXBeach_flag = True
-    WipeForecast_flag = False
+    WipeForecast_flag = True
 
 
     #============== Arguments from run_forecast_loop*.bat file =============#
