@@ -1,2 +1,2 @@
-Failed. Command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast\python\initializeForecast.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20201027_1200 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast' returned non-zero exit status 1.
-Recorded at 2021-10-01 14:18:12.752680.
+Failed. Command 'python C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessRegional\preprocessMainRegional.py C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\ 20200926_1200 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessRegional' returned non-zero exit status 1.
+Recorded at 2021-10-05 13:46:42.238958.
