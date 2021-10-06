@@ -65,18 +65,19 @@ import wget
 
 def main(args=None):
 
+    ############ Arguments for this script ############ 
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
-    # First argument in Module config file is the path to this python script
-    # First argument read by this python script is the second argument in the config file
-    # First argument is the region home
+    # Arguments parsed from RetrieveNSSAdapter.xml if using FEWS
+    # Arguments parsed from run_forecast_loop*.py if using Python wrapper
+    # Path to Region Home
     regionHome = str(args[0])
-    # Second argument is the system time
+    # System time
     sysTimeStr = str(args[1])
-    # Third argument is the current working directory
+    # Work directory - the current module directory
     workDir = str(args[2])
-    # Fourth argument is the folder location
+    # The folder location of the BoM NSS (surge) forecasts
     forecastLocation = str(args[3])
 
 
@@ -86,26 +87,32 @@ def main(args=None):
 
 
     #============== Paths ==============#
+    # Diagnostic file that FEWS uses and populates
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
 
 
     #============== Params ==============#
+    # Location of the BoM server where storm surge forecasts are held
+    # To view in browser: http://opendap.bom.gov.au:8080/thredds/catalog/surge/forecast/RnD/catalog.html
     serverLoc = "http://opendap.bom.gov.au:8080/thredds/fileServer/surge/forecast/RnD/"
 
 
     #============== Parse system time and find directory of current forecast ==============#
+    # Parse system time, converts string to datetime object
     systemTime = fewsUtils.parseFEWSTime(sysTimeStr)
     roundedTime = fewsUtils.round_hours(systemTime, 12)
+    # Rounded time expressed as a string, so that script can locate the active forecast 
+    # directory
     roundedTimeStr = roundedTime.strftime("%Y%m%d_%H%M") 
     forecastDir = os.path.join(regionHome,"Forecasts",roundedTimeStr)
 
 
-    #============== Load FEWS forecast object ==============#
+    #============== Load FEWS forecast instance ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
 
     
-    #============== Parse BOM file name  ==============#
+    #============== Parse BOM file name based on rounded time  ==============#
     bomDT = str(str(roundedTime.year)+
             str(roundedTime.month).zfill(2)+
             str(roundedTime.day).zfill(2)+
@@ -116,7 +123,7 @@ def main(args=None):
     #============== Generate diagnostics file ==============#
     # Copy and rename diagOpen.txt
     shutil.copy(diagBlankFile,diagFile)
-
+    # Write to diagnostics file
     with open(diagFile, "a") as fileObj:
         currDir = os.getcwd()
         fileObj.write(fewsUtils.write2DiagFile(3,
@@ -136,28 +143,35 @@ def main(args=None):
     # If in forecast mode, grab from BOM server
     if fcst.mode == "forecast":
         serverLoc = serverLoc
-    # Otherwise grab it from the WRL J: drive
+    # Otherwise grab it from the WRL J: drive or another local folder
+    # This argument is set in run_forecast_loop.bat if running the Python wrapper
+    # Argument is set in RetrieveNSSAdapter.xml if running in FEWS
     elif fcst.mode == "hindcast":
         serverLoc = forecastLocation
     
 
     #============== Fetch file from server  ==============#
     url = os.path.join(serverLoc,fname)
+    # Local directory where file will be downloaded
     downloadDir = os.path.join(workDir,"ncFiles")
+    # Make local download directory if it doesn't exist
     if not os.path.exists(downloadDir):
         os.makedirs(downloadDir)
+    # If it's in forecast mode, download from BoM server
     if fcst.mode == "forecast":
         bomFile = wget.download(url, out=downloadDir)
+    # Or else if it's in hindcast mode, download from other directory where
+    # files are stored long-term (WRL1), or locally
     elif fcst.mode == "hindcast":
         shutil.copy(url,downloadDir)
 
     
-    #============== Write out new pickle file again  ==============#
+    #=========== Write fewsForecast instance out to updated pickle file ===========#
     with open(os.path.join(fcst.forecastDir,"forecast.pkl"), "wb") as output:
             pickle.dump(fcst, output, pickle.HIGHEST_PROTOCOL)
 
 
-## If Python throws an error, send to exceptions.log file that appears in module dataset file
+# If Python throws an error, send to exceptions.log file that appears in module dataset file
 if __name__ == "__main__":
     try:
         main()

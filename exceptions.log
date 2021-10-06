@@ -1,14 +1,6 @@
-did not find a match in any of xarray's currently installed IO backends ['netcdf4', 'scipy', 'rasterio']. Consider explicitly selecting one of the installed engines via the ``engine`` parameter, or installing additional IO dependencies, see:
-http://xarray.pydata.org/en/stable/getting-started-guide/installing.html
-http://xarray.pydata.org/en/stable/user-guide/io.htmlTraceback (most recent call last):
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessRegional\preprocessMainRegional.py", line 384, in <module>
+No active exception to reraiseTraceback (most recent call last):
+  File "C:\Users\z3531278\Documents\\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py", line 164, in <module>
     main()
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\PreProcessRegional\preprocessMainRegional.py", line 104, in main
-    surge_ds = xr.open_dataset(ifile)
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\api.py", line 481, in open_dataset
-    engine = plugins.guess_engine(filename_or_obj)
-  File "C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\bin\windows\python\bin\conda-venv\lib\site-packages\xarray\backends\plugins.py", line 148, in guess_engine
-    raise ValueError(error_msg)
-ValueError: did not find a match in any of xarray's currently installed IO backends ['netcdf4', 'scipy', 'rasterio']. Consider explicitly selecting one of the installed engines via the ``engine`` parameter, or installing additional IO dependencies, see:
-http://xarray.pydata.org/en/stable/getting-started-guide/installing.html
-http://xarray.pydata.org/en/stable/user-guide/io.html
+  File "C:\Users\z3531278\Documents\\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py", line 109, in main
+    raise
+RuntimeError: No active exception to reraise

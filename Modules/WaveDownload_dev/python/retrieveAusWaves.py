@@ -61,6 +61,7 @@
 #============================================================================
 
 
+#============== Modules ==============#
 import os
 import re
 import traceback
@@ -70,22 +71,32 @@ import sys
 
 
 
+# Run entire script inside a main() function so that it can accept 
+# command-line arguments
 def main(args=None):
+
 
     #============== Parse arguments from FEWS ==============#
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    # Path to Region Home
     regionHome = str(args[0])
+    # System time according to FEWS
     sysTimeStr = str(args[1])
+    # Work directory - the current module directory
     workDir = str(args[2])
+    # The folder location of the BoM NSS (wave) forecasts
     forecastLocation = str(args[3])
     
+
     #============== Paths ==============#
+    # Diagnostic file that FEWS uses and populates
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
+    # Location of the BoM server
     serverLoc = "http://dapds00.nci.org.au/thredds/fileServer/rr6/waves/"
 
 
-    #============== Modules ==============#
+    #============== More Modules ==============#
     import pandas as pd
     import numpy as np
     import pickle
@@ -95,23 +106,33 @@ def main(args=None):
 
 
     #============== Parse system time and find directory of current forecast ==============#
+    # Parse system time, converts string to datetime object
     systemTime = fewsUtils.parseFEWSTime(sysTimeStr)
     roundedTime = fewsUtils.round_hours(systemTime, 12)
+    # Rounded time expressed as a string, so that script can locate the active forecast 
+    # directory
     roundedTimeStr = roundedTime.strftime("%Y%m%d_%H%M")
     forecastDir = os.path.join(regionHome,"Forecasts",roundedTimeStr)
 
 
-    #============== Load FEWS forecast object ==============#
+    #============== Load fewsForecast object instance ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
 
+
     #============== Load hotspot location set from FEWS forecast object ==============#
+    # Loaded and set in initializeForecast.py
     df = fcst.hotspotDF
-    # Return all unique city codes as a list
+    # Return all unique city codes as a list - these are used in BoM wave forecast
+    # file names
     wave_codes = df.wave_code.unique()
 
+
+    # Loop through the different wave codes. Every unique wave code for each of the 
+    # hotspots in hotspotLocactions.csv will be included. 
     for code in wave_codes:
 
         #============== Parse BOM file name  ==============#
+        # Function for parsing the name of the BoM wave file name 
         fname, bomDate, bomTime = preProcWaves.parse_BOMWaveFile(dt=roundedTime,waveCode=code)
 
         #============== Logic for forecast v hindcast ==============#
@@ -126,13 +147,18 @@ def main(args=None):
             serverLoc = forecastLocation +"/%s" % code
 
         #============== Fetch file from server  ==============#
+        # Local directory where BoM forecast file will be downloaded
         downloadDir = os.path.join(workDir,"ncFiles")
+        # Make local download directory if it doesn't exist
         if not os.path.exists(downloadDir):
             os.makedirs(downloadDir)
+        # If in "forecast" mode, download straight from the BoM server
         if fcst.mode == "forecast":
             servDir = serverLoc + "%s/%s/" %(bomDate,bomTime)
             url = servDir + fname
             bomFile = wget.download(url, out=downloadDir)
+        # Or else if it's in hindcast mode, download from other directory where
+        # files are stored long-term (WRL1), or locally
         elif fcst.mode == "hindcast":
             # Typical os.path.join() doesn't work here because of mixed up slashes
             url = serverLoc + "/%s" % fname
@@ -142,7 +168,7 @@ def main(args=None):
     #============== Generate diagnostics file ==============#
     # Copy and rename diagOpen.txt
     shutil.copy(diagBlankFile,diagFile)
-
+    # Write to FEWS diagnostic file
     with open(diagFile, "a") as fileObj:
         currDir = os.getcwd()
         fileObj.write(fewsUtils.write2DiagFile(3,
@@ -158,7 +184,7 @@ def main(args=None):
         fileObj.write("</Diag>")
 
 
-## If Python throws an error, send to exceptions.log file
+# If Python throws an error, send to exceptions.log file that appears in module dataset file
 if __name__ == "__main__":
     try:
         main()

@@ -51,7 +51,7 @@
 # COMMAND TO DE-BUG AND MODIFY THIS SCRIPT INDIVIDUALLY:
 # python [path to this script] [path to Region Home] [System time in format YYYYMMDD_HHMM] [Region ID] [working directory, i.e. the path to the folder containing this script]
 # e.g.
-# python C:\Users\mandiruns\Documents\\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/mandiruns/Documents/01_FEWS-RegionHome-Aus 20210620_0100 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
+# python C:\Users\mandiruns\Documents\\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev\python\initializeForecast.py c:/Users/mandiruns/Documents/01_FEWS-RegionHome-Aus 20200209_0000 NSW C:\Users\mandiruns\Documents\01_FEWS-RegionHome-Aus\Modules\initFEWSForecast_dev
 # ====================================================================================================
 
 
@@ -66,17 +66,19 @@ import shutil
 
 def main(args=None):
 
-    ############ Arguments ############ 
+    ############ Arguments for this script ############ 
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
+    # Arguments parsed from InitForecastAdapter.xml if using FEWS
+    # Arguments parsed from run_forecast_loop*.py if using Python wrapper
     # Path to Region Home, defined in global properties file
     regionHome = str(args[0])
     # System time according to FEWS
     systemTime = str(args[1]) 
     # Region
     region = str(args[2])
-    # Work dir
+    # Work dir - the current module directory
     workDir = str(args[3])
 
 
@@ -87,36 +89,44 @@ def main(args=None):
 
     
     ############ Paths ############ 
+    # Diagnostic file that FEWS uses and writes to 
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
 
 
     ############ Initialize forecast instance of fewsForecast class ############ 
+    # Initialize new object instance
     fcst = fewsForecast.fewsForecast()
-    # System time
+    # System time - convert incoming string to datetime object
     fcst.systemTime = fewsUtils.parseFEWSTime(systemTime)
-    # Rounded time
+    # Rounded time - so that forecast begins on a 12-hour interval
     fcst.roundedTime = fewsUtils.round_hours(fcst.systemTime,12)
-    # Region home
+    # Region home path
     fcst.regionHome = regionHome
     # Path to blank diagnostics file
     fcst.blankDiagFilePath = diagBlankFile
 
 
-    ############ Make a new directory based on rounded time ############
+    ############ Make a new forecast directory based on rounded time ############
+    # Format the rounded time as a string
     roundedTimeStr = fcst.roundedTime.strftime("%Y%m%d_%H%M") 
+    # New path of forecast directory
     forecastDir = os.path.join(regionHome,"Forecasts",roundedTimeStr)
     fcst.forecastDir = forecastDir
     fcst.roundedTimeStr = roundedTimeStr
-    # Region sub directories within forecast directory (FEWS loops through Aus states)
+    # Region sub directories within the above forecast directory (FEWS loops 
+    # through Aus states)
     regionDir = os.path.join(forecastDir,region)
 
 
-    ############ Determine if Forecast v hindcast mode ############ 
+    ############ Determine if Forecast or hindcast mode ############ 
+    # The purpose of this is mainly to determine where to download the 
+    # BoM forecasts from.
     fcst.determineMode()
 
 
-    ############ Load hotspot location set ############
+    ############ Load location sets ############
+    # Location sets stored here: [Region Home]\Config\MapLayerFiles
     fcst.load_regions()
     fcst.load_hotspots()
 
@@ -125,21 +135,20 @@ def main(args=None):
     # Make working directory if it doesn't exist
     if not os.path.exists(fcst.forecastDir):
         os.makedirs(fcst.forecastDir)
-    # Use pickle to save fewsForecast object info
+    # Use pickle to save fewsForecast object info as a file
     with open(os.path.join(fcst.forecastDir,"forecast.pkl"), "wb") as output:
         pickle.dump(fcst, output, pickle.HIGHEST_PROTOCOL)
 
     ####### Make new directories within forecast directory for the different states (NSW/WA) #######
-    # Make region directory if it doesn't exist
+    # Make region directories if they don't exist
     if not os.path.exists(regionDir):
         os.makedirs(regionDir)
 
 
-
     ############### Generate diagnostics file for FEWS ###############
-    # Copy and rename diagOpen.txt
+    # Copy and rename diagOpen.txt so that FEWS knows where to find it
     shutil.copy(diagBlankFile,diagFile)
-
+    # Write to diagnostics file
     with open(diagFile, "a") as fileObj:
         currDir = os.getcwd()
         fileObj.write(fewsUtils.write2DiagFile(3,
@@ -150,7 +159,7 @@ def main(args=None):
         fileObj.write("</Diag>")
 
 
-## If Python throws an error, send to exceptions.log file
+## If Python throws an error, send to exceptions.log file to module directory
 if __name__ == "__main__":
     try:
         main()

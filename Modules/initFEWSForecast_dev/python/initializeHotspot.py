@@ -65,17 +65,19 @@ import shutil
 def main(args=None):
 
 
-    ############ Arguments ############ 
+    ############ Arguments for this script ############ 
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
     #============== Parse arguments from FEWS ==============#
-    # Path to Region Home, defined in global properties file
+    # Arguments parsed from InitHotspotAdapter.xml if using FEWS
+    # Arguments parsed from run_forecast_loop*.py if using Python wrapper
+    # Path to Region Home
     regionHome = str(args[0])
     # System time according to FEWS
     sysTimeStr = str(args[1])
-    # Site Name
+    # Site Name (Narrabeen/Mandurah)
     siteName = str(args[2])
-    # Work dir
+    # Work directory - the current module directory
     workDir = str(args[3])
 
 
@@ -86,38 +88,46 @@ def main(args=None):
 
 
     ############ Paths ############ 
+    # Diagnostic file that FEWS uses and writes to
     diagFile = os.path.join(workDir,"diagOpen.txt")
 
 
     #============== Parse system time and find directory of current forecast ==============#
+    # Parse system time, converts string to datetime object
     systemTime = fewsUtils.parseFEWSTime(sysTimeStr)
     roundedTime = fewsUtils.round_hours(systemTime, 12)
+    # Rounded time expressed as a string, so that script can locate the active forecast 
+    # directory
     roundedTimeStr = roundedTime.strftime("%Y%m%d_%H%M") 
     forecastDir = os.path.join(regionHome,"Forecasts",roundedTimeStr)
 
 
-    #============== Load FEWS forecast object ==============#
+    #============== Load fewsForecast object instance ==============#
+    # This instance was made by initializeForecast.py
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
 
 
     #============== Initialize hotspot forecast ==============#
+    # New hotspotForecast instance, which uses attributes from the original fcst object
     fcstHotspot = fewsForecast.hotspotForecast(fcst, siteName)
-    # Isolates and loads up relevant row from df containing hotspot info (a loaded location set in MapLayerFiles)
+    # Isolates and loads up relevant row from dataframe containing hotspot info
+    # Assigns attributes based on the info in this dataframe.
+    # This was loaded in initializeForecast.py
     fcstHotspot.init_hotspotInfo()
     # Make the hotspot forecast directory if it doesn't exist
     fcstHotspot.init_directory()
 
-    #============== Write out pickle for hotspot forecast ==============#
+    #============== Write out pickle file for hotspot forecast ==============#
     with open(os.path.join(fcstHotspot.forecastDir,"forecast_%s.pkl" % fcstHotspot.type), "wb") as output:
             pickle.dump(fcstHotspot, output, pickle.HIGHEST_PROTOCOL)
 
 
-    #============== Generate diagnostics file ==============#
+    #============== Generate diagnostics file for FEWS ==============#
     diagBlankFile = fcst.blankDiagFilePath
     diagFile = os.path.join(fcstHotspot.forecastDir, "diag.xml")
-    # Copy and rename diagOpen.txt
+    # Copy and rename diagOpen.txt so that FEWS knows where to find it
     shutil.copy(diagBlankFile,diagFile)
-    # Write to diagnostic file
+    # Write to diagnostics file
     with open(diagFile, "a") as fileObj:
         currDir = os.getcwd()
         fileObj.write(fewsUtils.write2DiagFile(3,
@@ -128,7 +138,7 @@ def main(args=None):
         fileObj.write("</Diag>")
 
 
-## If Python throws an error, send to exceptions.log file
+## If Python throws an error, send to exceptions.log file to module directory
 if __name__ == "__main__":
     try:
         main()
