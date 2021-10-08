@@ -290,14 +290,16 @@ def main(args=None):
     fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
 
     #============== Process surge at hotspot site ==============#
-    # Extract surge from netCDF file at correct point
+    # Extract surge from netCDF file at prescribed lat/lon point
+    # lat/lon point attributes of hotspotFcst (hotspotFcst.latSurge,
+    # hotspotFcst.lonSurge)
     surgeSeries = preProcWatLevs.processNSS_nc(forecast=hotspotFcst,
                                            nssDir=surgeDirNC,
                                            fname=fname)
     # Duplicated index in there for some reason (shouldn't be a DST issue)
-    # Maybe because of the merge in processNSS_nc?
+    # Maybe because of the merge in processNSS_nc?. This removes it. 
     surgeSeries = surgeSeries[~surgeSeries.index.duplicated()]
-    # Interpolate surge data to ensure it is robust
+    # Interpolate surge data to the set forecast deltat
     surgeInterp = preProcWatLevs.interpSeries(series=surgeSeries, forecast=hotspotFcst)
     # Make a new surge series and assign hotspot forecast object
     hotspotFcst.watlevSeries = hotspotFcst.watlevSeries.merge(surgeInterp, left_index=True, right_index=True)
