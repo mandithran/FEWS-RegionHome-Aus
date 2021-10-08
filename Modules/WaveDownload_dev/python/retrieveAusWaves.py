@@ -184,7 +184,7 @@ def main(args=None):
         fileObj.write("</Diag>")
 
 
-# If Python throws an error, send to exceptions.log file that appears in module dataset file
+# If Python throws an error, send to exceptions.log file that appears in module folder
 if __name__ == "__main__":
     try:
         main()

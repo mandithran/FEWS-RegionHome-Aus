@@ -152,20 +152,22 @@ def main(args=None):
     wlTimeSeries = preProcWatLevs.generateTimeSeries(forecast=regionalFcst)
 
                 #   ===     Tides   ===     #
-    # Copy tide dataset to pre-processing working directory
+    # Copy tide predictions to pre-processing working directory
     # Tides must be in GMT
     tidesPath = os.path.join(dataPath,"Tides//%s//processed" % regionalFcst.tideLocation)
     shutil.copy(os.path.join(tidesPath,"%sTidesGMT.csv" % regionalFcst.tideLocation), workDir)
-    # Load tide date, chop tide time sereis at start and end time
+    #  Path to the tides input file
     tideFile = os.path.join(workDir,"%sTidesGMT.csv" % regionalFcst.tideLocation)
+    # Load tide predictions, chop tide time series at start and end time
     tideSeries = preProcWatLevs.loadTideData(ifile=tideFile,
                                              forecast=regionalFcst)
-    # Interpolate tide time series at specified deltat
+    # Interpolate tide time series at specified deltat (regionalFcst object 
+    # attribute), set when forecast object was initialized
     tidesInterp = preProcWatLevs.interpSeries(series=tideSeries, forecast=regionalFcst)
-    # Join tides with timeseries
+    # Join tides with interpolated time series
     watlevSeries = wlTimeSeries.merge(tidesInterp, left_index=True, right_index=True)
                 #   ===     Surge   ===     #
-    # Determine surge file to be processed
+    # Determine BoM storm surge file to be processed
     surgeDirNC = os.path.join(modulePath,"NSSDownload/ncFiles")
     # Parse BOM file name
     bomDT = str(str(regionalFcst.roundedTime.year)+
@@ -173,12 +175,14 @@ def main(args=None):
             str(regionalFcst.roundedTime.day).zfill(2)+
             str(regionalFcst.roundedTime.hour).zfill(2))
     fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
-    # Load storm surge forecast file
+    # Full path of storm surge forecast file to be loaded
     ifile = os.path.join(surgeDirNC,fname)
-    # Load dataset
+    # Load netCDF file as xarray dataset
     surge_ds = xr.open_dataset(ifile)
+    # Convert xarray dataset to pandas dataframe
     surge_df = pd.DataFrame({"Lon":surge_ds.coords['lon'].values,"Lat":surge_ds.coords['lat'].values})
-    # Get datasets into correct format to find the correct points on water level forecast mesh
+    # Get datasets into correct geodataframe format. This is so that
+    # the correct points on water level forecast mesh can be found. 
     gdfPts = gpd.GeoDataFrame(surge_df, geometry=gpd.points_from_xy(surge_df.Lon,surge_df.Lat))
     gdfPts.set_crs(epsg=int(regionalFcst.epsgWL))
     # unary union of the geomtries 
@@ -195,30 +199,36 @@ def main(args=None):
 
 
 
-    # Iterate over profiles
+    # Iterate over the CoastSat profiles
     for index, row in gdf.iterrows():
-        # Return the nearest point on the water level forecast mesh
-        # This is the point that will contain the surge forecast
-        # It's not a direct look-up because sometimes the mesh changes
+        # Find the nearest point on the BoM National Storm Surge forecast
+        # mesh to the point location that was manually assigned in the CoastSat 
+        # profile dataset file ("regionalTransects_*.shp"). This will ensure 
+        # that the surge signal is being extracted from the correct location 
+        # for each profile. It's not a direct look-up of a perfectly matching 
+        # point because sometimes the BoM water level forecast mesh changes. 
         searchPt = Point(row['nss_lon'],row['nss_lat'])
+        # Returns the closest point on the BoM National Storm Surge forecast
+        # mesh to the CoastSat profile point that was previously assigned
+        # (while examining the mesh and profiles in QGIS)
         closestPt = preProcWaves.nearGeom(searchPt, pts=pts,
                                     gdfIn=gdfPts, outVar='geometries')
-        # Extract storm surge forecast at all points located near profiles
+        # Extract storm surge forecast at all profiles
         surgeSeries = preProcWatLevs.extractNSS(forecast=regionalFcst,ds=surge_ds,
                                   nss_lat=closestPt.y, nss_lon=closestPt.x)
-        # Interpolate tide time series at specified deltat (attirbute of the forecast object)
+        # Interpolate surge time series at specified deltat (attirbute of the forecast object)
         surgeInterp = preProcWatLevs.interpSeries(series=surgeSeries, forecast=regionalFcst)
-        # Combine storm surge and astronomical tide
+        # Combine storm surge and astronomical tide to get offshore water level
         watlevSeries = watlevSeries.merge(surgeSeries,how='inner',left_index=True,right_index=True)
         watlevSeries['wl_m'] = (watlevSeries['tide_m'] + watlevSeries['surge (m)']).round(2)
-        # TODO: Export forecast as file
+        # Export water level forecasts as csv files, one for each CoastSat Profile
         ofileName = '%s_wlFor.csv' % row['id']
         watlevSeries.to_csv(os.path.join(regionalFcst.wlForecastDir, ofileName),
                             columns=['wl_m'])
         watlevSeries = watlevSeries.drop(columns=['surge (m)'], axis=1)
 
 
-    # Inform user through FEWS
+    # Inform user through FEWS, via the diagnostic file
     fewsUtils.clearDiagLastLine(diagFile)
     with open(diagFile, "a") as fileObj:
         fileObj.write(fewsUtils.write2DiagFile(3, "Water levels successfully pre-processed."))
@@ -226,7 +236,7 @@ def main(args=None):
 
 
 
-## If Python throws an error, send to exceptions.log file
+# If Python throws an error, send to exceptions.log file to module directory
 if __name__ == "__main__":
     try:
         main()

@@ -59,7 +59,7 @@ def main(args=None):
     # Set as True if you want to run a given module, set as False if you don't
     # These flag names correspond to the module folders
     initFEWSForecast_flag = True
-    initRegionalForecast_flag = True
+    initRegionalForecast_flag = False
     initHotspotForecast_flag = True
     NSSDownload_flag = True
     WaveDownload_flag = True

@@ -36,6 +36,7 @@
 #     ([Region Home]\Modules\PreProcessXBeach).
 
 # KEY VARIABLES/INPUTS/PARAMETERS:
+#     - xbFilesPath: Path to the below four XBeach grids 
 #     - xgrd: The prepped XBeach grid containing x locations of the mesh. The file has the 
 #     same dimensions as the mesh. For more information, see the XBeach documentation. 
 #     - ygrd: The prepped XBeach grid containing y locations of the mesh. The file has the 
@@ -88,7 +89,7 @@
 #============================================================================================
 
 
-# Modules
+# Python Modules
 import os
 import sys
 import traceback
@@ -99,16 +100,24 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main(args=None):
 
+
+    #============== Arguments for this script ==============#
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
 
-    #============== Parse arguments from FEWS ==============#
+    #============== Parse arguments ==============#
+    # Arguments parsed from PreProcessXBeachAdapter.xml if using FEWS
+    # Arguments parsed from run_forecast_loop*.py if using Python wrapper
+    # Path to Region Home
     regionHome = str(args[0])
+    # System time according to FEWS
     sysTime = str(args[1])
+    # Site Name (Narrabeen/Mandurah)
     siteName = str(args[2])
+    # Work directory - the current module directory
     workDir = str(args[3])
 
 
-    #============== Modules ==============#
+    #============== Python Modules ==============#
     import pandas as pd
     from xbfewsTools import fewsUtils
     from xbfewsTools import preProcWatLevs
@@ -125,6 +134,7 @@ def main(args=None):
     # xgrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\x_testing.grd" % siteName)
     # ygrd = os.path.join(regionHomeDir,"Data\\Grids\\%s\\xb-ready-files\\lowres-testing\\y_testing.grd" % siteName)
     # zgrd = os.path.join(regionHomeDir,"Data\\TopoBathy\\%s\\prep\\xb-ready-files\\lowres-testing\\bed_testing.DEP" % siteName)
+
     xbFilesPath = os.path.join(regionHome,"Data\\xbeach\\%s\\grd\\2020_02_09\\pre-storm\\50mAlongshore" % siteName)
     xgrd = os.path.join(xbFilesPath,"x.grd")
     ygrd = os.path.join(xbFilesPath,"y.grd")
@@ -132,11 +142,12 @@ def main(args=None):
     ne_layer = os.path.join(xbFilesPath,'ne_layer.grd')
 
 
-    #============== Other Parameters ==============#
-    deltat_str = 10 # input time series resolution, in minutes
+    #=================== Other Parameters ===================#
+    # time series resolution that XBeach will use, in minutes
+    deltat_str = 10 
 
 
-    #============== Paths ==============#
+    #============================== Paths ==============================#
     diagBlankFile = os.path.join(workDir,"diagOpen.txt")
     diagFile = os.path.join(workDir,"diag.xml")
     modulePath = os.path.join(regionHome,"Modules")
@@ -148,19 +159,24 @@ def main(args=None):
 
 
     #============== Parse system time and find directory of current forecast ==============#
+    # Parse system time, converts string to datetime object
     systemTime = fewsUtils.parseFEWSTime(sysTime)
     roundedTime = fewsUtils.round_hours(systemTime, 12)
+    # Rounded time expressed as a string, so that script can locate the active forecast 
+    # directory
     roundedTimeStr = roundedTime.strftime("%Y%m%d_%H%M") 
     forecastDir = os.path.join(regionHome,"Forecasts",roundedTimeStr)
 
 
-    #============== Load FEWS forecast object ==============#
+    #============== Load fewsForecast instance ==============#
     fcst = pickle.load(open(os.path.join(forecastDir,"forecast.pkl"),"rb"))
 
 
-    #============== Load hotspot forecast object ==============#
+    #============== Load hotspotForecast instance ==============#
+    # Find the region of the given hotspot (NSW or WA)
     regionName = fcst.hotspotDF.loc[fcst.hotspotDF['ID']==siteName]['Region'][0]
     hotspotForecastDir = os.path.join(forecastDir, regionName,"hotspot",siteName)
+    # Load pickle file
     hotspotFcst = pickle.load(open(os.path.join(hotspotForecastDir,"forecast_hotspot.pkl"),"rb"))
 
 
@@ -168,25 +184,35 @@ def main(args=None):
     #============== Generate diagnostics file ==============#
     # Copy and rename diagOpen.txt
     shutil.copy(diagBlankFile,diagFile)
+    # Write to diagnostics file
     with open(diagFile, "a") as fileObj:
         currDir = os.getcwd()
         fileObj.write("</Diag>")
 
 
     #============== Set more parameters for hotspot forecast instance ==============#
+    # Name of the XBeach run
     runName = "%s-%s" % (roundedTimeStr,siteName)
     hotspotFcst.runName = runName
+    # Path to the XBeach work directory
     xbWorkDir = os.path.join(hotspotForecastDir,"XBeach")
+    # Make XBeach work directory if it doesn't exist
     if not os.path.exists(xbWorkDir):
         os.makedirs(xbWorkDir)
+    # Path to XBeach work directory
     hotspotFcst.xbWorkDir = xbWorkDir
+    # Timestep of the inputs XBeach will ingest
     hotspotFcst.deltat = timedelta(minutes=int(deltat_str))
+    # Sets the start and end time of the XBeach run given a spin-up window, and sets
+    # a few more attributes
     hotspotFcst.init_runInfo()
+    # Path of the XBeach grids, for future reference and record-keeping
     hotspotFcst.inputGridsDir = xbFilesPath
 
     # Write some of this info to diag file
-    # Remove </Diag> line since you are appending more lines
+    # Remove </Diag> line since more lines are being appended
     fewsUtils.clearDiagLastLine(diagFile)
+    # Write to diagnostics file 
     with open(diagFile, "a") as fileObj:
         fileObj.write(fewsUtils.write2DiagFile(3, "XBeach Working Directory: % s" % hotspotFcst.xbWorkDir))
         fileObj.write(fewsUtils.write2DiagFile(3, "System time (from FEWS): %s" % hotspotFcst.systemTime))
@@ -198,8 +224,9 @@ def main(args=None):
         fileObj.write("</Diag>")
 
 
-    #============== Copy Ready-made input files ==============#
+    #================= Copy Ready-made input files =================#
     # Transfer pre-made x.grd, y.grd, bed.DEP to working directory
+    # (XBeach work directory inside the Forecast directory)
     # Generated with 01preprocess-morpho.py script
     # Copy grids over
     shutil.copy(xgrd, hotspotFcst.xbWorkDir)
@@ -209,12 +236,12 @@ def main(args=None):
     hotspotFcst.xgrdPath = xgrd
     hotspotFcst.ygrdPath = ygrd
     hotspotFcst.zgrdPath = zgrd
-    hotspotFcst.ne_layerPath = zgrd
+    hotspotFcst.ne_layerPath = ne_layer
     
 
-    #============== Generate list of run-up gauges ==============#
-    # Command to run script manually:
-    # Read xgrd, left most cells contain seaward boundary
+    #============== Generate list of run-up gauges for XBeach output ==============#
+    # Read xgrd, left-most cells contain seaward boundary, this is where run-up
+    # gauges will be placed at the start of the simulation
     hotspotFcst.dfGauges = pd.read_csv(hotspotFcst.xgrdPath, delim_whitespace=True, header=None, prefix='x', usecols=[0])
     # Read ygrd and add as a column (the correct way), left most cells contain seaward boundary
     hotspotFcst.dfGauges.loc[:,'y0'] = pd.read_csv(hotspotFcst.ygrdPath, delim_whitespace=True, header=None, prefix='y', usecols=[0])
@@ -223,45 +250,47 @@ def main(args=None):
     #============== Pre-process water levels ==============#
     # Inform user through FEWS
     fewsUtils.clearDiagLastLine(diagFile)
+    # Write to diagnostics file
     with open(diagFile, "a") as fileObj:
         fileObj.write(fewsUtils.write2DiagFile(3, "Pre-processing water levels..."))
         fileObj.write("</Diag>")
 
 
-    # Generate time series dataframe in GMT
+    # Generate time series dataframe in GMT/UTC
     hotspotFcst.inTimeSeries = preProcWatLevs.generateTimeSeries(forecast=hotspotFcst)
     
     
 
                 #   ===     Tides   ===     #
-    # Copy tide dataset to pre-processing working directory
-    # Tides must be in GMT
+    # Copy tide predictions to pre-processing working directory
+    # Tides must be in GMT/UTC
     tidesPath = os.path.join(dataPath,"Tides//%s//processed" % hotspotFcst.city)
     shutil.copy(os.path.join(tidesPath,"%sTidesGMT.csv" % hotspotFcst.city), workDir)
-    # Load tide date, chop at start and end time
+    # Load tide predictions, chop time series at start and end time to get
+    # tides over the forecast window
     tideFile = os.path.join(workDir,"%sTidesGMT.csv" % hotspotFcst.city)
     tideSeries = preProcWatLevs.loadTideData(ifile=tideFile,
                                              forecast=hotspotFcst)
-    # Interpolate tide time series at specified deltat
+    # Interpolate tide time series at specified deltat (hotspotFcst attribute)
     tidesInterp = preProcWatLevs.interpSeries(series=tideSeries, forecast=hotspotFcst)
 
-    # Join tides with timeseries
+    # Join tides with time series - this becomes the basis for the 
+    # water level forcing for XBeach. 
     hotspotFcst.watlevSeries = hotspotFcst.inTimeSeries.merge(tidesInterp, left_index=True, right_index=True)
 
                 #   ===     Surge   ===     #
-    # Determine surge file to be processed
+    # Determine BoM surge file to be processed
     # Assign this as an attribute for easy reference
-    # Storm surge already processed for import into FEWS, by ProcessAusSurgeAdapter
     surgeDirNC = os.path.join(modulePath,"NSSDownload/ncFiles")
-    # Parse BOM file name
+    # Parse BOM file name based on the rounded time
     bomDT = str(str(hotspotFcst.roundedTime.year)+
             str(hotspotFcst.roundedTime.month).zfill(2)+
             str(hotspotFcst.roundedTime.day).zfill(2)+
             str(hotspotFcst.roundedTime.hour).zfill(2))
     fname = "IDZ00154_StormSurge_national_" + bomDT + ".nc"
 
-    #============== Process surge at site ==============#
-    # Extract surge from netCDF file
+    #============== Process surge at hotspot site ==============#
+    # Extract surge from netCDF file at correct point
     surgeSeries = preProcWatLevs.processNSS_nc(forecast=hotspotFcst,
                                            nssDir=surgeDirNC,
                                            fname=fname)
